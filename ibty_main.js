@@ -3,7 +3,7 @@ function openProfile(id) {
 
     document.getElementById('profile-detail').style.display = 'block';
 
-    var playerFilePath = "/used/player-files/" + id + ".txt";
+    var playerFilePath = "/player-files/" + id + ".txt";
 
     $.ajax({
         url: playerFilePath,
