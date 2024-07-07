@@ -1,34 +1,46 @@
+
+//when a player box is clicked, the id from the clicked box corresponds to the filename of the player
 function openProfile(id) {
     console.log("openProfile triggered with id:", id);
 
+//get the detailed player box and display it as block
     document.getElementById('profile-detail').style.display = 'block';
 
+//filepath to the playerfile
     var playerFilePath = "/player-files/" + id + ".txt";
 
     $.ajax({
         url: playerFilePath,
         dataType: "text",
+        
+        //when file (data) is found
         success: function (data) {
             console.log("Player file loaded successfully");
 
+            //split the file into sections via the parseFileContent function
             var sections = parseFileContent(data);
+
+            //a counter for the social sections in the player file
             var socialsCount = 0;
+            
+            //for every section found, increase counter
             socialsCount += (sections.youtube != null) ? 1 : 0;
             socialsCount += (sections.instagram != null) ? 1 : 0;
             socialsCount += (sections.twitter != null) ? 1 : 0;
             socialsCount += (sections.twitch != null) ? 1 : 0;
             socialsCount += (sections.tiktok != null) ? 1 : 0;
-            //set social grid colum count
+            
+            //set column count for the social grid based on the social counter
             $("#grid-item-detail-socials-grid-container").css('grid-template-columns', 'repeat(' + socialsCount + ' auto)');
 
-            //put the data where it belongs
+            //get the elements with the specific IDs and edit their text to the text in the corresponding file section
             $("#player-name").text(sections.name);
             $("#player-riotname").text(sections.riotname);
             $("#player-riotname").attr("href", sections.riotlink || "").attr("target", "_blank");
             $("#player-text").text(sections.text);
             $("#player-roles").text(sections.roles);
 
-            //reset the image src attributes
+            //reset the image src attributes from the social buttons
             $("#youtube-img").removeAttr("src", "/images/Icons/youtube.png", "alt", "");
             $("#instagram-img").removeAttr("src", "/images/Icons/instagram.png", "alt", "");
             $("#twitter-img").removeAttr("src", "/images/Icons/twitter.png", "alt", "");
@@ -36,7 +48,7 @@ function openProfile(id) {
             $("#tiktok-img").removeAttr("src", "/images/Icons/tiktok.png", "alt", "");
 
 
-            //if social label exists in file, put back the src attribute with matching path and change the redirect link 
+            //if social section exists in player file, put back the src attribute with matching path and change the redirect link 
             if (sections.hasOwnProperty("youtube")) {
                 $("#player-socials-youtube").attr("href", sections.youtube);
                 $("#youtube-img").attr("src", "/images/Icons/youtube.png", "alt", "");
@@ -58,8 +70,12 @@ function openProfile(id) {
                 $("#tiktok-img").attr("src", "/images/Icons/tiktok.png", "alt", "");
             }
         },
+        
+        //if player file is not found
         error: function (data) {
             console.error("Error loading player file");
+           
+            //display the error message in the player name element and hide the social buttons
             $("#player-name").text("Player file not found");
             $("#player-riotname").text("");
             $("#player-text").text("");
@@ -68,22 +84,39 @@ function openProfile(id) {
         }
     });
 
-    //textfile parser
+    //textfile parser for file (data)
     function parseFileContent(data) {
+       
+        //split the file whenever ther is "\n" (at the end of every line) and save it in the "lines" array
         var lines = data.split("\n");
+       
+        //empty array for the sections
         var sections = {};
         var currentLabel = null;
         var currentContent = [];
 
+        //for each element in the "lines" array
         lines.forEach(line => {
+            
+            //remove useless whitespace
             line = line.trim();
+            
+            //if the line contains the label, the var equals "true"
             var lableMatch = line.match(/^==(.+)==$/);
 
+            //if current line contains the lable
             if (lableMatch) {
+                
+                //and the current content is not null
                 if (currentContent) {
+
+                    //set the section at the current lable to the currentcontent and append the "\n"
                     sections[currentLabel] = currentContent.join("\n").trim();
+
+                    //reset the current content
                     currentContent = [];
                 }
+                //get next lable
                 currentLabel = lableMatch[1];
             } else if (line === "==Ende==") {
                 if (currentLabel) {
@@ -101,9 +134,11 @@ function openProfile(id) {
     }
 }
 
+//when the little x in the detailed box is clicked
 function closeProfile(profileId) {
     document.getElementById('profile-detail').style.display = 'none';
-    //reset the image src attributes
+    
+    //reset the image src attributes from the social buttons
     $("#youtube-img").removeAttr("src", "/images/Icons/youtube.png", "alt", "");
     $("#instagram-img").removeAttr("src", "/images/Icons/instagram.png", "alt", "");
     $("#twitter-img").removeAttr("src", "/images/Icons/twitter.png", "alt", "");
@@ -111,6 +146,7 @@ function closeProfile(profileId) {
     $("#tiktok-img").removeAttr("src", "/images/Icons/tiktok.png", "alt", "");
 }
 
+//filepath to the gameplan file
 var gameplanFilePath = "gameplan.txt";
 
 console.log("Triggering gameplan AJAX call");
@@ -118,29 +154,44 @@ console.log("Triggering gameplan AJAX call");
 $.ajax({
     url: gameplanFilePath,
     dataType: "text",
+    
+    //when gameplan file is found
     success: function (file) {
         console.log("Gameplan file loaded successfully");
 
         var sectionMarker = '=&=';
+
+        //split the gameplan file whenever ther is "\n" (at the end of erver line)
         var linearray = file.split('\n');
 
+        //for every line in the linearray
         for (var line = 0; line < linearray.length; line++) {
+            
+            //if the current line doesn't contain the sectionMarker
             if (!linearray[line].includes(sectionMarker)) {
+                
+                //append the text to the "table" element
                 $("table").append(`<tr><th class="gameplan-header" colspan="3">${linearray[line]}</th></tr>`);
+            
+            //if the current line does contain the sectionMarker
             } else {
+                
+                //split the line into sections whenever ther is a sectionMarker
                 var sectionarray = linearray[line].split(sectionMarker);
+
+                //the beginning html element for a new row in the table
                 var rowHTML = '<tr class="gameplan-item">';
+
+                //for every section in the sectionarray of the current line
                 for (var section = 0; section < sectionarray.length; section++) {
 
-                    //console.log("sectionarray " + sectionarray[section]);
-                    //#0ea20073 green
-                    //#a2000073 red
-                    //#a27c0073 yellow
-
+                    //if the current section includes ":" (for the game score)
                     if (sectionarray[section].includes(":")) {
+
+                        //split the current section whenever ther is a ":"
                         var scorearray = sectionarray[section].split(':');
-                        //console.log("scorearray[0] "+scorearray[0]+" scorearray[1] "+scorearray[1]);
                         
+                        //compare the first and second element of the scorearray and depending on their relation adjust the glow colour of the score box
                         if (Number(scorearray[0]) > Number(scorearray[1])) {
                             console.log("win");
                             rowHTML += `<td class="gameplan-item-content" style="box-shadow: inset 0px 0px 10px 2px #0ea20073;">${sectionarray[section]}</td>`;
@@ -154,18 +205,27 @@ $.ajax({
                             rowHTML += `<td class="gameplan-item-content" style="box-shadow:inset 0px 0px 10px 2px #a27c0073;">${sectionarray[section]}</td>`;
                         }
                     }
+                    //if the current section doesn't include a ":"
                     else {
-                       // console.log("not a score");
+                       
+                        //append the section as new td element in the current table row
                         rowHTML += `<td class="gameplan-item-content">${sectionarray[section]}</td>`;
                     }
                 }
+
+                //end the current table row with the corresponding html element
                 rowHTML += "</tr>";
+
+                //and append the newly created row to the table
                 $("table").append(rowHTML);
             }
         }
     },
+    //if the gameplan file is not found
     error: function (file) {
         console.error("Error loading gameplan file");
+        
+        //append a div element containing an error message to the table 
         $("table").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
     }
 });

@@ -1,7 +1,11 @@
+//filepath to the vereinssatzung file
 var filePath = 'vereinssatzung.txt';
+
 $.ajax({
     url: filePath,
     dataType: "text",
+
+    //when file is found
     success: function (data) {
         console.log("club statutes file loaded successfully");
 
@@ -10,6 +14,8 @@ $.ajax({
         $("#vereinssatzungsFeld").text(data);
        
     },
+
+    //when file is not found
     error: function (data) {
         console.error("Error loading club statutes file");
        
