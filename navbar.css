@@ -4,6 +4,7 @@
     position: sticky;
     top: 0;
     width: auto; 
+    height: 200px;
     background-color: #333;
     transition: padding 0.3s;
     z-index: 10;
