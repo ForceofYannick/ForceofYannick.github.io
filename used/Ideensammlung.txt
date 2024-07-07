@@ -1,0 +1,34 @@
+
+Spielplan/Verlauf
+
+txt aufbau:
+woche =&= gegnername =&= gegner logo =&= stand von ibtc aus, also 0:2 hat ibtc verloren
+
+
+
+Anmeldeformular
+Link zu Jersy
+Generelle Infos zu IBTC und IBTY
+(skeleton loading)
+infos
+
+
+
+
+done - detailed player box über die gridboxen packen (optional)
+done - IBT socials
+done - logo links in menu bar als home button
+halb done - Team vorstellung (spielplan unter teams)
+done - auf klick kommt man auf op.gg seite vom spieler (mit bei der spieler vorstellung) [blad per API]
+done - player Socials (bei spieler vorstellung)
+
+
+
+https://www.youtube.com/@IBTChallenger
+https://www.instagram.com/ibt_challenger
+https://x.com/ibt_challenger
+https://www.twitch.tv/ibt_challenger
+
+
+https://www.primeleague.gg/leagues/teams/206013-ibtc-yeti
+https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger

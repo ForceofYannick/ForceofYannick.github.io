@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IBTC</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="ibtc_style.css" />
+    <link rel="stylesheet" href="navbar.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="ibtc_main.js"></script>
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue"/>
+    <link rel="icon" type="image/x-icon" href="/images/Logos/Simplified_Logo.png">
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+          <a href="ibtc.html"><img src="/images/Logos/IBTLogo.png" alt="IBT Logo" style="width: 50px; margin: 0;"></a>
+          <div class="dropdown">
+              <button class="dropbtn">Teams <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="ibtc.html">IBTC</a>
+                  <a href="ibty.html">IBTY</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <button class="dropbtn">Socials <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="https://www.instagram.com/ibt_challenger" target="_blank">Instagram</a>
+                  <a href=" https://www.twitch.tv/ibt_challenger" target="_blank">Twitch</a>
+                  <a href="https://www.youtube.com/@IBTChallenger" target="_blank">Youtube</a>
+                  <a href="https://x.com/ibt_challenger" target="_blank">Twitter</a>
+                  <a href="#">Tiktok (WIP)</a>
+                  <a href="https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger"
+                      target="_blank">Primeleague</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <button class="dropbtn">About <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="info.html">Info</a>
+                  <a href="vereinssatzung.html">Vereinssatzung</a>
+                  <a href="kontakt.html">Kontakt</a>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+    <div class="content">
+      <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif">
+        iron better than challenger
+      </h1>
+      <div class="gallery">
+        <div class="image-container" onclick="openProfile('cuukey')">
+          <img src="/images/Jerseys/CuukeyJersey.png" alt="Profil 1" />
+        </div>
+        <div class="image-container" onclick="openProfile('chibex')">
+          <img src="/images/Jerseys/ChibexJersey.png" alt="Profil 2" />
+        </div>
+        <div class="image-container" onclick="openProfile('alberto')">
+          <img src="/images/Jerseys/AlbertoJersey.png" alt="Profil 3" />
+        </div>
+        <div class="image-container" onclick="openProfile('äsöp')">
+          <img src="/images/Jerseys/AsopJersey.png" alt="Profil 4" />
+        </div>
+        <div class="image-container" onclick="openProfile('psychovini')">
+          <img src="/images/Jerseys/psychoviniJersey.png" alt="Profil 5" />
+        </div>
+        <div class="image-container" onclick="openProfile('kingthai2')">
+          <img src="/images/Jerseys/Kingthai2Jersey.png" alt="Profil 6" />
+        </div>
+        <div class="image-container" onclick="openProfile('lyrienthena')">
+          <img src="/images/Jerseys/LyrienthenaJersey.png" alt="Profil 7" />
+        </div>
+        <div class="image-container" onclick="openProfile('kayo')">
+          <img src="/images/Jerseys/KaYoJersey.png" alt="Profil 8" />
+        </div>
+        <div class="image-container" onclick="openProfile('yannick')">
+          <img src="/images/Jerseys/YannickJersey.png" alt="Profil 9" />
+        </div>
+      </div>
+
+      <div id="profile-detail" class="profile-detail">
+        <span style="font-size: 150%;"  class="close" onclick="closeProfile('profile')">&times;</span>
+
+        <p id="player-name" class="profile-detail-playername"></p>
+        <p id="player-text" class="profile-detail-text"></p>
+        <p id="player-roles" class="profile-detail-roles"></p>
+
+        <div id="player-socials" class="profile-detail-socials-grid-container">
+          <a
+            id="player-socials-youtube"
+            class="profile-detail-socials-grid-item youtube"
+            title="Youtube"
+            target="_blank"
+          >
+            <img id="youtube-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-instagram"
+            class="profile-detail-socials-grid-item instagram"
+            title="Instagram"
+            target="_blank"
+          >
+            <img id="instagram-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-twitter"
+            class="profile-detail-socials-grid-item twitter"
+            title="Twitter"
+            target="_blank"
+          >
+            <img id="twitter-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-twitch"
+            class="profile-detail-socials-grid-item twitch"
+            title="Twitch"
+            target="_blank"
+          >
+            <img id="twitch-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-tiktok"
+            class="profile-detail-socials-grid-item tiktok"
+            title="Tiktok"
+            target="_blank"
+          >
+            <img id="tiktok-img" style="width: 120%" />
+          </a>
+        </div>
+
+        <a
+          id="player-riotname"
+          class="profile-detail-riotname riotlink"
+          title="op.gg Profil"
+        ></a>
+      </div>
+
+
+
+      <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif;">spielplan</h1>
+        
+      <table class="gameplan-container"></table>
+
+    </div>
+  </body>
+</html>

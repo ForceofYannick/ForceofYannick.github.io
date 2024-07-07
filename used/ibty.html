@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IBTY</title>
+
+    <link rel="stylesheet" href="ibty_style.css" />
+    <link rel="stylesheet" href="navbar.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="ibty_main.js"></script>
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue"/>
+    <link rel="icon" type="image/x-icon" href="/images/Logos/Simplified_Logo.png">
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+          <a href="ibtc.html"><img src="/images/Logos/IBTLogo.png" alt="IBT Logo" style="width: 50px; margin: 0;"></a>
+          <div class="dropdown">
+              <button class="dropbtn">Teams <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="ibtc.html">IBTC</a>
+                  <a href="ibty.html">IBTY</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <button class="dropbtn">Socials <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="https://www.instagram.com/ibt_challenger" target="_blank">Instagram</a>
+                  <a href=" https://www.twitch.tv/ibt_challenger" target="_blank">Twitch</a>
+                  <a href="https://www.youtube.com/@IBTChallenger" target="_blank">Youtube</a>
+                  <a href="https://x.com/ibt_challenger" target="_blank">Twitter</a>
+                  <a href="#">Tiktok (WIP)</a>
+                  <a href="https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger"
+                      target="_blank">Primeleague</a>
+              </div>
+          </div>
+          <div class="dropdown">
+              <button class="dropbtn">About <i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                  <a href="info.html">Info</a>
+                  <a href="vereinssatzung.html">Vereinssatzung</a>
+                  <a href="kontakt.html">Kontakt</a>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+    <div class="content">
+      <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif">
+        ibtc yeti
+      </h1>
+      <div class="gallery">
+        <div class="image-container" onclick="openProfile('hanasöf')">
+          <img src="/images/Jerseys/HanasofJersey.png" alt="Profil 1" />
+        </div>
+        <div class="image-container" onclick="openProfile('wfefe')">
+            <img src="/images/Jerseys/WfefeJersey.png" alt="Profil 2" />
+          </div>
+          <div class="image-container" onclick="openProfile('markeng77')">
+            <img src="/images/Jerseys/Markeng77Jersey.png" alt="Profil 3" />
+          </div>
+          <div class="image-container" onclick="openProfile('donni')">
+            <img src="/images/Jerseys/DonniJersey.png" alt="Profil 4" />
+          </div>
+          <div class="image-container" onclick="openProfile('kev1n681')">
+            <img src="/images/Jerseys/KevinJersey.png" alt="Profil 5" />
+          </div>
+          <div class="image-container" onclick="openProfile('mew')">
+            <img src="/images/Jerseys/MewJersey.png" alt="Profil 6" />
+          </div>
+          <div class="image-container" onclick="openProfile('luis1414')">
+            <img src="/images/Jerseys/luisJersey.png" alt="Profil 7" />
+          </div>
+          <div class="image-container" onclick="openProfile('remrem')">
+            <img src="/images/Jerseys/remremJersey.png" alt="Profil 8" />
+          </div>
+          <div class="image-container" onclick="openProfile('kirito')">
+            <img src="/images/Jerseys/KiritoJersey.png" alt="Profil 9" />
+          </div>
+       
+      </div>
+
+      <div id="profile-detail" class="profile-detail">
+        <span style="font-size: 150%;"  class="close" onclick="closeProfile('profile')">&times;</span>
+
+        <p id="player-name" class="profile-detail-playername"></p>
+        <p id="player-text" class="profile-detail-text"></p>
+        <p id="player-roles" class="profile-detail-roles"></p>
+
+        <div id="player-socials" class="profile-detail-socials-grid-container">
+          <a
+            id="player-socials-youtube"
+            class="profile-detail-socials-grid-item youtube"
+            title="Youtube"
+            target="_blank"
+          >
+            <img id="youtube-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-instagram"
+            class="profile-detail-socials-grid-item instagram"
+            title="Instagram"
+            target="_blank"
+          >
+            <img id="instagram-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-twitter"
+            class="profile-detail-socials-grid-item twitter"
+            title="Twitter"
+            target="_blank"
+          >
+            <img id="twitter-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-twitch"
+            class="profile-detail-socials-grid-item twitch"
+            title="Twitch"
+            target="_blank"
+          >
+            <img id="twitch-img" style="width: 120%" />
+          </a>
+          <a
+            id="player-socials-tiktok"
+            class="profile-detail-socials-grid-item tiktok"
+            title="Tiktok"
+            target="_blank"
+          >
+            <img id="tiktok-img" style="width: 120%" />
+          </a>
+        </div>
+
+        <a
+          id="player-riotname"
+          class="profile-detail-riotname riotlink"
+          title="op.gg Profil"
+        ></a>
+      </div>
+
+
+
+      <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif;">spielplan</h1>
+        
+      <table class="gameplan-container"></table>
+
+
+
+    </div>
+  </body>
+</html>

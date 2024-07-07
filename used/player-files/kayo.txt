@@ -1,0 +1,34 @@
+==name==
+KaYo
+==Ende==
+
+==riotname==
+AP KVYO#Erase
+==Ende==
+
+==riotlink==
+https://www.op.gg/summoners/euw/AP%20KVYO-Erase
+==Ende==
+
+==text==
+Hier könnte Ihre Werbung stehen. 
+==Ende==
+
+==roles==
+Supporter
+==Ende==
+
+==youtube==
+==Ende==
+
+==instagram==
+==Ende==
+
+==twitter==
+==Ende==
+
+==twitch==
+==Ende==
+
+==tiktok==
+==Ende==

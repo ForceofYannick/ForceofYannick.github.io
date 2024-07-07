@@ -1,0 +1,27 @@
+==name==
+WFefe
+==Ende==
+
+==riotname==
+WFefe #Yours
+==Ende==
+
+==text==
+Simon: ADC Diff
+==Ende==
+
+==roles==
+Toplaner / ADC
+==Ende==
+
+==riotlink==
+https://www.op.gg/summoners/euw/WFefe-Yours
+==Ende==
+
+==youtube==
+https://www.youtube.com/channel/UCJ7xYByk9pR7tBz1gWIRCrg
+==Ende==
+
+==twitch==
+https://www.twitch.tv/w_fefe
+==Ende==
