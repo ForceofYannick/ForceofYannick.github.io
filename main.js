@@ -111,7 +111,7 @@ function closeProfile(profileId) {
     $("#tiktok-img").removeAttr("src", "/images/Icons/tiktok.png", "alt", "");
 }
 
-var gameplanFilePath = "/used/gameplan.txt";
+var gameplanFilePath = "gameplan.txt";
 
 console.log("Triggering gameplan AJAX call");
 

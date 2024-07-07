@@ -105,7 +105,7 @@ function closeProfile(profileId) {
     document.getElementById('profile-detail').style.display = 'none';
 }
 
-var gameplanFilePath = "/used/gameplan.txt";
+var gameplanFilePath = "gameplan.txt";
 
 console.log("Triggering gameplan AJAX call");
 
@@ -114,8 +114,6 @@ $.ajax({
     dataType: "text",
     success: function (file) {
         console.log("Gameplan file loaded successfully");
-
-        $("#test-div").text("HALO");
 
         var sectionMarker = '=&=';
         var linearray = file.split('\n');
@@ -127,7 +125,33 @@ $.ajax({
                 var sectionarray = linearray[line].split(sectionMarker);
                 var rowHTML = '<tr class="gameplan-item">';
                 for (var section = 0; section < sectionarray.length; section++) {
-                    rowHTML += `<td class="gameplan-item-content">${sectionarray[section]}</td>`;
+
+                    //console.log("sectionarray " + sectionarray[section]);
+                    //#0ea20073 green
+                    //#a2000073 red
+                    //#a27c0073 yellow
+
+                    if (sectionarray[section].includes(":")) {
+                        var scorearray = sectionarray[section].split(':');
+                        //console.log("scorearray[0] "+scorearray[0]+" scorearray[1] "+scorearray[1]);
+                        
+                        if (Number(scorearray[0]) > Number(scorearray[1])) {
+                            console.log("win");
+                            rowHTML += `<td class="gameplan-item-content" style="box-shadow: inset 0px 0px 10px 2px #0ea20073;">${sectionarray[section]}</td>`;
+                        }
+                        else if (Number(scorearray[0]) < Number(scorearray[1])) {
+                            console.log("lose");
+                            rowHTML += `<td class="gameplan-item-content" style="box-shadow:inset 0px 0px 10px 2px #c0000080;">${sectionarray[section]}</td>`;
+                        }
+                        else if (Number(scorearray[0]) == Number(scorearray[1])) {
+                            console.log("draw");
+                            rowHTML += `<td class="gameplan-item-content" style="box-shadow:inset 0px 0px 10px 2px #a27c0073;">${sectionarray[section]}</td>`;
+                        }
+                    }
+                    else {
+                       // console.log("not a score");
+                        rowHTML += `<td class="gameplan-item-content">${sectionarray[section]}</td>`;
+                    }
                 }
                 rowHTML += "</tr>";
                 $("table").append(rowHTML);
@@ -136,7 +160,6 @@ $.ajax({
     },
     error: function (file) {
         console.error("Error loading gameplan file");
-        $("#test-div").text("INSHALLA WO PLAN");
-        // $("body").append("<div><p>Wo Datei Bruder?</p></div>");
+        $("table").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
     }
 });
