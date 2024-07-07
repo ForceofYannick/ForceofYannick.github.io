@@ -31,6 +31,10 @@ body {
   */
 }
 
+.img-attr{
+  border-radius:10px;
+}
+
 .image-container:hover{
   background-color: #cd295d;
   transform: scale(1.01);
