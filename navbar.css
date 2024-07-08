@@ -1,10 +1,20 @@
 
   /*======Navbar stuff======*/
+  .menuSeparator {
+    color: #cd295d;
+    font-weight: 1002;
+    font-size: 25px;
+  }
+  
   .navbar {
     position: sticky;
     top: 0;
     width: auto; 
-    background-color: #333;
+    background: linear-gradient(
+      to bottom,
+      #00000080,
+      #ffffff00
+    );
     transition: padding 0.3s;
     z-index: 10;
     font-family: "Roboto Condensed", sans-serif;
@@ -14,9 +24,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 5000px;
+    max-width: 400px;
     margin-left: 190px;
-    margin-right: 190px;
     padding: 0 10px;
   }
   
@@ -26,7 +35,7 @@
   }
   
   .dropbtn {
-    background-color: #333;
+    background-color: #ffffff00;
     color: white;
     padding: 20px;
     font-size: 20px;
