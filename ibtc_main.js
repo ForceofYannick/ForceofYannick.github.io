@@ -50,8 +50,12 @@ function openProfile(id) {
 
             //if social section exists in player file, put back the src attribute with matching path and change the redirect link 
             if (sections.hasOwnProperty("youtube")) {
+                $("#player-socials").css("gap", "16px");
                 $("#player-socials-youtube").attr("href", sections.youtube);
                 $("#youtube-img").attr("src", "/images/Icons/youtube.png", "alt", "");
+            }
+            else{
+                $("#player-socials").css("gap", "0px");
             }
             if (sections.hasOwnProperty("instagram")) {
                 $("#player-socials-instagram").attr("href", sections.instagram);
