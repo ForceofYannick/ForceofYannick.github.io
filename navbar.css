@@ -37,11 +37,12 @@
   .dropbtn {
     background-color: #ffffff00;
     color: white;
-    padding: 20px;
     font-size: 20px;
     border: none;
     cursor: pointer;
     font-family: "Roboto Condensed", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .dropdown-content {
@@ -51,6 +52,8 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 10px;
+    margin-top: 10px;
   }
   
   .dropdown-content a {
@@ -70,6 +73,8 @@
   
   .dropdown:hover .dropbtn {
     background-color: #555;
+    height: 40px;
+    border-radius: 10px;
   }
   
   .content {
