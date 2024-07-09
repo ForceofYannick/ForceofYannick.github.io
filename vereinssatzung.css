@@ -1,8 +1,6 @@
-/*Website background + removed scrollbar*/
-body::-webkit-scrollbar {
-    background-color: #272526;
-  }
-  body{
-    background-color: #272526;
-    color:white;
-  }
+body{
+  background-color: #272526;
+}
+.content{
+  color: white;
+}
