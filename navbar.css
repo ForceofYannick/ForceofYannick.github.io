@@ -102,13 +102,15 @@
   background-color: #8a1b3e; /* Hintergrundfarbe bei Hover */
 }
 
+/* Aktives Element in Navbar */
 .activ{
-  background-color: #8a1b3e;
-  box-shadow: 0px 0px 10px 2px #8a1b3e;
-  border-radius: 16px;
+  background-color: #8a1b3e; /* Hintergrundfarbe */
+  box-shadow: 0px 0px 10px 2px #8a1b3e; /* Glow effekt drumherum */
+  border-radius: 16px; /* Runte Ecken */
 }
 
 /* Stil für den Hauptinhalt der Seite */
 .content {
   text-align: center; /* Zentriert den Textinhalt */
+  color: white; /* Textfarbe weiß */
 }

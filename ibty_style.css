@@ -7,10 +7,6 @@ body {
   background-color: #272526;
 }
 
-.content{
-  color: white;
-}
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, auto);
