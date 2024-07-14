@@ -2,6 +2,7 @@
 .menuSeparator {
   color: #cd295d;
   font-size: 25px;
+  padding-bottom: 5px;
 }
 
 /* Stil für die gesamte Navbar */
@@ -32,7 +33,7 @@
   flex-grow: 1; /* Ermöglicht dem mittleren Abschnitt, den verfügbaren Platz zu nutzen */
   display: flex; /* Verwenden von Flexbox für Layout */
   justify-content: center; /* Zentriert das Logo horizontal */
-  margin-left: 15%; /* Verschiebt das Logo nach rechts */
+  margin-left: 17%; /* Verschiebt das Logo nach rechts */
 }
 
 /* Stil für die Navigationslinks und den Dropdown-Button */
@@ -60,6 +61,8 @@
 .dropbtn:hover {
   background-color: #8a1b3e; /* Hintergrundfarbe bei Hover */
   border-radius: 16px; /* Runde Kanten bei Hover */
+  padding: 10px; /* Hover kleiner machen */
+  margin:10px; /* Abstand zum Trenner */
 }
 
 /* Stil für das Dropdown-Menü */
@@ -72,24 +75,27 @@
 .dropdown-content {
   display: none; /* Anfangszustand: nicht sichtbar */
   position: absolute; /* Absolut positioniert relativ zum Dropdown-Container */
-  background-color: #f9f9f9; /* Hintergrundfarbe des Dropdown-Inhalts */
+  background-color: #1f1d1e; /* Hintergrundfarbe des Dropdown-Inhalts */
   min-width: 160px; /* Mindestbreite des Dropdown-Inhalts */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Schatteneffekt für Dropdown-Inhalt */
   z-index: 1; /* Z-Index für Stapelreihenfolge */
+  border-radius: 16px; /* Runde Kanten bei Hover */
 }
 
 /* Stil für die Links im Dropdown-Menü */
 .dropdown-content a {
-  color: black; /* Textfarbe schwarz */
-  padding: 12px 16px; /* Innenabstand für bessere Klickfläche */
+  color: white; /* Textfarbe schwarz */
+  padding: 15px 20px; /* Innenabstand für bessere Klickfläche */
   text-decoration: none; /* Keine Unterstreichung des Textes */
-  display: block; /* Block-Level-Element */
+  display: inline-block; /* Block-Level-Element */
   text-align: left; /* Linksbündiger Text */
 }
 
 /* Stil bei Hover über Links im Dropdown-Menü */
 .dropdown-content a:hover {
-  background-color: #f1f1f1; /* Hintergrundfarbe bei Hover */
+  background-color: #8a1b3e69; /* Hintergrundfarbe bei Hover */
+  border-radius: 16px; /* Runde Kanten bei Hover */
+  
 }
 
 /* Stil für die Anzeige des Dropdown-Inhalts bei Hover über den Dropdown-Container */
@@ -100,6 +106,9 @@
 /* Stil bei Hover über den Dropdown-Button */
 .dropdown:hover .dropbtn {
   background-color: #8a1b3e; /* Hintergrundfarbe bei Hover */
+  border-radius: 16px; /* Runde Kanten bei Hover */
+  padding: 10px; /* Hover kleiner machen */
+  margin:10px; /* Abstand zum Trenner */
 }
 
 /* Aktives Element in Navbar */
@@ -107,6 +116,8 @@
   background-color: #8a1b3e; /* Hintergrundfarbe */
   box-shadow: 0px 0px 10px 2px #8a1b3e; /* Glow effekt drumherum */
   border-radius: 16px; /* Runte Ecken */
+  padding: 10px; /* Hover kleiner machen */
+  margin:10px; /* Abstand zum Trenner */
 }
 
 /* Stil für den Hauptinhalt der Seite */
