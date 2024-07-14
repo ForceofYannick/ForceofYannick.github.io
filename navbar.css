@@ -58,7 +58,7 @@
 /* Stil bei Hover über Navigationslinks und Dropdown-Button */
 .nav-item:hover,
 .dropbtn:hover {
-  background-color: #575757; /* Hintergrundfarbe bei Hover */
+  background-color: #8a1b3e; /* Hintergrundfarbe bei Hover */
   border-radius: 16px; /* Runde Kanten bei Hover */
 }
 
@@ -99,7 +99,13 @@
 
 /* Stil bei Hover über den Dropdown-Button */
 .dropdown:hover .dropbtn {
-  background-color: #575757; /* Hintergrundfarbe bei Hover */
+  background-color: #8a1b3e; /* Hintergrundfarbe bei Hover */
+}
+
+.activ{
+  background-color: #8a1b3e;
+  box-shadow: 0px 0px 10px 2px #8a1b3e;
+  border-radius: 16px;
 }
 
 /* Stil für den Hauptinhalt der Seite */
