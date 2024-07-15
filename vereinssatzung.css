@@ -4,3 +4,7 @@ body{
 .content{
   color: white;
 }
+
+.sidebar div{
+  padding: 10px;
+}

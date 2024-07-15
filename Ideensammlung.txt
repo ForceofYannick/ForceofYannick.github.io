@@ -2,24 +2,25 @@
 Spielplan/Verlauf
 
 txt aufbau:
-woche =&= gegnername =&= gegner logo =&= stand von ibtc aus, also 0:2 hat ibtc verloren
+Datum =&= Gegnername =&= Gegnerlogo =&= Ergebnis POV ibtc
 
 
 
-Anmeldeformular
+
 Link zu Jersy
-Generelle Infos zu IBTC und IBTY
 (skeleton loading)
+Generelle Infos zu IBTC und IBTY
 infos
 
 
 
-
+done - Anmeldeformular -> Kontakt ?
 done - detailed player box über die gridboxen packen (optional)
 done - IBT socials
-done - logo links in menu bar als home button
-halb done - Team vorstellung (spielplan unter teams)
-done - auf klick kommt man auf op.gg seite vom spieler (mit bei der spieler vorstellung) [blad per API]
+done - IBTY socials
+done - Navbar update
+done - Team vorstellung
+done - auf klick kommt man auf op.gg seite vom spieler (mit bei der spieler vorstellung) [bald per API ?]
 done - player Socials (bei spieler vorstellung)
 
 

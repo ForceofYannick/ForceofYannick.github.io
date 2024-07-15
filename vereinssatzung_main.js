@@ -4,42 +4,39 @@ var filePath = 'vereinssatzung.txt';
 $.ajax({
     url: filePath,
     dataType: "text",
+    
+    //when file found
+    success: function (file) {
+        console.log("File loaded successfully");
 
-    //when file is found
-    success: function (data) {
-        console.log("club statutes file loaded successfully");
+        var sectionMarker = '=&=';
 
-        var sections = parseFileContent(data);
-       
-        $("#vereinssatzungsFeld").text(data);
-       
+        //split the file whenever ther is a '\n'
+        var linearray = file.split('\n');
+
+        //for every line in the linearray
+        for (var line = 0; line < linearray.length; line++) {
+            
+            //if line includes the section marker
+            if(linearray[line].includes(sectionMarker)){
+                
+                //append a paragraph with linebreak
+                $("#vereinssatzungsFeld").append(`<p><br></p>`);
+            }
+            else if(linearray[line].includes('§')){
+                console.log(line);
+            $("#vereinssatzungsFeld").append(`<h1 id="§${line}"><em> ${linearray[line]}</em></h1>`);
+            }
+            else{
+                //else append the linearray content from the current line
+            $("#vereinssatzungsFeld").append(`<p> ${linearray[line]}</p>`);
+            }
+            
+        }
     },
-
-    //when file is not found
-    error: function (data) {
-        console.error("Error loading club statutes file");
-       
+    //If file not found
+    error: function (file) {
+        console.error("Error loading file");
+        $("#vereinssatzungsFeld").text("Vereinssatzung not found")
     }
 });
-
- //textfile parser
- function parseFileContent(data) {
-    var lines = data.split("\n");
-    var sections = {};
-    var currentLabel = null;
-    var currentContent = [];
-    return sections;
-}
-$(document).ready(function(){
-    $(window).scroll(function(){
-        var scroll = $(window).scrollTop();
-        if (scroll > 300) {
-          $(".navbar").css({background: "-webkit-gradient(linear, left top, left bottom, from(#00000080), to(#ffffff00))"});
-          $(".navbar").css({"backdrop-filter":"blur(35px)"});
-        }
-  
-        else{
-            $(".navbar").css({background: "-webkit-gradient(linear, left top, left bottom, from(#00000080), to(#ffffff00))"});  	
-        }
-    })
-  });

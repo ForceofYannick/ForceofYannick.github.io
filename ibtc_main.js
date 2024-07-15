@@ -233,6 +233,15 @@ $.ajax({
         $("table").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
     }
 });
+
+
+function toggleApperance(){
+    $('body').css('background-color','white');
+    $('body').css('color','black');
+}
+
+
+
 $(document).ready(function(){
     $(window).scroll(function(){
         var scroll = $(window).scrollTop();
