@@ -1,19 +1,19 @@
+Speilplantxt aufbau:
+Datum =&= Gegnername =&= Gegnerlogo =&= Ergebnis POV ibtc/ibty
 
-Spielplan/Verlauf
-
-txt aufbau:
-Datum =&= Gegnername =&= Gegnerlogo =&= Ergebnis POV ibtc
-
+Vereinssatzung txt aufbau:
+§ kenzeichnet neuen abschnitt. (optional)
+=&= kennzeichnet abschnittsende
 
 
+ibty spielplan einbinden
 
 Link zu Jersy
 (skeleton loading)
-Generelle Infos zu IBTC und IBTY
-infos
+Generelle Infos zu IBTC und IBTY im infos tab
 
 
-
+done - Spielplan/Verlauf
 done - Anmeldeformular -> Kontakt ?
 done - detailed player box über die gridboxen packen (optional)
 done - IBT socials
