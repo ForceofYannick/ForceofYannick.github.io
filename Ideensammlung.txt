@@ -1,3 +1,5 @@
+====TXTs==================================================================================================================
+
 Speilplantxt aufbau:
 Datum =&= Gegnername =&= Gegnerlogo =&= Ergebnis POV ibtc/ibty
 
@@ -5,14 +7,21 @@ Vereinssatzung txt aufbau:
 § kenzeichnet neuen abschnitt. (optional)
 =&= kennzeichnet abschnittsende
 
+====TODO==================================================================================================================
+
 
 ibty spielplan einbinden
 
-Link zu Jersy
+erscheinungsbild speichern beim seitenwechsel
+
+Link zu Jersy (wo und welcher link???)
+
 (skeleton loading)
-Generelle Infos zu IBTC und IBTY im infos tab
+
+Generelle Infos zu IBTC und IBTY im infos tab (Tamino darf Text machen)
 
 
+halb done - dark/light mode toggle
 done - Spielplan/Verlauf
 done - Anmeldeformular -> Kontakt ?
 done - detailed player box über die gridboxen packen (optional)
@@ -23,7 +32,7 @@ done - Team vorstellung
 done - auf klick kommt man auf op.gg seite vom spieler (mit bei der spieler vorstellung) [bald per API ?]
 done - player Socials (bei spieler vorstellung)
 
-
+====LINKS==================================================================================================================
 
 https://www.youtube.com/@IBTChallenger
 https://www.instagram.com/ibt_challenger
