@@ -241,6 +241,8 @@ function lightApperance(){
     $('.dropbtn').css('color','black');                             //Navbar dropdown button textcolour 
     $('.dropdown-content a').css('color','black');                  //Navbar dropdown content textcolour 
     $('.dropdown-content').css('background-color','grey');          //Navbar dropdown content backgroundcolour 
+    $('.logo').remove();                                            //Remove Navbar logo
+    $('.navbar-center').append('<img src="/images/Logos/IBTLogo_dark_borders.png" style="height:60px" alt="Logo" class="logo">');          //Add new Navbar logo
 
     $('.image-container').css('background-color','grey');           //Imagecontainer backgroundcolour
     $('.image-container:hover').css('background-color','#cd295d');  //Imagecontainer backgroundcolour on hover
@@ -256,7 +258,7 @@ function lightApperance(){
     $('.content').css('color','black');                             //Textcolour on Site
 
     $('#toggle-image').remove();                                    //remove old image element
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="darkApperance()" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
+    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
 
 }
 
@@ -266,6 +268,8 @@ function darkApperance(){
     $('.dropbtn').css('color','white');                                //Navbar dropdown button textcolour 
     $('.dropdown-content a').css('color','white');                     //Navbar dropdown content textcolour 
     $('.dropdown-content').css('background-color','#1f1d1e');          //Navbar dropdown content backgroundcolour 
+    $('.logo').remove();                                            //Remove Navbar logo
+    $('.navbar-center').append('<img src="/images/Logos/IBTLogo.png" alt="Logo" class="logo">');          //Add new Navbar logo
 
     $('.image-container').css('background-color','#1f1d1e');           //Imagecontainer backgroundcolour
     $('.image-container:hover').css('background-color','#cd295d');     //Imagecontainer backgroundcolour on hover
@@ -281,7 +285,7 @@ function darkApperance(){
     $('.content').css('color','white');                                //Textcolour on Site
 
     $('#toggle-image').remove();                                       //remove old image element
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="lightApperance()" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
+    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
 }
 
 

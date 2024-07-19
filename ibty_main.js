@@ -253,7 +253,7 @@ function lightApperance(){
     $('.content').css('color','black');                             //Textcolour on Site
 
     $('#toggle-image').remove();                                    //remove old image element
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="darkApperance()" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
+    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
 
 }
 
@@ -278,7 +278,7 @@ function darkApperance(){
     $('.content').css('color','white');                                //Textcolour on Site
 
     $('#toggle-image').remove();                                       //remove old image element
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="lightApperance()" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
+    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
 }
 
 
