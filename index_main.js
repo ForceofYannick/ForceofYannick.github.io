@@ -235,58 +235,7 @@ $.ajax({
 });
 
 
-function lightApperance(){
-    $('body').css('background-color','white');
-    $('.nav-item').css('color','black');                            //Navbar textcolour 
-    $('.dropbtn').css('color','black');                             //Navbar dropdown button textcolour 
-    $('.dropdown-content a').css('color','black');                  //Navbar dropdown content textcolour 
-    $('.dropdown-content').css('background-color','grey');          //Navbar dropdown content backgroundcolour 
-    $('.logo').remove();                                            //Remove Navbar logo
-    $('.navbar-center').append('<img src="/images/Logos/IBTLogo_dark_borders.png" style="height:60px" alt="Logo" class="logo">');          //Add new Navbar logo
 
-    $('.image-container').css('background-color','grey');           //Imagecontainer backgroundcolour
-    $('.image-container:hover').css('background-color','#cd295d');  //Imagecontainer backgroundcolour on hover
-    $('.profile-detail-playername').css('background-color','grey'); //Detailed playerprofile name backgroundcolour
-    $('.profile-detail-roles').css('background-color','grey');      //Detailed playerprofile  roles backgroundcolour
-    $('.profile-detail').css('color','black');                      //Detailed playerprofile textcolour
-    $('.profile-detail-riotname').css('color','black');             //Detailed playerprofile  riotname textcolour
-
-    $('.gameplan-container').css('background-color','grey');        //Gameplan backgroundcolour
-    $('.gameplan-item').css('background-color','darkgrey');         //Gameplan cellcolour
-    $('.gameplan-container').css('color','black');                  //Gameplan textcolour
-
-    $('.content').css('color','black');                             //Textcolour on Site
-
-    $('#toggle-image').remove();                                    //remove old image element
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
-
-}
-
-function darkApperance(){
-    $('body').css('background-color','#272526');
-    $('.nav-item').css('color','white');                               //Navbar textcolour 
-    $('.dropbtn').css('color','white');                                //Navbar dropdown button textcolour 
-    $('.dropdown-content a').css('color','white');                     //Navbar dropdown content textcolour 
-    $('.dropdown-content').css('background-color','#1f1d1e');          //Navbar dropdown content backgroundcolour 
-    $('.logo').remove();                                            //Remove Navbar logo
-    $('.navbar-center').append('<img src="/images/Logos/IBTLogo.png" alt="Logo" class="logo">');          //Add new Navbar logo
-
-    $('.image-container').css('background-color','#1f1d1e');           //Imagecontainer backgroundcolour
-    $('.image-container:hover').css('background-color','#cd295d');     //Imagecontainer backgroundcolour on hover
-    $('.profile-detail-playername').css('background-color','#1f1d1e'); //Detailed playerprofile name backgroundcolour
-    $('.profile-detail-roles').css('background-color','#1f1d1e');      //Detailed playerprofile  roles backgroundcolour
-    $('.profile-detail-riotname').css('color','white');                //Detailed playerprofile  riotname textcolour
-    $('.profile-detail').css('color','white');                         //Detailed playerprofile textcolour
-
-    $('.gameplan-container').css('background-color','#1f1d1e');        //Gameplan backgroundcolour
-    $('.gameplan-item').css('background-color','#161515');             //Gameplan cellcolour
-    $('.gameplan-container').css('color','white');                     //Gameplan textcolour
-
-    $('.content').css('color','white');                                //Textcolour on Site
-
-    $('#toggle-image').remove();                                       //remove old image element
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">'); //replace with new image element
-}
 
 
 
