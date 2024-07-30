@@ -108,7 +108,7 @@
   color: white; /* Textfarbe schwarz */
   padding: 15px 20px; /* Innenabstand für bessere Klickfläche */
   text-decoration: none; /* Keine Unterstreichung des Textes */
-  display: inline-block; /* Block-Level-Element */
+  display: block; /* Block-Level-Element */
   text-align: left; /* Linksbündiger Text */
 }
 

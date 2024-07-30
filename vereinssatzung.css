@@ -1,10 +1,7 @@
-body{
+body {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
   background-color: #272526;
-}
-.content{
   color: white;
-}
-
-.sidebar div{
-  padding: 10px;
 }
