@@ -9,11 +9,7 @@ Vereinssatzung txt aufbau:
 
 ====TODO==================================================================================================================
 
-info seite speichert dark/white mode nicht
-
 ibty spielplan einbinden
-
-erscheinungsbild speichern beim seitenwechsel
 
 Link zu Jersy (wo und welcher link???)
 
@@ -23,8 +19,9 @@ Generelle Infos zu IBTC und IBTY im infos tab (Tamino darf Text machen)
 
 
 ====DONE==================================================================================================================
-
-halb done - dark/light mode toggle
+done - erscheinungsbild speichern beim seitenwechsel
+done - info seite speichert dark/white mode nicht
+done - dark/light mode toggle
 done - Spielplan/Verlauf
 done - Anmeldeformular -> Kontakt ?
 done - detailed player box über die gridboxen packen (optional)
