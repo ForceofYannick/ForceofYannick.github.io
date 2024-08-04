@@ -4,6 +4,7 @@ function lightApperance(){
     $('.dropbtn').css('color','black');
     $('.dropdown-content a').css('color','black');
     $('.dropdown-content').css('background-color','grey');
+    $('.activ').css('color', 'white')
     $('.logo').remove();
     $('.navbar-center').append('<img src="/images/Logos/IBTLogo_dark_borders.png" style="height:60px" alt="Logo" class="logo">');
 
@@ -32,6 +33,7 @@ function darkApperance(){
     $('.dropbtn').css('color','white');
     $('.dropdown-content a').css('color','white');
     $('.dropdown-content').css('background-color','#1f1d1e');
+    $('.activ').css('color', 'white')
     $('.logo').remove();
     $('.navbar-center').append('<img src="/images/Logos/IBTLogo.png" alt="Logo" class="logo">');
 

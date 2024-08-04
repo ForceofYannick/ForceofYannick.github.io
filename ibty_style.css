@@ -19,7 +19,7 @@ body {
 .image-container {
   width: 100%;
   cursor: pointer;
-  background-color: #1f1d1e;
+  background-color: #1f1d1e !important;
   border-radius: 10px;
   position:relative;
   transition: transform .3s;
@@ -33,7 +33,7 @@ body {
 }
 
 .image-container:hover{
-  background-color: #cd295d;
+  background-color: #cd295d !important;
   transform: scale(1.01);
 }
 
