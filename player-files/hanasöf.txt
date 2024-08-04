@@ -12,7 +12,7 @@ https://www.op.gg/summoners/euw/Hanas%C3%B6f-EUW
 
 ==text==
 Hier könnte Ihre Werbung stehen.
-(Der Spieler hat Infos angegeben.)
+(Der Spieler hat keine Infos angegeben.)
 ==Ende==
 
 ==roles==

@@ -8,7 +8,7 @@ WFefe #Yours
 
 ==text==
 Hier könnte Ihre Werbung stehen.
-(Der Spieler hat Infos angegeben.)
+(Der Spieler hat keine Infos angegeben.)
 ==Ende==
 
 ==roles==

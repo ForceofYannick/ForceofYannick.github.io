@@ -12,7 +12,7 @@ https://www.op.gg/summoners/euw/kev1n-0069
 
 ==text==
 Hier könnte Ihre Werbung stehen.
-(Der Spieler hat Infos angegeben.)
+(Der Spieler hat keine Infos angegeben.)
 ==Ende==
 
 ==roles==
