@@ -33,7 +33,7 @@
   flex-grow: 1; /* Ermöglicht dem mittleren Abschnitt, den verfügbaren Platz zu nutzen */
   display: flex; /* Verwenden von Flexbox für Layout */
   justify-content: center; /* Zentriert das Logo horizontal */
-  margin-left: 17%; /* Verschiebt das Logo nach rechts */
+  margin-left: 18.5%; /* Verschiebt das Logo nach rechts */
 }
 
 /* Stil für die Navigationslinks und den Dropdown-Button */
@@ -67,10 +67,12 @@
 
 /* Dark/Lightmode toggle icon */
 .togglemode{
+  margin-left: 50%;
   width: 20px;
   background-color: white;
   border-radius: 20px;
   transition: 0.1s;
+  margin-top: 13%;
 }
 /* Dark/Lightmode toggle icon bei Hover */
 .togglemode:hover{
