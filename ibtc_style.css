@@ -21,6 +21,7 @@ body {
   cursor: pointer;
   background-color: #1f1d1e;
   border-radius: 10px;
+  position: relative;
   transition: transform .3s;
   /*
   border: 3px solid red;
@@ -40,6 +41,19 @@ body {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.playername {
+  position: absolute; /* Position absolute for overlay text */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size:30px;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
 }
 
 .profile-detail {
