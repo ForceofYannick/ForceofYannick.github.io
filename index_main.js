@@ -183,8 +183,13 @@ $.ajax({
                 //split the line into sections whenever ther is a sectionMarker
                 var sectionarray = linearray[line].split(sectionMarker);
 
+
+                //depending on the current apperance mode create rowHTML with white color or without the style tag...
+                //...
                 //the beginning html element for a new row in the table
-                var rowHTML = '<tr class="gameplan-item">';
+                var rowHTML = '<tr class="gameplan-item" style="color: green">';
+
+
 
                 //for every section in the sectionarray of the current line
                 for (var section = 0; section < sectionarray.length; section++) {
@@ -198,14 +203,17 @@ $.ajax({
                         //compare the first and second element of the scorearray and depending on their relation adjust the glow colour of the score box
                         if (Number(scorearray[0]) > Number(scorearray[1])) {
                             console.log("win");
+                            //...
                             rowHTML += `<td class="gameplan-item-content" style="box-shadow: inset 0px 0px 10px 2px #0ea20073;">${sectionarray[section]}</td>`;
                         }
                         else if (Number(scorearray[0]) < Number(scorearray[1])) {
                             console.log("lose");
+                            //...
                             rowHTML += `<td class="gameplan-item-content" style="box-shadow:inset 0px 0px 10px 2px #c0000080;">${sectionarray[section]}</td>`;
                         }
                         else if (Number(scorearray[0]) == Number(scorearray[1])) {
                             console.log("draw");
+                            //...
                             rowHTML += `<td class="gameplan-item-content" style="box-shadow:inset 0px 0px 10px 2px #a27c0073;">${sectionarray[section]}</td>`;
                         }
                     }
@@ -213,6 +221,7 @@ $.ajax({
                     else {
                        
                         //append the section as new td element in the current table row
+                        //...
                         rowHTML += `<td class="gameplan-item-content">${sectionarray[section]}</td>`;
                     }
                 }

@@ -9,6 +9,8 @@ Vereinssatzung txt aufbau:
 
 ====TODO==================================================================================================================
 
+spielplan schriftfarbe ist schwarz wenn man im lightmode von info/kontakt/vereinssatzungsseite wechselt (liegt vmtl am js)
+
 ibty spielplan einbinden
 
 Link zu Jersy (wo und welcher link???)
