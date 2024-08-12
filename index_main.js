@@ -186,8 +186,14 @@ $.ajax({
 
                 //depending on the current apperance mode create rowHTML with white color or without the style tag...
                 //...
+                if(document.getElementById('toggle-image-light') != null){
+                    var rowHTML = '<tr class="gameplan-item" style="color: green">';    
+                }
+                else{
+                    var rowHTML = '<tr class="gameplan-item" style="color: red">';
+                }
                 //the beginning html element for a new row in the table
-                var rowHTML = '<tr class="gameplan-item" style="color: green">';
+                
 
 
 
