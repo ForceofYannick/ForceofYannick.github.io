@@ -14,6 +14,7 @@ body {
   margin-top: 5px;
   margin-left: 10%;
   margin-right:10%;
+  margin-bottom: 20px;
 }
 
 .image-container {
@@ -153,8 +154,9 @@ justify-content: center;
   color: white;
   border-radius: 26px;
   padding: 20px;
-  margin: auto;
+  margin:auto;
   background-color: #1f1d1e;
+  margin-bottom: 20px;
   
 }
 .gameplan-header{
@@ -168,5 +170,6 @@ background-color: #161515;
 
 }
 .gameplan-item-content{
-padding:20px
+width: 350px;
+height: 50px;
 }

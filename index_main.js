@@ -151,7 +151,7 @@ function closeProfile(profileId) {
 }
 
 //filepath to the gameplan file
-var gameplanFilePath = "gameplan.txt";
+var gameplanFilePath = "ibtc_results.txt";
 
 console.log("Triggering gameplan AJAX call");
 
@@ -164,6 +164,7 @@ $.ajax({
         console.log("Gameplan file loaded successfully");
 
         var sectionMarker = '=&=';
+
 
         //split the gameplan file whenever ther is "\n" (at the end of erver line)
         var linearray = file.split('\n');
@@ -187,7 +188,7 @@ $.ajax({
                 //depending on the current apperance mode create rowHTML with white color or without the style tag...
                 //...
                 //the beginning html element for a new row in the table
-                var rowHTML = '<tr class="gameplan-item" style="color: green">';
+                var rowHTML = '<tr class="gameplan-item" style="color: white">';
 
 
 
