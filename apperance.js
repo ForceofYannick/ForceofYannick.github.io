@@ -21,8 +21,8 @@ function lightApperance(){
 
     $('.content').css('color','black');
 
-    $('#toggle-image').remove();
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">');
+    $('#toggle-image-dark').remove();
+    $('#toggle-element').append('<img id="toggle-image-light" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">');
 
     localStorage.setItem('theme', 'light');
 }
@@ -50,8 +50,8 @@ function darkApperance(){
 
     $('.content').css('color','white');
 
-    $('#toggle-image').remove();
-    $('#toggle-element').append('<img id="toggle-image" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">');
+    $('#toggle-image-light').remove();
+    $('#toggle-element').append('<img id="toggle-image-dark" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">');
 
     localStorage.setItem('theme', 'dark');
 }
