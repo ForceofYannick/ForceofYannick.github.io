@@ -194,7 +194,7 @@ $.ajax({
                     var rowHTML = '<tr class="gameplan-item" style="color: red">';
                 }
                 //the beginning html element for a new row in the table
-                var rowHTML = '<tr class="gameplan-item" style="color: white">';
+                // var rowHTML = '<tr class="gameplan-item" style="color: white">';
 
 
 

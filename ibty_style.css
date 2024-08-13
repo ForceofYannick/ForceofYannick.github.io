@@ -150,6 +150,12 @@ justify-content: center;
   filter: brightness(0) invert(0);
 }
 
+
+.collapsible{
+  width: 80%;
+}
+
+
 .gameplan-container{
   color: white;
   border-radius: 26px;
@@ -159,10 +165,15 @@ justify-content: center;
   
 }
 .gameplan-header{
-font-family: "Bebas Neue", sans-serif;
-font-size: 200%;
+  width: 80%;
+  margin: auto;
+font-family: "Roboto Condensed", sans-serif;
+font-size: 150%;
+border: 1px solid white;
 }
 .gameplan-item{
+  width: 80%;
+  margin: auto;
 font-family: "Roboto Condensed", sans-serif;
 font-size: 150%;
 background-color: #161515;

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="ibty_style.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="apperance.js"></script>
+  <!--  <script src="apperance.js"></script> -->
     <script src="ibty_main.js"></script>
     
   </head>
@@ -63,6 +63,7 @@
       <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif">
         ibtc yeti
       </h1>
+
       <div class="gallery">
         <div class="image-container" onclick="openProfile('hanasöf')">
           <img class="img-attr" src="/images/Jersey/Jersey.png" alt="Profil 1" />
@@ -100,7 +101,7 @@
             <img class="img-attr" src="/images/Jersey/Jersey.png" alt="Profil 9" />
             <div class="playername">kirito</div>
           </div>
-       
+      <!--Gallery div-->
       </div>
 
       <div id="profile-detail" class="profile-detail">
@@ -158,18 +159,88 @@
           class="profile-detail-riotname riotlink"
           title="op.gg Profil"
         ></a>
+      <!--Player-detail div-->
       </div>
 
 
-      <!-- 
       
-      <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif;">spielplan</h1>
-      <table class="gameplan-container"></table>
+      
+      <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif;">Ergebnisse</h1>
+        
+      <div class="gameplan-container">
 
-      -->
+        <div>
+
+         <div class="collapsible gameplan-header" onclick="toggleCollapse('collapseA')">
+          Summer Split '24  <i class="fa fa-caret-down"></i>
+         </div>
+
+         <table id="collapseA" class="gameplan-item" style="display: block;">
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+         </table>
+
+        </div>
 
 
 
+        <div class="collapsible gameplan-header" onclick="toggleCollapse('collapseB')">
+          Summer Split '23  <i class="fa fa-caret-down"></i>
+         </div>
+
+         <table id="collapseB" class="gameplan-item" style="display: block;">
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+         </table>
+
+        </div>
+        
+        
+        </div>
+
+       
+
+      <!--Ergebnisse div-->
+      </div>
+
+
+    <!--Content div-->
     </div>
   </body>
 </html>

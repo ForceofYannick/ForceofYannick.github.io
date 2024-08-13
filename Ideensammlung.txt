@@ -9,15 +9,20 @@ Vereinssatzung txt aufbau:
 
 ====TODO==================================================================================================================
 
-spielplan schriftfarbe ist schwarz wenn man im lightmode von info/kontakt/vereinssatzungsseite wechselt (liegt vmtl am js)
 
-ibty spielplan einbinden
+spielpläne durch splitergebnisse ersetzen
+JS skript anpassen, dass es die farben im light/darkmode anpasst
+für jedes Team eine separate Ergebnisdatei machen
+
+
+
+
 
 Link zu Jersy (wo und welcher link???)
 
 (skeleton loading)
 
-Generelle Infos zu IBTC und IBTY im infos tab (Tamino darf Text machen)
+Generelle Infos zu Teams im INFO Tab (Tamino darf Text machen)
 
 
 ====DONE==================================================================================================================

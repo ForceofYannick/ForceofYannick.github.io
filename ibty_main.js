@@ -145,7 +145,7 @@ function closeProfile(profileId) {
     $("#twitch-img").removeAttr("src", "/images/Icons/twitch.png", "alt", "");
     $("#tiktok-img").removeAttr("src", "/images/Icons/tiktok.png", "alt", "");
 }
-
+/*
 //filepath to the gameplan file
 var gameplanFilePath = "gameplan.txt";
 
@@ -229,9 +229,18 @@ $.ajax({
         $("table").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
     }
 });
+*/
 
-
-
+function toggleCollapse(collapseElement){
+    if($(`#${collapseElement}`).css("display") === "none"){
+        console.log("Element gefunden");
+        $(`#${collapseElement}`).css("display", "block");
+    }
+    else{
+        console.log("Element gefunden");
+        $(`#${collapseElement}`).css("display", "none");
+    }
+}
 
 
 $(document).ready(function(){

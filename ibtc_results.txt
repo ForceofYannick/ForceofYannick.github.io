@@ -1,6 +1,6 @@
 Prime League Summer Split'24
 STAGE =&= GRUPPE =&= ERGEBNIS
-Kalibrierungsphase =&= - =&= -
+Kalibrierungsphase =&=  =&= 
 Gruppenphase =&= Gruppe 7.31 =&= Rang 6 (0/10)
 Playoffs =&= - =&= - 
 ______________________________________________________________________________________________________________
