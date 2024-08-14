@@ -1,20 +1,29 @@
-function toggleCollapse(collapseElement){
-    if($(`#${collapseElement}`).css("display") === "none"){
-        console.log("Element gefunden");
-        $(`#${collapseElement}`).css("display", "block");
+    //Funktion zum togglen der Sichtbarkeit von Splitergebnissen
+    function toggleCollapse(collapseElement){
+        if($(`#${collapseElement}`).css("display") === "none"){
+            console.log("Element gefunden. none -> block");
+            $(`#${collapseElement}`).css("display", "block");
+        }
+        else{
+            console.log("Element gefunden. block -> none");
+            $(`#${collapseElement}`).css("display", "none");
+        }
     }
-    else{
-        console.log("Element gefunden");
-        $(`#${collapseElement}`).css("display", "none");
-    }
-}
+
+$(document).ready(function() {
+
+    //Filepath für die Gamepläne
+    var gameplanElement = $('.gameplan-container');
+    var gameplanId = gameplanElement.attr('id');
+
+    var gameplanFilePath = `${gameplanId}_results.txt`;
+    console.log("gameplan filepath: " + gameplanFilePath);
 
 
-//filepath to the gameplan file
-var gameplanFilePath = "ibtc_results.txt";
+    console.log("Triggering gameplan AJAX call");
 
-console.log("Triggering gameplan AJAX call");
 
+    //Datei auslesen
 $.ajax({
     url: gameplanFilePath,
     dataType: "text",
@@ -24,6 +33,7 @@ $.ajax({
         console.log("Gameplan file loaded successfully");
 
         var sectionMarker = '=&=';
+        var headlines = 0;
 
 
         //split the gameplan file whenever ther is "\n" (at the end of erver line)
@@ -32,11 +42,32 @@ $.ajax({
         //for every line in the linearray
         for (var line = 0; line < linearray.length; line++) {
             
-            //if the current line doesn't contain the sectionMarker
+            //if the current line doesn't contain the sectionMarker => Headline or empty line
             if (!linearray[line].includes(sectionMarker)) {
+                //if the line is not completly empty...
+                if(linearray[line] !== "\n" && linearray[line].trim() !== ""){
+
                 
-                //append the text to the "table" element
-                $("table").append(`<tr><th class="gameplan-header" colspan="3">${linearray[line]}</th></tr>`);
+                //update the headlines var
+                headlines++;
+                console.log("headlines "+headlines);
+                
+                //create an collapsible element with the beginning of the content table and append it to the container element
+                 gameplanElement.append(`
+                <div class='collapsible gameplan-header' onclick="toggleCollapse('collapse${headlines}')">
+                ${linearray[line]}  <i class='fa fa-caret-down'></i>
+               </div>
+               <table id='collapse${headlines}' style='display: block; box-shadow: 0px 0px 10px 2px #0ea20073;'>
+                 `);
+                }
+                //if the line is completly empty
+                else{
+                    //finish the whole html table element
+                    gameplanElement.append(`
+                        </table>
+                    `)
+                    console.log(line+" Leerzeile ("+(line+1)+")");
+                }
             
             //if the current line does contain the sectionMarker
             } else {
@@ -44,7 +75,7 @@ $.ajax({
                 //split the line into sections whenever ther is a sectionMarker
                 var sectionarray = linearray[line].split(sectionMarker);
 
-
+                /*
                 //depending on the current apperance mode create rowHTML with white color or without the style tag...
                 //...
                 if(document.getElementById('toggle-image-light') != null){
@@ -53,8 +84,9 @@ $.ajax({
                 else{
                     var rowHTML = '<tr class="gameplan-item" style="color: red">';
                 }
+                */
                 //the beginning html element for a new row in the table
-                // var rowHTML = '<tr class="gameplan-item" style="color: white">';
+                var rowHTML = '<tr class="gameplan-item" style="color: white">';
 
 
 
@@ -62,7 +94,7 @@ $.ajax({
                 for (var section = 0; section < sectionarray.length; section++) {
 
                     //if the current section includes ":" (for the game score)
-                    if (sectionarray[section].includes(":")) {
+                    /*if (sectionarray[section].includes(":")) {
 
                         //split the current section whenever ther is a ":"
                         var scorearray = sectionarray[section].split(':');
@@ -84,13 +116,15 @@ $.ajax({
                             rowHTML += `<td class="gameplan-item-content" style="box-shadow:inset 0px 0px 10px 2px #a27c0073;">${sectionarray[section]}</td>`;
                         }
                     }
+                        
                     //if the current section doesn't include a ":"
                     else {
+                    */
                        
                         //append the section as new td element in the current table row
                         //...
                         rowHTML += `<td class="gameplan-item-content">${sectionarray[section]}</td>`;
-                    }
+                    //}
                 }
 
                 //end the current table row with the corresponding html element
@@ -109,3 +143,7 @@ $.ajax({
         $("table").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
     }
 });
+});
+
+
+

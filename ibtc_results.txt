@@ -3,19 +3,19 @@ STAGE =&= GRUPPE =&= ERGEBNIS
 Kalibrierungsphase =&=  =&= 
 Gruppenphase =&= Gruppe 7.31 =&= Rang 6 (0/10)
 Playoffs =&= - =&= - 
-______________________________________________________________________________________________________________
+
 Prime League Spring Split'24
 STAGE =&= GRUPPE =&= ERGEBNIS
 Kalibrierungsphase =&= Kalibrierung =&= Qualifiziert für die Starter Liga
 Gruppenphase =&= Starter Gruppe =&= Rang 152 (7/9)
 Playoffs =&= - =&= - 
-______________________________________________________________________________________________________________
+
 Prime League Winter Split'22
 STAGE =&= GRUPPE =&= ERGEBNIS
 Kalibrierungsphase =&= - =&= -
 Gruppenphase =&= Gruppe 7.28 =&= Rang 8 (1/13)
 Playoffs =&= - =&= - 
-______________________________________________________________________________________________________________
+
 Prime League Summer Split'22
 STAGE =&= GRUPPE =&= ERGEBNIS
 Kalibrierungsphase =&= Kalibrierung =&= Disqualfiziert
