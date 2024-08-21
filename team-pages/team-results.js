@@ -12,31 +12,27 @@
 
 $(document).ready(function() {
 
-    //Filepath für die Gamepläne
-    var gameplanElement = $('.gameplan-container');
-    var gameplanId = gameplanElement.attr('id');
+    //Filepath for results file
+    var resultsElement = $('.results-container');
+    var resultsId = resultsElement.attr('id');
 
-    var gameplanFilePath = `${gameplanId}_results.txt`;
-    console.log("gameplan filepath: " + gameplanFilePath);
-
-
-    console.log("Triggering gameplan AJAX call");
-
-
-    //Datei auslesen
+    var resultsFilePath = `/team-results/${resultsId}_results.txt`;
+    
+    //read file
+    console.log("Triggering results AJAX call");
 $.ajax({
-    url: gameplanFilePath,
+    url: resultsFilePath,
     dataType: "text",
     
-    //when gameplan file is found
+    //when results file is found
     success: function (file) {
-        console.log("Gameplan file loaded successfully");
+        console.log("Results file found!");
 
         var sectionMarker = '=&=';
         var headlines = 0;
 
 
-        //split the gameplan file whenever ther is "\n" (at the end of erver line)
+        //split the results file whenever ther is "\n" (at the end of erver line)
         var linearray = file.split('\n');
 
         //for every line in the linearray
@@ -44,49 +40,53 @@ $.ajax({
             
             //if the current line doesn't contain the sectionMarker => Headline or empty line
             if (!linearray[line].includes(sectionMarker)) {
-                //if the line is not completly empty...
+
+                //if the line is not completly empty -> Headline
                 if(linearray[line] !== "\n" && linearray[line].trim() !== ""){
 
-                
                 //update the headlines var
                 headlines++;
                 console.log("headlines "+headlines);
+                var tableID = `collapse${headlines}`;
                 
                 //create an collapsible element with the beginning of the content table and append it to the container element
-                 gameplanElement.append(`
-                <div class='collapsible gameplan-header' onclick="toggleCollapse('collapse${headlines}')">
-                ${linearray[line]}  <i class='fa fa-caret-down'></i>
-               </div>
-               <table id='collapse${headlines}' style='display: block; box-shadow: 0px 0px 10px 2px #0ea20073;'>
-                 `);
+
+                    if(headlines==1){
+                        resultsElement.append(`
+                            <div class='collapsible results-header' onclick="toggleCollapse('${tableID}')">
+                            ${linearray[line]}  <i class='fa fa-caret-down'></i>
+                           </div>
+                           <table id='${tableID}' style='display: block; box-shadow: 0px 0px 10px 2px #0ea20073;'>
+                           </table>
+                             `); 
+                    }
+                    else{
+                        resultsElement.append(`
+                            <div class='collapsible results-header' onclick="toggleCollapse('${tableID}')">
+                            ${linearray[line]}  <i class='fa fa-caret-down'></i>
+                           </div>
+                           <table id='${tableID}' style='display: none; box-shadow: 0px 0px 10px 2px #0ea20073;'>
+                           </table>
+                             `);
+                    }
+
+                
                 }
+
                 //if the line is completly empty
                 else{
-                    //finish the whole html table element
-                    gameplanElement.append(`
-                        </table>
-                    `)
-                    console.log(line+" Leerzeile ("+(line+1)+")");
+
+                    console.log(line+" empty line ("+(line+1)+")");
                 }
             
-            //if the current line does contain the sectionMarker
+            //if the current line contains the sectionMarker
             } else {
                 
                 //split the line into sections whenever ther is a sectionMarker
                 var sectionarray = linearray[line].split(sectionMarker);
 
-                /*
-                //depending on the current apperance mode create rowHTML with white color or without the style tag...
-                //...
-                if(document.getElementById('toggle-image-light') != null){
-                    var rowHTML = '<tr class="gameplan-item" style="color: green">';    
-                }
-                else{
-                    var rowHTML = '<tr class="gameplan-item" style="color: red">';
-                }
-                */
                 //the beginning html element for a new row in the table
-                var rowHTML = '<tr class="gameplan-item" style="color: white">';
+                var rowHTML = '<tr class="results-item" style="color: white">';
 
 
 
@@ -123,7 +123,7 @@ $.ajax({
                        
                         //append the section as new td element in the current table row
                         //...
-                        rowHTML += `<td class="gameplan-item-content">${sectionarray[section]}</td>`;
+                        rowHTML += `<td class="results-item-content">${sectionarray[section]}</td>`;
                     //}
                 }
 
@@ -131,16 +131,16 @@ $.ajax({
                 rowHTML += "</tr>";
 
                 //and append the newly created row to the table
-                $("table").append(rowHTML);
+                $(`#${tableID}`).append(rowHTML);
             }
         }
     },
-    //if the gameplan file is not found
+    //if the gameplan file wasn't found
     error: function (file) {
-        console.error("Error loading gameplan file");
+        console.error("Error loading results file");
         
         //append a div element containing an error message to the table 
-        $("table").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
+        $(".results-container").append('<div style="color:white"><p>INSHALLA WO DATEI BRUDER???</p></div>');
     }
 });
 });

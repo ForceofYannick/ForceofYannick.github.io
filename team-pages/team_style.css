@@ -157,7 +157,7 @@ justify-content: center;
 }
 
 
-.gameplan-container{
+.results-container{
   width: 80%;
   color: white;
   border-radius: 26px;
@@ -166,15 +166,18 @@ justify-content: center;
   background-color: #1f1d1e;
   
 }
-.gameplan-header{
+.results-header{
   font-family: Bebas Neue, sans-serif;
   font-size: 200%;
   margin-bottom: 20px;
   border: 1px solid white;
-  
 }
-.gameplan-item{
-  width: 10%;
+.results-header:hover{
+cursor: pointer;
+background-color: #464646;
+}
+.results-item{
+  width: 50%;
   margin-top: auto;
   padding: 15px;
   font-family: "Roboto Condensed", sans-serif;
@@ -182,6 +185,6 @@ justify-content: center;
   background-color: #161515;
 
 }
-.gameplan-item-content{
+.results-item-content{
 padding:20px
 }
