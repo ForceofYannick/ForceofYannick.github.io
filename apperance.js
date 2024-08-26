@@ -6,7 +6,7 @@ function lightApperance(){
     $('.dropdown-content').css('background-color','grey');
     $('.activ').css('color', 'white')
     $('.logo').remove();
-    $('.navbar-center').append('<img src="/images/Logos/IBTLogo_dark_borders.png" style="height:60px" alt="Logo" class="logo">');
+    $('.navbar-center').append('<img src="/images/Logos/IBTC_Logo_full_clear_black.png" style="height:60px" alt="Logo" class="logo">');
 
     $('.image-container').css('background-color','grey');
     $('.image-container:hover').css('background-color','#cd295d');
@@ -35,7 +35,7 @@ function darkApperance(){
     $('.dropdown-content').css('background-color','#1f1d1e');
     $('.activ').css('color', 'white')
     $('.logo').remove();
-    $('.navbar-center').append('<img src="/images/Logos/IBTLogo.png" alt="Logo" class="logo">');
+    $('.navbar-center').append('<img src="/images/Logos/IBTC_Logo_full_clear_white.png" alt="Logo" class="logo">');
 
     $('.image-container').css('background-color','#1f1d1e');
     $('.image-container:hover').css('background-color','#cd295d');
