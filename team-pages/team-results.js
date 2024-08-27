@@ -81,17 +81,6 @@ $.ajax({
             
             //if the current line contains the sectionMarker
             } else {
-                
-                //if line contains "gruppe" & "rang" => extract for index
-                if(linearray[line].includes("Gruppe") && linearray[line].includes("Rang")){
-                    //save the current line segregated in a an array
-                    var indexSections = linearray[line].split(sectionMarker);
-
-                    //and edit the index results table with the corresponding ID
-                    
-
-
-                }
 
                 //split the line into sections whenever ther is a sectionMarker
                 var sectionarray = linearray[line].split(sectionMarker);

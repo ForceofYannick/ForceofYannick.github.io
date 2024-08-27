@@ -163,3 +163,29 @@ function grid_reset(){
     $('.grid-itemE').css('background-repeat', 'no-repeat');
     $('.grid-itemE').css('background-position', `100.5% ${logoYOffset}%`);
 }
+
+
+$(document).ready(function(){
+    var IDs = ["ibtc", "ibty", "ibtg", "ibta", "ice"];
+    
+    for (let i = 0; i < IDs.length; i++) {
+        var FILEPATH = `/team-results/${IDs[i]}_results.txt`;
+
+        $.ajax({
+            url: FILEPATH,
+            dataType: "text",
+            success: function (file) {
+                console.log("Team file found for " + IDs[i]);
+
+                var linearray = file.split("\n");
+                var sectionarray = linearray[3].split("=&=");
+
+                $(`#${IDs[i]}_div`).text(sectionarray[1]);
+                $(`#${IDs[i]}_rang`).text(sectionarray[2]);
+            },
+            error: function () {
+                console.log("Team file missing for " + IDs[i]);
+            }
+        });
+    }
+});
