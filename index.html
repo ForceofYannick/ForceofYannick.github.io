@@ -58,23 +58,42 @@
     </nav>
 
 <div class="content">
-    <video autoplay muted loop style="margin-top: -100px; margin-left: -20px; width: 100vw;">
+<div class="welcome_banner">
+    <video autoplay muted loop>
         <source src="IBTC_Website_Banner.mov">
     </video>
+</div>
+    
+    <div class="twitch_jersey">
 
+        <div id="twitch-embed"></div>
+        <script src="https://embed.twitch.tv/embed/v1.js"></script>
+        <script type="text/javascript">
+            new Twitch.Embed("twitch-embed", {
+            width: "400",
+            height: "300",
+            layout: "video",
+            channel: "bonjwa",
+            parent: ["localhost"]
+            });
+        </script>
+
+        <div>BOX B</div>
+    </div>
     
-    <div class="welcome_banner">Hier Bild</div>
-    
-    <div class="twitch_jersey"> Hier 2 Boxen</div>
-    
+
+
+
+
     <div class="split_results">
+        <h1 class="header">Prime League Summer Split '24</h1>
         <table>
             <tr>
-                <td>IBTC</td>
-                <td>IBTY</td>
-                <td>IBTG</td>
-                <td>IBTA</td>
-                <td>ICE</td>
+                <th>IBTC</th>
+                <th>IBTY</th>
+                <th>IBTG</th>
+                <th>IBTA</th>
+                <th>ICE</th>
             </tr>
             <tr>
                 <td id="ibtc_div">DIV 7</td>
@@ -93,6 +112,9 @@
         </table>
     </div>
 
+
+
+    <h1 class="header">Unsere Teams</h1>
     <div class="team_grid" onmouseleave="grid_reset()">
         <div class="grid-itemA" onmouseover="grid_itemA()"></div>
         <div class="grid-itemB" onmouseover="grid_itemB()"></div>

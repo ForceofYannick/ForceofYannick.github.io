@@ -19,6 +19,25 @@ body {
   color:white;
 }
 
+
+
+.welcome_banner{
+  margin-top: -100px;
+  margin-left: -20px; /* Wegen scrollbar rechts*/
+  width: 100vw;
+}
+
+
+.twitch_jersey{
+  width: 70%;
+  border: 3px solid red;
+  }
+.twitch_jersey div{
+ display: inline;
+ border: 3px solid green;
+}
+
+
 .team_grid{
   border-radius: 20px;
   color:white;
@@ -28,6 +47,29 @@ body {
   display: grid;
   grid-template-columns: repeat(5, auto);
   gap: 8px;
+  height: 45vh;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td{
+  font-size: 2.5vw;
+  padding: 10px;
+  text-align: center;
+  border: 3px solid red;
+}
+
+@media (min-width: 768px){
+  .header{
+    font-size: 50px;
+  }
+  th,td{
+    font-size: 24px;
+  }
+
 }
 
 .grid-itemA{
@@ -37,7 +79,6 @@ body {
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: -2.5% var(--logoYOffset);
-  height: 500px;
   transition: var(--transitionTime);
   position: relative;
   text-align: center;
@@ -59,7 +100,6 @@ body {
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 23% var(--logoYOffset);
-  height: 500px;
   transition: var(--transitionTime);
   position: relative;
   text-align: center;
@@ -80,7 +120,6 @@ body {
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 49% var(--logoYOffset);
-  height: 500px;
   transition: var(--transitionTime);
   position: relative;
   text-align: center;
@@ -101,7 +140,6 @@ body {
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 75% var(--logoYOffset);
-  height: 500px;
   transition: var(--transitionTime);
   position: relative;
   text-align: center;
@@ -123,7 +161,6 @@ body {
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 100.5% var(--logoYOffset);
-  height: 500px;
   transition: var(--transitionTime);
   position: relative;
   text-align: center;
@@ -138,14 +175,44 @@ body {
   transform: translateX(-50%);
 }
 
-
-
-
-
 .grid-itemA:hover, .grid-itemB:hover, .grid-itemC:hover, .grid-itemD:hover, .grid-itemE:hover{
   cursor: pointer;
   transform: scale(var(--scaleSize));
   transition: var(--transitionTime);
 }
 
+.split_results{
+ display:flex;
+ flex-direction: column;
+ align-items: center;
+ margin: 15px 20%;
+ padding: 20px;
+ border: 3px solid #000000;
+ border-radius: 15px;
+ max-width: 100%;
+ box-sizing: border-box;
+}
 
+.split_results td, th{
+  border: 3px solid #000000;
+}
+
+.split_results th{
+  background-color: #65909066;
+}
+
+.split_results td:nth-child(odd), tr:nth-child(even){
+  background-color: #a6f9f97e;
+}
+
+.split_results td:nth-child(even), tr:nth-child(odd){
+  background-color: #17c60e7e;
+}
+
+.header{
+  width: 100%;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3vw;
+  text-align: center;
+  margin-bottom: 20px;
+}
