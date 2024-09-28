@@ -9,8 +9,8 @@ Vereinssatzung txt aufbau:
 
 ====TODO==================================================================================================================
 
-
-spielpläne durch splitergebnisse ersetzen
+auf Kontakt Seite die Email durch klicken in Zwischenablage kopieren
+Spielpläne durch Splitergebnisse ersetzen
 JS skript anpassen, dass es die farben im light/darkmode anpasst
 für jedes Team eine separate Ergebnisdatei machen
 
