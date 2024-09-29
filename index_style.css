@@ -33,12 +33,12 @@ body {
   flex-direction: row;
   align-items: center;
   margin: 15px 20%;
-  border: 3px solid red;
+  /* border: 3px solid black; */
   }
 
 .twitch_jersey div{
  display: inline;
- border: 3px solid green;
+ /* border: 3px solid green; */
 }
 
 
