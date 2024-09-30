@@ -6,7 +6,7 @@ function lightApperance(){
     $('.dropdown-content').css('background-color','grey');
     $('.activ').css('color', 'white')
     $('.logo').remove();
-    $('.navbar-center').append('<img src="/images/Logos/IBTC_Logo_full_clear_black.png" style="height:60px" alt="Logo" class="logo">');
+    $('.navbar-center').append('<a href="/index.html"><img title="Home" src="/media/Logos/IBTC_Logo_full_clear_black.png" style="height:60px" alt="Logo" class="logo"/></a>');
 
     $('.image-container').css('background-color','grey');
     $('.image-container:hover').css('background-color','#cd295d');
@@ -22,7 +22,7 @@ function lightApperance(){
     $('.content').css('color','black');
 
     $('#toggle-image-dark').remove();
-    $('#toggle-element').append('<img id="toggle-image-light" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">');
+    $('#toggle-element').append('<img id="toggle-image-light" class="togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png">');
 
     localStorage.setItem('theme', 'light');
 }
@@ -35,7 +35,7 @@ function darkApperance(){
     $('.dropdown-content').css('background-color','#1f1d1e');
     $('.activ').css('color', 'white')
     $('.logo').remove();
-    $('.navbar-center').append('<img src="/images/Logos/IBTC_Logo_full_clear_white.png" alt="Logo" class="logo">');
+    $('.navbar-center').append('<a href="/index.html"><img title="Home" src="/media/Logos/IBTC_Logo_full_clear_white.png" style="height:60px" alt="Logo" class="logo"/></a>');
 
     $('.image-container').css('background-color','#1f1d1e');
     $('.image-container:hover').css('background-color','#cd295d');
@@ -51,7 +51,7 @@ function darkApperance(){
     $('.content').css('color','white');
 
     $('#toggle-image-light').remove();
-    $('#toggle-element').append('<img id="toggle-image-dark" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/images/Icons/dark-mode-svgrepo-com.png">');
+    $('#toggle-element').append('<img id="toggle-image-dark" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png">');
 
     localStorage.setItem('theme', 'dark');
 }

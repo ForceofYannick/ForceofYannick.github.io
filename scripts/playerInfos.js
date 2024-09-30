@@ -41,37 +41,37 @@ function openProfile(id) {
             $("#player-roles").text(sections.roles);
 
             //reset the image src attributes from the social buttons
-            $("#youtube-img").removeAttr("src", "/images/Icons/youtube.png", "alt", "");
-            $("#instagram-img").removeAttr("src", "/images/Icons/instagram.png", "alt", "");
-            $("#twitter-img").removeAttr("src", "/images/Icons/twitter.png", "alt", "");
-            $("#twitch-img").removeAttr("src", "/images/Icons/twitch.png", "alt", "");
-            $("#tiktok-img").removeAttr("src", "/images/Icons/tiktok.png", "alt", "");
+            $("#youtube-img").removeAttr("src", "/media/Icons/youtube.png", "alt", "");
+            $("#instagram-img").removeAttr("src", "/media/Icons/instagram.png", "alt", "");
+            $("#twitter-img").removeAttr("src", "/media/Icons/twitter.png", "alt", "");
+            $("#twitch-img").removeAttr("src", "/media/Icons/twitch.png", "alt", "");
+            $("#tiktok-img").removeAttr("src", "/media/Icons/tiktok.png", "alt", "");
 
 
             //if social section exists in player file, put back the src attribute with matching path and change the redirect link 
             if (sections.hasOwnProperty("youtube")) {
                 $("#player-socials").css("gap", "16px");
                 $("#player-socials-youtube").attr("href", sections.youtube);
-                $("#youtube-img").attr("src", "/images/Icons/youtube.png", "alt", "");
+                $("#youtube-img").attr("src", "/media/Icons/youtube.png", "alt", "");
             }
             else{
                 $("#player-socials").css("gap", "0px");
             }
             if (sections.hasOwnProperty("instagram")) {
                 $("#player-socials-instagram").attr("href", sections.instagram);
-                $("#instagram-img").attr("src", "/images/Icons/instagram.png", "alt", "");
+                $("#instagram-img").attr("src", "/media/Icons/instagram.png", "alt", "");
             }
             if (sections.hasOwnProperty("twitter")) {
                 $("#player-socials-twitter").attr("href", sections.twitter);
-                $("#twitter-img").attr("src", "/images/Icons/twitter.png", "alt", "");
+                $("#twitter-img").attr("src", "/media/Icons/twitter.png", "alt", "");
             }
             if (sections.hasOwnProperty("twitch")) {
                 $("#player-socials-twitch").attr("href", sections.twitch);
-                $("#twitch-img").attr("src", "/images/Icons/twitch.png", "alt", "");
+                $("#twitch-img").attr("src", "/media/Icons/twitch.png", "alt", "");
             }
             if (sections.hasOwnProperty("tiktok")) {
                 $("#player-socials-tiktok").attr("href", sections.tiktok);
-                $("#tiktok-img").attr("src", "/images/Icons/tiktok.png", "alt", "");
+                $("#tiktok-img").attr("src", "/media/Icons/tiktok.png", "alt", "");
             }
         },
         
@@ -143,9 +143,9 @@ function closeProfile(profileId) {
     document.getElementById('profile-detail').style.display = 'none';
     
     //reset the image src attributes from the social buttons
-    $("#youtube-img").removeAttr("src", "/images/Icons/youtube.png", "alt", "");
-    $("#instagram-img").removeAttr("src", "/images/Icons/instagram.png", "alt", "");
-    $("#twitter-img").removeAttr("src", "/images/Icons/twitter.png", "alt", "");
-    $("#twitch-img").removeAttr("src", "/images/Icons/twitch.png", "alt", "");
-    $("#tiktok-img").removeAttr("src", "/images/Icons/tiktok.png", "alt", "");
+    $("#youtube-img").removeAttr("src", "/media/Icons/youtube.png", "alt", "");
+    $("#instagram-img").removeAttr("src", "/media/Icons/instagram.png", "alt", "");
+    $("#twitter-img").removeAttr("src", "/media/Icons/twitter.png", "alt", "");
+    $("#twitch-img").removeAttr("src", "/media/Icons/twitch.png", "alt", "");
+    $("#tiktok-img").removeAttr("src", "/media/Icons/tiktok.png", "alt", "");
 }

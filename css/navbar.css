@@ -57,6 +57,11 @@
   height: 60px; /* Höhe des Logos */
 }
 
+.logo:hover {
+  transform: scale(1.2); /* Höhe des Logos */
+  border-radius: 60px;
+}
+
 /* Socials icons im Socials Dropdown */
 .icons{
   width: 20px;

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>IBT Challenger</title>
 
         <!-- FONTS -->
@@ -15,17 +15,14 @@
         <link rel="icon" type="image/x-icon" href="/media/Logos/Simplified_Logo.png">
         
         <!-- CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/css/index.css" />
         <link rel="stylesheet" href="/css/navbar.css" />
+        <link rel="stylesheet" href="/css/impressum.css" />
         
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         
         <!-- SCRIPTS -->
         <script src="/scripts/apperance.js"></script> 
-        <script src="scripts/index.js"></script>
-
 </head>
 <body>
     <nav class="navbar">
@@ -67,84 +64,26 @@
         </div> 
     </nav>
 
-<div class="content">
-<div class="welcome_banner">
-    <video autoplay muted loop>
-        <source src="/media/IBTC_Website_Banner.mov">
-    </video>
-</div>
-    
-    <div class="twitch_jersey">
-
-        <div id="twitch-embed" style="border-radius: 16px;overflow: hidden;"></div>
-        <script src="https://embed.twitch.tv/embed/v1.js"></script>
-        <script type="text/javascript">
-            new Twitch.Embed("twitch-embed", {
-            width: "720",
-            height: "480",
-            layout: "video",
-            autoplay: "false",
-            channel: "ibt_challenger",
-            parent: ["localhost"]
-            });
-        </script>
-
-        <div>
-            <img style="height: 200px;" src="/media/Jersey/Jersey.png" alt="Logo"/>
+    <div class="content">
+        <h1 style="font-size: 400%; font-family: Bebas Neue, sans-serif">
+          Impressum
+        </h1>
+        <div style="font-size: 150%; font-family: Roboto Condensed, sans-serif">
+            <p>Du möchstest dich als Spieler bewerben <br /> oder als Sponsor mit uns in Kontakt treten?</p>
+            <p>Dann schreibe uns gerne eine E-Mail oder melde dich über Discord!</p>
+            <br />
+                <img src="/media/Icons/person_white.png" alt="Name" style="width: 30px; height: 30px; vertical-align:middle;" >
+                <span>Vorname Nachname</span>
+                <br />    
+                <img src="/media/Icons/email.png" alt="Email" style="width: 30px; height: 30px; vertical-align:middle;" >
+                <span>ibtc.league.contact@gmail.com</span>
+                <br />
+                <img src="/media/Icons/telefon_white.png" alt="Telefon" style="width: 30px; height: 30px; vertical-align:middle;" >
+                <span>0000 0000 0000</span>
+                <br />
+                <img src="/media/Icons/location_white.png" alt="Anschrift" style="width: 30px; height: 30px; vertical-align:middle;" >
+                <span>Straße Nr | Plz Stadt</span>
         </div>
     </div>
-    
-
-
-
-
-    <div class="split_results">
-        <h1 class="header">Prime League Summer Split '24</h1>
-        <table>
-            <tr>
-                <th>IBTC</th>
-                <th>IBTY</th>
-                <th>IBTG</th>
-                <th>IBTA</th>
-                <th>ICE</th>
-            </tr>
-            <tr>
-                <td id="ibtc_div"></td>
-                <td id="ibty_div"></td>
-                <td id="ibtg_div"></td>
-                <td id="ibta_div"></td>
-                <td id="ice_div" ></td>
-            </tr>
-            <tr>
-                <td id="ibtc_rang"></td>
-                <td id="ibty_rang"></td>
-                <td id="ibtg_rang"></td>
-                <td id="ibta_rang"></td>
-                <td id="ice_rang" ></td>
-            </tr>
-        </table>
-    </div>
-
-
-
-    <h1 class="header">Unsere Teams</h1>
-    <div class="team_grid" onmouseleave="grid_reset()">
-        <div class="grid-itemA" onmouseover="grid_itemA()"></div>
-        <div class="grid-itemB" onmouseover="grid_itemB()"></div>
-        <div class="grid-itemC" onmouseover="grid_itemC()"></div>
-        <div class="grid-itemD" onmouseover="grid_itemD()"></div>
-        <div class="grid-itemE" onmouseover="grid_itemE()"></div>
-    </div>
-
-
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-
-
-
-</div>
 </body>
 </html>

@@ -28,6 +28,7 @@ body {
 }
 
 
+
 .twitch_jersey{
   display: flex;
   flex-direction: row;
@@ -111,7 +112,7 @@ th, td{
 .grid-itemA{
   background-color: black;
   border-radius: 20px 0px 0px 20px;
-  background-image: url("images/Logos/IBTC4.png");
+  background-image: url("/media/Logos/IBTC4.png");
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: -2.5% var(--logoYOffset);
@@ -132,7 +133,7 @@ th, td{
 
 .grid-itemB{
   background-color: black;
-  background-image: url("images/Logos/IBTY4.png");
+  background-image: url("/media/Logos/IBTY4.png");
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 23% var(--logoYOffset);
@@ -152,7 +153,7 @@ th, td{
 
 .grid-itemC{
   background-color: black;
-  background-image: url("images/Logos/IBTG4.png");
+  background-image: url("/media/Logos/IBTG4.png");
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 49% var(--logoYOffset);
@@ -172,7 +173,7 @@ th, td{
 
 .grid-itemD{
   background-color: black;
-  background-image: url("images/Logos/IBTA4.png");
+  background-image: url("/media/Logos/IBTA4.png");
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 75% var(--logoYOffset);
@@ -193,7 +194,7 @@ th, td{
 .grid-itemE{
   background-color: black;
   border-radius: 0px 20px 20px 0px;
-  background-image: url("images/Logos/ICE4.png");
+  background-image: url("/media/Logos/ICE4.png");
   background-size: var(--logoSize);
   background-repeat: no-repeat;
   background-position: 100.5% var(--logoYOffset);
@@ -216,7 +217,6 @@ th, td{
   transform: scale(var(--scaleSize));
   transition: var(--transitionTime);
 }
-
 
 
 .header{
