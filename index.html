@@ -89,13 +89,32 @@
             });
         </script>
 
-        <div>
-            <img style="height: 200px;" src="/media/Jersey/Jersey.png" alt="Logo"/>
+        <div style="border-radius: 16px; height: 480px; width: 400px; transform: translate(20px,0px); overflow: hidden;">
+            <a href="https://teams.spized.com/ibtc"><img id="jerseyImage" src="/media/Jersey/Jersey1.png" style="position: relative; transform:scale(0.6); bottom: 35%; right: 38%;"/></a>
         </div>
+        <script>
+            const images= [
+                "/media/Jersey/Jersey1.png",
+                "/media/Jersey/Jersey2.png",
+                "/media/Jersey/Jersey3.png",
+                "/media/Jersey/Jersey4.png"
+            ];
+            let currentIndex = 0;
+            
+            function changeImage(){
+                currentIndex = (currentIndex + 1) % images.length;
+                document.getElementById("jerseyImage").src = images[currentIndex];
+            }
+
+            setInterval(changeImage,10000);
+            console.log("Bildwechsel!");
+        </script>
     </div>
+
+    
     
 
-
+    
 
 
     <div class="split_results">

@@ -166,6 +166,8 @@ function grid_reset(){
 
 
 $(document).ready(function(){
+
+    
     var IDs = ["ibtc", "ibty", "ibtg", "ibta", "ice"];
 
     //Filepath for results JSON
