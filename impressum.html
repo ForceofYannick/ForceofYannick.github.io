@@ -23,6 +23,7 @@
         
         <!-- SCRIPTS -->
         <script src="/scripts/apperance.js"></script> 
+        <script src="/scripts/impressum.js"></script> 
 </head>
 <body>
     <nav class="navbar">
@@ -73,16 +74,16 @@
             <p>Es folgen die rechtlich relevanten Angaben zu uns</p>
             <br />
                 <img src="/media/Icons/person_white.png" alt="Name" style="width: 30px; height: 30px; vertical-align:middle;" >
-                <span>Vorname Nachname</span>
+                <span id="name" onclick="copyFunction('name')" class="elements">Tamino Weschler</span>
                 <br />    
                 <img src="/media/Icons/email.png" alt="Email" style="width: 30px; height: 30px; vertical-align:middle;" >
-                <span>ibtc.league.contact@gmail.com</span>
+                <span id="email" onclick="copyFunction('email')" class="elements">ibtc.league.contact@gmail.com</span>
                 <br />
                 <img src="/media/Icons/telefon_white.png" alt="Telefon" style="width: 30px; height: 30px; vertical-align:middle;" >
-                <span>0000 0000 0000</span>
+                <span id="phone" onclick="copyFunction('phone')" class="elements">01511 1130 420</span>
                 <br />
                 <img src="/media/Icons/location_white.png" alt="Anschrift" style="width: 30px; height: 30px; vertical-align:middle;" >
-                <span>Straße Nr | Plz Stadt</span>
+                <span id="address" onclick="copyFunction('address')" class="elements">Bertha von Suttner Allee 36 | 77922 Lahr-Schwarzwald</span>
         </div>
     </div>
 </body>

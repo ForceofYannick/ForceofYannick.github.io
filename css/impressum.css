@@ -6,3 +6,7 @@ body {
     color: white;
   }
   
+.elements:hover{
+background-color: #484848;
+cursor: pointer;
+  }
