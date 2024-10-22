@@ -1,0 +1,14 @@
+.navbar {
+    position: sticky; /* Lässt Navbar beim Scrollen oben kleben */
+    top:0px; /* Notwendiger Parameter für sticky position */
+    font-size: 15px; /* Navbar Textgröße (nicht für "Socials") */
+    font-family: "Roboto condensed", serif; /* Navbar Textfont (nicht für "Socials") */
+    display: flex; /* Verwenden von Flexbox für Layout */
+    justify-content: space-between; /* Platzieren der Elemente gleichmäßig mit Platz dazwischen */
+    align-items: center; /* Vertikales Zentrieren der Elemente */
+    background-color: #333; /* Hintergrundfarbe der Navbar */
+    padding: 10px 20px; /* Innenabstand der Navbar */
+    background: linear-gradient(to bottom, #00000080, #ffffff00); /* Verlaufshintergrund für die Navbar */
+    backdrop-filter: blur(10px); /* Hintergrund Blur effekt für Navbar */
+    z-index: 10;
+  }

@@ -1,0 +1,26 @@
+playerInfo script auf JSON updaten
+playerfiles zu JSON konvertieren
+ergebnistabelle auf Index seite fixen (und vlcht mal bissi schöner machen)
+
+apperance.js umbenennen zu appearance.js und ref links ändern
+appearance updaten für neue seiten (irgendwas buggt manchmal rum)
+
+index mobile freundlich machen
+teamseite mobile freundlich machen
+
+teamseite playergrid ändern? => TamTam gib Referenzbild
+
+icons im impressum ändern  => TamTam wo quelle angeben?
+
+
+
+
+====LINKS==================================================================================================================
+
+https://www.youtube.com/@IBTChallenger
+https://www.instagram.com/ibt_challenger
+https://x.com/ibt_challenger
+https://www.twitch.tv/ibt_challenger
+
+https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger
+https://www.primeleague.gg/leagues/teams/206013-ibtc-yeti
