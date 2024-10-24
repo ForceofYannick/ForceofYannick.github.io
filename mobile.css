@@ -36,7 +36,7 @@ body{
 
 .section-header{
   font-family: "Bebas Neue", "sans-serif";
-  font-size: 2rem;
+  font-size: 3rem;
   color: #272526;
 
   text-align: center;
@@ -46,8 +46,10 @@ body{
 }
 
 
-.twitch{
-
+.twitch div{
+  margin-left: 1%;
+  display: block;
+  width: 98%;
 }
 
 
@@ -95,7 +97,7 @@ nav{
 
 .nav-element{
   font-family: "Roboto condensed", serif; /* Textfont für "Socials" und Dropdown Elemente */
-  font-size: 1.6rem; /* Textgröße für "Socials" und Dropdown Elemente */
+  font-size: 1.3rem; /* Textgröße für "Socials" und Dropdown Elemente */
   color: #ffffff; /* Textfarbe weiß */
   
   text-decoration: none; /* Keine Unterstreichung des Textes */
@@ -267,15 +269,11 @@ nav{
   }
 
 
-
-
-
-
-
 /* SPLIT RESULTS */
 
 .split-results{
   font-family: "Roboto condensed", serif;
+  font-size: 1.5rem;
   display: block;
   margin-left: 1%;
   width: 98%;

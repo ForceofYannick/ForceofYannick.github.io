@@ -1,172 +1,186 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IBT Challenger</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- FONTS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
-        
-        <!-- ICONS -->
-        <link rel="icon" type="image/x-icon" href="/media/Logos/Simplified_Logo.png">
-        
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/css/index.css" />
-        <link rel="stylesheet" href="/css/navbar.css" />
-        
-        <!-- JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        
-        <!-- SCRIPTS -->
-        <script src="/scripts/apperance.js"></script> 
-        <script src="scripts/index.js"></script>
+    <!-- FONTS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
+    
+    <!-- ICON -->
+    <link rel="icon" type="image/x-icon" href="/media/Logos/Simplified_Logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/mobile.css" />
+    
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- SCRIPTS -->
+    <script src="/scripts/index-team-grid.js"></script>
+    <script src="/scripts/appearance.js"></script>
+    <script src="/scripts/index-team-results.js"></script>
+
+
+    <!-- VIEWPORT CHECK -->
+    <script>
+        if (window.innerWidth > 600) { 
+            window.location.href = "index.html"; 
+        }
+    </script>
 
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-left">
-          <a href="/teams/ibtc.html" class="nav-item">IBTC</a>
-          <div class="menuSeparator"> | </div>
-          <a href="/teams/ibty.html" class="nav-item">IBTY</a>
-          <div class="menuSeparator"> | </div>
-          <a href="/teams/ibtg.html" class="nav-item">IBTU</a>
-          <div class="menuSeparator"> | </div>
-          <a href="/teams/ibta.html" class="nav-item">IBTA</a>
-          <div class="menuSeparator"> | </div>
-          <a href="/teams/ice.html" class="nav-item">ICE</a>
-        </div>
-        <div class="navbar-center">
-            <a href="/index.html"><img title="Home" src="/media/Logos/IBTC_Logo_full_clear_white.png" style="height:60px" alt="Logo" class="logo"/></a>
-          
-        </div>
-        <div class="navbar-right">
-            <div class="dropdown">
-                <button class="dropbtn"> IBTC SOCIALS</button>
-                <div class="dropdown-content">
-                    <a href="https://www.instagram.com/ibt_challenger" target="_blank"><img src="/media/Icons/instagram.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Instagram</a>
-                    <a href=" https://www.twitch.tv/ibt_challenger" target="_blank"><img src="/media/Icons/twitch.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Twitch</a>
-                    <a href="https://www.youtube.com/@IBTChallenger" target="_blank"><img src="/media/Icons/youtube.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Youtube</a>
-                    <a href="https://x.com/ibt_challenger" target="_blank"><img src="/media/Icons/twitter.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Twitter</a>
-                    <a href="#"><img src="/media/Icons/tiktok.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Tiktok (WIP)</a>
-                    <a href="https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger" target="_blank"><img src="/media/Icons/primeleague.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Prime League</a>
-                </div>
-            </div>
-            <div class="menuSeparator"> | </div>
-            <a href="/info.html" class="nav-item">INFO</a>
-            <div class="menuSeparator"> | </div>
-            <a href="/kontakt.html" class="nav-item">KONTAKT</a>
-            <div class="menuSeparator"> | </div>
-            <a href="/impressum.html" class="nav-item">IMPRESSUM</a>
-            <div class="menuSeparator"> | </div>
-            <div id="toggle-element"><img id="toggle-image-light" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png" /></div>
-        </div> 
-    </nav>
 
-<div class="content">
-<div class="welcome_banner">
-    <video autoplay muted loop>
-        <source src="/media/IBTC_Website_Banner.mov">
-    </video>
-</div>
-
-<div style="font-family: Bebas Neue, sans-serif; font-size: 200px">work in progress</div>
-<a href="mobile.html">Mobile</a>
-    
-    <div class="twitch_jersey">
-
-        <div id="twitch-embed" style="border-radius: 16px;overflow: hidden;"></div>
-        <script src="https://embed.twitch.tv/embed/v1.js"></script>
-        <script type="text/javascript">
-            new Twitch.Embed("twitch-embed", {
-            width: "720",
-            height: "480",
-            layout: "video",
-            autoplay: "false",
-            channel: "ibt_challenger",
-            parent: ["localhost"]
-            });
-        </script>
-
-        <div style="border-radius: 16px; height: 480px; width: 400px; transform: translate(20px,0px); overflow: hidden;">
-            <a href="https://teams.spized.com/ibtc"><img id="jerseyImage" src="/media/Jersey/Jersey1.png" style="position: relative; transform:scale(0.6); bottom: 35%; right: 38%;"/></a>
-        </div>
-        <script>
-            const images= [
-                "/media/Jersey/Jersey1.png",
-                "/media/Jersey/Jersey2.png",
-                "/media/Jersey/Jersey3.png",
-                "/media/Jersey/Jersey4.png"
-            ];
-            let currentIndex = 0;
-            
-            function changeImage(){
-                currentIndex = (currentIndex + 1) % images.length;
-                document.getElementById("jerseyImage").src = images[currentIndex];
-            }
-
-            setInterval(changeImage,10000);
-            console.log("Bildwechsel!");
-        </script>
-    </div>
-
-    
-    
-
-    
+    <!-- NAVBAR -->
+<nav>
+  <div>
+      <a href="/index.html"><img class="nav-logo" src="/media/Logos/IBTC_Logo_full_clear_white.png" alt=""/></a>
+  </div>
+  
+  <div id="toggle-element">
+    <img id="toggle-image-light" class="nav-icon togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png">
+  </div>
+  
+  <div class="nav-seperator">|</div>
+  
+  <div class="nav-element socials">Socials <i class='fa fa-caret-down'></i></div>
+  
+  <div class="nav-seperator">|</div>
+  
+  <div class="nav-element">
+      Info
+  </div>
+  
+  <div class="nav-seperator">|</div>
+  
+  <div class="nav-element">
+      Kontakt
+  </div>
+</nav>
 
 
-    <div class="split_results">
-        <h1 class="header">Prime League Summer Split '24</h1>
-        <table>
-            <tr>
-                <th>IBTC</th>
-                <th>IBTY</th>
-                <th>IBTG</th>
-                <th>IBTA</th>
-                <th>ICE</th>
-            </tr>
-            <tr>
-                <td id="ibtc_div"></td>
-                <td id="ibty_div"></td>
-                <td id="ibtg_div"></td>
-                <td id="ibta_div"></td>
-                <td id="ice_div" ></td>
-            </tr>
-            <tr>
-                <td id="ibtc_rang"></td>
-                <td id="ibty_rang"></td>
-                <td id="ibtg_rang"></td>
-                <td id="ibta_rang"></td>
-                <td id="ice_rang" ></td>
-            </tr>
-        </table>
+    <!-- HAUPTINHALT -->
+<main>
+    <div>
+        <h1 class="landing-header">IBTC ESPORTS</h1>
+        <h2 class="landing-sub-header">EST. 2022</h2>
     </div>
 
 
 
-    <h1 class="header">Unsere Teams</h1>
+
+    <!-- TEAMS -->
+    <h3 class="section-header">Unsere Teams</h3>
+
     <div class="team_grid" onmouseleave="grid_reset()">
-        <div class="grid-itemA" onmouseover="grid_itemA()"></div>
-        <div class="grid-itemB" onmouseover="grid_itemB()"></div>
-        <div class="grid-itemC" onmouseover="grid_itemC()"></div>
-        <div class="grid-itemD" onmouseover="grid_itemD()"></div>
-        <div class="grid-itemE" onmouseover="grid_itemE()"></div>
+        <div class="grid-item grid-itemA" onmouseover="grid_itemA()"></div>
+        <div class="grid-item grid-itemB" onmouseover="grid_itemB()"></div>
+        <div class="grid-item grid-itemC" onmouseover="grid_itemC()"></div>
+        <div class="grid-item grid-itemD" onmouseover="grid_itemD()"></div>
+        <div class="grid-item grid-itemE" onmouseover="grid_itemE()"></div>
     </div>
 
 
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
 
 
+
+<!-- AKTUELLER SPLIT -->
+<h3 class="section-header">Aktueller Split</h3>
+
+<div class="split-results" style="border: 1px solid black;">
+    <h1 class="split-header">Prime League Summer Split '24</h1>
+    <table>
+        <tr>
+            <th style="border-left: none; border-top: none;">IBTC</th>
+            <th style="border-top: none;">IBTY</th>
+            <th style="border-top: none;">IBTG</th>
+            <th style="border-top: none;">IBTA</th>
+            <th style="border-right: none; border-top: none">ICE</th>
+        </tr>
+        <tr>
+            <td style="border-left: none; border-top: none; border-bottom: none;" id="ibtc_div">Div -</td>
+            <td style="border-top: none; border-bottom: none;" id="ibty_div">Div -</td>
+            <td style="border-top: none; border-bottom: none;" id="ibtg_div">Div -</td>
+            <td style="border-top: none; border-bottom: none;" id="ibta_div">Div -</td>
+            <td style="border-right: none; border-top: none; border-bottom: none;" id="ice_div" >Div -</td>
+        </tr>
+        <tr>
+            <td style="border-left: none; border-bottom: none; border-top: none" id="ibtc_rang">Rang -</td>
+            <td style="border-bottom: none; border-top: none" id="ibty_rang">Rang -</td>
+            <td style="border-bottom: none; border-top: none" id="ibtg_rang">Rang -</td>
+            <td style="border-bottom: none; border-top: none" id="ibta_rang">Rang -</td>
+            <td style="border-right: none; border-bottom: none; border-top: none" id="ice_rang" >Rang -</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+<!-- LIVESTREAM -->
+<h3 class="section-header">Casting Livestream</h3>
+
+<div class="twitch">
+
+    <div id="twitch-embed" style="border-radius: 16px;overflow: hidden;"></div>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+        
+    let width = window.innerWidth * 0.98; // 98% der Viewport-Breite
+    let height = Math.floor(width / 1.777777777); // Höhe im 16:9 Verhältnis, abgerundet
+
+    new Twitch.Embed("twitch-embed", {
+    width: width,
+    height: height,
+    layout: "video",
+    autoplay: "false",
+    channel: "ibt_challenger",
+    parent: ["localhost"]
+});
+    </script>
 
 </div>
+
+
+
+<!-- JERSEY -->
+<h3 class="section-header">Bock auf ein Jersey?</h3>
+
+<div class="jersey">
+    
+        <a href="https://teams.spized.com/ibtc">
+            <img id="jerseyImage" src="/media/Jersey/Jersey1.png"/>
+        </a>
+        
+    <script>
+        const images= [
+            "/media/Jersey/Jersey1.png",
+            "/media/Jersey/Jersey2.png",
+            "/media/Jersey/Jersey3.png",
+            "/media/Jersey/Jersey4.png"
+        ];
+        let currentIndex = 0;
+        
+        function changeImage(){
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById("jerseyImage").src = images[currentIndex];
+        }
+
+        setInterval(changeImage,10000);
+        console.log("Bildwechsel!");
+    </script>
+</div>
+
+<br>
+</main>
+
+<footer>
+    <a href="/impressum.html">Impressum</a>
+</footer>
 </body>
 </html>
+
