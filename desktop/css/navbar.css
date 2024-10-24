@@ -1,0 +1,155 @@
+/* Stil für den Trennzeichen zwischen Menüelementen */
+.menuSeparator {
+    color: #cd295d;
+    font-size: 25px;
+    padding-bottom: 5px;
+  }
+  
+  /* Stil für die gesamte Navbar */
+  .navbar {
+    position: sticky; /* Lässt Navbar beim Scrollen oben kleben */
+    top:0px; /* Notwendiger Parameter für sticky position */
+    font-size: 15px; /* Navbar Textgröße (nicht für "Socials") */
+    font-family: "Roboto condensed", serif; /* Navbar Textfont (nicht für "Socials") */
+    display: flex; /* Verwenden von Flexbox für Layout */
+    justify-content: space-between; /* Platzieren der Elemente gleichmäßig mit Platz dazwischen */
+    align-items: center; /* Vertikales Zentrieren der Elemente */
+    background-color: #333; /* Hintergrundfarbe der Navbar */
+    padding: 10px 20px; /* Innenabstand der Navbar */
+    background: linear-gradient(to bottom, #00000080, #ffffff00); /* Verlaufshintergrund für die Navbar */
+    backdrop-filter: blur(10px); /* Hintergrund Blur effekt für Navbar */
+    z-index: 10;
+  }
+  
+  /* Stil für die linken und rechten Abschnitte der Navbar */
+  .navbar-left,
+  .navbar-right {
+    display: flex; /* Verwenden von Flexbox für Layout */
+    align-items: center; /* Vertikales Zentrieren der Elemente */
+  }
+  
+  /* Stil für den mittleren Abschnitt der Navbar */
+  .navbar-center {
+    flex-grow: 1; /* Ermöglicht dem mittleren Abschnitt, den verfügbaren Platz zu nutzen */
+    display: flex; /* Verwenden von Flexbox für Layout */
+    justify-content: center; /* Zentriert das Logo horizontal */
+    margin-left: 7%; /* Verschiebt das Logo nach rechts */
+  }
+  
+  /* Stil für die Navigationslinks und den Dropdown-Button */
+  .nav-item,
+  .dropbtn {
+    font-family: "Roboto condensed", serif; /* Textfont für "Socials" und Dropdown Elemente */
+    font-size: 15px; /* Textgröße für "Socials" und Dropdown Elemente */
+    color: white; /* Textfarbe weiß */
+    text-decoration: none; /* Keine Unterstreichung des Textes */
+    padding: 14px 20px; /* Innenabstand für bessere Klickfläche */
+    display: block; /* Block-Level-Element */
+    text-align: center; /* Zentriert den Text */
+    background-color: transparent; /* Transparenter Hintergrund */
+    border: none; /* Kein Rahmen */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+    border-radius: 16px;
+  }
+  
+  /* Stil für das Logo */
+  .logo {
+    height: 60px; /* Höhe des Logos */
+  }
+  
+  .logo:hover {
+    transform: scale(1.2); /* Höhe des Logos */
+    border-radius: 60px;
+  }
+  
+  /* Socials icons im Socials Dropdown */
+  .icons{
+    width: 20px;
+    height: 20px;
+    vertical-align:middle;
+    padding-bottom: 5px;
+  }
+  
+  /* Dark/Lightmode toggle icon */
+  .togglemode{
+    margin-left: 40%;
+    width: 20px;
+    background-color: white;
+    border-radius: 20px;
+    transition: 0.1s;
+    margin-top: 13%;
+  }
+  /* Dark/Lightmode toggle icon bei Hover */
+  .togglemode:hover{
+    transform: rotate(180deg);
+  }
+  
+  /* Stil bei Hover über Navigationslinks und Dropdown-Button */
+  .nav-item:hover,
+  .dropbtn:hover {
+    background-color: #cd295d; /* Hintergrundfarbe bei Hover */
+    border-radius: 16px; /* Runde Kanten bei Hover */
+    padding: 10px; /* Hover kleiner machen */
+    margin:10px; /* Abstand zum Trenner */
+  }
+  
+  /* Stil für das Dropdown-Menü */
+  .dropdown {
+    position: relative; /* Position relativ zum Container */
+    display: inline-block; /* Inline-Block-Element */
+  }
+  
+  /* Stil für den Inhalt des Dropdown-Menüs */
+  .dropdown-content {
+    display: none; /* Anfangszustand: nicht sichtbar */
+    position: absolute; /* Absolut positioniert relativ zum Dropdown-Container */
+    background-color: #1f1d1e; /* Hintergrundfarbe des Dropdown-Inhalts */
+    min-width: 160px; /* Mindestbreite des Dropdown-Inhalts */
+    box-shadow: 0px 8px 16px 0px #00000033; /* Schatteneffekt für Dropdown-Inhalt */
+    z-index: 1; /* Z-Index für Stapelreihenfolge */
+    border-radius: 16px; /* Runde Kanten bei Hover */
+  }
+  
+  /* Stil für die Links im Dropdown-Menü */
+  .dropdown-content a {
+    color: white; /* Textfarbe schwarz */
+    padding: 15px 20px; /* Innenabstand für bessere Klickfläche */
+    text-decoration: none; /* Keine Unterstreichung des Textes */
+    display: block; /* Block-Level-Element */
+    text-align: left; /* Linksbündiger Text */
+  }
+  
+  /* Stil bei Hover über Links im Dropdown-Menü */
+  .dropdown-content a:hover {
+    background-color: #cd295d; /* Hintergrundfarbe bei Hover */
+    border-radius: 16px; /* Runde Kanten bei Hover */
+    
+  }
+  
+  /* Stil für die Anzeige des Dropdown-Inhalts bei Hover über den Dropdown-Container */
+  .dropdown:hover .dropdown-content {
+    display: block; /* Anzeige des Dropdown-Inhalts */
+  }
+  
+  /* Stil bei Hover über den Dropdown-Button */
+  .dropdown:hover .dropbtn {
+    background-color: #cd295d; /* Hintergrundfarbe bei Hover */
+    border-radius: 16px; /* Runde Kanten bei Hover */
+    padding: 10px; /* Hover kleiner machen */
+    margin:10px; /* Abstand zum Trenner */
+  }
+  
+  /* Aktives Element in Navbar */
+  .activ{
+    background-color: #cd295d; /* Hintergrundfarbe */
+    box-shadow: 0px 0px 10px 2px #cd295d; /* Glow effekt drumherum */
+    border-radius: 16px; /* Runte Ecken */
+    padding: 10px; /* Hover kleiner machen */
+    margin:10px; /* Abstand zum Trenner */
+  }
+  
+  /* Stil für den Hauptinhalt der Seite */
+  .content {
+    text-align: center; /* Zentriert den Textinhalt */
+    color: white; /* Textfarbe weiß */
+  }

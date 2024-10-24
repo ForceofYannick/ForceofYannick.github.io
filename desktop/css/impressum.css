@@ -1,0 +1,12 @@
+body {
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    background-color: #272526;
+    color: white;
+  }
+  
+.elements:hover{
+background-color: #484848;
+cursor: pointer;
+  }

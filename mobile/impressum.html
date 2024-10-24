@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
+    
+    <!-- ICON -->
+    <link rel="icon" type="image/x-icon" href="/media/Logos/Simplified_Logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/mobile/css/impressum.css" />
+    <link rel="stylesheet" href="/mobile/css/navbar.css" />
+    
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- SCRIPTS -->
+    <script src="/mobile/scripts/appearance.js"></script>
+    <script src="/mobile/scripts/impressum.js"></script>
+
+
+    <!-- VIEWPORT CHECK -->
+    <script>
+        if (window.innerWidth > 600) { 
+            window.location.href = "/index.html"; 
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div>
+            <a href="/index.html"><img class="nav-logo" src="/media/Logos/IBTC_Logo_full_clear_white.png" alt=""/></a>
+        </div>
+        
+        <div id="toggle-element">
+          <img id="toggle-image-light" class="nav-icon togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png">
+        </div>
+        
+        <div class="nav-seperator">|</div>
+        
+        <div class="nav-element socials">Socials <i class='fa fa-caret-down'></i></div>
+        
+        <div class="nav-seperator">|</div>
+        
+        <div class="nav-element">
+            <a href="/mobile/info.html">Info</a>
+        </div>
+        
+        <div class="nav-seperator">|</div>
+        
+        <div class="nav-element">
+          <a href="/mobile/kontakt.html">Kontakt</a>
+        </div>
+      </nav>
+
+
+    <!-- HAUPTINHALT -->
+<main>
+    <div>
+        <h1 class="landing-header">IMPRESSUM</h1>
+    </div>
+
+    <div style="font-size: 150%; font-family: Roboto Condensed, sans-serif; text-align: center;">
+            
+        <h2>Es folgen die rechtlich relevanten Angaben gemäß <a style="color:#cd295d" href="https://www.gesetze-im-internet.de/ddg/__5.html" title="Auszug aus dem DDG">§5 DDG</a></h2>
+        <p style="margin-top: -2rem;">(Durch klicken kopieren)</p>
+        <br />
+            <img id="nameImg" src="/media/Icons/person_white.png" alt="Name" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="name" onclick="copyFunction('name')" class="elements">Tamino Weschler</span>
+            <br />   
+            <br />    
+            <img id="mailImg" src="/media/Icons/mail_white.png" alt="Email" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="mail" onclick="copyFunction('mail')" class="elements">ibtc.league.contact@gmail.com</span>
+            <br />
+            <br />   
+            <img id="phoneImg" src="/media/Icons/phone_white.png" alt="Telefon" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="phone" onclick="copyFunction('phone')" class="elements">+49 (0) 1511 1130 420</span>
+            <br />
+            <br />   
+            <img id="addressImg" src="/media/Icons/location_white.png" alt="Anschrift" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="address" onclick="copyFunction('address')" class="elements">Bertha von Suttner Allee 36 | 77933 Lahr-Schwarzwald</span>
+            <br />
+            <br />   
+    <!--    <img id="regNrImg" src="/media/Icons/book_white.png" alt="" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="regNr" onclick="copyFunction('regNr')" class="elements">Registernummer im Vereinsregister</span>
+            <br />
+            <br />   
+            <img id="taxNrImg" src="/media/Icons/file_white.png" alt="" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="taxNr" onclick="copyFunction('taxNr')" class="elements">Umsatzsteueridentifikationsnummer $27a Abs. 1 Satz 1,2 oder 3</span>
+            <br /> 
+            <span id="ecoNr" onclick="copyFunction('ecoNr')" class="elements">Wirtschafts-Identifikationsnummer nach $139c Abs. 1</span>
+    -->
+    </div>
+
+</body>
+</html>
+

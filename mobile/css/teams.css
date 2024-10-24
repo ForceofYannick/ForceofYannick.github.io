@@ -1,0 +1,35 @@
+body{
+    background-color: #dddddd;
+  }
+
+  .landing-header{
+    font-family: "Bebas Neue", "sans-serif";
+    font-size: 6rem;
+    color: #1b191a;
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  
+  .landing-sub-header{
+    font-family: "Bebas Neue", "sans-serif";
+    font-size: 3rem;
+    color: #1b191a;
+  
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 6rem;
+    margin-top: -2rem;
+  }
+  
+  .section-header{
+    font-family: "Bebas Neue", "sans-serif";
+    font-size: 3rem;
+    color: #272526;
+  
+    text-align: center;
+    padding: 0px;
+    margin-top: 4rem;
+    margin-bottom: 0rem;
+  }

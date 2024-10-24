@@ -8,7 +8,7 @@ function copyFunction(id){
     
     setTimeout(() => {
         $(`#name`).text("Tamino Weschler");
-        $(`#email`).text("ibtc.league.contact@gmail.com");
+        $(`#mail`).text("ibtc.league.contact@gmail.com");
         $(`#phone`).text("+49 (0) 1511 1130 420");
         $(`#address`).text("Bertha von Suttner Allee 36 | 77933 Lahr-Schwarzwald");
         $(`#registerNr`).text("Registernummer im Vereinsregister");

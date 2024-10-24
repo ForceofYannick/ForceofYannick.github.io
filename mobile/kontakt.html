@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Condensed">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
+    
+    <!-- ICON -->
+    <link rel="icon" type="image/x-icon" href="/media/Logos/Simplified_Logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/mobile/css/kontakt.css" />
+    <link rel="stylesheet" href="/mobile/css/navbar.css" />
+    
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- SCRIPTS -->
+    <script src="/mobile/scripts/appearance.js"></script>
+    <script src="/mobile/scripts/kontakt.js"></script>
+
+
+    <!-- VIEWPORT CHECK -->
+    <script>
+        if (window.innerWidth > 600) { 
+            window.location.href = "/index.html"; 
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div>
+            <a href="/index.html"><img class="nav-logo" src="/media/Logos/IBTC_Logo_full_clear_white.png" alt=""/></a>
+        </div>
+        
+        <div id="toggle-element">
+          <img id="toggle-image-light" class="nav-icon togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png">
+        </div>
+        
+        <div class="nav-seperator">|</div>
+        
+        <div class="nav-element socials">Socials <i class='fa fa-caret-down'></i></div>
+        
+        <div class="nav-seperator">|</div>
+        
+        <div class="nav-element">
+            <a href="/mobile/info.html">Info</a>
+        </div>
+        
+        <div class="nav-seperator">|</div>
+        
+        <div class="nav-element">
+          <a href="/mobile/kontakt.html">Kontakt</a>
+        </div>
+      </nav>
+
+
+    <!-- HAUPTINHALT -->
+<main>
+    <div>
+        <h1 class="landing-header">KONTAKT</h1>
+    </div>
+
+    <div style="font-size: 150%; font-family: Roboto Condensed, sans-serif; text-align: center;">
+            
+        <p>Du möchstest dich als <span style="color:#cd295d">Spieler</span> bewerben oder als <span style="color:#cd295d">Sponsor</span> in Kontakt treten?</p>
+        <p style="margin-top: -1.5rem;">Dann schreib uns gerne eine <span style="color:#cd295d">E-Mail</span> oder melde dich per <span style="color:#cd295d">Discord</span>.</p>
+        <p style="margin-top: -1rem;font-size: 1.2rem;">(Durch klicken kopieren)</p>
+        <br />
+   
+            <img id="mailImg" src="/media/Icons/mail_white.png" alt="Email" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="mail" onclick="copyFunction('mail')" class="elements">ibtc.league.contact@gmail.com</span>
+            <br />
+            <br />   
+            <img id="discordImg" src="/media/Icons/discord_white.png" alt="Discord" style="width: 30px; height: 30px; vertical-align:middle;" >
+            <span id="discord" onclick="copyFunction('discord')" class="elements">ibt_cuukey</span>
+            
+    </div>
+
+</body>
+</html>
+

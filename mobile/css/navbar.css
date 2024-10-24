@@ -1,0 +1,78 @@
+/* NAVBAR */
+  
+body{
+    margin:0;
+  }
+  nav{
+    position: sticky; /* Lässt Navbar beim Scrollen oben kleben */
+    top:0px; /* Notwendiger Parameter für sticky position */
+    font-size: 2.3rem; /* Navbar Textgröße (nicht für "Socials") */
+    font-family: "Roboto condensed", serif; /* Navbar Textfont (nicht für "Socials") */
+    display: flex; /* Verwenden von Flexbox für Layout */
+    justify-content: space-between; /* Platzieren der Elemente gleichmäßig mit Platz dazwischen */
+    align-items: center; /* Vertikales Zentrieren der Elemente */
+    background-color: #000000; /* Hintergrundfarbe der Navbar */
+    padding: 10px 20px; /* Innenabstand der Navbar */
+    background: linear-gradient(to bottom, #00000080, #ffffff00); /* Verlaufshintergrund für Navbar */
+    backdrop-filter: blur(1rem); /* Hintergrund Blur effekt für Navbar */
+    z-index: 10;
+  }
+  
+  .nav-element{
+    font-family: "Roboto condensed", serif; /* Textfont für "Socials" und Dropdown Elemente */
+    font-size: 1.3rem; /* Textgröße für "Socials" und Dropdown Elemente */
+    color: #ffffff; /* Textfarbe weiß */
+    
+    text-decoration: none; /* Keine Unterstreichung des Textes */
+    padding: 6px 6px; /* Innenabstand für bessere Klickfläche */
+    display: inline-block; /* Block-Level-Element */
+    text-align: center; /* Zentriert den Text */
+    background-color: transparent; /* Transparenter Hintergrund */
+    border: none; /* Kein Rahmen */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+    border-radius: 16px; /* Rundet Ecken ab */
+    line-height: 30px;
+  }
+  
+  .nav-element:hover,.nav-icon:hover,.nav-logo:hover{
+    background-color: #cd295d; /* Hintergrund farbe beim Hover */
+  }
+  
+  .nav-seperator{
+    color: #cd295d; /* Seperator Farbe */
+    font-weight: bolder; /* Macht Seperator dicker */
+    padding-bottom: 5px; /* Innenraumgröße */
+    
+  }
+
+  nav a{
+    font-family: "Roboto condensed", serif;
+    font-size: 1.3rem;
+    color: #ffffff;
+    
+    text-decoration: none;
+  }
+  
+  .socials{
+  /* future code here */
+  }
+  
+  .nav-icon,.nav-logo{
+    vertical-align: middle;
+  }
+  
+  .nav-icon{
+    border-radius: 16px; /* Rundet Ecken ab */
+    height: 30px; /* Max Höhe */
+    padding:6px; /* Innenraumgröße */
+    display: inline-block; /* Block-Level-Element */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+  }
+  
+  .nav-logo{
+    border-radius: 16px; /* Rundet Ecken ab */
+    height: 60px; /* Max Höhe */
+    padding:0px; /* Innenraumgröße */
+    display: inline-block; /* Block-Level-Element */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+    }
