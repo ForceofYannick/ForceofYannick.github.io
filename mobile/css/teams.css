@@ -12,24 +12,94 @@ body{
     margin-top: 0px;
   }
   
-  .landing-sub-header{
-    font-family: "Bebas Neue", "sans-serif";
-    font-size: 3rem;
-    color: #1b191a;
-  
-    text-align: center;
-    padding: 0px;
-    margin-bottom: 6rem;
-    margin-top: -2rem;
-  }
-  
   .section-header{
     font-family: "Bebas Neue", "sans-serif";
     font-size: 3rem;
     color: #272526;
-  
     text-align: center;
     padding: 0px;
     margin-top: 4rem;
     margin-bottom: 0rem;
   }
+
+/*========================================================*/
+.player-box {
+  text-align: center;
+  margin-left: 5%;
+  width: 90%;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  background-color: #1b191a;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  height: auto;
+}
+
+.player-box:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.player-box-text,
+.player-box-image {
+  transition: filter 0.3s ease;
+}
+
+/* Text und Bild bei geflipptem Zustand blurren */
+.flipped .player-box-text.front,
+.flipped .player-box-image {
+  filter: blur(7px);
+}
+
+/* Vorderseite-Text */
+.player-box-text.front {
+  z-index: 5;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bolder;
+  font-size: 2rem;
+  font-family: "Roboto Condensed", sans-serif;
+  color: white;
+}
+
+/* Rückseite-Text */
+.player-box-text.back {
+  display: none; /* Standardmäßig versteckt */
+  z-index: 5;
+  position: absolute;
+  top: 15%;
+  left: 50%; /* Verschiebt rückseiten text links/rechts */
+  
+  
+  transform: rotateY(180deg);
+  font-weight: bolder;
+  font-size: 2rem;
+  font-family: "Roboto Condensed", sans-serif;
+  color: white;
+}
+
+
+
+
+
+
+.flipped .player-box-text.front {
+  display: none; /* Vorderseite-Text ausblenden, wenn geflippt */
+}
+
+.flipped .player-box-text.back {
+  display: block; /* Rückseite-Text anzeigen, wenn geflippt */
+}
+
+/* Bild */
+.player-box-image {
+  display: block;
+  width: 100%;
+}

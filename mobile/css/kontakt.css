@@ -1,6 +1,11 @@
 body{
     background-color: #dddddd;
   }
+ 
+  footer{
+    justify-content: center;
+    text-align: center;
+  }
 
   .landing-header{
     font-family: "Bebas Neue", "sans-serif";
@@ -33,3 +38,7 @@ body{
     margin-top: 4rem;
     margin-bottom: 0rem;
   }
+
+  .elements:hover{
+    cursor: pointer;
+      }
