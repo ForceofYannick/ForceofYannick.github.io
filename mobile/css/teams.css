@@ -24,13 +24,18 @@ body{
 
 /*========================================================*/
 .player-box {
-  border: 1px solid red;
+  background-image: url("/media/IBTC_Banner.png");
+  background-size: 90vw;
+  background-position: 0% 75%;
+  background-blend-mode: lighten;
   text-align: center;
   margin-left: 5%;
   width: 90%;
   height: auto;
   border-radius: 1rem;
   background-color: #1b191a;
+  background-color: #332f31;
+  
 }
 
 .player-box:hover {
@@ -40,6 +45,9 @@ body{
 
 
 .player-box-name, .player-box-info, .player-box-roles, .player-box-riot{
+  width: 98%;
+  margin-left: 1%;
+  
   position: relative;
   justify-content: center;
   font-family: "Roboto Condensed", "sans-serif";
@@ -50,11 +58,20 @@ body{
 .player-box-name{
   font-weight: bolder;
   font-size: 2rem;
-}
+} 
 
 .player-box-info{}
 .player-box-roles{}
-.player-box-riot{}
+
+
+.player-box-riot{
+  color: #cd295d;
+  text-decoration: underline;
+}
+
+.player-box-riot:hover{
+  color: #cd6687;
+}
 
 
 .player-box-social-a{

@@ -6,6 +6,7 @@ function lightApperance(){
     $('h3').css('color','#1b191a');
     $('footer a').css('color','#1b191a');
     $('table').css('color','#1b191a');                                  //index
+    $('.player-box').css('background-color','#332f31');                 //teams
 
     $('#nameImg').attr('src', '/media/Icons/person_black.png');         //impressum
     $('#mailImg').attr('src', '/media/Icons/mail_black.png');           //impressum
@@ -26,6 +27,7 @@ function darkApperance(){
     $('h3').css('color','#dddddd');
     $('footer a').css('color','#dddddd');
     $('table').css('color','#dddddd');                                  //index
+    $('.player-box').css('background-color','#1b191a');                 //teams
 
     $('#nameImg').attr('src', '/media/Icons/person_white.png');         //impressum
     $('#mailImg').attr('src', '/media/Icons/mail_white.png');           //impressum
