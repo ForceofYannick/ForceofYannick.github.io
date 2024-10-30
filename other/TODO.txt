@@ -1,19 +1,12 @@
 playerInfo script auf JSON updaten
+
 playerfiles zu JSON konvertieren
-ergebnistabelle auf Index seite fixen (und vlcht mal bissi schöner machen)
 
-apperance.js umbenennen zu appearance.js und ref links ändern
-appearance updaten für neue seiten (irgendwas buggt manchmal rum)
-
-index mobile freundlich machen
-teamseite mobile freundlich machen
+cookie informationen anzeigen
 
 teamseite playergrid ändern? => TamTam gib Referenzbild
 
 icons im impressum ändern  => TamTam wo quelle angeben?
-
-
-
 
 ====LINKS==================================================================================================================
 

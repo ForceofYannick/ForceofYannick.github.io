@@ -24,82 +24,59 @@ body{
 
 /*========================================================*/
 .player-box {
+  border: 1px solid red;
   text-align: center;
   margin-left: 5%;
   width: 90%;
-  border-radius: 1rem;
-  overflow: hidden;
-  position: relative;
-  background-color: #1b191a;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
   height: auto;
+  border-radius: 1rem;
+  background-color: #1b191a;
 }
 
 .player-box:hover {
-  background-color: aqua;
+  background-color: #332f31;
   cursor: pointer;
 }
 
-.flipped {
-  transform: rotateY(180deg);
-}
 
-.player-box-text,
-.player-box-image {
-  transition: filter 0.3s ease;
-}
-
-/* Text und Bild bei geflipptem Zustand blurren */
-.flipped .player-box-text.front,
-.flipped .player-box-image {
-  filter: blur(7px);
-}
-
-/* Vorderseite-Text */
-.player-box-text.front {
-  z-index: 5;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bolder;
-  font-size: 2rem;
-  font-family: "Roboto Condensed", sans-serif;
+.player-box-name, .player-box-info, .player-box-roles, .player-box-riot{
+  position: relative;
+  justify-content: center;
+  font-family: "Roboto Condensed", "sans-serif";
+  font-size: 1rem;
   color: white;
 }
 
-/* Rückseite-Text */
-.player-box-text.back {
-  display: none; /* Standardmäßig versteckt */
-  z-index: 5;
-  position: absolute;
-  top: 15%;
-  left: 50%; /* Verschiebt rückseiten text links/rechts */
-  
-  
-  transform: rotateY(180deg);
+.player-box-name{
   font-weight: bolder;
   font-size: 2rem;
-  font-family: "Roboto Condensed", sans-serif;
-  color: white;
+}
+
+.player-box-info{}
+.player-box-roles{}
+.player-box-riot{}
+
+
+.player-box-social-a{
+  text-decoration: none;
+}
+
+.player-box-social-img{}
+
+.Youtube:hover {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(88%) saturate(7500%) hue-rotate(358deg) brightness(103%) contrast(120%);
+}
+.Instagram:hover{
+  filter: brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5312%) hue-rotate(334deg) brightness(101%) contrast(106%);
+}
+.Twitch:hover{
+  filter: brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1202%) hue-rotate(241deg) brightness(104%) contrast(101%);
+}
+.Twitter:hover{
+  filter: brightness(0) saturate(100%) invert(72%) sepia(16%) saturate(5019%) hue-rotate(168deg) brightness(96%) contrast(90%);
+}
+.Tiktok:hover{
+  filter: brightness(0) invert(0);
 }
 
 
-
-
-
-
-.flipped .player-box-text.front {
-  display: none; /* Vorderseite-Text ausblenden, wenn geflippt */
-}
-
-.flipped .player-box-text.back {
-  display: block; /* Rückseite-Text anzeigen, wenn geflippt */
-}
-
-/* Bild */
-.player-box-image {
-  display: block;
-  width: 100%;
-}
