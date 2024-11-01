@@ -14,6 +14,13 @@ function lightApperance(){
     $('#addressImg').attr('src', '/media/Icons/location_black.png');    //impressum
     $('#discordImg').attr('src', '/media/Icons/discord_black.png');     //impressum
 
+    $('.results-container').css('background-color','#cccccc');          //team page results
+    $('.results-container').css('color','#1b191a');                     //team page results
+    $('.results-item').css('background-color','#aaaaaa');               //team page results
+    $('.results-item').css('color','#1b191a');                          //team page results
+    $('.results-header').css('color','#1b191a');                        //team page results
+    $('.results-header').css('border','1px solid black');                        //team page results
+
     $('#toggle-image-light').remove();
     $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode.png">');
     localStorage.setItem('theme', 'light');
@@ -34,6 +41,14 @@ function darkApperance(){
     $('#phoneImg').attr('src', '/media/Icons/phone_white.png');         //impressum
     $('#addressImg').attr('src', '/media/Icons/location_white.png');    //impressum
     $('#discordImg').attr('src', '/media/Icons/discord_white.png');     //impressum
+
+    $('.results-container').css('background-color','#1f1d1e');          //team page results
+    $('.results-container').css('color','white');                     //team page results
+    $('.results-item').css('background-color','#161515');               //team page results
+    $('.results-item').css('color','white');                          //team page results
+    $('.results-header').css('color','white');                        //team page results
+    $('.results-header').css('border','1px solid white');                        //team page results
+    
 
     $('#toggle-image-light').remove();
     $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/white-mode.png">');

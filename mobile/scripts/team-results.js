@@ -42,10 +42,11 @@ fetch(resultsFilePath)
 
         //build the element and append to the results container
         resultsElement.append(`
+            <div class='split-container'>
             <div class='collapsible results-header' onclick="toggleCollapse('${tableID}')">
                             ${ElementArray[i]}  <i id='caret-container${tableID}' class='fa fa-caret-down'></i>
                            </div>
-            <table id='${tableID}' style='display: flex; justify-content: center; box-shadow: 0px 0px 10px 2px #0ea20073;'>
+            <table id='${tableID}' class='results-table' style='display: flex; justify-content: center;'>
                     <tr class="results-item" style="color: white">       
                         <td class="results-item-content">Stage</td>
                         <td class="results-item-content">Gruppe</td>
@@ -67,6 +68,7 @@ fetch(resultsFilePath)
                         <td class="results-item-content">${parsedData[ElementArray[i]].Playoffs.Ergebnis}</td>
                     </tr>
             </table>
+            </div>
             `);
     }
     })
@@ -83,6 +85,7 @@ fetch(resultsFilePath)
 
 
         /*
+         box-shadow: 0px 0px 10px 2px #0ea20073;
         console.log(ElementArray[i]); 
         console.log("Kalibrierungsphase");
         console.log("Gruppe: "+parsedData[ElementArray[i]].Kalibrierungsphase.Gruppe);
