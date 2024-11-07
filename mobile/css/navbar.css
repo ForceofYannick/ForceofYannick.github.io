@@ -45,16 +45,12 @@ body{
     
   }
 
-  nav a{
+  nav a, nav button{
     font-family: "Roboto condensed", serif;
     font-size: 1.3rem;
     color: #ffffff;
     
     text-decoration: none;
-  }
-  
-  .socials{
-  /* future code here */
   }
   
   .nav-icon,.nav-logo{
@@ -75,4 +71,60 @@ body{
     padding:0px; /* Innenraumgröße */
     display: inline-block; /* Block-Level-Element */
     cursor: pointer; /* Zeiger-Cursor bei Hover */
+    }
+
+
+
+    .dropdown{
+      float: none;
+      overflow: hidden;
+    }
+  
+    .dropdown .dropbtn{
+      border: none;
+      outline: none;
+      color: white;
+      background-color: inherit;
+    }
+  
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #1f1d1e;
+      min-width: auto;
+      box-shadow: 0px 8px 16px 0px #00000033;
+      z-index: 1;
+      border-radius: 1rem;
+      transform: translateY(6px); /* Zusätzlicher visueller Abstand */
+    }
+  
+.dropdown-content-img{
+  width: 20px;
+  height: 20px;
+  vertical-align:middle;
+  padding-bottom: 5px;
+}
+
+    .dropdown-content a {
+      float: none;
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      border-radius: 1rem;
+    }
+
+    .dropdown .dropbtn:hover{
+      cursor: pointer;
+    }
+  
+    .dropdown-content a:hover {
+      background-color: #cd295d;
+      cursor: pointer;
+    }
+  
+    .dropdown:hover .dropdown-content {
+      display: block;
+      cursor: pointer;
     }
