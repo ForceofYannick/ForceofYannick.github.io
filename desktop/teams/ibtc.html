@@ -15,33 +15,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/team.css" />
+    <link rel="stylesheet" href="/desktop/css/navbar.css" />
+    <link rel="stylesheet" href="/desktop/css/team.css" />
     
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
     <!-- SCRIPTS -->
-    <script src="/scripts/apperance.js"></script>
-    <script src="/scripts/playerInfos.js"></script>
-    <script src="/scripts/team-results.js"></script>
+    <script src="/desktop/scripts/apperance.js"></script>
+    <script src="/desktop/scripts/playerInfos.js"></script>
+    <script src="/desktop/scripts/team-results.js"></script>
+
+                <!-- VIEWPORT CHECK -->
+                <script>
+                  if (window.innerWidth <= 600) { 
+                      window.location.href = "/mobile/teams/ibtc.html"; 
+                  }
+              </script>
     
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-left">
-        <a href="/teams/ibtc.html" class="nav-item">IBTC</a>
+        <a href="/desktop/teams/ibtc.html" class="nav-item">IBTC</a>
         <div class="menuSeparator"> | </div>
-        <a href="/teams/ibty.html" class="nav-item">IBTY</a>
+        <a href="/desktop/teams/ibty.html" class="nav-item">IBTY</a>
         <div class="menuSeparator"> | </div>
-        <a href="/teams/ibtg.html" class="nav-item">IBTG</a>
+        <a href="/desktop/teams/ibtg.html" class="nav-item">IBTG</a>
         <div class="menuSeparator"> | </div>
-        <a href="/teams/ibta.html" class="nav-item">IBTA</a>
+        <a href="/desktop/teams/ibta.html" class="nav-item">IBTA</a>
         <div class="menuSeparator"> | </div>
-        <a href="/teams/ice.html" class="nav-item">ICE</a>
+        <a href="/desktop/teams/ice.html" class="nav-item">ICE</a>
       </div>
       <div class="navbar-center">
-          <a href="/index.html"><img title="Home" src="/media/Logos/IBTC_Logo_full_clear_white.png" style="height:60px" alt="Logo" class="logo"/></a>
+          <a href="/desktop/index.html"><img title="Home" src="/media/Logos/IBTC_Logo_full_clear_white.png" style="height:60px" alt="Logo" class="logo"/></a>
         
       </div>
       <div class="navbar-right">
@@ -57,11 +64,11 @@
               </div>
           </div>
           <div class="menuSeparator"> | </div>
-          <a href="/info.html" class="nav-item">INFO</a>
+          <a href="/desktop/info.html" class="nav-item">INFO</a>
           <div class="menuSeparator"> | </div>
-          <a href="/kontakt.html" class="nav-item">KONTAKT</a>
+          <a href="/desktop/kontakt.html" class="nav-item">KONTAKT</a>
           <div class="menuSeparator"> | </div>
-          <a href="/impressum.html" class="nav-item">IMPRESSUM</a>
+          <a href="/desktop/impressum.html" class="nav-item">IMPRESSUM</a>
           <div class="menuSeparator"> | </div>
           <div id="toggle-element"><img id="toggle-image-light" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png" /></div>
       </div> 

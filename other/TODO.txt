@@ -1,12 +1,13 @@
-playerInfo script auf JSON updaten
-
-playerfiles zu JSON konvertieren
+playerInfo script bei Desktop auf JSON updaten
 
 cookie informationen anzeigen
 
-teamseite playergrid ändern? => TamTam gib Referenzbild
+[DONE] teamseite playergrid ändern? => TamTam gib Referenzbild
 
-icons im impressum ändern  => TamTam wo quelle angeben?
+[DONE] icons im impressum ändern  => TamTam wo quelle angeben?
+
+split ergebnisse auf Teamseite noch verbuggtes design nach reload und nach appearance wechsel
++ auf mobile ragt summer '22 split aus tabellenkasten raus
 
 ====LINKS==================================================================================================================
 
@@ -16,4 +17,3 @@ https://x.com/ibt_challenger
 https://www.twitch.tv/ibt_challenger
 
 https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger
-https://www.primeleague.gg/leagues/teams/206013-ibtc-yeti
