@@ -1,0 +1,59 @@
+body{
+    background-color: #dddddd;
+  }
+ 
+  footer{
+    justify-content: center;
+    text-align: center;
+  }
+
+  .landing-header{
+    font-family: "Bebas Neue", "sans-serif";
+    font-size: 6rem;
+    color: #1b191a;
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  
+  .landing-sub-header{
+    font-family: "Bebas Neue", "sans-serif";
+    font-size: 2rem;
+    color: #1b191a;
+  
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 6rem;
+    margin-top: -2rem;
+  }
+  
+  .section-header{
+    font-family: "Bebas Neue", "sans-serif";
+    text-decoration: underline;
+
+    font-size: 3rem;  
+    text-align: center;
+    padding: 0px;
+    margin-top: 4rem;
+    margin-bottom: 0rem;
+  }
+
+.recipe{
+    width: 90vw;
+    justify-content: center;
+    margin: auto;
+}
+
+  .recipe p{
+    font-family: "Bebas Neue", "sans-serif";
+    font-size: 2rem;
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 0px;
+    
+  }
+
+  .elements:hover{
+    cursor: pointer;
+      }

@@ -35,7 +35,8 @@ body{
   }
   
   .nav-element:hover,.nav-icon:hover,.nav-logo:hover{
-    background-color: #cd295d; /* Hintergrund farbe beim Hover */
+    background-color: #cd295d3c; /* Hintergrund farbe beim Hover */
+    border-radius: 3rem;
   }
   
   .nav-seperator{
@@ -84,7 +85,7 @@ body{
       border: none;
       outline: none;
       color: white;
-      background-color: inherit;
+      background-color: #00000000;
     }
   
     .dropdown-content {

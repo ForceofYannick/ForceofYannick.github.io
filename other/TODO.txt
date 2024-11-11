@@ -2,8 +2,6 @@ playerInfo script bei Desktop auf JSON updaten
 
 cookie informationen anzeigen
 
-[DONE] teamseite playergrid ändern? => TamTam gib Referenzbild
-
 [DONE] icons im impressum ändern  => TamTam wo quelle angeben?
 
 split ergebnisse auf Teamseite noch verbuggtes design nach reload und nach appearance wechsel
