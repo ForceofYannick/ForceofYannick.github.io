@@ -77,23 +77,3 @@ fetch(resultsFilePath)
     });
 
 });
-
-
-
-
-
-
-
-        /*
-         box-shadow: 0px 0px 10px 2px #0ea20073;
-        console.log(ElementArray[i]); 
-        console.log("Kalibrierungsphase");
-        console.log("Gruppe: "+parsedData[ElementArray[i]].Kalibrierungsphase.Gruppe);
-        console.log("Ergebnis: "+parsedData[ElementArray[i]].Kalibrierungsphase.Ergebnis);
-        console.log("Gruppenphase");
-        console.log("Gruppe: "+parsedData[ElementArray[i]].Gruppenphase.Gruppe);
-        console.log("Ergebnis: "+parsedData[ElementArray[i]].Gruppenphase.Ergebnis);
-        console.log("Playoffs");
-        console.log("Gruppe: "+parsedData[ElementArray[i]].Playoffs.Gruppe);
-        console.log("Ergebnis: "+parsedData[ElementArray[i]].Playoffs.Ergebnis);
-        */
