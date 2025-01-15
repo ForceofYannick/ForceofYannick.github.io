@@ -111,7 +111,6 @@
   
     .grid-item{
       background-color: #000000;
-      background-image: url("/media/Logos/IBTC4.png");
       background-size: var(--logoSize);
       background-repeat: no-repeat;
       transition: var(--transitionTime);
@@ -122,8 +121,6 @@
   
     .grid-itemA{
       border-radius: 20px 0px 0px 20px;
-      background-image: url("/media/Logos/IBTC4.png");
-      background-position: -2.5% var(--logoYOffset);    
     }
     
     .grid-itemA:before{
@@ -133,11 +130,7 @@
       left: 50%;
       transform: translateX(-50%);
     }
-    
-    .grid-itemB{
-      background-image: url("/media/Logos/IBTY4.png");
-      background-position: 23% var(--logoYOffset);
-    }
+
     
     .grid-itemB:before{
       content: 'IBTY';
@@ -146,11 +139,7 @@
       left: 50%;
       transform: translateX(-50%);
     }
-    
-    .grid-itemC{
-      background-image: url("/media/Logos/IBTG4.png");
-      background-position: 49% var(--logoYOffset);
-    }
+
     
     .grid-itemC:before{
       content: 'IBTP';
@@ -158,11 +147,6 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-    }
-    
-    .grid-itemD{
-      background-image: url("/media/Logos/IBTA4.png");
-      background-position: 75% var(--logoYOffset);
     }
     
     .grid-itemD:before{
@@ -175,8 +159,6 @@
     
     .grid-itemE{
       border-radius: 0px 20px 20px 0px;
-      background-image: url("/media/Logos/ICE4.png");
-      background-position: 100.5% var(--logoYOffset);
     }
     
     .grid-itemE:before{

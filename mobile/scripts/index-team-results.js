@@ -1,131 +1,66 @@
-$(document).ready(function() {
+// team IDs corresponding to team specific part of json file name
+var IDs = ["ibtc", "ibty", "ibtp", "ff", "ice"];
+
+//Filepath for results JSON
+var resultsElement = $('.results-container');
+
+function load_results(){
+
+for (var i = 0; i < IDs.length; i++) {
+    var resultsFilePath = `/team-results/${IDs[i]}_results.json`;
+
+    fetch(resultsFilePath)
+.then(response => {
+    if(!response.ok){
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+})
+.then(parsedData => {
+
+//save content as array
+const ElementArray = Object.keys(parsedData);
+
+//go through array
+for(var i=0;i<ElementArray.length;i++){
     
-    //Filepath for results JSON
-    var resultTable = $('table');
+    //construct the id for the current element, used for collapsing function
+    var tableID = `collapse${i}`;
 
-    var ibtcPath = `/team-results/ibtc_results.json`;
-    var ibtyPath = `/team-results/ibty_results.json`;
-    var ibtgPath = `/team-results/ibtg_results.json`;
-    var ibtaPath = `/team-results/ibta_results.json`;
-    var icePath = `/team-results/ice_results.json`;
-    
-    //Fetch JSON
-fetch(ibtcPath)
-    .then(response => {
-        if(!response.ok){
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(parsedData => {
-    //save content as array
-    const ElementArray = Object.keys(parsedData);
-        //find td element with id ibtc_div and replace inner html
-        $('#ibtc_div').text(parsedData[ElementArray[0]].Playoffs.Gruppe);
-
-        //find td element with id ibtc_rang and replace inner html
-        $('#ibtc_rang').text(parsedData[ElementArray[0]].Playoffs.Ergebnis);
-    })
-    .catch(error =>{
-        console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
-    });
-    //==============================================================================================
-    fetch(ibtyPath)
-    .then(response => {
-        if(!response.ok){
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(parsedData => {
-    //save content as array
-    const ElementArray = Object.keys(parsedData);
-        //find td element with id ibtc_div and replace inner html
-        $('#ibty_div').text(parsedData[ElementArray[0]].Playoffs.Gruppe);
-
-        //find td element with id ibtc_rang and replace inner html
-        $('#ibty_rang').text(parsedData[ElementArray[0]].Playoffs.Ergebnis);
-    })
-    .catch(error =>{
-        console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
-    });
-    //==============================================================================================
-    fetch(ibtgPath)
-    .then(response => {
-        if(!response.ok){
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(parsedData => {
-    //save content as array
-    const ElementArray = Object.keys(parsedData);
-        //find td element with id ibtc_div and replace inner html
-        $('#ibtg_div').text(parsedData[ElementArray[0]].Playoffs.Gruppe);
-
-        //find td element with id ibtc_rang and replace inner html
-        $('#ibtg_rang').text(parsedData[ElementArray[0]].Playoffs.Ergebnis);
-    })
-    .catch(error =>{
-        console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
-    });
-    //==============================================================================================
-    fetch(ibtaPath)
-    .then(response => {
-        if(!response.ok){
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(parsedData => {
-    //save content as array
-    const ElementArray = Object.keys(parsedData);
-        //find td element with id ibtc_div and replace inner html
-        $('#ibta_div').text(parsedData[ElementArray[0]].Playoffs.Gruppe);
-
-        //find td element with id ibtc_rang and replace inner html
-        $('#ibta_rang').text(parsedData[ElementArray[0]].Playoffs.Ergebnis);
-    })
-    .catch(error =>{
-        console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
-    });
-    //==============================================================================================
-    fetch(icePath)
-    .then(response => {
-        if(!response.ok){
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(parsedData => {
-    //save content as array
-    const ElementArray = Object.keys(parsedData);
-        //find td element with id ibtc_div and replace inner html
-        $('#ice_div').text(parsedData[ElementArray[0]].Playoffs.Gruppe);
-
-        //find td element with id ibtc_rang and replace inner html
-        $('#ice_rang').text(parsedData[ElementArray[0]].Playoffs.Ergebnis);
-    })
-    .catch(error =>{
-        console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
-    });
+    //build the element and append to the results container
+    resultsElement.append(`
+        <div class='collapsible results-header' onclick="toggleCollapse('${tableID}')">
+                        ${ElementArray[i]}  <i id='caret-container${tableID}' class='fa fa-caret-down'></i>
+                       </div>
+        <table id='${tableID}' style='display: block; box-shadow: 0px 0px 10px 2px #0ea20073;'>
+                <tr class="results-item" style="color: white">       
+                    <td class="results-item-content">Stage</td>
+                    <td class="results-item-content">Gruppe</td>
+                    <td class="results-item-content">Ergebnis</td>
+                </tr>
+                <tr class="results-item" style="color: white">       
+                    <td class="results-item-content">Kalibrierungsphase</td>
+                    <td class="results-item-content">${parsedData[ElementArray[i]].Kalibrierungsphase.Gruppe}</td>
+                    <td class="results-item-content">${parsedData[ElementArray[i]].Kalibrierungsphase.Ergebnis}</td>
+                </tr>
+                <tr class="results-item" style="color: white">       
+                    <td class="results-item-content">Gruppenphase</td>
+                    <td class="results-item-content">${parsedData[ElementArray[i]].Gruppenphase.Gruppe}</td>
+                    <td class="results-item-content">${parsedData[ElementArray[i]].Gruppenphase.Ergebnis}</td>
+                </tr>
+                <tr class="results-item" style="color: white">       
+                    <td class="results-item-content">Playoffs</td>
+                    <td class="results-item-content">${parsedData[ElementArray[i]].Playoffs.Gruppe}</td>
+                    <td class="results-item-content">${parsedData[ElementArray[i]].Playoffs.Ergebnis}</td>
+                </tr>
+        </table>
+        `);
+        
+}
+})
+.catch(error =>{
+    console.error(`index-team-results: ${IDs[i]} JSON Fehler!`,error);
 });
-
-
-
-
-
-
-
-        /*
-        console.log(ElementArray[i]); 
-        console.log("Kalibrierungsphase");
-        console.log("Gruppe: "+parsedData[ElementArray[i]].Kalibrierungsphase.Gruppe);
-        console.log("Ergebnis: "+parsedData[ElementArray[i]].Kalibrierungsphase.Ergebnis);
-        console.log("Gruppenphase");
-        console.log("Gruppe: "+parsedData[ElementArray[i]].Gruppenphase.Gruppe);
-        console.log("Ergebnis: "+parsedData[ElementArray[i]].Gruppenphase.Ergebnis);
-        console.log("Playoffs");
-        console.log("Gruppe: "+parsedData[ElementArray[i]].Playoffs.Gruppe);
-        console.log("Ergebnis: "+parsedData[ElementArray[i]].Playoffs.Ergebnis);
-        */
+console.log(`Loaded ${IDs[i]}`);
+}
+}
