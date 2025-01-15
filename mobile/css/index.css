@@ -153,7 +153,7 @@
     }
     
     .grid-itemC:before{
-      content: 'IBTG';
+      content: 'IBTP';
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -166,7 +166,7 @@
     }
     
     .grid-itemD:before{
-      content: 'IBTA';
+      content: 'FF';
       position: absolute;
       bottom: 0;
       left: 50%;
