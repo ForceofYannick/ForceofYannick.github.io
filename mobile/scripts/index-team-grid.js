@@ -2,17 +2,17 @@ var logoSize = 600;
 
 var logoYOffset = 25;
 
-var logoXOffsetA = 10;
+var logoXOffsetA = 9;
 var logoXOffsetB = 30;
 var logoXOffsetC = 50;
 var logoXOffsetD = 70;
-var logoXOffsetE = 90; 
+var logoXOffsetE = 91; 
 
 var logoApath = "/media/Logos/IBTC_Logo_full_clear_white_fade.png";
 var logoBpath = "/media/Logos/IBTY_Logo_full_clear_white_fade.png";
 var logoCpath = "/media/Logos/IBTP_Logo_full_clear_white_fade.png";
-var logoDpath = "/media/Logos/FF_Logo_full_clear_white_fade.png";
-var logoEpath = "/media/Logos/ICE_Logo_full_clear_white_fade.png";
+var logoDpath = "/media/Logos/ICE_Logo_full_clear_white_fade.png";
+var logoEpath = "/media/Logos/FF_Logo_full_clear_white_fade.png";
 
 function grid_hover(team){
     var logoPath ="";

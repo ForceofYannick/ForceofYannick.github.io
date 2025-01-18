@@ -34,6 +34,12 @@
     margin-bottom: 6rem;
     margin-top: -2rem;
   }
+
+  .welcome_banner{
+    margin-top: -200px;
+    margin-left: -58%;
+    transform: scale(0.248);
+  }
   
   .section-header{
     font-family: "Bebas Neue", "sans-serif";
@@ -150,7 +156,7 @@
     }
     
     .grid-itemD:before{
-      content: 'FF';
+      content: 'ICE';
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -162,7 +168,7 @@
     }
     
     .grid-itemE:before{
-      content: 'ICE';
+      content: 'FF';
       position: absolute;
       bottom: 0;
       left: 50%;
