@@ -4,6 +4,7 @@
 
 ### Index-Datei:
 - 📄 **Index Split Ergebnisse**: Ergebnisse auslesen und anzeigen.
+- Appearance script anpassen für h2 element in Cookie Banner
 - 🍪 **Cookie-Informationen**: Cookie-Hinweise und -Details anzeigen.
 
 ### Team-Dateien:
@@ -18,6 +19,15 @@
 ### Info-Datei:
 - ✨ **Professionalisieren**: Die Info-Seite seriös gestalten.
 
+### Cookie Banner:
+- Datenschutzerklärung verlinken
+- Impressum verlinken
+
+
+### Sonstiges:
+- Cookie Abfrage auf jeder Seite einbauen, falls man vorher noch nie auf der Index Seite war
+- Appearance script cookie sicher machen
+- Datenschutzerklärung hinzufügen
 ---
 
 ## Desktop 💻

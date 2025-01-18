@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    // Load appearance
+    window.loadAppearance();
+});
+
 function copyFunction(id){
 
     var element = document.getElementById(id);

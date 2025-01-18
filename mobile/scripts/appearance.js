@@ -1,10 +1,10 @@
-function lightApperance(){
+function lightAppearance(){
     $('body').css('background-color','#dddddd');
     $('body').css('color','#1b191a');
     $('h1').css('color','#1b191a');
-    $('h2').css('color','#1b191a');
+    $('h2:not(.cookieHeader)').css('color', '#1b191a');
     $('h3').css('color','#1b191a');
-    $('footer a').css('color','#1b191a');
+    $('footer a:not(.cookieA)').css('color', '#1b191a');
     $('table').css('color','#1b191a');                                  //index
     $('.player-box').css('background-color','#332f31');                 //teams
 
@@ -22,17 +22,21 @@ function lightApperance(){
     $('.results-header').css('border','1px solid black');                        //team page results
 
     $('#toggle-image-light').remove();
-    $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode.png">');
-    localStorage.setItem('theme', 'light');
+    $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="darkAppearance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode.png">');
+    console.log("light theme applied");
+    if(window.savePreference === 'true'){
+        console.log("light theme saved");
+        localStorage.setItem('theme', 'light');
+    }
 }
 
-function darkApperance(){
+function darkAppearance(){
     $('body').css('background-color','#272526');
     $('body').css('color','#dddddd');
     $('h1').css('color','#dddddd');
-    $('h2').css('color','#dddddd');
+    $('h2:not(.cookieHeader)').css('color', '#dddddd');
     $('h3').css('color','#dddddd');
-    $('footer a').css('color','#dddddd');
+    $('footer a:not(.cookieA)').css('color', '#dddddd');
     $('table').css('color','#dddddd');                                  //index
     $('.player-box').css('background-color','#1b191a');                 //teams
 
@@ -49,17 +53,23 @@ function darkApperance(){
     $('.results-header').css('color','white');                        //team page results
     $('.results-header').css('border','1px solid white');                        //team page results
     
-
     $('#toggle-image-light').remove();
-    $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/white-mode.png">');
-    localStorage.setItem('theme', 'dark');
+    $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="lightAppearance()" title="Zu hellem Modus wechseln" src="/media/Icons/white-mode.png">');
+    console.log("dark theme applied");
+    if(window.savePreference === 'true'){
+        console.log("dark theme saved");
+        localStorage.setItem('theme', 'dark');
+    }
 }
 
-$(document).ready(function() {
+function loadAppearance(){
     const theme = localStorage.getItem('theme');
     if (theme === 'light') {
-        lightApperance();
+        console.log("load light theme");
+        lightAppearance();
     } else {
-        darkApperance();
+        // Default theme
+        console.log("load default theme (dark)");
+        darkAppearance();
     }
-});
+}
