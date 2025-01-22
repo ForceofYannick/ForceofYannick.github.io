@@ -5,13 +5,13 @@ window.savePreference = localStorage.getItem('savePreference');
 // Wenn Fenster gezeigt werden soll, mach sichtbar
 if(showCookieWindow === 'true'){
     console.log("accepted");
-    document.querySelector('.cookieContainer').style.display = 'block';
+    document.querySelector('.cookieBackground').style.display = 'block';
 }else if(showCookieWindow === 'false'){
     console.log("denied");
-    document.querySelector('.cookieContainer').style.display = 'none';
+    document.querySelector('.cookieBackground').style.display = 'none';
 }else{
     console.log("not set");
-    document.querySelector('.cookieContainer').style.display = 'block';
+    document.querySelector('.cookieBackground').style.display = 'block';
 }
 
 // Wenn Erscheinungspräferenz gespeichert, lade appearance script mit local starage, sonst ohne

@@ -45,13 +45,22 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.cookieBackground{
+  display: none;
+  background-color: rgba(0, 0, 0, 0.559);
+  padding-top: 100px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+
 /* Container für das Cookie-Banner */
 .cookieContainer {
-    display: none;
   position: fixed;
   top:15vh;
-  z-index: 10;
-  max-width: 600px;
+  z-index: 6;
+  max-width: 88vw;
   margin: 20px auto;
   padding: 20px;
   background-color: #f9f9f9;

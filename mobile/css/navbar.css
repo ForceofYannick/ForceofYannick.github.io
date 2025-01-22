@@ -15,7 +15,7 @@ body{
     padding: 10px 20px; /* Innenabstand der Navbar */
     background: linear-gradient(to bottom, #00000080, #ffffff00); /* Verlaufshintergrund für Navbar */
     backdrop-filter: blur(1rem); /* Hintergrund Blur effekt für Navbar */
-    z-index: 10;
+    z-index: 2;
   }
   
   .nav-element{

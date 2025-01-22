@@ -36,8 +36,9 @@
   }
 
   .welcome_banner{
+    width:20vw;
     margin-top: -100px;
-    margin-left: -58%;
+    margin-left: -40vw;
     margin-bottom: -20vh;
     transform: scale(0.248);
   }
