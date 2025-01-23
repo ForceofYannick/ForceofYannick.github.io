@@ -6,6 +6,7 @@ body{
   nav{
     position: fixed; /* Lässt Navbar beim Scrollen oben kleben */
     top:0px; /* Notwendiger Parameter für sticky position */
+    width: 90vw; /* Navbar Breite */
     font-size: 2.3rem; /* Navbar Textgröße (nicht für "Socials") */
     font-family: "Roboto condensed", serif; /* Navbar Textfont (nicht für "Socials") */
     display: flex; /* Verwenden von Flexbox für Layout */

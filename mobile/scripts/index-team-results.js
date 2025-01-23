@@ -37,6 +37,6 @@ for (let i = 0; i < IDs.length; i++) {
     .catch(error =>{
         console.error(`index-team-results: ${IDs[i]} JSON Fehler!`,error);
     });
-    console.log(`Loaded ${IDs[i]}`);
+    console.log(`loaded ${IDs[i]} results`);
 }
 }

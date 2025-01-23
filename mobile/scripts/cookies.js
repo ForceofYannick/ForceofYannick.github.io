@@ -4,38 +4,28 @@ window.savePreference = localStorage.getItem('savePreference');
 
 // Wenn Fenster gezeigt werden soll, mach sichtbar
 if(showCookieWindow === 'true'){
-    console.log("accepted");
+    console.log("'show cookie window' accepted");
     document.querySelector('.cookieBackground').style.display = 'block';
 }else if(showCookieWindow === 'false'){
-    console.log("denied");
+    console.log("'show cookie window' denied");
     document.querySelector('.cookieBackground').style.display = 'none';
 }else{
-    console.log("not set");
+    console.log("'show cookie window' not set");
     document.querySelector('.cookieBackground').style.display = 'block';
 }
 
-// Wenn Erscheinungspräferenz gespeichert, lade appearance script mit local starage, sonst ohne
-if(savePreference === 'true'){
+// Lade erscheinungsbild, standardmäßig auf dunkel
     loadAppearance();
-}
-else{
-    loadAppearance();
-}
-
-
-
-
-
 });
 
 
 
 function saveCookies(savePreference, showCookieWindow){
 
-    console.log('Erscheinungspräferenz speichern:', savePreference);
-    console.log('Dieses Fenster erneut anzeigen:', showCookieWindow);
+    console.log('save preferences:', savePreference);
+    console.log('show cookie window:', showCookieWindow);
 
     localStorage.setItem('savePreference', savePreference);
     localStorage.setItem('showCookieWindow',showCookieWindow);
-    document.querySelector('.cookieContainer').style.display = 'none';
+    document.querySelector('.cookieBackground').style.display = 'none';
 }

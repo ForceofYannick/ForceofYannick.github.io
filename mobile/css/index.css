@@ -21,7 +21,7 @@
     text-align: center;
     padding: 0px;
     margin-bottom: 0px;
-    margin-top: 0px;
+    margin-top: 100px;
   }
   
   .landing-sub-header{
@@ -38,7 +38,7 @@
   .welcome_banner{
     width:20vw;
     margin-top: -100px;
-    margin-left: -40vw;
+    margin-left: -25vw;
     margin-bottom: -20vh;
     transform: scale(0.248);
   }
@@ -63,36 +63,18 @@
   
   
   .jersey img{
-    margin-left: 1%;
+    margin-left: 5%;
     border-radius: 1rem;
     display: block;
-    width: 98%;
+    width: 90%;
   }
-  
-  
-  
-  
   
   footer{
     justify-content: center;
     text-align: center;
   }
   
-/* Cookie Sliders */
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
 
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
   
     /* TEAMS */
   
@@ -101,7 +83,7 @@
       border-radius: 20px;
       color:white;
       font-family: "Bebas Neue", sans-serif;
-      width: 60%;
+      width: 80%;
       margin: auto;
       display: grid;
       grid-template-columns: repeat(5, auto);

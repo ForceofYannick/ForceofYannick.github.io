@@ -12,12 +12,13 @@
 - 🐞 **Bugfix Split-Ergebnisse**:
   - **Problem**: Beim Start im **Dark Mode** wird beim Wechsel in den Light Mode und anschließendem `F5`-Drücken das Tabelleninnere weiterhin dunkel angezeigt.
 - 🔧 **Styling-Problem**: Der **Summer '22 Split** ragt manchmal aus dem Tabellenkasten heraus.
-- 🎨 **Design-Anpassung**: Hintergrund der Spielerkarten ändern.
+- 🎨 **Design-Anpassung**: Hintergrund der Spielerkarten ändern (Siehe Layout im DC Kanal).
 - 🖼️ **Teamlogo hinzufügen**: Teamlogo auf der Teamseite einfügen.
 - 📜 **Team-Infos ergänzen**: Informationen wie Gründungsdatum, Gründer und Motivation zur Teamgründung hinzufügen.
 
 ### Cookie-Banner:
 - 📜 Datenschutzerklärung verlinken.
+  - Datenschutzerklärungsseite erstellen
 - ⚖️ Impressum verlinken.
 
 ### Sonstiges:
@@ -65,5 +66,6 @@
 - [🏆 Prime League Teamseite](https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger)
 
 ### Rechtliche Quellen:
-- [🍪 Cookies/Local Storage](https://www.abtasty.com/de/blog/local-storage-vs-cookies-unterschiede/)  
+- [🍪 Cookies/Local Storage](https://www.datenschutz.org/cookie-banner/)  
 - [⚖️ Impressum](https://www.gesetze-im-internet.de/ddg/__5.html)
+- [Datenschutzhinweis](https://www.ldi.nrw.de/datenschutz/medien-und-technik/websites-muster-fuer-datenschutzhinweise)

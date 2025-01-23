@@ -64,7 +64,9 @@ function darkAppearance(){
 
 function loadAppearance(){
     const theme = localStorage.getItem('theme');
+    
     if (theme === 'light') {
+        // Only if cookies accepted
         console.log("load light theme");
         lightAppearance();
     } else {
