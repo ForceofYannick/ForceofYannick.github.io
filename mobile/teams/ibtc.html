@@ -14,13 +14,16 @@
     <link rel="icon" type="image/x-icon" href="/media/Logos/Simplified_Logo.png">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/mobile/css/teams.css" />
+    <link rel="stylesheet" href="/mobile/css/cookieBanner.css" />
     <link rel="stylesheet" href="/mobile/css/navbar.css" />
+    <link rel="stylesheet" href="/mobile/css/teams.css" />
+    
     
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
     <!-- SCRIPTS -->
+    <script src="/mobile/scripts/cookies.js"></script>
     <script src="/mobile/scripts/teams.js"></script>
     <script src="/mobile/scripts/team-results.js"></script>
     <script src="/mobile/scripts/appearance.js"></script>
@@ -36,6 +39,40 @@
 
 </head>
 <body>
+
+  <!-- Cookies / Local Storage Banner -->
+ <div class="cookieBackground">
+  <div class="cookieContainer">
+      <h2 class="cookieHeader">Bevor Sie fortfahren</h2>
+      <p class="cookieText">
+          Wir speichern Daten, um sicherzustellen, dass die Webseite einwandfrei funktioniert.
+      </p>
+      <p class="cookieText">
+          Unter anderem speichern wir Ihre Erscheinungspräferenzen (Dunkles/Helles Design)
+          sowie das Ergebnis dieser Einstellung, damit Sie, sofern Sie zustimmen, nicht jedes Mal erneut entscheiden müssen.
+      </p>
+      <div class="cookieOption">
+          <span class="cookieLabel">Ich akzeptiere das Speichern der Erscheinungspräferenz:</span>
+          <label class="switch">
+              <input type="checkbox" id="savePreference" aria-label="Erscheinungspräferenz speichern">
+              <span class="slider round"></span>
+          </label>
+      </div>
+      <div class="cookieOption">
+          <span class="cookieLabel">Ich möchte beim nächsten Besuch erneut dieses Fenster sehen:</span>
+          <label class="switch">
+              <input type="checkbox" checked id="showCookieWindow" aria-label="Dieses Fenster erneut anzeigen">
+              <span class="slider round"></span>
+          </label>
+      </div>
+      <button class="cookieButton" type="button" onclick="saveCookies(document.getElementById('savePreference').checked, document.getElementById('showCookieWindow').checked)">Speichern</button>
+      <footer class="cookieFooter">
+          <a class="cookieA" href="/mobile/datenschutzerklärung.html">Datenschutzerklärung</a>
+          
+          <a class="cookieA" href="/mobile/impressum.html">Impressum</a>
+      </footer>
+  </div>
+  </div>
 
  <!-- NAVBAR -->
  <nav>

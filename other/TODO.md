@@ -6,6 +6,7 @@
 - 📄 **Index-Split-Ergebnisse**: Ergebnisse auslesen und anzeigen.
 - 📜 **Appearance-Script** anpassen für das `h2`-Element im Cookie-Banner.
 - 🍪 **Cookie-Informationen**: Cookie-Hinweise und -Details anzeigen.
+- Casting Livestream wieder einblenden
 
 ### Team-Dateien:
 - 📄 **Dateinamen aktualisieren**: Teamseiten-Dateien umbenennen und auf den neuesten Stand bringen.
