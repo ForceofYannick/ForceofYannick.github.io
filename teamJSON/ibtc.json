@@ -1,0 +1,23 @@
+{
+    "Spieler1":{
+        "Name": "Yannick",
+        "Roles":"Developer",
+        "Socials":{
+            "Youtube":"https://www.youtube.com/force_of_yannick",
+            "Instagram":"https://www.instagram.com/force_of_yannick",
+            "Twitter":"https://x.com/forceofyannick",
+            "Twitch":"https://www.twitch.tv/force_of_yannick"
+    }
+    },
+    "Spieler2":{
+        "Name": "Tamino",
+        "Roles":"Mid",
+        "Socials":{
+            "Youtube":"https://www.youtube.com/force_of_yannick",
+            "Instagram":"https://www.instagram.com/force_of_yannick",
+            "Twitter":"https://x.com/forceofyannick",
+            "Twitch":"https://www.twitch.tv/force_of_yannick"
+    }
+    }
+    
+    }

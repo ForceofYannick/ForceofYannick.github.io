@@ -25,6 +25,10 @@ body{
 
 /*========================================================*/
 .player-box {
+  background-image: url("/media/IBTC_Banner.png");
+  background-size: 90vw;
+  background-position: 0% 75%;
+  background-blend-mode: lighten;
   text-align: center;
   margin-left: 5%;
   width: 90%;
@@ -32,6 +36,7 @@ body{
   border-radius: 1rem;
   background-color: #1b191a;
   background-color: #332f31;
+  
 }
 
 .player-box:hover {
@@ -39,15 +44,58 @@ body{
   cursor: pointer;
 }
 
-.player-name{
+
+.player-box-name, .player-box-info, .player-box-roles, .player-box-riot{
+  width: 98%;
+  margin-left: 1%;
+  
   position: relative;
-  top: 16vw;
-  left: 18vw;
-  font-family: "Bebas Neue", "sans-serif";
-  font-size: 2rem;
-  text-align: left;
+  justify-content: center;
+  font-family: "Roboto Condensed", "sans-serif";
+  font-size: 1rem;
+  color: white;
 }
 
+.player-box-name{
+  font-weight: bolder;
+  font-size: 2rem;
+} 
+
+.player-box-info{}
+.player-box-roles{}
+
+
+.player-box-riot{
+  color: #cd295d;
+  text-decoration: underline;
+}
+
+.player-box-riot:hover{
+  color: #cd6687;
+}
+
+
+.player-box-social-a{
+  text-decoration: none;
+}
+
+.player-box-social-img{}
+
+.Youtube:hover {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(88%) saturate(7500%) hue-rotate(358deg) brightness(103%) contrast(120%);
+}
+.Instagram:hover{
+  filter: brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5312%) hue-rotate(334deg) brightness(101%) contrast(106%);
+}
+.Twitch:hover{
+  filter: brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1202%) hue-rotate(241deg) brightness(104%) contrast(101%);
+}
+.Twitter:hover{
+  filter: brightness(0) saturate(100%) invert(72%) sepia(16%) saturate(5019%) hue-rotate(168deg) brightness(96%) contrast(90%);
+}
+.Tiktok:hover{
+  filter: brightness(0) invert(0);
+}
 
 
 /*========================================================*/

@@ -1,16 +1,33 @@
+// team json
+// iteriere durch json => wenn seite aufgerufen
+// erstelle palyerbox für alle spieler in json
+// playerbox füttern mit player infos
+
+
+
+// Fehler bei    var playerInfos =parsedData[`Spieler${i}`];
+
+
 $(document).ready(function() {
 
-function member(container, name) {
-  const playerTextDiv = container.find('.player-box-name');
-  const playerInfoDiv = container.find('.player-box-info');
-  const playerRolesDiv = container.find('.player-box-roles');
-  const playerRiotA = container.find('.player-box-riot');
-  const playerSocialsDiv = container.find('.player-box-socials');
+  var teamName = "ibtc";
+  var playerName = $('.player-name');
 
-  if(playerTextDiv.length){
+  
+  
 
 
-    var FilePath = `/player-files/${name}.json`;
+
+/*
+  const playerNameDiv = container.find('.player-name');
+  const playerRolesDiv = container.find('.player-roles');
+  const playerRiotA = container.find('.player-riot');
+  const playerSocialsDiv = container.find('.player-socials');
+*/
+
+
+
+    var FilePath = `/teamJSON/${teamName}.json`;
   
     fetch(FilePath)
     .then(response => {
@@ -21,16 +38,25 @@ function member(container, name) {
     })
     .then(parsedData => {
 
+      const ElementArray = Object.keys(parsedData);
+      
+      for(let i =0; i< ElementArray.length;i++){
+        var playerInfos =parsedData[`Spieler${i}`];
+
+        playerName.text(playerInfos.Name);
+
+      }
+
+
+/*
   //wenn container NICHT 'clicked' class hat
 if(!container.hasClass('clicked')) {
   container.addClass('clicked');
 
   //durchsuche JSON und gib aus, aber nur wenn vorhanden, sonst ''
   const name = parsedData["Name"];
-  (name != null)? playerTextDiv.text(`${parsedData["Name"]}`) : playerTextDiv.text(``);
+  (name != null)? playerNameDiv.text(`${parsedData["Name"]}`) : playerNameDiv.text(``);
 
-  const info = parsedData["PlayerText"];
-  (info != null)? playerInfoDiv.text(`${parsedData["PlayerText"]}`) : playerInfoDiv.text(`Hier könnte Ihre Werbung stehen. (Der Spieler hat keine Infos angegeben.)`);
 
   const roles = parsedData["Roles"];
   (roles != null)? playerRolesDiv.text(`${parsedData["Roles"]}`) : playerRolesDiv.text(``);
@@ -40,13 +66,13 @@ if(!container.hasClass('clicked')) {
 
 
 
-  /*
+  
     durchsuche JSON nach "Socials", speichere socials anzahl,
     speichere von jedem social den namen für das title attribute,
     erstelle <a></a> element, füge link als href ein, füge title ein,
     suche nach icon für das social mit {social_name}_icon, 
     füge <img /> in <a> ein, src attr = icon pfad
-  */
+  
 
   //socials segment
   const socials = parsedData["Socials"];
@@ -62,26 +88,23 @@ if(!container.hasClass('clicked')) {
 
 //wenn Container 'clicked' class hat
 else{
-  container.removeClass('clicked')
-  playerTextDiv.text(`${parsedData["Name"]}`);
-  playerInfoDiv.text(``);
-  playerRolesDiv.text(``);
-  playerRiotA.text(``);
-  playerSocialsDiv.empty();
-}
 
+
+
+}
+*/
     
 
     })
     .catch(error =>{
         console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
     });
-  }  
-}
+  
 
+/*
 $('.player-box').on('click', function() {
   const name = $(this).data('name'); // Datenattribut 'name' auslesen
   member($(this), name);
 });
-
+*/
 });
