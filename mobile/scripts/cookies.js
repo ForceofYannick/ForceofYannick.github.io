@@ -16,10 +16,10 @@ if(showCookieWindow === 'true'){
 
 // Wenn Erscheinungspräferenz gespeichert, lade appearance script mit local starage, sonst ohne
 if(savePreference === 'true'){
-    loadCookieAppearance();
+    loadAppearance();
 }
 else{
-    loadDefaultAppearance();
+    loadAppearance();
 }
 
 
