@@ -1,35 +1,17 @@
-// team json
-// iteriere durch json => wenn seite aufgerufen
-// erstelle palyerbox für alle spieler in json
-// playerbox füttern mit player infos
-
-
-
-// Fehler bei    var playerInfos =parsedData[`Spieler${i}`];
+// for durch switch ersetzen?
 
 
 $(document).ready(function() {
 
-  var teamName = "ibtc";
-  var playerName = $('.player-name');
+  // Header element of each team page convert to lowercase for json reading
+    var teamName = $('.landing-header').text().toLowerCase();
 
+    //results container to dump in results
+    var resultsContainer = $('.teamPlayerContainers');
+
+    var filePath = `/teamJSON/${teamName}.json`;
   
-  
-
-
-
-/*
-  const playerNameDiv = container.find('.player-name');
-  const playerRolesDiv = container.find('.player-roles');
-  const playerRiotA = container.find('.player-riot');
-  const playerSocialsDiv = container.find('.player-socials');
-*/
-
-
-
-    var FilePath = `/teamJSON/${teamName}.json`;
-  
-    fetch(FilePath)
+    fetch(filePath)
     .then(response => {
         if(!response.ok){
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -38,73 +20,83 @@ $(document).ready(function() {
     })
     .then(parsedData => {
 
-      const ElementArray = Object.keys(parsedData);
+      const elementArray = Object.keys(parsedData);
       
-      for(let i =0; i< ElementArray.length;i++){
-        var playerInfos =parsedData[`Spieler${i}`];
+      for(let element in elementArray){
 
-        playerName.text(playerInfos.Name);
+        resultsContainer.append(`
+            
+          <div id="player${element}"class="playerBox">
+     <div class="jerseyName">Name</div>
+      <div class="sliderContainer">
+      <div class="sliderName">Player Name</div>
+      <hr class="sliderLine">
+      <div class="sliderRole">Player Role</div>
+      <ol class="sliderList">
+          <li>
+              <a href="" class="instagramElement"><img src="/media/Icons/Instagram.png"></a>
+          </li>
+          <li>
+              <a href="" class="tiktokElement"><img src="/media/Icons/Tiktok.png"></a>
+          </li>
+          <li>
+              <a href="" class="twitchElement"><img src="/media/Icons/Twitch.png"></a>
+          </li>
+          <li>
+              <a href="" class="twitterElement"><img src="/media/Icons/Twitter.png"></a>
+          </li>
+          <li>
+              <a href="" class="youtubeElement"><img src="/media/Icons/Youtube.png"></a>
+          </li>
+      </ol>
+  </div>
+</div>  
+          `);
 
+
+
+        var elementKey = elementArray[element];
+        var elementData = parsedData[elementKey];
+
+        for(let key in elementData){
+
+
+          if(typeof elementData[key] == 'object'){
+
+
+            
+            for(let subKey in elementData[key]){
+              console.log(`Element: ${elementArray[element]}, Key: ${key}, SubKey: ${subKey}, Value: ${elementData[key][subKey]}`)
+              
+
+              
+
+              
+              
+              //resultsContainer.append(`<div> Element: ${elementArray[element]}, Key: ${key}, SubKey: ${subKey}, Value: ${elementData[key][subKey]} </div>`)
+            }
+
+          }
+          else{
+            console.log(`Element: ${elementArray[element]}, Key: ${key}, Value: ${elementData[key]}`)
+            //resultsContainer.append(`<div>Element: ${elementArray[element]}, Key: ${key}, Value: ${elementData[key]} </div>`)
+            const currentElement = $(`#player${element}`);
+            currentElement.find('jerseyName').text(elementData[key][subKey]);
+          }
+        }
       }
 
 
-/*
-  //wenn container NICHT 'clicked' class hat
-if(!container.hasClass('clicked')) {
-  container.addClass('clicked');
-
-  //durchsuche JSON und gib aus, aber nur wenn vorhanden, sonst ''
-  const name = parsedData["Name"];
-  (name != null)? playerNameDiv.text(`${parsedData["Name"]}`) : playerNameDiv.text(``);
-
-
-  const roles = parsedData["Roles"];
-  (roles != null)? playerRolesDiv.text(`${parsedData["Roles"]}`) : playerRolesDiv.text(``);
-
-  const riot = parsedData["Riot"];
-  (riot != null)? playerRiotA.text(`${parsedData["Riot"].RiotName}`).prop('href', `${parsedData["Riot"].RiotLink}`).attr('target', '_blank') : playerRiotA.text(``);
 
 
 
-  
-    durchsuche JSON nach "Socials", speichere socials anzahl,
-    speichere von jedem social den namen für das title attribute,
-    erstelle <a></a> element, füge link als href ein, füge title ein,
-    suche nach icon für das social mit {social_name}_icon, 
-    füge <img /> in <a> ein, src attr = icon pfad
-  
-
-  //socials segment
-  const socials = parsedData["Socials"];
-
-  for (const [platform, url] of Object.entries(socials)) {
-  playerSocialsDiv.append(`
-    <a class="player-box-social-a" href='${url}' target='_blank'>
-      <img class="player-box-social-img ${platform}" src='/media/icons/${platform}.png' title='${platform}'>
-    </a>
-  `);
-  }
-}
-
-//wenn Container 'clicked' class hat
-else{
 
 
 
-}
-*/
     
 
     })
     .catch(error =>{
-        console.error('!!!INSHALLA DA IS EIN FEHLER BEI JSON DATEI BRUDER!!!',error);
+        console.error('Fehler bei JSON laden',error);
     });
-  
-
-/*
-$('.player-box').on('click', function() {
-  const name = $(this).data('name'); // Datenattribut 'name' auslesen
-  member($(this), name);
-});
-*/
 });

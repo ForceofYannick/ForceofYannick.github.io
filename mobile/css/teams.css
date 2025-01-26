@@ -1,3 +1,6 @@
+/*========================================================*/
+/* Global stuff */
+
 body{
     background-color: #dddddd;
     margin-top: 100px;
@@ -24,34 +27,104 @@ body{
   }
 
 /*========================================================*/
-.player-box {
+/* Player box */
+
+.playerBox {
+  position: relative;
+  background-image: url("/media/Jersey/Jersey.png");
+  background-size: 50%;
+  background-repeat: no-repeat;
   text-align: center;
   margin-left: 5%;
   width: 90%;
-  height: auto;
+  height: 100px;
   border-radius: 1rem;
   background-color: #1b191a;
-  background-color: #332f31;
+  overflow: hidden;
 }
 
-.player-box:hover {
+.playerBox:hover {
   background-color: #332f31;
   cursor: pointer;
 }
-
-.player-name{
-  position: relative;
-  top: 16vw;
-  left: 18vw;
+.jerseyName{
   font-family: "Bebas Neue", "sans-serif";
   font-size: 2rem;
-  text-align: left;
+  position: absolute;
+  top: 30%;
+  left: 18.5%;
 }
+
+/*========================================================*/
+/* Player Slider Container */
+
+.sliderContainer{
+  font-family: "Roboto Condensed", "sans-serif";
+  background-image: url("/media/TeamPages/Playercard_Slide.png");
+  background-size: 100%;
+  animation-name: sliderAnimation;
+  animation-duration: 0.8s;
+  animation-timing-function: ease;
+  height: 100%;
+}
+.sliderName{
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+.sliderLine{
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 85px;
+  border: 1px solid white ;
+}
+.sliderRole{
+  position: absolute;
+  top: 25%;
+  right: 10%;
+}
+.sliderList{
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  list-style-type: none;
+  display: flex;
+}
+
 
 
 
 /*========================================================*/
+/* Animations */
 
+@keyframes sliderAnimation{
+  from{transform: translateX(300px);}
+  to{transform: translateX(0px);}
+}
+
+
+/*========================================================*/
+/* Player Socials */
+.youtubeElement:hover {
+  filter: brightness(0) saturate(100%) invert(19%) sepia(88%) saturate(7500%) hue-rotate(358deg) brightness(103%) contrast(120%);
+}
+.instagramElement:hover{
+  filter: brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5312%) hue-rotate(334deg) brightness(101%) contrast(106%);
+}
+.twitchElement:hover{
+  filter: brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1202%) hue-rotate(241deg) brightness(104%) contrast(101%);
+}
+.twitterElement:hover{
+  filter: brightness(0) saturate(100%) invert(72%) sepia(16%) saturate(5019%) hue-rotate(168deg) brightness(96%) contrast(90%);
+}
+.tiktokElement:hover{
+  filter: brightness(0) invert(0);
+}
+
+
+/*========================================================*/
+/* Team results */
 
 .collapsible{
   width: 100%;

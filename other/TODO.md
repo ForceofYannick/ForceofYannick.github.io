@@ -3,29 +3,24 @@
 ## Mobile 📱
 
 ### Index-Datei:
-- 📄 **Index-Split-Ergebnisse**: Ergebnisse auslesen und anzeigen.
-- 📜 **Appearance-Script** anpassen für das `h2`-Element im Cookie-Banner.
-- 🍪 **Cookie-Informationen**: Cookie-Hinweise und -Details anzeigen.
 - Casting Livestream wieder einblenden
 
 ### Team-Dateien:
 - 📄 **Dateinamen aktualisieren**: Teamseiten-Dateien umbenennen und auf den neuesten Stand bringen.
 - 🐞 **Bugfix Split-Ergebnisse**:
   - **Problem**: Beim Start im **Dark Mode** wird beim Wechsel in den Light Mode und anschließendem `F5`-Drücken das Tabelleninnere weiterhin dunkel angezeigt.
-- 🔧 **Styling-Problem**: Der **Summer '22 Split** ragt manchmal aus dem Tabellenkasten heraus.
+( 🔧 **Styling-Problem**: Der **Summer '22 Split** ragt manchmal aus dem Tabellenkasten heraus.)
 - 🎨 **Design-Anpassung**: Hintergrund der Spielerkarten ändern (Siehe Layout im DC Kanal).
-- 🖼️ **Teamlogo hinzufügen**: Teamlogo auf der Teamseite einfügen.
+- 🖼️ **Teamlogo hinzufügen**: Teamlogo auf der Teamseite einfügen. (Tamino nach Logos fragen)
 - 📜 **Team-Infos ergänzen**: Informationen wie Gründungsdatum, Gründer und Motivation zur Teamgründung hinzufügen.
 
 ### Cookie-Banner:
 - 📜 Datenschutzerklärung verlinken.
   - Datenschutzerklärungsseite erstellen
-- ⚖️ Impressum verlinken.
+- Nach reload und cookie banner erneut anzeigen speichert es die cookie einstellungen nicht
 
 ### Sonstiges:
-- 🍪 **Cookie-Abfrage**: Auf jeder Seite einbauen, falls man vorher noch nie auf der Index-Seite war.
-- 🔒 **Appearance-Script cookie-sicher machen**.
-- 📜 Datenschutzerklärung hinzufügen.
+- 📜 Datenschutzerklärung hinzufügen. => Cookie einstellungen verändern button hinzufügen
 
 ---
 
