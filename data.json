@@ -1,0 +1,51 @@
+{
+  "Teams": {
+    "ibts": {
+      "Players": {
+        "yannick": {
+          "discord-id": "332847436471074827",
+          "roles": "Dev",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/ForceOfYannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibts"
+        },
+        "dirk": {
+          "discord-id": "-",
+          "roles": "-",
+          "instagram": "-",
+          "tiktok": "-",
+          "twitter": "-",
+          "twitch": "-",
+          "youtube": "-",
+          "team": "ibts"
+        }
+      },
+      "Results": {}
+    }
+  },
+  "Unsorted": {
+    "dave": {
+      "discord-id": "-",
+      "roles": "-",
+      "instagram": "-",
+      "tiktok": "-",
+      "twitter": "-",
+      "twitch": "-",
+      "youtube": "-",
+      "team": "-"
+    },
+    "tamino": {
+      "discord-id": "-",
+      "roles": "-",
+      "instagram": "-",
+      "tiktok": "-",
+      "twitter": "-",
+      "twitch": "-",
+      "youtube": "-",
+      "team": "-"
+    }
+  }
+}

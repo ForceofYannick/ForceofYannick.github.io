@@ -1,0 +1,25 @@
+{
+  "name": "ibtc-discord-bot",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "start": "nodemon --ignore '*.json' src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ForceofYannick/IBTC-Discord-Bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ForceofYannick/IBTC-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/ForceofYannick/IBTC-Discord-Bot#readme",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
