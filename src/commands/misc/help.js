@@ -40,7 +40,7 @@ module.exports = {
             { name: '🏆 Team Befehle 🏆', value: ' ', inline: false },
             { name: '`/createteam [Team name] {player 1} {player 2} {player 3} {player 4} {player 5} {player 6} {player 7} {player 8} {player 9} {player 10}`', value: 'Erstellt ein Team mit bis zu 10 Spieler (durch Spielereditierung können auch mehr Spieler in einem Team sein)', inline: false },
             { name: '`/editteamname [Current team name] [New team name]`', value: 'Ändert einen Teamnamen', inline: false },
-            { name: '`/deleteteam [Team name]`', value: 'Löscht ein Team', inline: false },
+            { name: '`/deleteteam [Team name]`', value: 'Löscht ein Team, aber nicht die spieler darin', inline: false },
             { name: '`/getteam [Team name]`', value: 'Zeigt eine ausfühliche Teamübersicht an', inline: false },
             //{ name: '\u200B', value: '\u200B' }, // visual spacing
             //{ name: '`/addteamresults [Team name] [Split] {Calibration phase} {Group phase} {Playoffs}`', value: 'Adds split results for a team.', inline: false },
