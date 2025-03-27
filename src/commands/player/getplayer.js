@@ -46,7 +46,7 @@ module.exports = {
 
 
         // prepare data for embed
-        let discordID, activeTeam, roles, instagram, tiktok, twitter, twitch, youtube = "-";
+        let discordID, activeTeam, mainRole, orgaRole1, orgaRole2, instagram, tiktok, twitter, twitch, youtube = "-";
 
         let playerFound = false;
 
@@ -63,12 +63,15 @@ module.exports = {
                 // update prepared data
                 discordID = player['discord-id'];
                 activeTeam = player['team'];
-                roles = player['roles'];
+                mainRole = player['main-role'];
+                orgaRole1 = player['orga-role-1'];
+                orgaRole2 = player['orga-role-2'];
                 instagram = player['instagram'];
                 tiktok = player['tiktok'];
                 twitter = player['twitter'];
                 twitch = player['twitch'];
                 youtube = player['youtube'];
+                break;
             }
         }
         // if player not found yet
@@ -86,12 +89,15 @@ module.exports = {
                     // update prepared data
                     discordID = jsonData.Unsorted[player]['discord-id'];
                     activeTeam = jsonData.Unsorted[player]['team'];
-                    roles = jsonData.Unsorted[player]['roles'];
+                    mainRole = jsonData.Unsorted[player]['main-role'];
+                    orgaRole1 = jsonData.Unsorted[player]['orga-role-1'];
+                    orgaRole2 = jsonData.Unsorted[player]['orga-role-2'];
                     instagram = jsonData.Unsorted[player]['instagram'];
                     tiktok = jsonData.Unsorted[player]['tiktok'];
                     twitter = jsonData.Unsorted[player]['twitter'];
                     twitch = jsonData.Unsorted[player]['twitch'];
                     youtube = jsonData.Unsorted[player]['youtube'];
+                    break;
                 }
             }
         }
@@ -103,6 +109,9 @@ module.exports = {
             return;
         }
 
+        // filter roles to prevent bullet point creation in embed
+        const roles =[mainRole, orgaRole1, orgaRole2].filter(role => role !== "-");
+
 
         // construct embed
         const embed = new EmbedBuilder()
@@ -110,8 +119,8 @@ module.exports = {
             .setTitle(`${playerName}`)
             .addFields(
                 { name: 'Discord Name', value: discordID === '-' ? discordID : `<@${discordID}>` },
-                { name: 'Team', value: `${activeTeam}` },
-                { name: 'Roles', value: `${roles}` },
+                { name: 'Team', value: activeTeam },
+                { name: 'Roles', value: roles.length > 0 ? roles.join(" / ") : "-" },
                 { name: 'Instagram', value: instagram === '-' ? instagram : `[Instagram](${instagram})`, inline: true },
                 { name: 'TikTok', value: tiktok === '-' ? tiktok : `[TikTok](${tiktok})`, inline: true },
                 { name: 'Twitter', value: twitter === '-' ? twitter : `[Twitter](${twitter})`, inline: true },

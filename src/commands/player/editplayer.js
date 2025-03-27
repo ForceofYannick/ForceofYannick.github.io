@@ -31,11 +31,40 @@ module.exports = {
             required: false,
         },
         {
-            name: "roles",
-            description: "The player roles",
+            name: "main-role",
+            description: "The player role in LoL",
             type: ApplicationCommandOptionType.String,
+            choices:[
+              {name: "top", value: "top"},
+              {name: "mid", value: "mid"},
+              {name: "sup", value: "sup"},
+              {name: "jgl", value: "jgl"},
+              {name: "adc", value: "adc"},
+            ],
             required: false,
-        },
+          },
+          {
+          name: "orga-role-1",
+          description: "The player role in IBTC eSports",
+          type: ApplicationCommandOptionType.String,
+          choices:[
+            {name: "team-leader", value: "team-leader"},
+            {name: "captain", value: "captain"},
+            {name: "coach", value: "coach"},
+          ],
+          required: false,
+          },
+          {
+            name: "orga-role-2",
+            description: "The player role in IBTC eSports",
+            type: ApplicationCommandOptionType.String,
+            choices:[
+              {name: "team-leader", value: "team-leader"},
+              {name: "captain", value: "captain"},
+              {name: "coach", value: "coach"},
+            ],
+            required: false,
+            },
         {
             name: "instagram",
             description: "The player's Instagram url",
@@ -524,7 +553,7 @@ module.exports = {
 
         // get player data
          playerData = findPlayer(playerName);
-        let discordID, team, roles, instagram, tiktok, twitter, twitch, youtube;
+        let discordID, team, mainRole, orgaRole1, orgaRole2, instagram, tiktok, twitter, twitch, youtube;
 
         if (!playerData) {
             console.error(`❌ Spieler ${playerName} nicht gefunden!`);
@@ -533,7 +562,9 @@ module.exports = {
         } else {
             discordID = playerData['discord-id'];
             team = playerData['team'];
-            roles = playerData['roles'];
+            mainRole = playerData['main-role'];
+            orgaRole1 = playerData['orga-role-1'];
+            orgaRole2 = playerData['orga-role-2'];
             instagram = playerData['instagram'];
             tiktok = playerData['tiktok'];
             twitter = playerData['twitter'];
@@ -547,14 +578,17 @@ module.exports = {
 
             console.log("✅ Datei erfolgreich gespeichert!");
 
+           // filter roles to prevent bullet point creation in embed
+            const roles =[mainRole, orgaRole1, orgaRole2].filter(role => role !== "-");
+
             // Create embed message
             const embed = new EmbedBuilder()
                 .setColor(0xFFFF00)
                 .setTitle(`🔄 ${playerName}`)
                 .addFields(
                     { name: 'Discord Name', value: discordID === '-' ? discordID : `<@${discordID}>` },
-                    { name: 'Team', value: `${team}` },
-                    { name: 'Roles', value: `${roles}` },
+                    { name: 'Team', value: team },
+                    { name: 'Roles', value: roles.length > 0 ? roles.join(" / ") : "-" },
                     { name: 'Instagram', value: instagram === '-' ? instagram : `[Instagram](${instagram})`, inline: true },
                     { name: 'TikTok', value: tiktok === '-' ? tiktok : `[TikTok](${tiktok})`, inline: true },
                     { name: 'Twitter', value: twitter === '-' ? twitter : `[Twitter](${twitter})`, inline: true },
@@ -563,7 +597,7 @@ module.exports = {
                 );
 
             // send delayed discord reply
-            interaction.channel.send("test");
+            //interaction.channel.send("test");
             await interaction.editReply({ embeds: [embed] });
             
         } catch (err) {

@@ -29,11 +29,40 @@ module.exports = {
       required: false,
     },
     {
-      name: "roles",
-      description: "The player roles",
+      name: "main-role",
+      description: "The player role in LoL",
       type: ApplicationCommandOptionType.String,
+      choices:[
+        {name: "top", value: "top"},
+        {name: "mid", value: "mid"},
+        {name: "sup", value: "sup"},
+        {name: "jgl", value: "jgl"},
+        {name: "adc", value: "adc"},
+      ],
       required: false,
     },
+    {
+    name: "orga-role-1",
+    description: "The player role in IBTC eSports",
+    type: ApplicationCommandOptionType.String,
+    choices:[
+      {name: "team-leader", value: "team-leader"},
+      {name: "captain", value: "captain"},
+      {name: "coach", value: "coach"},
+    ],
+    required: false,
+    },
+    {
+      name: "orga-role-2",
+      description: "The player role in IBTC eSports",
+      type: ApplicationCommandOptionType.String,
+      choices:[
+        {name: "team-leader", value: "team-leader"},
+        {name: "captain", value: "captain"},
+        {name: "coach", value: "coach"},
+      ],
+      required: false,
+      },
     {
       name: "instagram",
       description: "The players instragram url",
@@ -81,7 +110,9 @@ module.exports = {
           // get all inputs
           const playerName = interaction.options.get('player-name').value.toLowerCase();
           const discordID = (interaction.options.get('discord-id')) ? interaction.options.get('discord-id').value : "-";
-          const roles = (interaction.options.get('roles')) ? interaction.options.get('roles').value : "-";
+          const mainRole = (interaction.options.get('main-role')) ? interaction.options.get('main-role').value : "-";
+          const orgaRole1 = (interaction.options.get('orga-role-1')) ? interaction.options.get('orga-role-1').value : "-";
+          const orgaRole2 = (interaction.options.get('orga-role-2')) ? interaction.options.get('orga-role-2').value : "-";
           const instagram = (interaction.options.get('instagram')) ? interaction.options.get('instagram').value : "-";
           const tiktok = (interaction.options.get('tiktok')) ? interaction.options.get('tiktok').value : "-";
           const twitter = (interaction.options.get('twitter')) ? interaction.options.get('twitter').value : "-";
@@ -132,7 +163,9 @@ module.exports = {
         // create player in corresponding team with given inputs
         jsonData.Teams[`${team}`].Players[`${playerName}`] = {
           "discord-id": discordID,
-          "roles": roles,
+          "main-role": mainRole,
+          "orga-role-1": orgaRole1,
+          "orga-role-2": orgaRole2,
           "instagram": instagram,
           "tiktok": tiktok,
           "twitter": twitter,
@@ -151,7 +184,9 @@ module.exports = {
            // create player in 'Unsorted' section
            jsonData.Unsorted[`${playerName}`] = {
              "discord-id": discordID,
-             "roles": roles,
+             "main-role": mainRole,
+             "orga-role-1": orgaRole1,
+             "orga-role-2": orgaRole2,
              "instagram": instagram,
              "tiktok": tiktok,
              "twitter": twitter,
@@ -168,7 +203,9 @@ module.exports = {
           // create player in 'Unsorted' section
           jsonData.Unsorted[`${playerName}`] = {
             "discord-id": discordID,
-            "roles": roles,
+            "main-role": mainRole,
+            "orga-role-1": orgaRole1,
+            "orga-role-2": orgaRole2,
             "instagram": instagram,
             "tiktok": tiktok,
             "twitter": twitter,
@@ -187,6 +224,8 @@ module.exports = {
           }
       });
 
+      // filter roles to prevent bullet point creation in embed
+      const roles =[mainRole, orgaRole1, orgaRole2].filter(role => role !== "-");
 
       // construct embed for discord reply
     const embed = new EmbedBuilder()
@@ -194,8 +233,8 @@ module.exports = {
       .setTitle(`${playerName} wurde erstellt`)
       .addFields(
         { name: 'Discord Name', value: discordID == '-' ? discordID : `<@${discordID}>` },
-        { name: 'Team', value: `${team}` },
-        { name: 'Roles', value: `${roles}` },
+        { name: 'Team', value: team },
+        { name: 'Roles', value: roles.length > 0 ? roles.join(" / ") : "-" },
         { name: 'Instagram', value: instagram == '-' ? instagram : `[Instagram](${instagram})`, inline: true },
         { name: 'TikTok', value: tiktok == '-' ? tiktok : `[TikTok](${tiktok})`, inline: true },
         { name: 'Twitter', value: twitter == '-' ? twitter : `[Twitter](${twitter})`, inline: true },

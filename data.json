@@ -1,6 +1,35 @@
 {
   "Teams": {
+    "ibtc": {
+      "Players": {
+        "force_of_yannick": {
+          "discord-id": "332847436471074827",
+          "main-role": "-",
+          "orga-role-1": "-",
+          "orga-role-2": "-",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/ForceOfYannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibtc"
+        }
+      },
+      "Results": {}
+    }
   },
   "Unsorted": {
+    "test": {
+      "discord-id": "-",
+      "main-role": "-",
+      "orga-role-1": "-",
+      "orga-role-2": "-",
+      "instagram": "-",
+      "tiktok": "-",
+      "twitter": "-",
+      "twitch": "-",
+      "youtube": "-",
+      "team": "-"
+    }
   }
 }

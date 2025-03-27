@@ -11,7 +11,7 @@ const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'getunsortedplayers',
-    description: 'Displays all unsorted players!',
+    description: '📜 Displays all unsorted players!',
     testOnly: true,
 
     callback: async (client, interaction) => {

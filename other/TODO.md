@@ -1,3 +1,5 @@
+- Website auf neues JSON format abändern
+
 # 🛠️ Projektübersicht: Mobile & Desktop
 
 ## 📱 Mobile

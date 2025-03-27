@@ -11,7 +11,7 @@ const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'getallteams',
-    description: 'Displays all teams!',
+    description: '📜 Displays all teams!',
     testOnly: true,
 
     callback: async (client, interaction) => {

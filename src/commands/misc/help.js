@@ -8,58 +8,145 @@ module.exports = {
     testOnly: true,
 
     //deleted: false,
-  
+
     callback: (client, interaction) => {
 
-        
-        const embed = new EmbedBuilder()
-        .setColor(0xFFFF80)
-        .setTitle('📜 Befehlsübersicht')
-        //.setURL('https://discord.js.org/')
-        //.setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
-        .setDescription('Unten aufgeführ ist die Liste aller Befehle und ihren anzugebenden Parametern.\n\n**Benötigte Parameter sind gekenzeichnet durch** `[ ... ]`\n**Optionale Parameter sind gekenzeichnet durch** `{ ... }`')
-        //.setThumbnail('https://i.imgur.com/AfFp7pu.png')
-    
-        .addFields(
-            { name: '\u200B', value: '\u200B' }, // visual spacing
-            { name: '⚠️ WARNUNG ⚠️', value: 'Bisher gibt es keine zusätzlichen Bestätigungsfragen. Passt auf, bei den Sachen die ihr angebt.', inline: false },
-        )
-        
-        .addFields(
-            { name: '\u200B', value: '\u200B' }, // visual spacing
-            { name: '⚔️ Spieler Befehle ⚔️', value: '', inline: false },
-            { name: '`/createplayer [Player name] {Discord ID} {Team} {Roles} {Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}`', value: 'Erstellt einen neuen Spieler', inline: false },
-            { name: '`/editplayer [Player name] {Discord ID} {Team} {Roles} {Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}`', value: 'Editiert beliebige Spieler Informationen', inline: false },
-            { name: '`/deleteplayer [Player name]`', value: 'Löscht einen Spieler', inline: false },
-            { name: '`/getplayer [Player name]`', value: 'Zeigt eine ausführliche Spielerübersicht an', inline: false },
-        )
-    
-        .addFields(
-            { name: '\u200B', value: '\u200B' }, // visual spacing
-    
-            { name: '🏆 Team Befehle 🏆', value: ' ', inline: false },
-            { name: '`/createteam [Team name] {player 1} {player 2} {player 3} {player 4} {player 5} {player 6} {player 7} {player 8} {player 9} {player 10}`', value: 'Erstellt ein Team mit bis zu 10 Spieler (durch Spielereditierung können auch mehr Spieler in einem Team sein)', inline: false },
-            { name: '`/editteamname [Current team name] [New team name]`', value: 'Ändert einen Teamnamen', inline: false },
-            { name: '`/deleteteam [Team name]`', value: 'Löscht ein Team, aber nicht die spieler darin', inline: false },
-            { name: '`/getteam [Team name]`', value: 'Zeigt eine ausfühliche Teamübersicht an', inline: false },
-            //{ name: '\u200B', value: '\u200B' }, // visual spacing
-            //{ name: '`/addteamresults [Team name] [Split] {Calibration phase} {Group phase} {Playoffs}`', value: 'Adds split results for a team.', inline: false },
-            //{ name: '`/editteamresults [Team name] [Split] {Calibration phase} {Group phase} {Playoffs}`', value: 'Edits split details.', inline: false },
-            //{ name: '`/removeteamresults [Team name] [Split] {Calibration phase} {Group phase} {Playoffs}`', value: 'Removes split results. \n- **Specific part**: Provide split and part to remove\n- **Entire split**: Leave optional options empty', inline: false }
-        )
-    
-        .addFields(
-            { name: '\u200B', value: '\u200B' }, // visual spacing
-    
-            { name: '🛠️ Sonstige Befehle 🛠️', value: '', inline: false },
-            { name: '`/help`', value: 'Zeigt diese Übersicht', inline: false },
-            { name: '`/getunsortedplayers`', value: 'Zeigt alle Spieler an, die sich in keinem Team befinden', inline: false },
-            { name: '`/getallteams`', value: 'Zeigt alle Teams an', inline: false }
-        )
-    
-        //.setImage('https://i.imgur.com/AfFp7pu.png')
-        //.setTimestamp()
-        //.setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
-         interaction.reply({ embeds: [embed]});
+        // first embed
+        const embed1 = new EmbedBuilder()
+            .setColor(0xFFFF80)
+            .setTitle('📜 Befehlsübersicht')
+            .setDescription(
+                'Unten aufgeführt ist die Liste aller Befehle und ihren anzugebenden Parametern.\n\n' +
+                '**Benötigte Parameter sind gekennzeichnet durch** `[ ... ]`\n' +
+                '**Optionale Parameter sind gekennzeichnet durch** `{ ... }`'
+            )
+
+            .addFields(
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '⚠️ WARNUNG ⚠️', value: 'Bisher gibt es keine zusätzlichen Bestätigungsfragen. Passt auf, bei den Sachen die ihr angebt.', inline: false },
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '⚙️ Fehlermeldungen und Feedback ⚙️', value: 'Falls Fehler vorkommen oder Bedarf für Feedback vorhanden ist, gerne an <@332847436471074827> senden oder <@279986518309732352> darüber informieren.', inline: false },
+            )
+
+            .addFields(
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '⚔️ Spieler Befehle ⚔️', value: '\u200B', inline: false },
+                {
+                    name: '`/createplayer`',
+                    value: '```/createplayer [Player name] {Discord ID} {Team}\n' +
+                        '{LoL Role} {Orga Role 1} {Orga Role 2}\n' +
+                        '{Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}```\n' +
+                        'Erstellt einen Spieler mit dem angegebenen Namen und anderen optionalen Informationen im angegebenen Team, sofern das Team existiert. Wenn kein Team angegeben wird oder das angegebene Team nicht existiert, wird der Spieler in der Kategorie "Unsorted" gespeichert.',
+                    inline: false
+                },
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                {
+                    name: '`/editplayer`',
+                    value: '```/editplayer [Player name] {New player name} {Discord ID} {Team}\n' +
+                        '{LoL Role} {Orga Role 1} {Orga Role 2}\n' +
+                        '{Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}```\n' +
+                        'Editiert beliebige angegebene Spielerinformationen.\n' +
+                        'Beachte für die Optionen `New player name` und `Team`:\n' +
+                        '- Wird nur ein neuer Name angegeben, wird der Name des Spielers aktualisiert.\n' +
+                        '- Wird nur ein neues Team angegeben, wird der Spieler in das neue Team verschoben.\n' +
+                        '- Wird "no team" als Team angegeben, wird der Spieler aus dem aktuellen Team entfernt und in die Kategorie "Unsorted" verschoben.\n' +
+                        '- Werden sowohl ein neuer Name als auch ein neues Team angegeben, wird der Spieler mit dem neuen Namen in das neue Team verschoben. Wenn "no team" als Team angegeben wird, wird der Spieler mit dem neuen Namen in die "Unsorted"-Kategorie verschoben.',
+                    inline: false
+                },
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '`/deleteplayer [Player name]`', value: 'Löscht einen Spieler.', inline: false },
+                { name: '`/getplayer [Player name]`', value: 'Zeigt eine ausführliche Spielerübersicht an.', inline: false },
+                { name: '`/getunsortedplayers`', value: 'Zeigt alle Spieler an, die sich in keinem Team befinden.', inline: false },
+            )
+
+            .addFields(
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '🏆 Team Befehle 🏆', value: '\u200B', inline: false },
+                {
+                    name: '`/createteam`',
+                    value: '```/createteam [Team name] {player 1} {player 2} ... {player 10}```\n' +
+                        'Erstellt ein Team mit dem angegebenen Namen und optional bis zu 10 Spielern. Wenn ein übergebener Spieler nicht gefunden wird, wird er ignoriert und das Team wird mit den gefundenen Spielern erstellt, die dann auch in das neue Team verschoben werden.\n(Durch individuelle Spielereditierung können auch mehr als 10 Spieler in einem Team sein)',
+                    inline: false
+                },
+                { name: '`/editteamname [Current team name] [New team name]`', value: 'Ändert den Teamnamen und aktualisiert alle darin enthaltenen Spieler, da diese ihren Teamnamen erneut speichern.', inline: false },
+                { name: '`/deleteteam [Team name]`', value: 'Löscht ein Team und verschiebt alle darin enthaltenen Spieler in die Kategorie "Unsorted".', inline: false },
+                { name: '`/getteam [Team name]`', value: 'Zeigt eine ausführliche Teamübersicht an.', inline: false },
+                { name: '`/getallteams`', value: 'Zeigt alle Teams an.', inline: false },
+            );
+
+
+        // second embed
+        const embed2 = new EmbedBuilder()
+            .setColor(0xFFFF80)
+            .addFields(
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '🚧 Work In Progress 🚧', value: '\u200B', inline: false },
+                {
+                    name: '`/addteamresults`',
+                    value: '```/addteamresults [Team name] [Split] {Calibration phase}\n' +
+                        '{Group phase} {Playoffs}```\n' +
+                        'Fügt Split-Ergebnisse für ein Team hinzu.',
+                    inline: false
+                },
+                {
+                    name: '`/editteamresults`',
+                    value: '```/editteamresults [Team name] [Split] {Calibration phase}\n' +
+                        '{Group phase} {Playoffs}```\n' +
+                        'Bearbeitet Split-Ergebnisse.',
+                    inline: false
+                },
+                {
+                    name: '`/removeteamresults`',
+                    value: '```/removeteamresults [Team name] [Split] {Calibration phase}\n' +
+                        '{Group phase} {Playoffs}```\n' +
+                        'Entfernt Split-Ergebnisse.\n' +
+                        '- **Bestimmter Teil**: Split und Part angeben.\n' +
+                        '- **Gesamter Split**: Optionale Felder leer lassen.',
+                    inline: false
+                },
+            )
+
+            .addFields(
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '🛠️ Sonstige Befehle 🛠️', value: '\u200B', inline: false },
+                { name: '`/help`', value: 'Zeigt diese Übersicht.', inline: false },
+            )
+
+            .addFields(
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: '📘 Slash-Befehl Nutzung 📘', value: '\u200B', inline: false },
+                {
+                    name: '1. Befehl eingeben', value:
+                        'Gib den `/` Befehl in das Eingabefeld ein, um ein Fenster zu öffnen, in dem du die verfügbaren Befehle siehst.\n\n',
+                    inline: false
+                },
+                {
+                    name: '2. Befehlsübersicht', value:
+                        'Am linken Rand wird das Profilbild des Bots angezeigt. Wenn du darauf klickst, siehst du alle verfügbaren Befehle.\n' +
+                        'Wenn du mit der Maus über einen Befehl fährst, werden die Pflichtfelder `(schwarz hinterlegt)` sowie, falls vorhanden, optionale Felder mit einem "+..." angezeigt.\n' +
+                        'Wenn du mit der Maus über das "+..." fährst, erscheinen alle optionalen Werte.\n\n',
+                    inline: false
+                },
+                {
+                    name: '3. Befehl auswählen', value:
+                        'Du kannst entweder auf einen Befehl klicken oder ihn direkt eingeben.\n\n',
+                    inline: false
+                },
+                {
+                    name: '4. Neue Optionen hinzufügen', value:
+                        'Um eine neue Option hinzuzufügen, klicke auf das "+..." oder drücke die `Tab`-Taste.\n' +
+                        'Es öffnet sich ein Fenster, in dem du alle Optionen sehen kannst, die du entweder per Klick oder durch Eingabe des Optionsnamens (gefolgt von ":") hinzufügen kannst.\n\n',
+                    inline: false
+                },
+                {
+                    name: '5. Fehlerhafte Eingaben', value:
+                        'Wenn etwas rot umrandet wird, bedeutet dies, dass entweder nichts oder etwas Falsches eingegeben wurde. Bei Rollen kann nur der vordefinierte Wert eingegeben werden, der angezeigt wird.',
+                    inline: false
+                }
+            );
+
+
+
+        interaction.reply({ embeds: [embed1, embed2] });
     },
-  };
+};
