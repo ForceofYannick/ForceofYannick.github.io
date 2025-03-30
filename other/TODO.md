@@ -55,11 +55,6 @@
 
 ## 🤖 Discord Bot
 
-- 🏗️ **Befehl um Team zu erstellen**
-- ➕ **Befehl um Spieler zu Team hinzuzufügen**
-- ❌ **Befehl um Spieler aus Team zu löschen**
-- 🔄 **Befehl um Spieler von einem Team zum anderen zu transferieren**
-- ✏️ **Befehl um Spieler bearbeiten zu können** *(Name, Rolle, Socials)*
 - 🏆 **Befehl um Spielergebnis für ein Team hinzuzufügen**
 - 🗑️ **Befehl um Spielergebnis für ein Team zu löschen**
 - 🔄 **Befehl um Spielergebnis für ein Team zu bearbeiten**

@@ -6,6 +6,20 @@ const getLocalCommands = require('../../utils/getLocalCommands');
 module.exports = async (client) => {
   try {
     const localCommands = getLocalCommands();
+
+ // Stelle sicher, dass client.commands existiert
+ if (!client.commands) {
+  const { Collection } = require('discord.js');
+  client.commands = new Collection();
+}
+
+// Füge die lokalen Befehle in client.commands hinzu
+for (const localCommand of localCommands) {
+  client.commands.set(localCommand.name, localCommand);
+}
+
+
+
     const applicationCommands = await getApplicationCommands(client, testServer);
 
     // Lösche ALLE veralteten Befehle, die nicht mehr in den lokalen Dateien existieren

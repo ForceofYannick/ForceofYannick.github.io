@@ -32,7 +32,7 @@ module.exports = {
                 { name: '\u200B', value: '\u200B' }, // visual spacing
                 { name: '⚔️ Spieler Befehle ⚔️', value: '\u200B', inline: false },
                 {
-                    name: '`/createplayer`',
+                    name: '</createplayer:1347116333120225333>',
                     value: '```/createplayer [Player name] {Discord ID} {Team}\n' +
                         '{LoL Role} {Orga Role 1} {Orga Role 2}\n' +
                         '{Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}```\n' +
@@ -41,7 +41,7 @@ module.exports = {
                 },
                 { name: '\u200B', value: '\u200B' }, // visual spacing
                 {
-                    name: '`/editplayer`',
+                    name: '</editplayer:1350854498087604290>',
                     value: '```/editplayer [Player name] {New player name} {Discord ID} {Team}\n' +
                         '{LoL Role} {Orga Role 1} {Orga Role 2}\n' +
                         '{Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}```\n' +
@@ -54,24 +54,24 @@ module.exports = {
                     inline: false
                 },
                 { name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: '`/deleteplayer [Player name]`', value: 'Löscht einen Spieler.', inline: false },
-                { name: '`/getplayer [Player name]`', value: 'Zeigt eine ausführliche Spielerübersicht an.', inline: false },
-                { name: '`/getunsortedplayers`', value: 'Zeigt alle Spieler an, die sich in keinem Team befinden.', inline: false },
+                { name: '</deleteplayer:1350450447571222530> [Player name]', value: 'Löscht einen Spieler.', inline: false },
+                { name: '</getplayer:1350491394828927017> [Player name]', value: 'Zeigt eine ausführliche Spielerübersicht an.', inline: false },
+                { name: '</getunsortedplayers:1350836412106145794>', value: 'Zeigt alle Spieler an, die sich in keinem Team befinden.', inline: false },
             )
 
             .addFields(
                 { name: '\u200B', value: '\u200B' }, // visual spacing
                 { name: '🏆 Team Befehle 🏆', value: '\u200B', inline: false },
                 {
-                    name: '`/createteam`',
+                    name: '</createteam:1350243167139795054>',
                     value: '```/createteam [Team name] {player 1} {player 2} ... {player 10}```\n' +
                         'Erstellt ein Team mit dem angegebenen Namen und optional bis zu 10 Spielern. Wenn ein übergebener Spieler nicht gefunden wird, wird er ignoriert und das Team wird mit den gefundenen Spielern erstellt, die dann auch in das neue Team verschoben werden.\n(Durch individuelle Spielereditierung können auch mehr als 10 Spieler in einem Team sein)',
                     inline: false
                 },
-                { name: '`/editteamname [Current team name] [New team name]`', value: 'Ändert den Teamnamen und aktualisiert alle darin enthaltenen Spieler, da diese ihren Teamnamen erneut speichern.', inline: false },
-                { name: '`/deleteteam [Team name]`', value: 'Löscht ein Team und verschiebt alle darin enthaltenen Spieler in die Kategorie "Unsorted".', inline: false },
-                { name: '`/getteam [Team name]`', value: 'Zeigt eine ausführliche Teamübersicht an.', inline: false },
-                { name: '`/getallteams`', value: 'Zeigt alle Teams an.', inline: false },
+                { name: '</editteamname:1350828529897574493> [Current team name] [New team name]', value: 'Ändert den Teamnamen und aktualisiert alle darin enthaltenen Spieler, da diese ihren Teamnamen erneut speichern.', inline: false },
+                { name: '</deleteteam:1350481360434888755> [Team name]', value: 'Löscht ein Team und verschiebt alle darin enthaltenen Spieler in die Kategorie "Unsorted".', inline: false },
+                { name: '</getteam:1350834669288951829> [Team name]', value: 'Zeigt eine ausführliche Teamübersicht an.', inline: false },
+                { name: '</getallteams:1351877914840535061>', value: 'Zeigt alle Teams an.', inline: false },
             );
 
 
@@ -82,21 +82,21 @@ module.exports = {
                 { name: '\u200B', value: '\u200B' }, // visual spacing
                 { name: '🚧 Work In Progress 🚧', value: '\u200B', inline: false },
                 {
-                    name: '`/addteamresults`',
-                    value: '```/addteamresults [Team name] [Split] {Calibration phase}\n' +
+                    name: '</createteamresults:1355849349384638596>',
+                    value: '```/createteamresults [Team name] [Split] {Calibration phase}\n' +
                         '{Group phase} {Playoffs}```\n' +
                         'Fügt Split-Ergebnisse für ein Team hinzu.',
                     inline: false
                 },
                 {
-                    name: '`/editteamresults`',
+                    name: '</editteamresults:>',
                     value: '```/editteamresults [Team name] [Split] {Calibration phase}\n' +
                         '{Group phase} {Playoffs}```\n' +
                         'Bearbeitet Split-Ergebnisse.',
                     inline: false
                 },
                 {
-                    name: '`/removeteamresults`',
+                    name: '</removeteamresults:>',
                     value: '```/removeteamresults [Team name] [Split] {Calibration phase}\n' +
                         '{Group phase} {Playoffs}```\n' +
                         'Entfernt Split-Ergebnisse.\n' +
@@ -109,7 +109,7 @@ module.exports = {
             .addFields(
                 { name: '\u200B', value: '\u200B' }, // visual spacing
                 { name: '🛠️ Sonstige Befehle 🛠️', value: '\u200B', inline: false },
-                { name: '`/help`', value: 'Zeigt diese Übersicht.', inline: false },
+                { name: '</help:1351878644712214559>', value: 'Zeigt diese Übersicht.', inline: false },
             )
 
             .addFields(

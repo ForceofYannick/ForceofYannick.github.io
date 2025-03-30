@@ -172,8 +172,9 @@ module.exports = {
           * @returns The player name in lower case
           */
          function getPlayerName(){
-            console.log(`Get player name: ${interaction.options.get('player-name').value.toLowerCase()}`);
-            return interaction.options.get('player-name').value.toLowerCase();
+            const playerName = interaction.options.get('player-name').value.toLowerCase();
+            console.log(`~ Get player name: ${playerName}`);
+            return playerName;
          }
 
          /**
@@ -182,7 +183,7 @@ module.exports = {
           * @returns 
           */
          function getPlayerTeam(playerName){
-            console.log(`Get ${playerName} team: ${findPlayer(playerName).team}`);
+            console.log(`~ Get ${playerName} team: ${findPlayer(playerName).team}`);
             return findPlayer(playerName).team;
          }
          
@@ -193,10 +194,10 @@ module.exports = {
           */
          function getInputValue(optionName){
             if(interaction.options.get(optionName)){
-                console.log(`Get input value for ${optionName}: ${interaction.options.get(optionName).value.toLowerCase()}`);
+                console.log(`~ Get input value for ${optionName}: ${interaction.options.get(optionName).value.toLowerCase()}`);
             return interaction.options.get(optionName).value.toLowerCase();
         }
-        console.log(`Get input value for ${optionName}: not found -> null`);
+        console.log(`~ Get input value for ${optionName}: not found -> null`);
             return null;
          }
 
@@ -209,12 +210,12 @@ module.exports = {
             
                 // if option exists
                if(interaction.options.get(optionName)){
-                console.log(`Input ${optionName}: true`);
+                console.log(`~ Input ${optionName}: true`);
                 return true;
                }
             
             // option doesn't exist
-            console.log(`Input ${optionName}: false`);
+            console.log(`~ Input ${optionName}: false`);
             return false;
          }
          
@@ -224,22 +225,23 @@ module.exports = {
           * @returns 
           */
          function findPlayer(playerName){
+
             // search in Teams section
             for(const team in jsonData.Teams){
                 
                 // if player in team
-                if(jsonData.Teams[team].Players[playerName.toLowerCase()]){
-
+                if(jsonData.Teams[team].Players[playerName]){
+                    
                     // return player object
-                    return jsonData.Teams[team].Players[playerName.toLowerCase()];
+                    return jsonData.Teams[team].Players[playerName];
                 }
             }
 
             // if player in unsorted section
-            if(jsonData.Unsorted[playerName.toLowerCase()]){
+            if(jsonData.Unsorted[playerName]){
 
                 // return player object
-                return jsonData.Unsorted[playerName.toLowerCase()];
+                return jsonData.Unsorted[playerName];
             }
 
             missingPlayerError(playerName);
@@ -254,7 +256,7 @@ module.exports = {
          function createUnsortedPlayer(playerName, playerData){
             jsonData.Unsorted[playerName] = playerData; 
             jsonData.Unsorted[playerName].team = '-'; 
-            console.log(`Created ${playerName} in unsorted`);
+            console.log(`~ Created ${playerName} in unsorted`);
          }
 
          /**
@@ -276,7 +278,7 @@ module.exports = {
         
             jsonData.Teams[team].Players[playerName] = playerData;
             jsonData.Teams[team].Players[playerName].team = team;
-            console.log(`Created ${playerName} in ${team}`);
+            console.log(`~ Created ${playerName} in ${team}`);
         }
 
          /**
@@ -285,7 +287,7 @@ module.exports = {
           */
          function updatePlayerData(playerName){
             playerData = findPlayer(playerName);
-            console.log(`Updated ${playerName} data`);
+            console.log(`~ Updated ${playerName} data`);
          }
          
          /**
@@ -294,23 +296,23 @@ module.exports = {
           * @param {*} playerData 
           */
          function updatePlayerDetails(playerName, playerData){
-            console.log(`Update ${playerName} detail beginns`);
+            console.log(`~ Update ${playerName} detail beginns`);
             for (const playerDetail in playerData) {
                 if (input(playerDetail)) {
 
                     // Unsorted Player
                     if(getPlayerTeam(playerName) == '-'){
                         jsonData.Unsorted[playerName][playerDetail] = getInputValue(playerDetail);
-                        console.log(`Updated unsorted player detail`);
+                        console.log(`~ Updated unsorted player detail`);
                     }
                     // Team Player
                     else{
                         jsonData.Teams[getPlayerTeam(playerName)].Players[playerName][playerDetail] =  getInputValue(playerDetail);
-                        console.log(`Updated team player detail`);
+                        console.log(`~ Updated team player detail`);
                     }   
                 }
             }
-            console.log(`Completed ${playerName} detail update`);
+            console.log(`~ Completed ${playerName} detail update`);
          }
 
         
@@ -340,6 +342,8 @@ module.exports = {
         let playerName = getPlayerName();
         let playerTeam = getPlayerTeam(playerName);
         let playerData = findPlayer(playerName);
+
+        console.log(`========`);
 
     // Concept:
     
@@ -431,39 +435,48 @@ module.exports = {
 
                 // Unsorted players
                 if(getPlayerTeam(playerName) == '-'){
+                    console.log(`Player is Unsorted`);
                     
+                    console.log(`Create Unsorted player...`);
                     createUnsortedPlayer(newPlayerName, playerData);
 
                     try {
+                        console.log(`Delete Unsorted player...`);
                         deleteUnsortedPlayer(playerName);
                     } catch (error) {
                         console.error(error.message);
-                        await interaction.editReply(error.message);
+                        await interaction.editReply(`Unsorted player deletion error: ${error.message}`);
                         return;
                     }
     
+                    console.log(`Update unsorted player data...`);
                     updatePlayerData(newPlayerName);
 
                     playerName = newPlayerName;
                 }
                 // Team players
                 else{
+                    console.log(`Player is Teamplayer`);
                     try {
-                        createTeamPlayer(newPlayerName, playerData, getPlayerTeam());
+                        console.log(`Create Teamplayer...`);
+                        const playerTeam = getPlayerTeam(playerName);
+                        console.log(`...player team: ${playerTeam}`);
+                        createTeamPlayer(newPlayerName, playerData, playerTeam);
                     } catch (error) {
                         console.error(error.message);
-                        await interaction.editReply(error.message);
+                        await interaction.editReply(`Teamplayer creation error: ${error.message}`);
                         return;
                     }
 
                     try {
+                        console.log(`Delete Teamplayer...`);
                         deleteTeamPlayer(playerName, playerTeam);
                     } catch (error) {
                         console.error(error.message);
-                        await interaction.editReply(error.message);
+                        await interaction.editReply(`Teamplayer deletion error: ${error.message}`);
                         return;
                     }
-
+                    console.log(`Update team player data...`);
                     updatePlayerData(newPlayerName);
 
                     playerName = newPlayerName;
