@@ -1,140 +1,7 @@
 {
   "Teams": {
     "ibtc": {
-      "Players": {
-        "yannick": {
-          "discord-id": "332847436471074827",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "https://www.instagram.com/force_of_yannick",
-          "tiktok": "https://www.tiktok.com/@force_of_yannick",
-          "twitter": "https://x.com/ForceOfYannick",
-          "twitch": "https://www.twitch.tv/force_of_yannick",
-          "youtube": "https://www.youtube.com/force_of_yannick",
-          "team": "ibtc"
-        },
-        "ludwig": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig2": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig3": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig4": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig5": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig6": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig7": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig8": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig9": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        },
-        "ludwig10": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "ibtc"
-        }
-      },
+      "Players": {},
       "Results": {
         "spring'24": {
           "kaliphase": {
@@ -153,32 +20,7 @@
       }
     },
     "testing": {
-      "Players": {
-        "tamino": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "testing"
-        },
-        "tadl": {
-          "discord-id": "-",
-          "main-role": "-",
-          "orga-role-1": "-",
-          "orga-role-2": "-",
-          "instagram": "-",
-          "tiktok": "-",
-          "twitter": "-",
-          "twitch": "-",
-          "youtube": "-",
-          "team": "testing"
-        }
-      },
+      "Players": {},
       "Results": {
         "testsplit": {
           "kaliphase": {
@@ -211,18 +53,5 @@
       }
     }
   },
-  "Unsorted": {
-    "test": {
-      "discord-id": "-",
-      "main-role": "-",
-      "orga-role-1": "-",
-      "orga-role-2": "-",
-      "instagram": "-",
-      "tiktok": "-",
-      "twitter": "-",
-      "twitch": "-",
-      "youtube": "-",
-      "team": "-"
-    }
-  }
+  "Unsorted": {}
 }

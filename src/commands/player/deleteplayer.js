@@ -1,14 +1,14 @@
-//for json file stuff
 const fs = require("fs").promises;
 
-//for option type
-const {
-  ApplicationCommandOptionType,
-  PermissionFlagsBits,
-} = require('discord.js');
+const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+const { saveJSON } = require("../../utils/JSON/saveJSON");
+const { readJSON } = require("../../utils/JSON/readJSON");
+const { getPlayerFromJSON } = require('../../utils/JSON/getPlayerFromJSON');
+const { deletePlayerFromJSON } = require("../../utils/JSON/deletePlayerFromJSON");
 
-//for embed stuff
-const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
+const { Client, ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
+const { getInput } = require("../../utils/getInput");
+
 
 module.exports = {
   name: 'deleteplayer',
@@ -26,94 +26,59 @@ module.exports = {
   // deleted: Boolean,
 
   callback: async (client, interaction) => {
+    console.log('~ deleteplayer');
 
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
+    /*
+    1. Read JSON
+    2. Delete player
+    3. Save JSON
+    4. Print embed
+    */
 
-    // get input
-    const playerName = interaction.options.get('player-name').value.toLowerCase();
-    console.log(playerName);
-
-    // Read data json file
+    // 1.
     let jsonData;
-    let rawData;
-
     try {
-      rawData = await fs.readFile("data.json", "utf8");
-      jsonData = JSON.parse(rawData);
-
-    } catch (err) {
-      console.error("❌ Fehler beim Lesen:", err);
-      await interaction.editReply("❌ Fehler beim lesen der JSON-Datei!");
+      jsonData = await readJSON();
+    }
+    catch (err) {
+      await interaction.editReply(err.message);
       return;
     }
 
+    // 2.
+    let player = await getPlayerFromJSON(getInput(interaction,'player-name'));
+    if(player !== null){
 
-    // check all teams in 'Teams' section for player
-    for (const team in jsonData.Teams) {
-      console.log(`Team ${team}`);
-
-      // player is in a team
-      if (jsonData.Teams[team].Players[playerName]) {
-        console.log("player in team");
-
-        // remove player from team
-        delete jsonData.Teams[team].Players[playerName];
-
-        try {
-          await fs.writeFile("data.json", JSON.stringify(jsonData, null, 2));
-          console.log("✅ Datei erfolgreich gespeichert!");
-
-          // construct embed
-          const embed = new EmbedBuilder()
-            .setColor(0xFF2020)
-            .setTitle(`${playerName} wurde aus ${team} gelöscht`);
-
-          // reply 
-          await interaction.editReply({ embeds: [embed] });
-          return;
-        } catch (err) {
-          console.error("❌ Fehler beim Speichern:", err);
-          await interaction.editReply("❌ Fehler beim Speichern");
-          return;
-        }
-
-      }
-      console.log("Player not in team");
+    try {
+      deletePlayerFromJSON(jsonData, player);
+    }
+    catch (err) {
+      await interaction.editReply(err.message);
+      return;
     }
 
-    // player is not in teams section, check 'Unsorted' section
-    for (const player in jsonData.Unsorted) {
-
-      // player is in 'Unsorted'
-      if (jsonData.Unsorted[playerName]) {
-
-        // remove player from 'Unsorted' section
-        delete jsonData.Unsorted[playerName];
-
-        // save file, reply and stop
-        try {
-          await fs.writeFile("data.json", JSON.stringify(jsonData, null, 2));
-          console.log("✅ Datei erfolgreich gespeichert!");
-          // construct embed
-          const embed = new EmbedBuilder()
-            .setColor(0xFF2020)
-            .setTitle(`${playerName} wurde gelöscht`);
-
-          // reply
-          await interaction.editReply({ embeds: [embed] });
-          return;
-        } catch (err) {
-          console.error("❌ Fehler beim Speichern:", err);
-          await interaction.editReply("❌ Fehler beim Speichern");
-          return;
-        }
-      }
+    // 3.
+    try {
+      saveJSON(jsonData);
     }
+    catch (err) {
+      await interaction.editReply(err.message);
+      return;
+    }
+  }
+  else{
+    console.log(player);
+    await interaction.editReply(`❌ Spieler ${getInput(interaction,'player-name')} existiert nicht!`);
+    return;
+  }
 
-    // player not in data json file, error
-    console.error(`❌ Spieler ${playerName} nicht gefunden`);
-    await interaction.editReply(`❌ Spieler ${playerName} nicht gefunden`);
+    // 4.
+    const embed = constructPlayerEmbed('delete', player);
+
+    // send delayed discord reply
+    await interaction.editReply({ embeds: [embed] });
   },
 };

@@ -1,5 +1,9 @@
 const fs = require("fs").promises;
 
+const { getInput } = require('../../utils/getInput');
+const { createPlayerInJSON } = require('../../utils/createPlayerInJSON');
+const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
 
@@ -34,8 +38,8 @@ module.exports = {
 
 
         // get inputs
-        const currentTeamName = interaction.options.get('current-team-name').value.toLowerCase();
-        const newTeamName = interaction.options.get('new-team-name').value.toLowerCase();
+        const currentTeamName = getInput(interaction, 'current-team-name');
+        const newTeamName = getInput(interaction, 'new-team-name');
 
         // Read data json file
         let jsonData;
