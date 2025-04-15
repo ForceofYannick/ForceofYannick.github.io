@@ -1,6 +1,10 @@
 //for json file stuff
 const fs = require("fs").promises;
 
+const { getInput } = require('../../utils/getInput');
+const { createPlayerInJSON } = require('../../utils/createPlayerInJSON');
+const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+
 //for option type
 const {
     ApplicationCommandOptionType,
@@ -70,35 +74,17 @@ module.exports = {
         // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
-        // get the input value and return it in lowercase or return '-' if input not provided
-        function getInput(inputName){
-            if(interaction.options.get(inputName)){
-                // strings
-                if(interaction.options.get(inputName).type == 3){
-                    return interaction.options.get(inputName).value.toLowerCase();
-                }
-
-                // numbers
-                if(interaction.options.get(inputName).type == 10){
-                    return interaction.options.get(inputName).value;
-                }
-        }
-        else{
-            return '-';
-        }
-        }
-
         // get inputs
-        const teamName = getInput('team-name');
-        const splitName = getInput('split-name');
+        const teamName = getInput(interaction, 'team-name');
+        const splitName = getInput(interaction, 'split-name');
 
-        const caliphasegroup = getInput('kaliphase-group');
-        const groupphasegroup = getInput('groupphase-group');
-        const playoffgroup = getInput('playoff-group');
+        const caliphasegroup = getInput(interaction, 'kaliphase-group');
+        const groupphasegroup = getInput(interaction, 'groupphase-group');
+        const playoffgroup = getInput(interaction, 'playoff-group');
 
-        const caliphaseresult = getInput('kaliphase-result');
-        const groupphaseresult = getInput('groupphase-result');
-        const playoffresult = getInput('playoff-result');
+        const caliphaseresult = getInput(interaction, 'kaliphase-result');
+        const groupphaseresult = getInput(interaction, 'groupphase-result');
+        const playoffresult = getInput(interaction, 'playoff-result');
         
 
         

@@ -1,6 +1,10 @@
 //for json file stuff
 const fs = require("fs").promises;
 
+const { getInput } = require('../../src/utils/getInput');
+const { createPlayerInJSON } = require('../../utils/createPlayerInJSON');
+const { constructPlayerEmbed } = require("../../src/utils/constructPlayerEmbed");
+
 //for option type
 const {
     ApplicationCommandOptionType,
@@ -28,7 +32,7 @@ module.exports = {
         await interaction.deferReply();
 
         // get input
-        const teamName = interaction.options.get('team-name').value.toLowerCase();
+        const teamName = getInput(interaction, 'team-name');
 
         // Read data json file
         let jsonData;

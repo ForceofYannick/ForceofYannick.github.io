@@ -1,6 +1,10 @@
 //for json file stuff
 const fs = require("fs").promises;
 
+const { getInput } = require('../../utils/getInput');
+const { createPlayerInJSON } = require('../../utils/createPlayerInJSON');
+const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+
 //for embed stuff
 const { EmbedBuilder } = require('discord.js');
 
@@ -32,7 +36,7 @@ module.exports = {
 
 
     // get input
-    const teamName = interaction.options.get('team-name').value.toLowerCase();
+    const teamName = getInput(interaction, 'team-name');
 
     // Read data json file
     let jsonData;
