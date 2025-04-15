@@ -4,12 +4,12 @@
 $(document).ready(function() {
 
   // Header element of each team page convert to lowercase for json reading
-    var teamName = $('.landing-header').text().toLowerCase();
+    var teamNameHeader = $('.landing-header').text().toLowerCase();
 
     //results container to dump in results
     var resultsContainer = $('.teamPlayerContainers');
 
-    var filePath = `/teamJSON/${teamName}.json`;
+    var filePath = `/teamJSON/${teamNameHeader}.json`;
   
     fetch(filePath)
     .then(response => {
