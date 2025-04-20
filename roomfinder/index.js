@@ -18,6 +18,16 @@ const far=100;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
 
+window.addEventListener('resize', () => {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(w, h);
+});
+
 // Scene
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xCCCCC9);
