@@ -18,23 +18,22 @@ $(document).ready(function () {
     console.log("team parameter found: " + teamName);
 
     // JSON laden:
-    // Filepath for JSON
-    var filePath = `./data.json`;
 
     // Fetch JSON
-    await fetch(filePath)
+    await fetch("../data.json")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
       })
-      .then((parsedData) => {
+      .then((jsonData) => {
         // Save JSON content as array
-        const jsonData = Object.keys(parsedData);
+        
 
+        console.log(jsonData);
         //extract specific team from json or if team not found save null
-        const jsonTeam = null;
+        let jsonTeam = null;
         if (jsonData.Teams[teamName]) {
           jsonTeam = jsonData.Teams[teamName];
         } else {
@@ -45,7 +44,8 @@ $(document).ready(function () {
         // go through players and append a new player box for ever player
         var playersContainer = $(".teamPlayersContainer");
 
-        for (player in jsonData.Teams[teamName].Players) {
+        for (player in jsonTeam.Players) {
+          console.log(player);
           const playerName = Object.keys(player)[0]; //player name from jsons construct
           playersContainer.append(`
         <div id="player${playerName}"class="playerBox">
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
         // get team results container
         var resultsContainer = $('.teamResultsContainer');
-        const jsonTeamResults = jsonTeam[Results];
+        const jsonTeamResults = jsonTeam.Results;
 
         // go through all results in team and append a new table for each result
         for(result in jsonTeamResults){
@@ -119,4 +119,5 @@ $(document).ready(function () {
         console.error(`${teamName} JSON fetch error`, error);
       });
   }
+  loadTeamData();
 });
