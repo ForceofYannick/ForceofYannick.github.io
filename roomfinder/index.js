@@ -1,20 +1,20 @@
 import * as THREE from "three";
-import {OrbitControls} from "jsm/controls/OrbitControls.js";
+import { OrbitControls } from "jsm/controls/OrbitControls.js";
 import { createBuilding } from './utils.js';
 import { buildingsData } from "./buildingData.js";
 
 // Renderer
 const w = window.innerWidth;
 const h = window.innerHeight;
-const renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.setSize(w,h);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
 // Camera
 const fov = 75; //degrees
-const aspect = w/h;
+const aspect = w / h;
 const near = 0.1;
-const far=100;
+const far = 100;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
 
@@ -38,19 +38,30 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.03;
 
 // Startposition of camera
-camera.position.set(3,30,30);
-controls.target.set(-10,5,5);
+camera.position.set(3, 3, 30);
+controls.target.set(-10, 5, 5);
 controls.update();
+
+// make ground
+const groundGeometry = new THREE.PlaneGeometry(100, 100); // Breite, Tiefe
+const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.3, side: THREE.DoubleSide, depthWrite: false });
+const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+groundMesh.rotation.x = -Math.PI / 2;
+groundMesh.position.y = -4.5;
+scene.add(groundMesh);
+
+
+
 
 
 // Construct visual buildings
 const buildingArray = [];
 
 for (const data of buildingsData) {
-  const { name, floors, position, size } = data;
+  const { name, floors, position, size, groundLvlHeight } = data;
   const optionalX = size?.x;
   const optionalY = size?.y;
-  const { building } = createBuilding(name, floors, position, scene, optionalX, optionalY);
+  const { building } = createBuilding(name, floors, position, scene, groundLvlHeight, optionalX, optionalY);
   buildingArray.push(building);
 }
 
@@ -62,21 +73,21 @@ $(document).ready(() => {
     const inputRoom = $("#roomInput").val().trim().toUpperCase();
     let outputText = "";
     let roomFound = false;
-  
+
     // reset all floor colors
     for (const building of buildingArray) {
       for (const floor of building.getFloors()) {
         floor.getMaterial().color.set(0xC4D4DF); // basic color
       }
     }
-  
+
     // find and highlight matching room
     for (const building of buildingArray) {
       for (const floor of building.getFloors()) {
         for (const room of floor.getRooms()) {
           if (inputRoom === room.toUpperCase()) {
             floor.getMaterial().color.set(0xff0000);
-            outputText = `${building.getName()}-Bau ${floor.getName()}. Stock`;
+            outputText = `Gebäude ${building.getName()}, Stockwerk ${floor.getName()}`;
             console.log("✅", outputText);
             roomFound = true;
             break;
@@ -86,10 +97,10 @@ $(document).ready(() => {
       }
       if (roomFound) break;
     }
-  
+
     $("#outputElement").text(outputText || "Raum nicht gefunden");
   }
-  
+
   // make function global to work in index.html
   window.findRoom = findRoom;
 });
@@ -99,9 +110,9 @@ const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
 scene.add(hemiLight);
 
 // animate
-function animate(t = 0){
+function animate(t = 0) {
   requestAnimationFrame(animate);
-  
+
   renderer.render(scene, camera);
   controls.update();
 }
