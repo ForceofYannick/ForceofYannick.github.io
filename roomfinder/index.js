@@ -68,6 +68,17 @@ for (const data of buildingsData) {
 // ready function for jquery operators
 $(document).ready(() => {
 
+// enter key triggerer
+$("#roomInput").on("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();  // Verhindert das Absenden des Formulars
+    findRoom();  // Ruft die Funktion auf
+  }
+});
+
+
+
+
   // button onclick function
   function findRoom() {
     const inputRoom = $("#roomInput").val().trim().toUpperCase();
@@ -98,7 +109,7 @@ $(document).ready(() => {
       if (roomFound) break;
     }
 
-    $("#outputElement").text(outputText || "Raum nicht gefunden");
+    $("#outputElement").text(outputText || `Raum ${inputRoom} nicht gefunden`);
   }
 
   // make function global to work in index.html
