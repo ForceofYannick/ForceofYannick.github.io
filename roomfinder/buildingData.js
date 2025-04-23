@@ -1,4 +1,4 @@
-export const buildingsData = [
+export const buildingData = [
   {
     name: "A",
     floors: [
@@ -92,7 +92,7 @@ export const buildingsData = [
       { "name": "5.", "rooms": ["F7A17"] },
       { "name": "6.", "rooms": ["F8A18"] },
       { "name": "7.", "rooms": ["F9A19"] },
-      { "name": "8.", "rooms": ["F10A18"] },
+      { "name": "8.", "rooms": ["F11A18"] },
       { "name": "9.", "rooms": ["F11A18"] },
       { "name": "10.", "rooms": ["F12A18"] }
     ],
@@ -108,7 +108,7 @@ export const buildingsData = [
       { "name": "2.", "rooms": ["G3G01"] },
       { "name": "3.", "rooms": ["G4A14"] }
     ],
-    position: { x: -9, y: -2.5, z: -1 },
+    position: { x: -9, y: -2.5, z: 0 },
     size: { x: 4, y: 5 },
     groundLvlHeight: -2
   },
@@ -122,6 +122,15 @@ export const buildingsData = [
     ],
     position: { x: -4, y: -4, z: 10 },
     size: { x: 13, y: 10 },
+    groundLvlHeight: -0.5
+  },
+  {
+    name: "Bio",
+    floors: [
+      { "name": "EG", "rooms": ["N10", "N11"] }
+    ],
+    position: { x: -14, y: -4, z: -17 },
+    size: { x: 7, y: 7 },
     groundLvlHeight: -0.5
   }
 ];

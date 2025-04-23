@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
 import { createBuilding } from './utils.js';
-import { buildingsData } from "./buildingData.js";
+import { buildingData } from "./buildingData.js";
 
 // Renderer
 const w = window.innerWidth;
@@ -14,10 +14,11 @@ document.body.appendChild(renderer.domElement);
 const fov = 75; //degrees
 const aspect = w / h;
 const near = 0.1;
-const far = 100;
+const far = 200;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
 
+// Listen for window size to rescale the 3D window
 window.addEventListener('resize', () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
@@ -38,12 +39,12 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.03;
 
 // Startposition of camera
-camera.position.set(3, 3, 30);
+camera.position.set(9, 5, 30);
 controls.target.set(-10, 5, 5);
 controls.update();
 
-// make ground
-const groundGeometry = new THREE.PlaneGeometry(100, 100); // Breite, Tiefe
+// Make ground plane
+const groundGeometry = new THREE.PlaneGeometry(100, 100);
 const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.3, side: THREE.DoubleSide, depthWrite: false });
 const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
 groundMesh.rotation.x = -Math.PI / 2;
@@ -51,13 +52,10 @@ groundMesh.position.y = -4.5;
 scene.add(groundMesh);
 
 
-
-
-
 // Construct visual buildings
 const buildingArray = [];
 
-for (const data of buildingsData) {
+for (const data of buildingData) {
   const { name, floors, position, size, groundLvlHeight } = data;
   const optionalX = size?.x;
   const optionalY = size?.y;
@@ -65,34 +63,38 @@ for (const data of buildingsData) {
   buildingArray.push(building);
 }
 
-// ready function for jquery operators
+
+// Global vars for smooth transition to new target
+let smoothTarget = new THREE.Vector3();
+let targetTarget = new THREE.Vector3();
+
+// Ready function for jquery operators
 $(document).ready(() => {
 
-// enter key triggerer
-$("#roomInput").on("keydown", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();  // Verhindert das Absenden des Formulars
-    findRoom();  // Ruft die Funktion auf
-  }
-});
+  // Enter-key triggerer in html input field
+  $("#roomInput").on("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      findRoom();
+    }
+  });
 
-
-
-
-  // button onclick function
+  // Button onclick function for html
   function findRoom() {
+
+    // Get input room
     const inputRoom = $("#roomInput").val().trim().toUpperCase();
     let outputText = "";
     let roomFound = false;
 
-    // reset all floor colors
+    // Reset all floor colors
     for (const building of buildingArray) {
       for (const floor of building.getFloors()) {
         floor.getMaterial().color.set(0xC4D4DF); // basic color
       }
     }
 
-    // find and highlight matching room
+    // Find and highlight matching room, set building as new camera target
     for (const building of buildingArray) {
       for (const floor of building.getFloors()) {
         for (const room of floor.getRooms()) {
@@ -101,6 +103,14 @@ $("#roomInput").on("keydown", function(event) {
             outputText = `Gebäude ${building.getName()}, Stockwerk ${floor.getName()}`;
             console.log("✅", outputText);
             roomFound = true;
+
+            const data = buildingData.find(b => b.name === building.getName());
+
+            const targetX = data?.position?.x;
+            const targetY = data?.position?.y;
+            const targetZ = data?.position?.z;
+
+            targetTarget.set(targetX, targetY, targetZ);
             break;
           }
         }
@@ -112,7 +122,7 @@ $("#roomInput").on("keydown", function(event) {
     $("#outputElement").text(outputText || `Raum ${inputRoom} nicht gefunden`);
   }
 
-  // make function global to work in index.html
+  // Make findRoom function global to work in index.html
   window.findRoom = findRoom;
 });
 
@@ -120,13 +130,28 @@ $("#roomInput").on("keydown", function(event) {
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
 scene.add(hemiLight);
 
-// animate
+// Animate
 function animate(t = 0) {
   requestAnimationFrame(animate);
+  if (
+    Math.round(smoothTarget.x) !== Math.round(targetTarget.x) ||
+    Math.round(smoothTarget.y) !== Math.round(targetTarget.y) ||
+    Math.round(smoothTarget.z) !== Math.round(targetTarget.z)
+  ) {
+    swingToTarget();
+  }
+  controls.update();
 
   renderer.render(scene, camera);
-  controls.update();
+
+}
+/**
+ * Swings the camera smooth from the current point to a target point 
+ */
+function swingToTarget() {
+  smoothTarget.lerp(targetTarget, 0.05); // 5% approach per frame
+  controls.target.copy(smoothTarget);
 }
 
-// call animate function to work
+// Call animate function to work
 animate();
