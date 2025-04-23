@@ -4,11 +4,11 @@ import { Floor } from "./floor.js";
 export function createTextLabelPlane(message, scale = 1) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
-    canvas.width = 512;
-    canvas.height = 256;
+    canvas.width = 1920;
+    canvas.height = 1080;
 
     context.fillStyle = 'white';
-    context.font = 'bold 100px Arial';
+    context.font = 'bold 700px Arial';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(message, canvas.width / 2, canvas.height / 2);

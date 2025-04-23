@@ -43,9 +43,15 @@ camera.position.set(9, 5, 30);
 controls.target.set(-10, 5, 5);
 controls.update();
 
+<<<<<<< Updated upstream
 // Make ground plane
 const groundGeometry = new THREE.PlaneGeometry(100, 100);
 const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.3, side: THREE.DoubleSide, depthWrite: false });
+=======
+// make ground
+const groundGeometry = new THREE.PlaneGeometry(100, 100); // Breite, Tiefe
+const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.8, side: THREE.DoubleSide, depthWrite: false });
+>>>>>>> Stashed changes
 const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
 groundMesh.rotation.x = -Math.PI / 2;
 groundMesh.position.y = -4.5;
