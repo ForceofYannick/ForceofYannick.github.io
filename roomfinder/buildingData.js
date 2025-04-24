@@ -17,7 +17,6 @@ export const buildingData = [
       { "name": "13.", "rooms": ["13a34"] }
     ],
     position: { x: -15, y: 1, z: 12 },
-    size: { x: 5, y: 5 },
     groundLvlHeight: -5.5
   },
 
@@ -35,7 +34,7 @@ export const buildingData = [
       { "name": "9.", "rooms": ["a44", "a18"] },
       { "name": "10.", "rooms": ["p17", "p22", "p26", "p29", "p32", "a16", "a20", "a23", "a29", "a32", "a38", "r38"] }
     ],
-    position: { x: -14, y: -0.5, z: 3 },
+    position: { x: -14, y: -0.5, z: 2 },
     groundLvlHeight: -4
   },
 
@@ -69,7 +68,7 @@ export const buildingData = [
       { "name": "8.", "rooms": ["D7"] },
       { "name": "9.", "rooms": ["D7"] }
     ],
-    position: { x: 8, y: -1, z: 6 },
+    position: { x: 6, y: -1, z: 6 },
     groundLvlHeight: -3.5
   },
 
@@ -101,20 +100,21 @@ export const buildingData = [
       { "name": "2.", "rooms": ["F4"] },
     ],
     position: { x: -15, y: -3.5, z: 20 },
+    size: { x: 5, y: 5 },
     groundLvlHeight: -1
   },
 
   {
     name: "G",
     floors: [
-      { "name": "EG", "rooms": ["G1"] },
-      { "name": "1.", "rooms": ["G2"] },
+      { "name": "UG", "rooms": ["G1"] },
+      { "name": "EG", "rooms": ["G2"] },
       { "name": "2.", "rooms": ["G3"] },
       { "name": "3.", "rooms": ["G4"] }
     ],
-    position: { x: -9, y: -2.5, z: 0 },
-    size: { x: 4, y: 5 },
-    groundLvlHeight: -2
+    position: { x: -8.5, y: -3.5, z: 0 },
+    size: { x: 4, y: 5.5 },
+    groundLvlHeight: -1
   },
 
   {
@@ -124,7 +124,7 @@ export const buildingData = [
       { "name": "EG", "rooms": ["Bibliothek 1", "Bibliothek 2", "N1", "N2"] },
       { "name": "OG", "rooms": ["N5", "N6", "N7", "N8", "N9"] }
     ],
-    position: { x: -4, y: -4, z: 10 },
+    position: { x: -7, y: -4, z: 10 },
     size: { x: 13, y: 10 },
     groundLvlHeight: -0.5
   },
@@ -136,5 +136,43 @@ export const buildingData = [
     position: { x: -14, y: -4, z: -17 },
     size: { x: 7, y: 7 },
     groundLvlHeight: -0.5
-  }
+  },
+  {
+    name: "GUZ",
+    floors: [
+      { "name": "UG", "rooms": [] },
+      { "name": "EG", "rooms": [] },
+      { "name": "2.", "rooms": [] },
+      { "name": "3.", "rooms": [] },
+      { "name": "4.", "rooms": [] }
+    ],
+    position: { x: -4, y: -3, z: 33 },
+    size: { x: 7, y: 12 },
+    groundLvlHeight: -1.5
+  },
+  {
+    name: "Mensa",
+    floors: [
+      { "name": "EG", "rooms": ["Cafeteria"] },
+      { "name": "OG", "rooms": ["Mensa"] }
+    ],
+    position: { x: -16, y: -3.5, z: 29 },
+    size: { x: 10, y: 10 },
+    groundLvlHeight: -1
+  },
+
+  {
+    name: "ZMBP",
+    floors: [
+      { "name": "UG", "rooms": [] },
+      { "name": "UG", "rooms": [] },
+      { "name": "EG", "rooms": [] },
+      { "name": "4.", "rooms": [] },
+      { "name": "5.", "rooms": [] },
+      { "name": "6.", "rooms": [] },
+    ],
+    size: { x: 8, y: 12 },
+    position: { x: 6, y: -3.5, z: 19 },
+    groundLvlHeight: -1
+  },
 ];

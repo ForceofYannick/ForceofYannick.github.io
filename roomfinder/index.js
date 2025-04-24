@@ -1,12 +1,14 @@
 import * as THREE from "three";
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
-import { createBuilding } from './utils.js';
+import { createBuilding } from "./utils.js";
 import { buildingData } from "./buildingData.js";
 
 // Renderer
 const w = window.innerWidth;
 const h = window.innerHeight;
 const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type= THREE.PCFSoftShadowMap;
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
@@ -45,8 +47,9 @@ controls.update();
 
 // Make ground plane
 const groundGeometry = new THREE.PlaneGeometry(100, 100);
-const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.3, side: THREE.DoubleSide, depthWrite: false });
+const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.9, side: THREE.DoubleSide, depthWrite: false });
 const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+groundMesh.receiveShadow = true;
 groundMesh.rotation.x = -Math.PI / 2;
 groundMesh.position.y = -4.5;
 scene.add(groundMesh);
@@ -127,8 +130,24 @@ $(document).ready(() => {
 });
 
 // Scene Light
+const sun = new THREE.DirectionalLight(0xffffff, 1);
+sun.position.set(10,30,10);
+sun.castShadow = true;
+scene.add(sun);
+
+sun.shadow.camera.left = -50;
+sun.shadow.camera.right = 50;
+sun.shadow.camera.top = 50;
+sun.shadow.camera.bottom = -50;
+sun.shadow.camera.near = 0.1;
+sun.shadow.camera.far = 300;
+sun.shadow.mapSize.width = 1024;
+sun.shadow.mapSize.height = 1024;
+
+/*
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
 scene.add(hemiLight);
+*/
 
 // Animate
 function animate(t = 0) {

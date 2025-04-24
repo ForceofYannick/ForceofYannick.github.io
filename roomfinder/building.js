@@ -18,6 +18,8 @@ export class Building extends Entity {
 
         const material = new THREE.MeshStandardMaterial({ color: 0x249ef0, flatShading: true, transparent: true, opacity: 0.3, depthWrite: false });
         const mesh = new THREE.Mesh(geometry, material);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
         super(name, geometry, material, mesh);
         this.#floors = floors;
         this.#floorArray = floorArray;
