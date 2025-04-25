@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Building } from "./building.js";
 import { Floor } from "./floor.js";
+import { buildingData } from './buildingData.js';
 export function createTextLabelPlane(message, scale = 1) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -8,7 +9,7 @@ export function createTextLabelPlane(message, scale = 1) {
     canvas.height = 1080;
 
     context.fillStyle = 'white';
-    context.font = 'bold 700px Arial';
+    context.font = 'bold 650px Arial';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(message, canvas.width / 2, canvas.height / 2);
@@ -100,4 +101,20 @@ export function createBuildingOutline(x, y, z, groundY = 0) {
 
     const material = new THREE.LineBasicMaterial({ color: 0x111111 });
     return new THREE.LineSegments(geometry, material);
+}
+
+export function makeTunnels(){
+    const points=[
+        // verbindung e
+       // buildingData.get("E").getPos("x");
+        // verbindung guz
+        // verbindung zmbp
+        // verbindung f
+        // verbindung hz
+        // verbindung a
+        // verbindung b
+        // verbindung d
+        // verbindung c
+        []
+    ]
 }

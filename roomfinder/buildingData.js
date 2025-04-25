@@ -41,18 +41,19 @@ export const buildingData = [
   {
     name: "C",
     floors: [
-      { "name": "UG", "rooms": ["C1"] },
-      { "name": "EG", "rooms": ["C2"] },
-      { "name": "3.", "rooms": ["C3"] },
-      { "name": "4.", "rooms": ["C4"] },
-      { "name": "5.", "rooms": ["C5"] },
-      { "name": "6.", "rooms": ["C6"] },
-      { "name": "7.", "rooms": ["C7"] },
-      { "name": "8.", "rooms": ["C8"] },
-      { "name": "9.", "rooms": ["C9"] }
+      { "name": "UG", "rooms": [] },
+      { "name": "UG", "rooms": ["A25","A29", "p25", "p43", "p23","c02a17","h11","h33","n03"] },
+      { "name": "EG", "rooms": ["p25", "p22", "n14","n15","n16"] },
+      { "name": "4.", "rooms": ["p34", "p39", "a42", "a33", "a39", "p36", "a36","c04h33"] },
+      { "name": "5.", "rooms": ["p22", "p28", "p40", "p46", "a26", "a40","a23", "a08", "a14", "p08","a23","s6","s7","s8"] },
+      { "name": "6.", "rooms": ["a40","a14","a29","a46","a08","a11","p19","a11","p16","p25","s9","s10","s11"] },
+      { "name": "7.", "rooms": ["a04","a35","a32"] },
+      { "name": "8.", "rooms": ["p17","a41","a32"] },
+      { "name": "9.", "rooms": ["a34","c10a32","g03","h33","h36","a19","a16","c9g09","c9a03"] },
+      { "name": "10.", "rooms": ["a16","a34","a32","a23","p13","p17","c10h33"] }
     ],
-    position: { x: 0, y: -1, z: 0 },
-    groundLvlHeight: -3.5
+    position: { x: 0, y: -1.5, z: 0 },
+    groundLvlHeight: -3
   },
 
   {
