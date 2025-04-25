@@ -1,7 +1,60 @@
-import * as THREE from 'three';
 import { Building } from "./building.js";
+import { Size } from "./size.js";
 import { Floor } from "./floor.js";
+import { Position } from "./position.js";
 import { buildingData } from './buildingData.js';
+import { Room } from "./room.js";
+import * as THREE from "three";
+
+let lastFloorInBuilding = false;
+
+/**
+ * 
+ * @param {string} buildingName 
+ * @param {Floor[]} floors 
+ * @param {Size} buildingSize 
+ * @param {Position} buildingPosition 
+ */
+export function createBuildings() {
+    const buildingArray = [];
+    for (const b of buildingData) {
+        console.log("Building");
+        console.log(b);
+        // Construct building Object
+        const building = new Building(b.name, createFloorArray(b.floors));
+        buildingArray.push(building);
+    }
+    return buildingArray;
+}
+
+function createFloorArray(buildingDataFloors) {
+    const floorArray = [];
+    let index =0;
+    for (const f of buildingDataFloors) {
+
+        lastFloorInBuilding = (index == buildingDataFloors.length) ? true : false ;
+
+        // console.log("Floor");
+        // console.log(f);
+        const floor = new Floor(f.name, f.size, f.level, f.position, createRoomArray(f.rooms));
+        floorArray.push(floor);
+        index++;
+    }
+    return floorArray;
+}
+
+function createRoomArray(buildingDataRooms) {
+    const roomArray = [];
+    for (const r of buildingDataRooms) {
+        // console.log("Room");
+        // console.log(r);
+        const room = new Room(r.name, r.type, r.x, r.y, r.size)
+        roomArray.push(room);
+    }
+    return roomArray;
+}
+
+
 export function createTextLabelPlane(message, scale = 1) {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -22,99 +75,4 @@ export function createTextLabelPlane(message, scale = 1) {
     const mesh = new THREE.Mesh(geometry, material);
 
     return mesh;
-}
-
-export function createBuilding(name, floorData, position = { x: 0, y: 0, z: 0 }, scene, groundLvlHeight = 0, optionalX, optionalY) {
-    const floors = [];
-
-    for (let i = 0; i < floorData.length; i++) {
-        const floorInfo = floorData[i];
-        const floorName = floorInfo.name || i + 1;
-        const roomList = floorInfo.rooms;
-
-        var floor;
-        if (optionalX !== undefined && optionalY !== undefined) {
-            floor = new Floor(floorName, roomList, optionalX - 0.2, optionalY - 0.2);
-        } else {
-            floor = new Floor(floorName, roomList);
-        }
-
-        floor.getMesh().position.set(0, i - (floorData.length - 1) / 2, 0); // center
-        floor.getMesh().renderOrder = 1;
-        floors.push(floor);
-    }
-
-    var building;
-    if (optionalX !== undefined && optionalY !== undefined) {
-        building = new Building(name, floorData.length, floors, groundLvlHeight, optionalX, optionalY);
-    } else {
-        building = new Building(name, floorData.length, floors, groundLvlHeight);
-    }
-    const buildingMesh = building.getMesh();
-    buildingMesh.position.set(position.x, position.y, position.z);
-    buildingMesh.renderOrder = 0;
-
-    scene.add(buildingMesh);
-
-    for (const floor of floors) {
-        scene.add(floor.getMesh());
-        buildingMesh.add(floor.getMesh());
-    }
-
-    return { building, floors };
-}
-
-export function createBuildingOutline(x, y, z, groundY = 0) {
-    const hx = x / 2;
-    const hy = y / 2;
-    const hz = z / 2;
-
-    const points = [
-        // vertical edges (4 edges)
-        [-hx, -hy, -hz], [-hx, hy, -hz],
-        [hx, -hy, -hz], [hx, hy, -hz],
-        [hx, -hy, hz], [hx, hy, hz],
-        [-hx, -hy, hz], [-hx, hy, hz],
-
-        // bottom outline
-        [-hx, -hy, -hz], [hx, -hy, -hz],
-        [hx, -hy, -hz], [hx, -hy, hz],
-        [hx, -hy, hz], [-hx, -hy, hz],
-        [-hx, -hy, hz], [-hx, -hy, -hz],
-
-        // top outline
-        [-hx, hy, -hz], [hx, hy, -hz],
-        [hx, hy, -hz], [hx, hy, hz],
-        [hx, hy, hz], [-hx, hy, hz],
-        [-hx, hy, hz], [-hx, hy, -hz],
-
-        // groundlevel outline
-        [-hx, groundY, -hz], [hx, groundY, -hz],
-        [hx, groundY, -hz], [hx, groundY, hz],
-        [hx, groundY, hz], [-hx, groundY, hz],
-        [-hx, groundY, hz], [-hx, groundY, -hz]
-    ];
-
-    const vertices = new Float32Array(points.flat());
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-
-    const material = new THREE.LineBasicMaterial({ color: 0x111111 });
-    return new THREE.LineSegments(geometry, material);
-}
-
-export function makeTunnels(){
-    const points=[
-        // verbindung e
-       // buildingData.get("E").getPos("x");
-        // verbindung guz
-        // verbindung zmbp
-        // verbindung f
-        // verbindung hz
-        // verbindung a
-        // verbindung b
-        // verbindung d
-        // verbindung c
-        []
-    ]
 }

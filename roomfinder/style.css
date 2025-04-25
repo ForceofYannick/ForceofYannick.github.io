@@ -1,15 +1,95 @@
+/* Entfernt den Standardabstand des Körpers und verhindert das Überlaufen der Seite */
 body {
-    margin: 0;
-    overflow: hidden;
-  }
+  margin: 0; /* Setzt den Abstand des Körpers auf 0 */
+  overflow: hidden; /* Verhindert das Scrollen der Seite */
+}
 
-  #overlay {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 8px;
-    font-family: sans-serif;
-  }
+/* Stile für das Overlay, das Eingabefeld und den Schalter enthält */
+#overlay {
+  position: absolute; /* Positioniert das Overlay relativ zum nächsten positionierten Vorfahren */
+  top: 20px; /* Setzt das Overlay 20px vom oberen Rand der Seite */
+  left: 20px; /* Setzt das Overlay 20px vom linken Rand der Seite */
+  z-index: 10; /* Stellt sicher, dass das Overlay über anderen Inhalten liegt */
+  background-color: rgba(255, 255, 255, 0.8); /* Hintergrundfarbe mit 80% Transparenz */
+  padding: 10px; /* Fügt Innenabstand von 10px hinzu */
+  border-radius: 8px; /* Macht die Ecken des Overlays rund */
+  font-family: sans-serif; /* Setzt die Schriftart für den Text */
+  display: flex; /* Verwendet Flexbox, um die Elemente zu organisieren */
+  flex-direction: column; /* Stellt sicher, dass die Elemente in einer Spalte angeordnet sind */
+}
+
+/* Stile für das Wrapper-Div, das innerhalb des Overlays verwendet wird */
+#overlay > div {
+  display: flex; /* Flexbox-Modell für das div */
+  align-items: center; /* Zentriert die Elemente vertikal */
+  gap: 10px; /* Fügt einen Abstand von 10px zwischen den Elementen hinzu */
+}
+
+/* Stile für den Schalter */
+.switch {
+  position: relative; /* Ermöglicht das Positionieren des Sliders relativ zum Schalter */
+  display: flex; /* Flexbox, um die Elemente (Slider und Text) nebeneinander zu platzieren */
+  align-items: center; /* Vertikale Ausrichtung der Elemente */
+  justify-content: flex-start; /* Positioniert die Elemente am Anfang des Containers */
+  width: 100%; /* Der Schalter nimmt die gesamte Breite des Containers ein */
+  margin-top: 10px; /* Fügt einen Abstand von 10px nach oben hinzu */
+}
+
+/* Stile für den Text im <p>-Tag neben dem Schalter */
+.switch p {
+  margin-left: 10px; /* Fügt einen Abstand von 10px zwischen dem Slider und dem Text hinzu */
+  margin-bottom: 0; /* Entfernt den unteren Abstand, um eine bessere Ausrichtung zu gewährleisten */
+  white-space: nowrap; /* Verhindert, dass der Text umbricht */
+  margin-top: -4px; /* Verschiebt den Text leicht nach oben, um ihn auf gleicher Höhe wie den Slider zu bringen */
+}
+
+/* Der Input wird unsichtbar gemacht */
+.switch input { 
+  opacity: 0; /* Macht den Input unsichtbar */
+  width: 0; /* Setzt die Breite auf 0 */
+  height: 0; /* Setzt die Höhe auf 0 */
+}
+
+/* Stile für den Slider */
+.slider {
+  position: relative; /* Ermöglicht das Positionieren des Schiebereglers relativ zum Container */
+  cursor: pointer; /* Ändert den Cursor, wenn er über den Slider bewegt wird */
+  width: 50px; /* Reduzierte Breite des Sliders */
+  height: 28px; /* Reduzierte Höhe des Sliders */
+  background-color: #ccc; /* Hintergrundfarbe des Sliders (grau) */
+  -webkit-transition: .4s; /* Übergangseffekt für Webkit-basierte Browser */
+  transition: .4s; /* Übergangseffekt für andere Browser */
+  border-radius: 34px; /* Runde Ecken für den Slider */
+  transform: scale(0.8); /* Skaliert den Slider auf 80% seiner ursprünglichen Größe */
+}
+
+/* Stile für das runde Element im Slider (der "Kreis", der den Schalter darstellt) */
+.slider:before {
+  position: absolute; /* Positioniert den Kreis absolut innerhalb des Sliders */
+  content: ""; /* Setzt den Inhalt des Pseudoelements auf leer */
+  height: 22px; /* Höhe des Kreises */
+  width: 22px; /* Breite des Kreises */
+  left: 4px; /* Abstand von der linken Seite des Sliders */
+  bottom: 4px; /* Abstand vom unteren Rand des Sliders */
+  background-color: white; /* Weißer Hintergrund für den Kreis */
+  -webkit-transition: .4s; /* Übergangseffekt für Webkit-basierte Browser */
+  transition: .4s; /* Übergangseffekt für andere Browser */
+  border-radius: 50%; /* Macht den Kreis rund */
+}
+
+/* Wenn das Input-Element (Checkbox) aktiviert ist */
+input:checked + .slider {
+  background-color: #2196F3; /* Ändert die Hintergrundfarbe des Sliders auf Blau */
+}
+
+/* Wenn das Input-Element fokussiert ist (z. B. durch Tabulator-Taste) */
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3; /* Fügt einen blauen Schatten hinzu */
+}
+
+/* Wenn das Input-Element aktiviert ist, bewegt sich der Schieberegler */
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px); /* Bewegt den Kreis um 22px nach rechts */
+  -ms-transform: translateX(22px); /* Bewegt den Kreis um 22px nach rechts (für MS-Browser) */
+  transform: translateX(22px); /* Bewegt den Kreis um 22px nach rechts */
+}

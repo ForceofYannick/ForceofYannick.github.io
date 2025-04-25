@@ -21,9 +21,20 @@
     <script type="module" src="index.js"></script>
 
     <div id="overlay">
-      <input id="roomInput" type="text" placeholder="Raumname eingeben"/>
-      <button onclick="findRoom()">Suchen</button>
-      <button>Zeige Keller Durchgänge</button>
+      <!-- Input -->
+      <div>
+        <input id="roomInput" type="text" placeholder="Raumname eingeben"/>
+        <button onclick="findRoom()">Suchen</button>
+      </div>
+
+      <!-- Switch -->
+      <label class="switch">
+        <input id="undergroundToggle" type="checkbox">
+        <span class="slider round"></span>
+        <p>Tunnelkarte (WIP)</p>
+      </label>
+
+      <!-- Result Text -->
       <p id="outputElement"></p>
     </div>
     

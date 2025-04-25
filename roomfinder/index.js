@@ -1,15 +1,15 @@
 import * as THREE from "three";
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
-import { createBuilding } from "./utils.js";
+import { createBuildings } from "./utils.js";
 import { buildingData } from "./buildingData.js";
 
 // Renderer
 const w = window.innerWidth;
 const h = window.innerHeight;
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type= THREE.PCFSoftShadowMap;
 renderer.setSize(w, h);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
 // Camera
@@ -19,8 +19,12 @@ const near = 0.1;
 const far = 200;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
+// Global vars for smooth transition to new target
+let smoothTarget = new THREE.Vector3();
+let targetTarget = new THREE.Vector3();
 
-// Listen for window size to rescale the 3D window
+
+// Handle window resizing
 window.addEventListener('resize', () => {
   const w = window.innerWidth;
   const h = window.innerHeight;
@@ -41,40 +45,53 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.03;
 
 // Startposition of camera
-camera.position.set(9, 5, 30);
+camera.position.set(20, 20, 35);
 controls.target.set(-10, 5, 5);
 controls.update();
 
-// Make ground plane
+
+
+// Create ground plane
 const groundGeometry = new THREE.PlaneGeometry(100, 100);
 const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x3ca66b, transparent: true, opacity: 0.9, side: THREE.DoubleSide, depthWrite: false });
 const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
 groundMesh.receiveShadow = true;
 groundMesh.rotation.x = -Math.PI / 2;
-groundMesh.position.y = -4.5;
+groundMesh.position.y = -0.5;
+groundMesh.renderOrder = 0;
 scene.add(groundMesh);
 
 
-// Construct visual buildings
-const buildingArray = [];
+// Create buildings
+let buildingsArray = [];
+buildingsArray = createBuildings();
 
-for (const data of buildingData) {
-  const { name, floors, position, size, groundLvlHeight } = data;
-  const optionalX = size?.x;
-  const optionalY = size?.y;
-  const { building } = createBuilding(name, floors, position, scene, groundLvlHeight, optionalX, optionalY);
-  buildingArray.push(building);
+// Add Floor mesh to scene
+for (const building of buildingsArray) {
+  building.getFloors().forEach(floor => {
+    scene.add(floor.getMesh());
+  });
 }
 
 
-// Global vars for smooth transition to new target
-let smoothTarget = new THREE.Vector3();
-let targetTarget = new THREE.Vector3();
+// Scene Light
+const sun = new THREE.DirectionalLight(0xffffff, 2);
+sun.position.set(10,20,10);
+sun.castShadow = true;
+sun.shadow.camera.left = -50;
+sun.shadow.camera.right = 50;
+sun.shadow.camera.top = 50;
+sun.shadow.camera.bottom = -50;
+sun.shadow.camera.near = 0.1;
+sun.shadow.camera.far = 300;
+sun.shadow.mapSize.width = 1024;
+sun.shadow.mapSize.height = 1024;
+scene.add(sun);
 
-// Ready function for jquery operators
+// For JQuery Operators
 $(document).ready(() => {
 
-  // Enter-key triggerer in html input field
+  // Enter-key triggerer in room input
   $("#roomInput").on("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -82,7 +99,8 @@ $(document).ready(() => {
     }
   });
 
-  // Button onclick function for html
+
+  // Button onclick function
   function findRoom() {
 
     // Get input room
@@ -91,27 +109,37 @@ $(document).ready(() => {
     let roomFound = false;
 
     // Reset all floor colors
-    for (const building of buildingArray) {
+    for (const building of buildingsArray) {
       for (const floor of building.getFloors()) {
-        floor.getMaterial().color.set(0xC4D4DF); // basic color
+        floor.getMaterial().color.set(0x249ef0); // basic color 0xC4D4DF
+        floor.getMaterial().opacity =0.8;
+        floor.getMaterial().emissive.set(0x000000);
+        floor.getMaterial().emissiveIntensity= 0;
+        floor.renderOrder = 1;
       }
     }
 
     // Find and highlight matching room, set building as new camera target
-    for (const building of buildingArray) {
+    for (const building of buildingsArray) {
       for (const floor of building.getFloors()) {
         for (const room of floor.getRooms()) {
-          if (inputRoom === room.toUpperCase()) {
+          if (inputRoom === room.getName().toUpperCase()) {
+            
+            // Let the matching floor "glow"
+            floor.getMaterial().opacity =1;
             floor.getMaterial().color.set(0xff0000);
+            floor.getMaterial().emissive.set(0xff0000);
+            floor.getMaterial().emissiveIntensity= 1;
+            floor.renderOrder = 2;
+
             outputText = `Gebäude ${building.getName()}, Stockwerk ${floor.getName()}`;
-            console.log("✅", outputText);
+            
             roomFound = true;
 
-            const data = buildingData.find(b => b.name === building.getName());
-
-            const targetX = data?.position?.x;
-            const targetY = data?.position?.y;
-            const targetZ = data?.position?.z;
+            console.log(floor.getPosition());
+            const targetX = floor.getPosition().getX();
+            const targetY = floor.getPosition().getY();
+            const targetZ = floor.getPosition().getZ();
 
             targetTarget.set(targetX, targetY, targetZ);
             break;
@@ -129,29 +157,10 @@ $(document).ready(() => {
   window.findRoom = findRoom;
 });
 
-// Scene Light
-const sun = new THREE.DirectionalLight(0xffffff, 1);
-sun.position.set(10,30,10);
-sun.castShadow = true;
-scene.add(sun);
+// Render Scene
+function render(t = 0) {
+  requestAnimationFrame(render);
 
-sun.shadow.camera.left = -50;
-sun.shadow.camera.right = 50;
-sun.shadow.camera.top = 50;
-sun.shadow.camera.bottom = -50;
-sun.shadow.camera.near = 0.1;
-sun.shadow.camera.far = 300;
-sun.shadow.mapSize.width = 1024;
-sun.shadow.mapSize.height = 1024;
-
-/*
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
-scene.add(hemiLight);
-*/
-
-// Animate
-function animate(t = 0) {
-  requestAnimationFrame(animate);
   if (
     Math.round(smoothTarget.x) !== Math.round(targetTarget.x) ||
     Math.round(smoothTarget.y) !== Math.round(targetTarget.y) ||
@@ -159,18 +168,17 @@ function animate(t = 0) {
   ) {
     swingToTarget();
   }
+
   controls.update();
-
   renderer.render(scene, camera);
-
+  
 }
-/**
- * Swings the camera smooth from the current point to a target point 
- */
+
 function swingToTarget() {
   smoothTarget.lerp(targetTarget, 0.05); // 5% approach per frame
   controls.target.copy(smoothTarget);
 }
 
-// Call animate function to work
-animate();
+
+// call render function to work
+render();
