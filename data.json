@@ -1,25 +1,6 @@
 {
   "Teams": {
-    "ibtc": {
-      "Players": {},
-      "Results": {
-        "spring'24": {
-          "kaliphase": {
-            "group": "-",
-            "result": "-"
-          },
-          "groupphase": {
-            "group": "-",
-            "result": "-"
-          },
-          "playoffs": {
-            "group": "-",
-            "result": "-"
-          }
-        }
-      }
-    },
-    "testing": {
+    "ibts": {
       "Players": {},
       "Results": {
         "testsplit": {
@@ -51,7 +32,139 @@
           }
         }
       }
+    },
+    "ibtc": {
+      "Players": {},
+      "Results": {
+        "testsplit": {
+          "kaliphase": {
+            "group": "7.6",
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": "3",
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": "1",
+            "result": "1:0"
+          }
+        },
+        "spring'24": {
+          "kaliphase": {
+            "group": 76,
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": 3,
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": 1,
+            "result": "1:0"
+          }
+        }
+      }
+    },
+  "ibtm": {
+    "Players": {},
+    "Results": {
+      "testsplit": {
+        "kaliphase": {
+          "group": "7.6",
+          "result": "187:0"
+        },
+        "groupphase": {
+          "group": "3",
+          "result": "9:0"
+        },
+        "playoffs": {
+          "group": "1",
+          "result": "1:0"
+        }
+      },
+      "spring'24": {
+        "kaliphase": {
+          "group": 76,
+          "result": "187:0"
+        },
+        "groupphase": {
+          "group": 3,
+          "result": "9:0"
+        },
+        "playoffs": {
+          "group": 1,
+          "result": "1:0"
+        }
+      }
     }
   },
+  "ibty": {
+    "Players": {},
+    "Results": {
+      "testsplit": {
+        "kaliphase": {
+          "group": "7.6",
+          "result": "187:0"
+        },
+        "groupphase": {
+          "group": "3",
+          "result": "9:0"
+        },
+        "playoffs": {
+          "group": "1",
+          "result": "1:0"
+        }
+      },
+      "spring'24": {
+        "kaliphase": {
+          "group": 76,
+          "result": "187:0"
+        },
+        "groupphase": {
+          "group": 3,
+          "result": "9:0"
+        },
+        "playoffs": {
+          "group": 1,
+          "result": "1:0"
+        }
+      }
+    }
+  },
+  "ibtp": {
+    "Players": {},
+    "Results": {
+      "testsplit": {
+        "kaliphase": {
+          "group": "7.6",
+          "result": "187:0"
+        },
+        "groupphase": {
+          "group": "3",
+          "result": "9:0"
+        },
+        "playoffs": {
+          "group": "1",
+          "result": "1:0"
+        }
+      },
+      "spring'24": {
+        "kaliphase": {
+          "group": 76,
+          "result": "187:0"
+        },
+        "groupphase": {
+          "group": 3,
+          "result": "9:0"
+        },
+        "playoffs": {
+          "group": 1,
+          "result": "1:0"
+        }
+      }
+    }
+  }
+},
   "Unsorted": {}
 }

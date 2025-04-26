@@ -74,7 +74,7 @@
         </div> 
     </nav>
 
-<div class="content">
+<main>
 <div class="welcome_banner">
     <video autoplay muted loop>
         <source src="/media/IBTC_Website_Banner.mov">
@@ -82,7 +82,8 @@
 </div>
 
 <div style="font-family: Bebas Neue, sans-serif; font-size: 200px">work in progress</div>
-    
+
+<!-- Twitch Player & Jersey -->
     <div class="twitch_jersey">
 
         <div id="twitch-embed" style="border-radius: 16px;overflow: hidden;"></div>
@@ -120,59 +121,15 @@
         </script>
     </div>
 
-    
-    
 
-    
+<!-- Split Results Overview -->
+    <a class="splitResultsContainer" id="splitResults"></a>
 
+<!-- Team selection -->
+<h1 class="header">Unsere Teams</h1> 
+<div class="teamGrid" id="teamSelection"></div>
 
-    <div class="split_results">
-        <h1 class="header">Prime League Summer Split '24</h1>
-        <table>
-            <tr>
-                <th>IBTC</th>
-                <th>IBTY</th>
-                <th>IBTG</th>
-                <th>IBTA</th>
-                <th>ICE</th>
-            </tr>
-            <tr>
-                <td id="ibtc_div"></td>
-                <td id="ibty_div"></td>
-                <td id="ibtg_div"></td>
-                <td id="ibta_div"></td>
-                <td id="ice_div" ></td>
-            </tr>
-            <tr>
-                <td id="ibtc_rang"></td>
-                <td id="ibty_rang"></td>
-                <td id="ibtg_rang"></td>
-                <td id="ibta_rang"></td>
-                <td id="ice_rang" ></td>
-            </tr>
-        </table>
-    </div>
-
-
-
-    <h1 class="header">Unsere Teams</h1>
-    <div class="team_grid" onmouseleave="grid_reset()">
-        <div class="grid-itemA" onmouseover="grid_itemA()"></div>
-        <div class="grid-itemB" onmouseover="grid_itemB()"></div>
-        <div class="grid-itemC" onmouseover="grid_itemC()"></div>
-        <div class="grid-itemD" onmouseover="grid_itemD()"></div>
-        <div class="grid-itemE" onmouseover="grid_itemE()"></div>
-    </div>
-
-
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-    <div>HALLOA</div>
-
-
-
-</div>
+<br>
+</main>
 </body>
 </html>

@@ -20,7 +20,6 @@
     }
     
     
-    
     .welcome_banner{
       margin-top: -100px;
       margin-left: -20px; /* Wegen scrollbar rechts*/
@@ -44,7 +43,7 @@
     
     
     
-    .split_results{
+    .splitResultsContainer{
       display:flex;
       flex-direction: column;
       align-items: center;
@@ -56,26 +55,25 @@
       box-sizing: border-box;
      }
      
-     .split_results td, th{
+     .splitResultsContainer td, th{
        border: 3px solid #000000;
      }
      
-     .split_results th{
+     .splitResultsContainer th{
        background-color: #65909066;
      }
      
-     .split_results td:nth-child(odd), tr:nth-child(even){
+     .splitResultsContainer td:nth-child(odd), tr:nth-child(even){
        background-color: #a6f9f97e;
      }
      
-     .split_results td:nth-child(even), tr:nth-child(odd){
+     .splitResultsContainer td:nth-child(even), tr:nth-child(odd){
        background-color: #17c60e7e;
      }
     
      
     table{
       width: 100%;
-      border-collapse: collapse;
     }
     
     th, td{
@@ -95,8 +93,7 @@
     }
     
     
-    
-    .team_grid{
+    .teamGrid{
       border-radius: 20px;
       color:white;
       font-family: "Bebas Neue", sans-serif;
@@ -108,10 +105,10 @@
       height: 45vh;
     }
     
-    .grid-itemA{
+    .gridItem{
+      display: flex;
       background-color: black;
       border-radius: 20px 0px 0px 20px;
-      background-image: url("/media/Logos/IBTC4.png");
       background-size: var(--logoSize);
       background-repeat: no-repeat;
       background-position: -2.5% var(--logoYOffset);
@@ -119,99 +116,17 @@
       position: relative;
       text-align: center;
       font-size: var(--FontSize);
-      
     }
     
-    .grid-itemA:before{
-      content: 'IBTC';
+    .gridItem:before{
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
     }
     
-    .grid-itemB{
-      background-color: black;
-      background-image: url("/media/Logos/IBTY4.png");
-      background-size: var(--logoSize);
-      background-repeat: no-repeat;
-      background-position: 23% var(--logoYOffset);
-      transition: var(--transitionTime);
-      position: relative;
-      text-align: center;
-      font-size: var(--FontSize);
-    }
     
-    .grid-itemB:before{
-      content: 'IBTY';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .grid-itemC{
-      background-color: black;
-      background-image: url("/media/Logos/IBTG4.png");
-      background-size: var(--logoSize);
-      background-repeat: no-repeat;
-      background-position: 49% var(--logoYOffset);
-      transition: var(--transitionTime);
-      position: relative;
-      text-align: center;
-      font-size: var(--FontSize);
-    }
-    
-    .grid-itemC:before{
-      content: 'IBTG';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .grid-itemD{
-      background-color: black;
-      background-image: url("/media/Logos/IBTA4.png");
-      background-size: var(--logoSize);
-      background-repeat: no-repeat;
-      background-position: 75% var(--logoYOffset);
-      transition: var(--transitionTime);
-      position: relative;
-      text-align: center;
-      font-size: var(--FontSize);
-    }
-    
-    .grid-itemD:before{
-      content: 'IBTA';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .grid-itemE{
-      background-color: black;
-      border-radius: 0px 20px 20px 0px;
-      background-image: url("/media/Logos/ICE4.png");
-      background-size: var(--logoSize);
-      background-repeat: no-repeat;
-      background-position: 100.5% var(--logoYOffset);
-      transition: var(--transitionTime);
-      position: relative;
-      text-align: center;
-      font-size: var(--FontSize);
-    }
-    
-    .grid-itemE:before{
-      content: 'ICE';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .grid-itemA:hover, .grid-itemB:hover, .grid-itemC:hover, .grid-itemD:hover, .grid-itemE:hover{
+    .gridItem:hover{
       cursor: pointer;
       transform: scale(var(--scaleSize));
       transition: var(--transitionTime);
