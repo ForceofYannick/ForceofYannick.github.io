@@ -1,7 +1,68 @@
 {
   "Teams": {
     "ibts": {
-      "Players": {},
+      "Players": {
+        "yannick1": {
+          "discord-id": "332847436471074827",
+          "main-role": "top",
+          "orga-role-1": "team-leader",
+          "orga-role-2": "team-leader",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/forceofyannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibts"
+        },
+        "yannick2": {
+          "discord-id": "332847436471074827",
+          "main-role": "mid",
+          "orga-role-1": "team-leader",
+          "orga-role-2": "team-leader",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/forceofyannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibts"
+        },
+        "yannick3": {
+          "discord-id": "332847436471074827",
+          "main-role": "sup",
+          "orga-role-1": "team-leader",
+          "orga-role-2": "team-leader",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/forceofyannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibts"
+        },
+        "yannick4": {
+          "discord-id": "332847436471074827",
+          "main-role": "jgl",
+          "orga-role-1": "team-leader",
+          "orga-role-2": "team-leader",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/forceofyannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibts"
+        },
+        "yannick5": {
+          "discord-id": "332847436471074827",
+          "main-role": "adc",
+          "orga-role-1": "team-leader",
+          "orga-role-2": "team-leader",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/forceofyannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "ibts"
+        }
+      },
       "Results": {
         "testsplit": {
           "kaliphase": {
@@ -66,105 +127,105 @@
         }
       }
     },
-  "ibtm": {
-    "Players": {},
-    "Results": {
-      "testsplit": {
-        "kaliphase": {
-          "group": "7.6",
-          "result": "187:0"
+    "ibtm": {
+      "Players": {},
+      "Results": {
+        "testsplit": {
+          "kaliphase": {
+            "group": "7.6",
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": "3",
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": "1",
+            "result": "1:0"
+          }
         },
-        "groupphase": {
-          "group": "3",
-          "result": "9:0"
-        },
-        "playoffs": {
-          "group": "1",
-          "result": "1:0"
+        "spring'24": {
+          "kaliphase": {
+            "group": 76,
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": 3,
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": 1,
+            "result": "1:0"
+          }
         }
-      },
-      "spring'24": {
-        "kaliphase": {
-          "group": 76,
-          "result": "187:0"
+      }
+    },
+    "ibty": {
+      "Players": {},
+      "Results": {
+        "testsplit": {
+          "kaliphase": {
+            "group": "7.6",
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": "3",
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": "1",
+            "result": "1:0"
+          }
         },
-        "groupphase": {
-          "group": 3,
-          "result": "9:0"
+        "spring'24": {
+          "kaliphase": {
+            "group": 76,
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": 3,
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": 1,
+            "result": "1:0"
+          }
+        }
+      }
+    },
+    "ibtp": {
+      "Players": {},
+      "Results": {
+        "testsplit": {
+          "kaliphase": {
+            "group": "7.6",
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": "3",
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": "1",
+            "result": "1:0"
+          }
         },
-        "playoffs": {
-          "group": 1,
-          "result": "1:0"
+        "spring'24": {
+          "kaliphase": {
+            "group": 76,
+            "result": "187:0"
+          },
+          "groupphase": {
+            "group": 3,
+            "result": "9:0"
+          },
+          "playoffs": {
+            "group": 1,
+            "result": "1:0"
+          }
         }
       }
     }
   },
-  "ibty": {
-    "Players": {},
-    "Results": {
-      "testsplit": {
-        "kaliphase": {
-          "group": "7.6",
-          "result": "187:0"
-        },
-        "groupphase": {
-          "group": "3",
-          "result": "9:0"
-        },
-        "playoffs": {
-          "group": "1",
-          "result": "1:0"
-        }
-      },
-      "spring'24": {
-        "kaliphase": {
-          "group": 76,
-          "result": "187:0"
-        },
-        "groupphase": {
-          "group": 3,
-          "result": "9:0"
-        },
-        "playoffs": {
-          "group": 1,
-          "result": "1:0"
-        }
-      }
-    }
-  },
-  "ibtp": {
-    "Players": {},
-    "Results": {
-      "testsplit": {
-        "kaliphase": {
-          "group": "7.6",
-          "result": "187:0"
-        },
-        "groupphase": {
-          "group": "3",
-          "result": "9:0"
-        },
-        "playoffs": {
-          "group": "1",
-          "result": "1:0"
-        }
-      },
-      "spring'24": {
-        "kaliphase": {
-          "group": 76,
-          "result": "187:0"
-        },
-        "groupphase": {
-          "group": 3,
-          "result": "9:0"
-        },
-        "playoffs": {
-          "group": 1,
-          "result": "1:0"
-        }
-      }
-    }
-  }
-},
   "Unsorted": {}
 }

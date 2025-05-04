@@ -8,7 +8,6 @@
 - 🎥 **Casting Livestream** wieder einblenden
 
 ### 📂 Team-Dateien:
-- 📄 **Dateinamen aktualisieren**: Teamseiten-Dateien umbenennen und auf den neuesten Stand bringen.
 - 🐞 **Bugfix Split-Ergebnisse**:
   - ❌ **Problem**: Beim Start im **Dark Mode** wird beim Wechsel in den Light Mode und anschließendem `F5`-Drücken das Tabelleninnere weiterhin dunkel angezeigt.
   - 🔧 **Styling-Problem**: Der **Summer '22 Split** ragt manchmal aus dem Tabellenkasten heraus.
@@ -37,20 +36,13 @@
 
 ### 📌 Index-Datei:
 - 🖥️ **Responsive Design**: Die Index-Seite für verschiedene Bildschirmformate anpassen.
-- 🐞 **Bugfix Split-Ergebnisse**: Split-Ergebnisse funktionieren noch nicht korrekt.
-- 🔄 **Teamgrid**: Funktioniert nicht; eventuell als **WIP** (Work in Progress) kennzeichnen.
 - 🍪 **Cookie-Informationen**: Cookie-Hinweise und -Details anzeigen.
-
-### 📂 Team-Dateien:
-- 🔄 **PlayerInfo-Script**: Auf JSON-basierte Datenstruktur aktualisieren.
 
 ### 📑 Info- & Kontakt-Dateien:
 - 🐞 **Bugfix Toggle Light Mode Icon**: Fehlerhafte Darstellung beheben.
 
 ### 🏛️ Impressum:
 - ⚙️ **Icons reparieren**: Fehlerhafte Icons im Impressum korrigieren.
-- ✂️ **Inhalt kürzen**: Überflüssige Texte entfernen.
-
 ---
 
 ## 🤖 Discord Bot

@@ -51,7 +51,7 @@ $(document).ready(() => {
                 <div class="menuSeparator"> | </div>
                 <a href="/desktop/impressum.html" class="nav-item">IMPRESSUM</a>
                 <div class="menuSeparator"> | </div>
-                <div id="toggle-element"><img id="toggle-image-light" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/dark-mode-svgrepo-com.png" /></div>
+                <div id="toggle-element"><img id="toggle-image-light" class="togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/white-mode.png" /></div>
                 `);
         })
         .catch(error => console.error('JSON loading error: ', error));

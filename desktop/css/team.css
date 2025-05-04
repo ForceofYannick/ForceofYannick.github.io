@@ -1,12 +1,12 @@
 /*========================================================*/
 /* Global stuff */
 
-body{
+body {
   background-color: #dddddd;
   margin-top: 100px;
 }
 
-.landing-header{
+.landing-header {
   font-family: "Bebas Neue", "sans-serif";
   font-size: 6rem;
   color: #1b191a;
@@ -14,9 +14,10 @@ body{
   padding: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
+  margin-left: 2.5%
 }
 
-.section-header{
+.section-header {
   font-family: "Bebas Neue", "sans-serif";
   font-size: 3rem;
   color: #272526;
@@ -30,139 +31,140 @@ body{
 /* Player box */
 
 .playerBox {
-position: relative;
-background-image: url("/media/Jersey/Jersey.png");
-background-size: 50%;
-background-repeat: no-repeat;
-text-align: center;
-margin-left: 5%;
-width: 90%;
-height: 100px;
-border-radius: 1rem;
-background-color: #1b191a;
-overflow: hidden;
+  position: relative;
+  background-size: 800px;
+  background-repeat: no-repeat;
+  background-position: center -20px;
+  text-align: center;
+  margin-left: 22.5%;
+  margin-bottom: 1vh;
+  width: 52vw;
+  height: 20vh;
+  border-radius: 1rem;
+  background-color: #1b191a;
+  overflow: hidden;
 }
 
 .playerBox:hover {
-background-color: #332f31;
-cursor: pointer;
+  background-color: #332f31;
+  cursor: pointer;
 }
-.jerseyName{
-font-family: "Bebas Neue", "sans-serif";
-font-size: 2rem;
-position: absolute;
-top: 30%;
-left: 18.5%;
+.jerseyName {
+  font-family: "Bebas Neue", "sans-serif";
+  font-size: 3rem;
+  position: absolute;
+  top: 40%;
+  left: 20%;
 }
 
 /*========================================================*/
 /* Player Slider Container */
 
-.sliderContainer{
-font-family: "Roboto Condensed", "sans-serif";
-background-image: url("/media/TeamPages/Playercard_Slide.png");
-background-size: 100%;
-animation-name: sliderAnimation;
-animation-duration: 0.8s;
-animation-timing-function: ease;
-height: 100%;
+.sliderContainer {
+  font-family: "Roboto Condensed", "sans-serif";
+  background-image: url("/media/TeamPages/Playercard_Slide.png");
+  background-size: 100%;
+  /* animation-name: sliderAnimation; */
+  animation-duration: 0.8s;
+  animation-timing-function: ease;
+  height: 100%;
 }
-.sliderName{
-position: absolute;
-top: 5%;
-right: 10%;
+.sliderName {
+  position: absolute;
+  top: 5%;
+  right: 10%;
 }
-.sliderLine{
-position: absolute;
-top: 15%;
-right: 10%;
-width: 85px;
-border: 1px solid white ;
+.sliderLine {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 85px;
+  border: 1px solid white;
 }
-.sliderRole{
-position: absolute;
-top: 25%;
-right: 10%;
+.sliderRole {
+  position: absolute;
+  top: 25%;
+  right: 10%;
 }
-.sliderList{
-position: absolute;
-top: 50%;
-right: 10%;
-list-style-type: none;
-display: flex;
+.sliderList {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  list-style-type: none;
+  display: flex;
 }
-
-
-
 
 /*========================================================*/
 /* Animations */
 
-@keyframes sliderAnimation{
-from{transform: translateX(300px);}
-to{transform: translateX(0px);}
+@keyframes sliderAnimation {
+  from {
+    transform: translateX(300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
 }
-
 
 /*========================================================*/
 /* Player Socials */
 .youtubeElement:hover {
-filter: brightness(0) saturate(100%) invert(19%) sepia(88%) saturate(7500%) hue-rotate(358deg) brightness(103%) contrast(120%);
+  filter: brightness(0) saturate(100%) invert(19%) sepia(88%) saturate(7500%)
+    hue-rotate(358deg) brightness(103%) contrast(120%);
 }
-.instagramElement:hover{
-filter: brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5312%) hue-rotate(334deg) brightness(101%) contrast(106%);
+.instagramElement:hover {
+  filter: brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5312%)
+    hue-rotate(334deg) brightness(101%) contrast(106%);
 }
-.twitchElement:hover{
-filter: brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1202%) hue-rotate(241deg) brightness(104%) contrast(101%);
+.twitchElement:hover {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(98%) saturate(1202%)
+    hue-rotate(241deg) brightness(104%) contrast(101%);
 }
-.twitterElement:hover{
-filter: brightness(0) saturate(100%) invert(72%) sepia(16%) saturate(5019%) hue-rotate(168deg) brightness(96%) contrast(90%);
+.twitterElement:hover {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(16%) saturate(5019%)
+    hue-rotate(168deg) brightness(96%) contrast(90%);
 }
-.tiktokElement:hover{
-filter: brightness(0) invert(0);
+.tiktokElement:hover {
+  filter: brightness(0) invert(0);
 }
-
 
 /*========================================================*/
 /* Team results */
 
-.collapsible{
-width: 100%;
-border-radius: 16px;
+.collapsible {
+  width: 100%;
+  border-radius: 16px;
 }
 
-.results-container{
-justify-content: center;
-width: 80%;
-border-radius: 26px;
-padding: 20px;
-margin: auto;
-
-
+.results-container {
+  justify-content: center;
+  width: 80%;
+  border-radius: 26px;
+  padding: 20px;
+  margin: auto;
 }
-.results-header{
-font-family: Bebas Neue, sans-serif;
-font-size: 200%;
-margin-bottom: 20px;
-
+.results-header {
+  font-family: Bebas Neue, sans-serif;
+  font-size: 200%;
+  margin-bottom: 20px;
 }
-.results-header:hover{
-cursor: pointer;
-background-color: #464646;
+.results-header:hover {
+  cursor: pointer;
+  background-color: #464646;
 }
 
-.split-container{
-text-align: center;
+.split-container {
+  text-align: center;
 }
 
-.results-item{
-width: auto;
-margin-top: auto;
-font-family: "Roboto Condensed", sans-serif;
-font-size: 1rem;
-background-color: #161515;
+.results-item {
+  width: auto;
+  margin-top: auto;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  background-color: #161515;
 }
 
-.results-item-content{
-padding:20px
+.results-item-content {
+  padding: 20px;
 }

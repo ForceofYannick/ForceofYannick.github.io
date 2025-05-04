@@ -61,8 +61,9 @@ $(document).ready(() => {
                     data-team="${team}" 
                     data-index="${i}" 
                     onmouseover="gridItem(this)"
-                    style="border-radius: ${borderRadius}; background-image: url('${logoPath}'); background-size: ${logoSize}px; background-position: ${offsetX}px ${logoYOffset}px;">
-                    </a>
+                    style="border-radius: ${borderRadius}; background-image: url('${logoPath}'); background-size: ${logoSize}px; background-position: ${offsetX}px ${logoYOffset}px; display: flex; justify-content: center; align-items: flex-end; color: white; text-decoration: none; text-align: center; padding-bottom: 10%;"
+>
+                    ${team.toUpperCase()}</a>
     `);
             }
         })
