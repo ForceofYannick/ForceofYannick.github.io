@@ -230,7 +230,7 @@ module.exports = {
       .setTitle(`${teamName} wurde erstellt`);
 
     if (missingPlayers.length > 0) {
-      embed.setDescription(`Folgende Spieler wurden nicht gefunden und bei der Teamerstellung ignoriert: ${missingPlayers.join(" ,")}`);
+      embed.setDescription(`⚠️ Folgende Spieler wurden nicht gefunden und bei der Teamerstellung ignoriert: ${missingPlayers.join(" ,")}`);
     }
 
     embed.addFields(
