@@ -59,7 +59,7 @@ $(document).ready(function () {
           }
         
           playersContainer.append(`
-            <div id="player${playerName}" class="playerBox" style="background-image: url('${backgroundImage}');">
+            <div id="player${playerName}" class="playerBox" style="background-image: url('${backgroundImage}');" onclick="togglePlayerDetails(this)">
               <div class="jerseyName">${playerName}</div>
               <div class="sliderContainer" style="visibility: hidden">
                 <div class="sliderName">${playerName}</div>
@@ -124,3 +124,11 @@ $(document).ready(function () {
   }
   loadTeamData();
 });
+
+
+
+function togglePlayerDetails(player){
+  const element = $(player).find('.sliderContainer');
+  element.css('visibility') == 'visible' ? element.css({'visibility' : 'hidden'}) :  element.css({'visibility' : 'visible'});
+
+}
