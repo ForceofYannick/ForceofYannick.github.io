@@ -16,6 +16,7 @@
         
         <!-- CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/desktop/css/cookieBanner.css" />
         <link rel="stylesheet" href="/desktop/css/index.css" />
         <link rel="stylesheet" href="/desktop/css/navbar.css" />
         
@@ -23,7 +24,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         
         <!-- SCRIPTS -->
-        <script src="/desktop/scripts/appearance.js"></script> 
+        <script src="/desktop/scripts/cookies.js"></script> 
+        <script src="/desktop/scripts/appearance.js"></script>
         <script src="/desktop/scripts/navbar.js"></script>
         <script src="/desktop/scripts/index.js"></script>
 
@@ -36,6 +38,42 @@
 
 </head>
 <body>
+
+<!-- Cookies / Local Storage Banner -->
+<div class="cookieBackground">
+    <div class="cookieContainer">
+        <h2 class="cookieHeader">Bevor Sie fortfahren</h2>
+        <p class="cookieText">
+            Wir speichern Daten, um sicherzustellen, dass die Webseite einwandfrei funktioniert.
+        </p>
+        <p class="cookieText">
+            Unter anderem speichern wir Ihre Erscheinungspräferenzen (Dunkles/Helles Design)
+            sowie das Ergebnis dieser Einstellung, damit Sie, sofern Sie zustimmen, nicht jedes Mal erneut entscheiden müssen.
+        </p>
+        <div class="cookieOption">
+            <span class="cookieLabel">Ich akzeptiere das Speichern der Erscheinungspräferenz:</span>
+            <label class="switch">
+                <input type="checkbox" id="savePreference" aria-label="Erscheinungspräferenz speichern">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="cookieOption">
+            <span class="cookieLabel">Ich möchte beim nächsten Besuch erneut dieses Fenster sehen:</span>
+            <label class="switch">
+                <input type="checkbox" checked id="showCookieWindow" aria-label="Dieses Fenster erneut anzeigen">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <button class="cookieButton" type="button" onclick="saveCookies(document.getElementById('savePreference').checked, document.getElementById('showCookieWindow').checked)">Speichern</button>
+        <footer class="cookieFooter">
+            <a class="cookieA" href="/desktop/datenschutzerklärung.html">Datenschutzerklärung</a>
+            
+            <a class="cookieA" href="/desktop/impressum.html">Impressum</a>
+        </footer>
+    </div>
+    </div>
+
+
     <nav class="navbar"></nav>
 
 <main>
@@ -99,5 +137,10 @@
 
 <br>
 </main>
+
+<footer>
+    <a href="datenschutzerklärung.html">Datenschutzerklärung</a>
+    <a href="kochstube.html">Made by Force_of_Yannick</a>
+</footer>
 </body>
 </html>

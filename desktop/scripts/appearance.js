@@ -1,25 +1,35 @@
 function lightApperance(){
     $('body').css('background-color','#dddddd');
     $('body').css('color','#1b191a');
-    $('h1').css('color','#1b191a');
-    $('h2').css('color','#1b191a');
-    $('h3').css('color','#1b191a');
-    $('footer a').css('color','#1b191a');
-    $('table').css('color','#1b191a');                                  //index
-    $('.player-box').css('background-color','#332f31');                 //teams
 
-    $('#nameImg').attr('src', '/media/Icons/person_black.png');         //impressum
-    $('#mailImg').attr('src', '/media/Icons/mail_black.png');           //impressum
-    $('#phoneImg').attr('src', '/media/Icons/phone_black.png');         //impressum
-    $('#addressImg').attr('src', '/media/Icons/location_black.png');    //impressum
-    $('#discordImg').attr('src', '/media/Icons/discord_black.png');     //impressum
+    $('h1, h2, h3, footer a, table, .player-box, .results-container, .results-item, .results-header')
+        .not('.cookieBackground, .cookieBackground *')
+        .each(function() {
+            const $el = $(this);
+            if ($el.is('h1, h2, h3')) {
+                $el.css('color', '#1b191a');
+            } else if ($el.is('footer a, table, .results-container, .results-item, .results-header')) {
+                $el.css('color', '#1b191a');
+            }
+            if ($el.is('.player-box')) {
+                $el.css('background-color', '#332f31');
+            }
+            if ($el.is('.results-container')) {
+                $el.css('background-color', '#cccccc');
+            }
+            if ($el.is('.results-item')) {
+                $el.css('background-color', '#aaaaaa');
+            }
+            if ($el.is('.results-header')) {
+                $el.css('border', '1px solid black');
+            }
+        });
 
-    $('.results-container').css('background-color','#cccccc');          //team page results
-    $('.results-container').css('color','#1b191a');                     //team page results
-    $('.results-item').css('background-color','#aaaaaa');               //team page results
-    $('.results-item').css('color','#1b191a');                          //team page results
-    $('.results-header').css('color','#1b191a');                        //team page results
-    $('.results-header').css('border','1px solid black');                        //team page results
+    $('#nameImg').attr('src', '/media/Icons/person_black.png');
+    $('#mailImg').attr('src', '/media/Icons/mail_black.png');
+    $('#phoneImg').attr('src', '/media/Icons/phone_black.png');
+    $('#addressImg').attr('src', '/media/Icons/location_black.png');
+    $('#discordImg').attr('src', '/media/Icons/discord_black.png');
 
     $('#toggle-image-light').remove();
     $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="darkApperance()" title="Zu dunklem Modus wechseln" src="/media/Icons/dark-mode.png">');
@@ -29,26 +39,35 @@ function lightApperance(){
 function darkApperance(){
     $('body').css('background-color','#272526');
     $('body').css('color','#dddddd');
-    $('h1').css('color','#dddddd');
-    $('h2').css('color','#dddddd');
-    $('h3').css('color','#dddddd');
-    $('footer a').css('color','#dddddd');
-    $('table').css('color','#dddddd');                                  //index
-    $('.player-box').css('background-color','#1b191a');                 //teams
 
-    $('#nameImg').attr('src', '/media/Icons/person_white.png');         //impressum
-    $('#mailImg').attr('src', '/media/Icons/mail_white.png');           //impressum
-    $('#phoneImg').attr('src', '/media/Icons/phone_white.png');         //impressum
-    $('#addressImg').attr('src', '/media/Icons/location_white.png');    //impressum
-    $('#discordImg').attr('src', '/media/Icons/discord_white.png');     //impressum
+    $('h1, h2, h3, footer a, table, .player-box, .results-container, .results-item, .results-header')
+        .not('.cookieBackground, .cookieBackground *')
+        .each(function() {
+            const $el = $(this);
+            if ($el.is('h1, h2, h3')) {
+                $el.css('color', '#dddddd');
+            } else if ($el.is('footer a, table, .results-container, .results-item, .results-header')) {
+                $el.css('color', 'white');
+            }
+            if ($el.is('.player-box')) {
+                $el.css('background-color', '#1b191a');
+            }
+            if ($el.is('.results-container')) {
+                $el.css('background-color', '#1f1d1e');
+            }
+            if ($el.is('.results-item')) {
+                $el.css('background-color', '#161515');
+            }
+            if ($el.is('.results-header')) {
+                $el.css('border', '1px solid white');
+            }
+        });
 
-    $('.results-container').css('background-color','#1f1d1e');          //team page results
-    $('.results-container').css('color','white');                     //team page results
-    $('.results-item').css('background-color','#161515');               //team page results
-    $('.results-item').css('color','white');                          //team page results
-    $('.results-header').css('color','white');                        //team page results
-    $('.results-header').css('border','1px solid white');                        //team page results
-    
+    $('#nameImg').attr('src', '/media/Icons/person_white.png');
+    $('#mailImg').attr('src', '/media/Icons/mail_white.png');
+    $('#phoneImg').attr('src', '/media/Icons/phone_white.png');
+    $('#addressImg').attr('src', '/media/Icons/location_white.png');
+    $('#discordImg').attr('src', '/media/Icons/discord_white.png');
 
     $('#toggle-image-light').remove();
     $('#toggle-element').append('<img id="toggle-image-light" class="nav-icon togglemode" onclick="lightApperance()" title="Zu hellem Modus wechseln" src="/media/Icons/white-mode.png">');
