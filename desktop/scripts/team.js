@@ -61,7 +61,7 @@ $(document).ready(function () {
           playersContainer.append(`
             <div id="player${playerName}" class="playerBox" style="background-image: url('${backgroundImage}');" onclick="togglePlayerDetails(this)">
               <div class="jerseyName">${playerName}</div>
-              <div class="sliderContainer" style="visibility: hidden">
+              <div class="sliderContainer slideOut" style="visibility: hidden">
                 <div class="sliderName">${playerName}</div>
                 <hr class="sliderLine">
                 <div class="sliderRole">${playerInfos["main-role"].toUpperCase()} / ${playerInfos["orga-role-1"].toUpperCase()} / ${playerInfos["orga-role-2"].toUpperCase()}</div>
@@ -127,8 +127,27 @@ $(document).ready(function () {
 
 
 
-function togglePlayerDetails(player){
+function togglePlayerDetails(player) {
   const element = $(player).find('.sliderContainer');
-  element.css('visibility') == 'visible' ? element.css({'visibility' : 'hidden'}) :  element.css({'visibility' : 'visible'});
 
+  if (element.hasClass('slideIn')) {
+    console.log("3");
+    element.removeClass('slideIn').addClass('slideOut');
+
+    element.one('animationend', () => {
+      console.log("4");
+      element.css('visibility', 'hidden');
+    });
+
+  } else {
+    console.log("1");
+    element.css('visibility', 'visible');
+
+    // ✨ Zwangs-Reflow, damit der Browser den Sichtbarkeitswechsel rendert
+    void element[0].offsetWidth;
+
+    element.removeClass('slideOut').addClass('slideIn');
+    console.log("2");
+  }
 }
+

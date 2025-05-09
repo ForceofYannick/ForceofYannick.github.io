@@ -64,10 +64,24 @@ body {
   font-family: "Roboto Condensed", "sans-serif";
   background-image: url("/media/TeamPages/Playercard_Slide.png");
   background-size: 100%;
-  /* animation-name: sliderAnimation; */
-  animation-duration: 0.8s;
-  animation-timing-function: ease;
   height: 100%;
+}
+.slideIn {
+  animation: slideInAnimation 0.8s ease forwards;
+}
+
+.slideOut {
+  animation: slideOutAnimation 0.8s ease forwards;
+}
+
+@keyframes slideInAnimation {
+  from { transform: translateX(300px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutAnimation {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(300px); opacity: 0; }
 }
 .sliderName {
   position: absolute;
@@ -97,14 +111,7 @@ body {
 /*========================================================*/
 /* Animations */
 
-@keyframes sliderAnimation {
-  from {
-    transform: translateX(300px);
-  }
-  to {
-    transform: translateX(0px);
-  }
-}
+
 
 /*========================================================*/
 /* Player Socials */
