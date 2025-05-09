@@ -48,7 +48,7 @@ $(document).ready(function () {
         for (player in jsonTeam.Players) {
           const playerName = player.toUpperCase();
           const playerInfos = jsonTeam.Players[player];
-        
+
           let backgroundImage = "/media/Jersey/Jersey.png"; // Default
           switch (playerInfos["main-role"]) {
             case "top": backgroundImage = "/media/top.png"; break;
@@ -57,7 +57,7 @@ $(document).ready(function () {
             case "jgl": backgroundImage = "/media/jgl.png"; break;
             case "adc": backgroundImage = "/media/adc.png"; break;
           }
-        
+
           playersContainer.append(`
             <div id="player${playerName}" class="playerBox" style="background-image: url('${backgroundImage}');" onclick="togglePlayerDetails(this)">
               <div class="jerseyName">${playerName}</div>
@@ -76,7 +76,7 @@ $(document).ready(function () {
             </div>
           `);
         }
-        
+
 
         // get team results container
         var resultsContainer = $('.teamResultsContainer');
@@ -85,36 +85,38 @@ $(document).ready(function () {
         for (const result in jsonTeam.Results) {
           const splitName = result;
           const SplitInfos = jsonTeam.Results[splitName];
+          const safeSplitName = splitName.replace(/[^a-zA-Z0-9_-]/g, "_"); // ersetzt z.B. spring'24 → spring_24
+
 
           resultsContainer.append(`
-                <div class='split-container'>
-                    <div class='collapsible results-header' onclick="toggleCollapse('${splitName}')">
-                        ${splitName} <i id='caret-container${splitName}' class='fa fa-caret-down'></i>
-                    </div>
-                    <table id='${splitName}' class='results-table' style='display: flex; justify-content: center;'>
-                        <tr class="results-item" style="color: white">       
-                            <td class="results-item-content">Stage</td>
-                            <td class="results-item-content">Gruppe</td>
-                            <td class="results-item-content">Ergebnis</td>
-                        </tr>
-                        <tr class="results-item" style="color: white">       
-                            <td class="results-item-content">Kalibrierungsphase</td>
-                            <td class="results-item-content">${SplitInfos.kaliphase.group}</td>
-                            <td class="results-item-content">${SplitInfos.kaliphase.result}</td>
-                        </tr>
-                        <tr class="results-item" style="color: white">       
-                            <td class="results-item-content">Gruppenphase</td>
-                            <td class="results-item-content">${SplitInfos.groupphase.group}</td>
-                            <td class="results-item-content">${SplitInfos.groupphase.result}</td>
-                        </tr>
-                        <tr class="results-item" style="color: white">       
-                            <td class="results-item-content">Playoffs</td>
-                            <td class="results-item-content">${SplitInfos.playoffs.group}</td>
-                            <td class="results-item-content">${SplitInfos.playoffs.result}</td>
-                        </tr>
-                    </table>
+            <div class='split-container'>
+                <div class='collapsible results-header' onclick="toggleCollapse('${safeSplitName}')">
+                    ${splitName} <i id='caret-container${safeSplitName}' class='fa fa-caret-down'></i>
                 </div>
-            `);
+                <table id='${safeSplitName}' class='results-table' style='display: flex; justify-content: center;'>
+                    <tr class="results-item" style="color: white">       
+                        <td class="results-item-content">Stage</td>
+                        <td class="results-item-content">Gruppe</td>
+                        <td class="results-item-content">Ergebnis</td>
+                    </tr>
+                    <tr class="results-item" style="color: white">       
+                        <td class="results-item-content">Kalibrierungsphase</td>
+                        <td class="results-item-content">${SplitInfos.kaliphase.group}</td>
+                        <td class="results-item-content">${SplitInfos.kaliphase.result}</td>
+                    </tr>
+                    <tr class="results-item" style="color: white">       
+                        <td class="results-item-content">Gruppenphase</td>
+                        <td class="results-item-content">${SplitInfos.groupphase.group}</td>
+                        <td class="results-item-content">${SplitInfos.groupphase.result}</td>
+                    </tr>
+                    <tr class="results-item" style="color: white">       
+                        <td class="results-item-content">Playoffs</td>
+                        <td class="results-item-content">${SplitInfos.playoffs.group}</td>
+                        <td class="results-item-content">${SplitInfos.playoffs.result}</td>
+                    </tr>
+                </table>
+            </div>
+        `);
         }
 
       })
@@ -126,28 +128,37 @@ $(document).ready(function () {
 });
 
 
-
 function togglePlayerDetails(player) {
   const element = $(player).find('.sliderContainer');
 
   if (element.hasClass('slideIn')) {
-    console.log("3");
     element.removeClass('slideIn').addClass('slideOut');
 
     element.one('animationend', () => {
-      console.log("4");
       element.css('visibility', 'hidden');
     });
 
   } else {
-    console.log("1");
     element.css('visibility', 'visible');
 
-    // ✨ Zwangs-Reflow, damit der Browser den Sichtbarkeitswechsel rendert
+
     void element[0].offsetWidth;
 
     element.removeClass('slideOut').addClass('slideIn');
-    console.log("2");
   }
+}
+
+function toggleCollapse(split) {
+
+  if ($(`#${split}`).css('display') == 'none') {
+    $(`#${split}`).css('display', 'flex');
+    $(`#${split}`).parent().find('.collapsible').find('i').removeClass('fa-caret-right').addClass('fa-caret-down');
+  }
+  else {
+    $(`#${split}`).css('display', 'none');
+    $(`#${split}`).parent().find('.collapsible').find('i').removeClass('fa-caret-down').addClass('fa-caret-right');
+  }
+
+
 }
 

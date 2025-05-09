@@ -21,11 +21,17 @@ $(document).ready(() => {
 
             for (let i = 0; i < teamNames.length; i++) {
                 const team = teamNames[i];
-
+                if(i == teamNames.length -1){
+                    leftNavbar.append(`
+                        <a href="/desktop/team.html?name=${team}" class="nav-item">${team.toUpperCase()}</a>
+                       `);
+                }
+                else{
             leftNavbar.append(`
                  <a href="/desktop/team.html?name=${team}" class="nav-item">${team.toUpperCase()}</a>
                  <div class="menuSeparator"> | </div>
                 `);
+            }
             }
 
             centerNavbar.append(`
@@ -36,12 +42,15 @@ $(document).ready(() => {
                 <div class="dropdown">
                     <button class="dropbtn"> IBTC SOCIALS</button>
                     <div class="dropdown-content">
-                        <a href="https://www.instagram.com/ibt_challenger" target="_blank"><img src="/media/Icons/instagram.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Instagram</a>
-                        <a href=" https://www.twitch.tv/ibt_challenger" target="_blank"><img src="/media/Icons/twitch.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Twitch</a>
-                        <a href="https://www.youtube.com/@IBTChallenger" target="_blank"><img src="/media/Icons/youtube.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Youtube</a>
-                        <a href="https://x.com/ibt_challenger" target="_blank"><img src="/media/Icons/twitter.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Twitter</a>
-                        <a href="#"><img src="/media/Icons/tiktok.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Tiktok (WIP)</a>
-                        <a href="https://www.primeleague.gg/leagues/teams/175275-iron-better-than-challenger" target="_blank"><img src="/media/Icons/primeleague.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Prime League</a>
+                        <a href="https://www.instagram.com/ibtc_esports/" target="_blank"><img src="/media/Icons/instagram.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Instagram</a>
+                        <a href="https://www.twitch.tv/ibtc_esports" target="_blank"><img src="/media/Icons/twitch.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Twitch</a>
+                        <a href="https://www.youtube.com/@IBTC_ESPORTS" target="_blank"><img src="/media/Icons/youtube.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Youtube</a>
+                        <a href="https://x.com/ibtc_esports" target="_blank"><img src="/media/Icons/twitter.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Twitter</a>
+                        <a href="https://www.tiktok.com/@ibtc_esports"><img src="/media/Icons/tiktok.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Tiktok</a>
+                        <a href="https://discord.com/invite/uqP3UhSTww"><img src="/media/Icons/discord_white.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Discord</a>
+                        <a href="https://linktr.ee/ibtc_esports"><img src="/media/Icons/linktree.png" style="width: 20px; height: 20px; vertical-align:middle; padding-bottom: 5px;" /> Linktree</a>
+                        
+                        
                     </div>
                 </div>
                 <div class="menuSeparator"> | </div>

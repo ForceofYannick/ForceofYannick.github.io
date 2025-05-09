@@ -35,14 +35,9 @@
 - 🖼️ **3:2** (Surface Pro 8)
 
 ### 📌 Index-Datei:
-- 🖥️ **Responsive Design**: Die Index-Seite für verschiedene Bildschirmformate anpassen.
+
 - 🍪 **Cookie-Informationen**: Cookie-Hinweise und -Details anzeigen.
 
-### 📑 Info- & Kontakt-Dateien:
-- 🐞 **Bugfix Toggle Light Mode Icon**: Fehlerhafte Darstellung beheben.
-
-### 🏛️ Impressum:
-- ⚙️ **Icons reparieren**: Fehlerhafte Icons im Impressum korrigieren.
 ---
 
 ## 🤖 Discord Bot
