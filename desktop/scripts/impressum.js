@@ -1,11 +1,11 @@
-function copyFunction(id){
+function copyFunction(id) {
 
     var element = document.getElementById(id);
     var text = element.innerHTML;
 
     navigator.clipboard.writeText(text);
     $(`#${id}`).text("Kopiert!");
-    
+
     setTimeout(() => {
         $(`#name`).text("Tamino Weschler");
         $(`#email`).text("ibtc.league.contact@gmail.com");

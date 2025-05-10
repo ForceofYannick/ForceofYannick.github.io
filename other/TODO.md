@@ -27,17 +27,9 @@
 ---
 
 ## 💻 Desktop
-
-### 🖥️ Seitenverhältnisse beachten:
-- 🖼️ **16:9** (Monitor)
-- 🖼️ **21:9** (Monitor)
-- 🖼️ **4:3** (TV)
-- 🖼️ **3:2** (Surface Pro 8)
-
-### 📌 Index-Datei:
-
-- 🍪 **Cookie-Informationen**: Cookie-Hinweise und -Details anzeigen.
-
+### Teams:
+- Splitergebnisstabelleneinklappelementrahmen anzeigen
+- Splitergebnistabellen schöner machen
 ---
 
 ## 🤖 Discord Bot

@@ -14,7 +14,6 @@
   height: 0;
 }
 
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -62,7 +61,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.cookieBackground{
+.cookieBackground {
   display: none;
   background-color: rgba(0, 0, 0, 0.559);
   top: 0px;
@@ -75,7 +74,7 @@ input:checked + .slider:before {
 /* Container für das Cookie-Banner */
 .cookieContainer {
   position: fixed;
-  top:15vh;
+  top: 15vh;
   z-index: 6;
   max-width: 88vw;
   margin: 10vh 20vw;
@@ -124,7 +123,7 @@ input:checked + .slider:before {
 .cookieButton {
   display: block;
   width: 100%;
-  height:5vh;
+  height: 5vh;
   padding: 10px 20px;
   font-size: 1em;
   font-weight: bold;
@@ -146,30 +145,30 @@ input:checked + .slider:before {
 }
 
 .cookieFooter {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px; /* Abstand zwischen den Boxen */
-    padding: 20px; /* Innenabstand für den Footer */
-    background-color: #f9f9f9; /* Optionaler Hintergrund für den Footer */
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Abstand zwischen den Boxen */
+  padding: 20px; /* Innenabstand für den Footer */
+  background-color: #f9f9f9; /* Optionaler Hintergrund für den Footer */
 }
 
 .cookieFooter .cookieA {
-    flex: 1; /* Boxen haben die gleiche Breite */
-    text-align: center;
-    padding: 10px 15px;
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 8px;
-    color: #1b191a;
-    background-color: #fff;
-    text-decoration: none; /* Entfernt Unterstreichung */
-    transition: background-color 0.3s ease, color 0.3s ease;
+  flex: 1; /* Boxen haben die gleiche Breite */
+  text-align: center;
+  padding: 10px 15px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 8px;
+  color: #1b191a;
+  background-color: #fff;
+  text-decoration: none; /* Entfernt Unterstreichung */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .cookieFooter .cookieA:hover {
-    background-color: #a0a0a0; /* Hellgrauer Hover-Effekt */
-    color: #000;
+  background-color: #a0a0a0; /* Hellgrauer Hover-Effekt */
+  color: #000;
 }
 
 .cookieFooter .cookieA:active {
-    background-color: #ccc; /* Dunklerer Effekt beim Klicken */
+  background-color: #ccc; /* Dunklerer Effekt beim Klicken */
 }

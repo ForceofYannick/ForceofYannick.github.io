@@ -5,8 +5,32 @@ body {
   background-color: #272526;
   color: white;
 }
+ 
+h1 {
+  font-size: 400%;
+  font-family: Bebas Neue, sans-serif;
+}
 
-.elements:hover{
-background-color: #484848;
-cursor: pointer;
+.container {
+  font-size: 150%;
+  font-family: Roboto Condensed, sans-serif;
+}
+
+span {
+  color: #f65186;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.copyInfo {
+  margin-top: -1.7rem;
+  color: #a0a0a0;
+}
+.elements:hover {
+  background-color: #484848;
+  cursor: pointer;
 }

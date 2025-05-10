@@ -1,12 +1,38 @@
 body {
-    height: 100%;
-    margin: 0;
-    overflow-y: scroll;
-    background-color: #272526;
-    color: white;
-  }
-  
-.elements:hover{
-background-color: #484848;
-cursor: pointer;
-  }
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  background-color: #272526;
+  color: white;
+}
+
+.elements:hover {
+  background-color: #484848;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 400%;
+  font-family: Bebas Neue, sans-serif;
+}
+
+.container {
+  font-size: 150%;
+  font-family: Roboto Condensed, sans-serif;
+}
+p { 
+  margin-top: -2rem;
+  color: #a0a0a0;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.note {
+  font-size: 0.9rem;
+  display: flexbox;
+  text-align: center;
+}

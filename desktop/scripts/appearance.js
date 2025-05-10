@@ -1,10 +1,10 @@
-function lightApperance(){
-    $('body').css('background-color','#dddddd');
-    $('body').css('color','#1b191a');
+function lightApperance() {
+    $('body').css('background-color', '#dddddd');
+    $('body').css('color', '#1b191a');
 
     $('h1, h2, h3, footer a, table, .player-box, .results-container, .results-item, .results-header')
         .not('.cookieBackground, .cookieBackground *')
-        .each(function() {
+        .each(function () {
             const $el = $(this);
             if ($el.is('h1, h2, h3')) {
                 $el.css('color', '#1b191a');
@@ -36,13 +36,13 @@ function lightApperance(){
     localStorage.setItem('theme', 'light');
 }
 
-function darkApperance(){
-    $('body').css('background-color','#272526');
-    $('body').css('color','#dddddd');
+function darkApperance() {
+    $('body').css('background-color', '#272526');
+    $('body').css('color', '#dddddd');
 
     $('h1, h2, h3, footer a, table, .player-box, .results-container, .results-item, .results-header')
         .not('.cookieBackground, .cookieBackground *')
-        .each(function() {
+        .each(function () {
             const $el = $(this);
             if ($el.is('h1, h2, h3')) {
                 $el.css('color', '#dddddd');
@@ -74,7 +74,7 @@ function darkApperance(){
     localStorage.setItem('theme', 'dark');
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     const theme = localStorage.getItem('theme');
     if (theme === 'light') {
         lightApperance();

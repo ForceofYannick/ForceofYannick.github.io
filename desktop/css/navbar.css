@@ -16,7 +16,11 @@
   align-items: center; /* Vertikales Zentrieren der Elemente */
   background-color: #333; /* Hintergrundfarbe der Navbar */
   padding: 10px 20px; /* Innenabstand der Navbar */
-  background: linear-gradient(to bottom, #00000080, #ffffff00); /* Verlaufshintergrund für die Navbar */
+  background: linear-gradient(
+    to bottom,
+    #00000080,
+    #ffffff00
+  ); /* Verlaufshintergrund für die Navbar */
   backdrop-filter: blur(10px); /* Hintergrund Blur effekt für Navbar */
   z-index: 10;
 
@@ -96,7 +100,6 @@
 .dropbtn:hover {
   background-color: #cd295d;
   border-radius: 16px;
-
 }
 
 /* Stil für das Dropdown-Menü */
@@ -140,7 +143,6 @@
 .dropdown:hover .dropbtn {
   background-color: #cd295d;
   border-radius: 16px;
-
 }
 
 /* Aktives Element in Navbar */

@@ -1,21 +1,21 @@
-:root{
-    --logoSize: 500%;
-    --logoYOffset: 25%;
-    --scaleSize: 1.03;
-    --transitionTime: 0.2s;
-    --FontSize: 50px;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #272526;
-    }
+:root {
+  --logoSize: 500%;
+  --logoYOffset: 25%;
+  --scaleSize: 1.03;
+  --transitionTime: 0.2s;
+  --FontSize: 50px;
+}
 
-    .landing-header {
+body {
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #272526;
+}
+
+.landing-header {
   font-family: "Bebas Neue", "sans-serif";
   font-size: 6rem;
   color: #1b191a;
@@ -24,129 +24,124 @@
   margin-bottom: 0px;
   margin-top: 0px;
 }
-    
-    .content{
-      color:white;
-    }
-    
-    
-    .welcome_banner{
-      margin-top: -100px;
-      margin-left: -20px; /* Wegen scrollbar rechts*/
-      width: 100vw;
-    }
-    
-    
-    
-    .twitch_jersey{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin: 15px 20%;
-      /* border: 3px solid black; */
-      }
-    
-    .twitch_jersey div{
-     display: inline;
-     /* border: 3px solid green; */
-    }
-    
-    
-    
-    .splitResultsContainer{
-      display:flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 15px 20%;
-      padding: 20px;
-      border: 3px solid #000000;
-      border-radius: 15px;
-      max-width: 100%;
-      box-sizing: border-box;
-     }
-     
-     .splitResultsContainer td, th{
-       border: 3px solid #000000;
-     }
-     
-     .splitResultsContainer th{
-       background-color: #65909066;
-     }
-     
-     .splitResultsContainer td:nth-child(odd), tr:nth-child(even){
-       background-color: #a6f9f97e;
-     }
-     
-     .splitResultsContainer td:nth-child(even), tr:nth-child(odd){
-       background-color: #17c60e7e;
-     }
-    
-     
-    table{
-      width: 100%;
-    }
-    
-    th, td{
-      font-size: 2.5vw;
-      padding: 10px;
-      text-align: center;
-    }
-    
-    @media (min-width: 768px){
-      .header{
-        font-size: 50px;
-      }
-      th,td{
-        font-size: 24px;
-      }
-    
-    }
-    
-    
-    .teamGrid{
-      border-radius: 20px;
-      color:white;
-      font-family: "Bebas Neue", sans-serif;
-      width: 70%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(5, auto);
-      gap: 8px;
-      height: 45vh;
-    }
-    
-    .gridItem{
-      display: flex;
-      background-color: black;
-      border-radius: 20px 0px 0px 20px;
-      background-size: var(--logoSize);
-      background-repeat: no-repeat;
-      background-position: -2.5% var(--logoYOffset);
-      transition: var(--transitionTime);
-      position: relative;
-      text-align: center;
-      font-size: var(--FontSize);
-    }
-    
-    .gridItem:before{
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    
-    .gridItem:hover{
-      cursor: pointer;
-      transform: scale(var(--scaleSize));
-      transition: var(--transitionTime);
-    }
-    
-    
-    .header{
-      width: 100%;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 3vw;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+
+.content {
+  color: white;
+}
+
+.welcome_banner {
+  margin-top: -100px;
+  margin-left: -20px; /* Wegen scrollbar rechts*/
+  width: 100vw;
+}
+
+.twitch_jersey {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 15px 20%;
+  /* border: 3px solid black; */
+}
+
+.twitch_jersey div {
+  display: inline;
+  /* border: 3px solid green; */
+}
+
+.splitResultsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 20%;
+  padding: 20px;
+  border: 3px solid #000000;
+  border-radius: 15px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.splitResultsContainer td,
+th {
+  border: 3px solid #000000;
+}
+
+.splitResultsContainer th {
+  background-color: #65909066;
+}
+
+.splitResultsContainer td:nth-child(odd),
+tr:nth-child(even) {
+  background-color: #a6f9f97e;
+}
+
+.splitResultsContainer td:nth-child(even),
+tr:nth-child(odd) {
+  background-color: #17c60e7e;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  font-size: 2.5vw;
+  padding: 10px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .header {
+    font-size: 50px;
+  }
+  th,
+  td {
+    font-size: 24px;
+  }
+}
+
+.teamGrid {
+  border-radius: 20px;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  width: 70%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 8px;
+  height: 45vh;
+}
+
+.gridItem {
+  display: flex;
+  background-color: black;
+  border-radius: 20px 0px 0px 20px;
+  background-size: var(--logoSize);
+  background-repeat: no-repeat;
+  background-position: -2.5% var(--logoYOffset);
+  transition: var(--transitionTime);
+  position: relative;
+  text-align: center;
+  font-size: var(--FontSize);
+}
+
+.gridItem:before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gridItem:hover {
+  cursor: pointer;
+  transform: scale(var(--scaleSize));
+  transition: var(--transitionTime);
+}
+
+.header {
+  width: 100%;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3vw;
+  text-align: center;
+  margin-bottom: 20px;
+}

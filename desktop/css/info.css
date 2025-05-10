@@ -1,8 +1,23 @@
 body {
-    height: 100%;
-    margin: 0;
-    overflow-y: scroll;
-    background-color: #272526;
-    color: white;
- }
- 
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  background-color: #272526;
+  color: white;
+}
+
+h1 {
+  font-size: 400%;
+  font-family: Bebas Neue, sans-serif;
+}
+.container {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 150%;
+  line-height: 1;
+  width: 80%;
+  margin: 0 auto;
+}
+span {
+  color: #f65186;
+  font-weight: bold;
+}
