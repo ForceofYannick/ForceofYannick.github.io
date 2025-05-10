@@ -66,11 +66,11 @@ $(document).ready(function () {
                 <hr class="sliderLine">
                 <div class="sliderRole">${playerInfos["main-role"].toUpperCase()} / ${playerInfos["orga-role-1"].toUpperCase()} / ${playerInfos["orga-role-2"].toUpperCase()}</div>
                 <ol class="sliderList">
-                  <li><a href="${playerInfos.instagram}" target="_blank" class="instagramElement"><img src="/media/Icons/Instagram.png"></a></li>
-                  <li><a href="${playerInfos.tiktok}" target="_blank" class="tiktokElement"><img src="/media/Icons/Tiktok.png"></a></li>
-                  <li><a href="${playerInfos.twitch}" target="_blank" class="twitchElement"><img src="/media/Icons/Twitch.png"></a></li>
-                  <li><a href="${playerInfos.twitter}" target="_blank" class="twitterElement"><img src="/media/Icons/Twitter.png"></a></li>
-                  <li><a href="${playerInfos.youtube}" target="_blank" class="youtubeElement"><img src="/media/Icons/Youtube.png"></a></li>
+                  <li><a href="${playerInfos.instagram}" target="_blank" class="instagramElement"><img src="/media/Icons/instagram.png"></a></li>
+                  <li><a href="${playerInfos.tiktok}" target="_blank" class="tiktokElement"><img src="/media/Icons/tiktok.png"></a></li>
+                  <li><a href="${playerInfos.twitch}" target="_blank" class="twitchElement"><img src="/media/Icons/twitch.png"></a></li>
+                  <li><a href="${playerInfos.twitter}" target="_blank" class="twitterElement"><img src="/media/Icons/twitter.png"></a></li>
+                  <li><a href="${playerInfos.youtube}" target="_blank" class="youtubeElement"><img src="/media/Icons/youtube.png"></a></li>
                 </ol>
               </div>
             </div>
