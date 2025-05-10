@@ -14,6 +14,16 @@
       margin: 0;
       background-color: #272526;
     }
+
+    .landing-header {
+  font-family: "Bebas Neue", "sans-serif";
+  font-size: 6rem;
+  color: #1b191a;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
     
     .content{
       color:white;

@@ -3,7 +3,7 @@
 
 body {
   background-color: #dddddd;
-  margin-top: 100px;
+  margin: 0;
 }
 
 .landing-header {
@@ -14,7 +14,6 @@ body {
   padding: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
-  margin-left: 2.5%
 }
 
 .section-header {
@@ -32,9 +31,9 @@ body {
 
 .playerBox {
   position: relative;
-  background-size: 800px; /* bissi kleiner dass bei jersey oben noch weißer rand is, danke :)*/
+  background-size: 700px; /* bissi kleiner dass bei jersey oben noch weißer rand is, danke :)*/
   background-repeat: no-repeat;
-  background-position: center -20px;
+  background-position: center -5px;
   text-align: center;
   margin-left: 22.5%;
   margin-bottom: 1vh;
@@ -54,7 +53,7 @@ body {
   font-size: 3rem;
   position: absolute;
   top: 40%;
-  left: 20%;
+  left: 25%;
 }
 
 /*========================================================*/
