@@ -4,6 +4,7 @@
 body {
   background-color: #dddddd;
   margin: 0;
+  justify-content: center;
 }
 
 .landing-header {
@@ -139,7 +140,7 @@ body {
 
 .collapsible {
   width: 100%;
-  border-radius: 16px;
+  border-bottom: 1px solid green;
 }
 
 .results-container {
@@ -160,7 +161,12 @@ body {
 }
 
 .split-container {
+  margin: 0 auto;
   text-align: center;
+  max-width: 52vw;
+  border: 1px solid red;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .results-item {

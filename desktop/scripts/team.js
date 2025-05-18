@@ -77,7 +77,6 @@ $(document).ready(function () {
           `);
         }
 
-
         // get team results container
         var resultsContainer = $('.teamResultsContainer');
 
