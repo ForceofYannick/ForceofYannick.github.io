@@ -2,17 +2,17 @@ const fs = require("fs").promises;
 
 const { Client, ApplicationCommandOptionType } = require('discord.js');
 
-const { getInput } = require('../../utils/getInput');
-const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
-const { createPlayerObject } = require("../../utils/createPlayerObject");
-const { getPlayerFromJSON } = require("../../utils/JSON/getPlayerFromJSON");
-const { comparePlayersAndMakeNew } = require("../../utils/comparePlayersAndMakeNew");
-const { deletePlayerFromJSON } = require("../../utils/JSON/deletePlayerFromJSON");
-const { createPlayerInJSON } = require("../../utils/JSON/createPlayerInJSON");
-const { saveJSON } = require("../../utils/JSON/saveJSON");
-const { readJSON } = require("../../utils/JSON/readJSON");
+const { getInput } = require('@utils/getInput.js');
+const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { createPlayerObject } = require("@utils/createPlayerObject.js");
+const { getPlayerFromJSON } = require("@json/getPlayerFromJSON.js");
+const { comparePlayersAndMakeNew } = require("@utils/comparePlayersAndMakeNew.js");
+const { deletePlayerFromJSON } = require("@json/deletePlayerFromJSON.js");
+const { createPlayerInJSON } = require("@json/createPlayerInJSON.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
 
-
+ 
 function checkAnyInputExists(interaction) {
     for (const option of interaction.options.data) {
 

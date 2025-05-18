@@ -1,11 +1,12 @@
 // for json file stuff
 const fs = require("fs").promises;
 
-const { createPlayerInJSON } = require('../../utils/JSON/createPlayerInJSON');
-const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
-const { saveJSON } = require("../../utils/JSON/saveJSON");
-const { readJSON } = require("../../utils/JSON/readJSON");
-const { createPlayerObject } = require('../../utils/createPlayerObject');
+const createPlayerInJSON = require('@json/createPlayerInJSON.js');
+const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
+const { createPlayerObject } = require('@utils/createPlayerObject.js');
+
 
 
 const { Client } = require('discord.js');

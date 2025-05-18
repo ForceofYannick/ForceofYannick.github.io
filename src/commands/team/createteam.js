@@ -1,9 +1,8 @@
 //for json file stuff
 const fs = require("fs").promises;
 
-const { getInput } = require('../../utils/getInput');
-const { createPlayerInJSON } = require('../../utils/createPlayerInJSON');
-const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+const { getInput } = require('@utils/getInput.js');
+const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');

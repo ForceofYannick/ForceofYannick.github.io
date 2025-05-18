@@ -1,9 +1,7 @@
 //for json file stuff
 const fs = require("fs").promises;
 
-const { getInput } = require('../../utils/getInput');
-const { createPlayerInJSON } = require('../../utils/createPlayerInJSON');
-const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+const { getInput } = require('@utils/getInput');
 
 //for option type
 const {

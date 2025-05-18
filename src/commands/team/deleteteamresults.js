@@ -11,19 +11,19 @@ const {
 } = require('discord.js');
 
 module.exports = {
-    name: 'editteamname',
-    description: '🔄 Rename a team!',
+    name: 'deleteteamresults',
+    description: '🔄 Delete a team results!',
     testOnly: true,
     options: [
         {
-            name: "current-team-name",
-            description: "The current team name",
+            name: "team-name",
+            description: "The team name",
             type: ApplicationCommandOptionType.String,
             required: true,
         },
         {
-            name: "new-team-name",
-            description: "The new team name",
+            name: "split-name",
+            description: "The split name",
             type: ApplicationCommandOptionType.String,
             required: true,
         },
@@ -34,10 +34,13 @@ module.exports = {
         // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
+        return;
 
+
+        
         // get inputs
-        const currentTeamName = getInput(interaction, 'current-team-name');
-        const newTeamName = getInput(interaction, 'new-team-name');
+        const teamName = getInput(interaction, 'team-name');
+        const splitName = getInput(interaction, 'split-name');
 
         // Read data json file
         let jsonData;
@@ -54,10 +57,10 @@ module.exports = {
         }
 
 
-        // if new team name already exists, return
-        if(jsonData.Teams[newTeamName]){
-            console.error(`❌ Teamname ${newTeamName} existiert bereits`);
-            await interaction.editReply(`❌ Teamname ${newTeamName} existiert bereits`);
+        // if new split name doesnt exists, return
+        if(!jsonData.Teams[teamName][splitName]){
+            console.error(`❌ Split ${splitName} existiert nicht`);
+            await interaction.editReply(`❌ Split ${splitName} existiert nicht`);
             return;
         }
 

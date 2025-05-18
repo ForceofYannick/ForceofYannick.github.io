@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "nodemon --ignore '*.json' src/index.js"
+    "start": "nodemon --ignore '*.json' src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,12 @@
   "description": "",
   "dependencies": {
     "discord.js": "^14.18.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "module-alias": "^2.2.3"
+  },
+  "_moduleAliases": {
+    "@src": "src",
+    "@utils": "src/utils",
+    "@json": "src/utils/JSON"
   }
 }

@@ -1,13 +1,14 @@
 const fs = require("fs").promises;
 
-const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
-const { saveJSON } = require("../../utils/JSON/saveJSON");
-const { readJSON } = require("../../utils/JSON/readJSON");
-const { getPlayerFromJSON } = require('../../utils/JSON/getPlayerFromJSON');
-const { deletePlayerFromJSON } = require("../../utils/JSON/deletePlayerFromJSON");
+const { getPlayerFromJSON } = require('@json/getPlayerFromJSON.js');
+const { deletePlayerFromJSON } = require("@json/deletePlayerFromJSON.js");
+const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
+const { getInput } = require("@utils/getInput");
 
 const { Client, ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
-const { getInput } = require("../../utils/getInput");
+
 
 
 module.exports = {

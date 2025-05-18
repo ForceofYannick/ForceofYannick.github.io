@@ -1,7 +1,8 @@
 const fs = require("fs").promises;
-const { getInput } = require('../../utils/getInput');
-const { getPlayerFromJSON } = require('../../utils/JSON/getPlayerFromJSON');
-const { constructPlayerEmbed } = require("../../utils/constructPlayerEmbed");
+const { getInput } = require('@utils/getInput.js');
+const { getPlayerFromJSON } = require('@json/getPlayerFromJSON.js');
+const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+
 const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {

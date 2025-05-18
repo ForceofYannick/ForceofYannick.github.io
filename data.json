@@ -2,18 +2,6 @@
   "Teams": {
     "ibts": {
       "Players": {
-        "yannick1": {
-          "discord-id": "332847436471074827",
-          "main-role": "top",
-          "orga-role-1": "team-leader",
-          "orga-role-2": "team-leader",
-          "instagram": "https://www.instagram.com/force_of_yannick",
-          "tiktok": "https://www.tiktok.com/@force_of_yannick",
-          "twitter": "https://x.com/forceofyannick",
-          "twitch": "https://www.twitch.tv/force_of_yannick",
-          "youtube": "https://www.youtube.com/force_of_yannick",
-          "team": "ibts"
-        },
         "yannick2": {
           "discord-id": "332847436471074827",
           "main-role": "mid",
@@ -222,6 +210,38 @@
           "playoffs": {
             "group": 1,
             "result": "1:0"
+          }
+        }
+      }
+    },
+    "tamistinkt": {
+      "Players": {
+        "yannick1": {
+          "discord-id": "332847436471074827",
+          "main-role": "top",
+          "orga-role-1": "team-leader",
+          "orga-role-2": "team-leader",
+          "instagram": "https://www.instagram.com/force_of_yannick",
+          "tiktok": "https://www.tiktok.com/@force_of_yannick",
+          "twitter": "https://x.com/forceofyannick",
+          "twitch": "https://www.twitch.tv/force_of_yannick",
+          "youtube": "https://www.youtube.com/force_of_yannick",
+          "team": "tamistinkt"
+        }
+      },
+      "Results": {
+        "summer'25": {
+          "kaliphase": {
+            "group": "-",
+            "result": "-"
+          },
+          "groupphase": {
+            "group": 7,
+            "result": "9:3"
+          },
+          "playoffs": {
+            "group": "-",
+            "result": "-"
           }
         }
       }
