@@ -1,8 +1,10 @@
 //for json file stuff
 const fs = require("fs").promises;
 
-const { getInput } = require('@utils/getInput');
+const { getInput } = require('@utils/getInput.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
 
 //for option type
 const {
@@ -52,7 +54,7 @@ module.exports = {
             description: "The result for the group phase",
             type: ApplicationCommandOptionType.String,
             required: false,
-        },        {
+        }, {
             name: "playoff-group",
             description: "The group for the playoff phase",
             type: ApplicationCommandOptionType.Number,
@@ -64,8 +66,8 @@ module.exports = {
             type: ApplicationCommandOptionType.String,
             required: false,
         },
-        
-          
+
+
     ],
 
     callback: async (client, interaction) => {
@@ -84,26 +86,19 @@ module.exports = {
         const caliphaseresult = getInput(interaction, 'kaliphase-result');
         const groupphaseresult = getInput(interaction, 'groupphase-result');
         const playoffresult = getInput(interaction, 'playoff-result');
-        
 
-        
+
+
 
         // Read data json file
         let jsonData;
-        let rawData;
-
         try {
-            rawData = await fs.readFile("data.json", "utf8");
-            jsonData = JSON.parse(rawData);
-
-        } catch (err) {
-            console.error("❌ Fehler beim Lesen:", err);
-            await interaction.editReply("❌ Fehler beim lesen der JSON-Datei!");
+            jsonData = await readJSON();
+        }
+        catch (err) {
+            await interaction.editReply(err.message);
             return;
         }
-
-
-        // Catch confilcting inputs in file
 
         // if team not existing
         if (!jsonData.Teams[teamName]) {
@@ -113,9 +108,9 @@ module.exports = {
         }
 
         const teamPath = jsonData.Teams[teamName];
-        
+
         // if split name already existing
-        if(teamPath.Results[splitName]){
+        if (teamPath.Results[splitName]) {
             console.error(`❌ Split ${splitName} existiert bereits in ${teamName}`);
             await interaction.editReply(`❌ Split ${splitName} existiert bereits in ${teamName}`);
             return;
@@ -124,42 +119,31 @@ module.exports = {
 
         // else create new split with provided inputs
         teamPath.Results[splitName] = {
-            "kaliphase":{
+            "kaliphase": {
                 "group": caliphasegroup,
                 "result": caliphaseresult
             },
-            "groupphase":{
+            "groupphase": {
                 "group": groupphasegroup,
                 "result": groupphaseresult
             },
-            "playoffs":{
+            "playoffs": {
                 "group": playoffgroup,
                 "result": playoffresult
             }
         }
 
- // Write the new data to the file
- fs.writeFile("data.json", JSON.stringify(jsonData, null, 2), (err) => {
-    if (err) {
-        console.error("❌ Fehler beim Speichern:", err);
-    } else {
-        console.log("✅ Datei erfolgreich gespeichert!");
-    }
-});
+        // Write the new data to the team file
+        try {
+            saveJSON(jsonData);
+        }
+        catch (err) {
+            await interaction.editReply(err.message);
+            return;
+        }
 
-        // construct embed
-        const embed = new EmbedBuilder()
-        .setColor(0x2090FF)
-        .setTitle(`${teamName}`)
-        .addFields(
-            { name: splitName, value: '\u200B', inline: false },
-            { name: 'Kaliphase', value: `Gruppe ${caliphasegroup} (${caliphaseresult})` },
-            { name: 'Gruppenphase', value: `Gruppe ${groupphasegroup} (${groupphaseresult})` },
-            { name: 'Playoffs', value: `Gruppe ${playoffgroup} (${playoffresult})` },
-        );
 
-        // send relpy
-        //await interaction.editReply("test");
+        const embed = constructEmbed("create-result", {team:teamName, split: splitName, data: teamPath.Results[splitName]});
         await interaction.editReply({ embeds: [embed] });
     },
 };

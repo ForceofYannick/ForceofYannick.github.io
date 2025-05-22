@@ -59,52 +59,27 @@ module.exports = {
                 { name: '</getunsortedplayers:1350836412106145794>', value: 'Zeigt alle Spieler an, die sich in keinem Team befinden.', inline: false },
             )
 
-            .addFields(
-                { name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: '🏆 Team Befehle 🏆', value: '\u200B', inline: false },
-                {
-                    name: '</createteam:1350243167139795054>',
-                    value: '```/createteam [Team name] {player 1} {player 2} ... {player 10}```\n' +
-                        'Erstellt ein Team mit dem angegebenen Namen und optional bis zu 10 Spielern. Wenn ein übergebener Spieler nicht gefunden wird, wird er ignoriert und das Team wird mit den gefundenen Spielern erstellt, die dann auch in das neue Team verschoben werden.\n(Durch individuelle Spielereditierung können auch mehr als 10 Spieler in einem Team sein)',
-                    inline: false
-                },
-                { name: '</editteamname:1350828529897574493> [Current team name] [New team name]', value: 'Ändert den Teamnamen und aktualisiert alle darin enthaltenen Spieler, da diese ihren Teamnamen erneut speichern.', inline: false },
-                { name: '</deleteteam:1350481360434888755> [Team name]', value: 'Löscht ein Team und verschiebt alle darin enthaltenen Spieler in die Kategorie "Unsorted".', inline: false },
-                { name: '</getteam:1350834669288951829> [Team name]', value: 'Zeigt eine ausführliche Teamübersicht an.', inline: false },
-                { name: '</getallteams:1351877914840535061>', value: 'Zeigt alle Teams an.', inline: false },
-            );
+           .addFields(
+    { name: '\u200B', value: '\u200B' }, // visual spacing
+    { name: '🏆 Team Befehle 🏆', value: '\u200B', inline: false },
+    {
+        name: '</createteam:1373761227863621632>',
+        value: '```/createteam [Team name] {player 1} {player 2} ... {player 10}```\n' +
+            'Erstellt ein Team mit dem angegebenen Namen und optional bis zu 10 Spielern. Wenn ein übergebener Spieler nicht gefunden wird, wird er ignoriert und das Team wird mit den gefundenen Spielern erstellt, die dann auch in das neue Team verschoben werden.\n(Durch individuelle Spielereditierung können auch mehr als 10 Spieler in einem Team sein)',
+        inline: false
+    },
+    { name: '</editteamname:1373762597635100804> [Current team name] [New team name]', value: 'Ändert den Teamnamen und aktualisiert alle darin enthaltenen Spieler, da diese ihren Teamnamen erneut speichern.', inline: false },
+    { name: '</deleteteam:1373762596720738388> [Team name]', value: 'Löscht ein Team und verschiebt alle darin enthaltenen Spieler in die Kategorie "Unsorted".', inline: false },
+    { name: '</getteam:1375130865234870293> [Team name]', value: 'Zeigt eine ausführliche Teamübersicht an.', inline: false },
+    { name: '</createteamresults:1373762595747659910> [Team name] [Split name]', value: 'Erstellt einen Split.', inline: false },
+    { name: '</deleteteamresults:1373766066777362483> [Team name] [Split name]', value: 'Löscht einen Split.', inline: false },
+);
+
 
 
         // second embed
         const embed2 = new EmbedBuilder()
             .setColor(0xFFFF80)
-            .addFields(
-                { name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: '🚧 Work In Progress 🚧', value: '\u200B', inline: false },
-                {
-                    name: '</createteamresults:1355849349384638596>',
-                    value: '```/createteamresults [Team name] [Split] {Calibration phase}\n' +
-                        '{Group phase} {Playoffs}```\n' +
-                        'Fügt Split-Ergebnisse für ein Team hinzu.',
-                    inline: false
-                },
-                {
-                    name: '</editteamresults:>',
-                    value: '```/editteamresults [Team name] [Split] {Calibration phase}\n' +
-                        '{Group phase} {Playoffs}```\n' +
-                        'Bearbeitet Split-Ergebnisse.',
-                    inline: false
-                },
-                {
-                    name: '</removeteamresults:>',
-                    value: '```/removeteamresults [Team name] [Split] {Calibration phase}\n' +
-                        '{Group phase} {Playoffs}```\n' +
-                        'Entfernt Split-Ergebnisse.\n' +
-                        '- **Bestimmter Teil**: Split und Part angeben.\n' +
-                        '- **Gesamter Split**: Optionale Felder leer lassen.',
-                    inline: false
-                },
-            )
 
             .addFields(
                 { name: '\u200B', value: '\u200B' }, // visual spacing
@@ -140,7 +115,7 @@ module.exports = {
                 },
                 {
                     name: '5. Fehlerhafte Eingaben', value:
-                        'Wenn etwas rot umrandet wird, bedeutet dies, dass entweder nichts oder etwas Falsches eingegeben wurde. Bei Rollen kann nur der vordefinierte Wert eingegeben werden, der angezeigt wird.',
+                        'Wenn etwas rot umrandet wird, bedeutet das, dass entweder nichts oder etwas Falsches eingegeben wurde. Bei Rollen kann nur der vordefinierte Wert eingegeben werden, der angezeigt wird.',
                     inline: false
                 }
             );

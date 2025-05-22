@@ -3,6 +3,8 @@ const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput');
 const { constructEmbed } = require("@utils/constructEmbed.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
 
 //for embed stuff
 const { EmbedBuilder } = require('discord.js');
@@ -33,25 +35,28 @@ module.exports = {
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
-
     // get input
     const teamName = getInput(interaction, 'team-name');
 
-    // Read data json file
+    /*
+    1. Read JSON
+    2. Copy Team players to unsorted
+    3. Delete team
+    4. Save JSON
+    5. Print embed
+    */
+
+    // 1.
     let jsonData;
-    let rawData;
-
     try {
-      rawData = await fs.readFile("data.json", "utf8");
-      jsonData = JSON.parse(rawData);
-
-    } catch (err) {
-      console.error("❌ Fehler beim Lesen:", err);
-      await interaction.editReply("❌ Fehler beim lesen der JSON-Datei!");
+      jsonData = await readJSON();
+    }
+    catch (err) {
+      await interaction.editReply(err.message);
       return;
     }
 
-
+    // 1.5 existence check
     // team not found
     if (!jsonData.Teams[teamName]) {
       console.error(`❌ Team ${teamName} nicht gefunden`);
@@ -59,7 +64,8 @@ module.exports = {
       return;
     }
 
-
+    // 2.
+    // used for embed
     let transferedPlayers = [];
 
     // transfer all players in team to 'Unsorted' section
@@ -81,28 +87,20 @@ module.exports = {
       transferedPlayers.push(player);
     }
 
-    // delete team from teams
+    // 3.
     delete jsonData.Teams[teamName];
 
-    // save file and reply
+    // 4.
     try {
-      await fs.writeFile("data.json", JSON.stringify(jsonData, null, 2));
-      console.log("✅ Datei erfolgreich gespeichert!");
-      // Create embed message
-      const embed = new EmbedBuilder()
-        .setColor(0xFF2020)
-        .setTitle(`🔄🏆 ${teamName} gelöscht`)
-        .addFields(
-          { name: 'Aktualisierte Spieler', value: `${transferedPlayers.join(", ")}` },
-        );
-
-      // send delayed discord reply
-      await interaction.editReply({ embeds: [embed] });
-      return;
-    } catch (err) {
-      console.error("❌ Fehler beim Speichern:", err);
-      await interaction.editReply("❌ Fehler beim Speichern der JSON-Datei!");
+      saveJSON(jsonData);
+    }
+    catch (err) {
+      await interaction.editReply(err.message);
       return;
     }
+
+    // 5.
+    const embed = constructEmbed("delete-team", { name:teamName, affectedPlayers: transferedPlayers });
+    await interaction.editReply({ embeds: [embed] });
   },
 };

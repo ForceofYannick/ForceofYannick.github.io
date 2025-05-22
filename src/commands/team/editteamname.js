@@ -1,7 +1,9 @@
 const fs = require("fs").promises;
 
-const { getInput } = require('@utils/getInput');
+const { getInput } = require('@utils/getInput.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
+const { saveJSON } = require("@json/saveJSON.js");
+
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
@@ -40,7 +42,14 @@ module.exports = {
         const currentTeamName = getInput(interaction, 'current-team-name');
         const newTeamName = getInput(interaction, 'new-team-name');
 
-        // Read data json file
+        /*
+        1. Read JSON
+        2. Make new team, copy all data and delete old team
+        3. Save JSON
+        4. Print embed
+        */
+
+        // 1.
         let jsonData;
         let rawData;
 
@@ -54,14 +63,15 @@ module.exports = {
             return;
         }
 
-
+        // 1.5 existence check
         // if new team name already exists, return
-        if(jsonData.Teams[newTeamName]){
+        if (jsonData.Teams[newTeamName]) {
             console.error(`❌ Teamname ${newTeamName} existiert bereits`);
             await interaction.editReply(`❌ Teamname ${newTeamName} existiert bereits`);
             return;
         }
 
+        // 2.
         // create updated player array for reply msg
         let updatedPlayers = [];
 
@@ -92,30 +102,11 @@ module.exports = {
             return;
         }
 
+        // 3.
+        await saveJSON(jsonData);
 
-        try {
-            // Write the new data to the file
-            await fs.writeFile("data.json", JSON.stringify(jsonData, null, 2));
-
-            console.log("✅ Datei erfolgreich gespeichert!");
-
-            // Create embed message
-            const embed = new EmbedBuilder()
-                .setColor(0xFFFF20)
-                .setTitle(`🔄🏆 ${currentTeamName} -> ${newTeamName}`)
-                .addFields(
-                { name: 'Aktualisierte Spieler', value: `${updatedPlayers.join(", ")}` },
-            );
-
-            // send delayed discord reply
-            await interaction.editReply({ embeds: [embed] });
-
-
-        } catch (err) {
-            console.error("❌ Fehler beim Speichern:", err);
-
-            await interaction.editReply("❌ Fehler beim Speichern");
-        }
-
+        //4.
+        const embed = constructEmbed('edit-team', { old: currentTeamName, new: newTeamName });
+        await interaction.editReply({ embeds: [embed] });
     },
 };

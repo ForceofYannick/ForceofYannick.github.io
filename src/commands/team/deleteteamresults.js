@@ -1,7 +1,10 @@
 const fs = require("fs").promises;
 
-const { getInput } = require('@utils/getInput');
+const { getInput } = require('@utils/getInput.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
+const { deleteResultFromJSON } = require("@json/deleteResultFromJSON.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
@@ -32,9 +35,12 @@ module.exports = {
 
     callback: async (client, interaction) => {
 
+        // delay discord reply to prevent timeout error
+        await interaction.deferReply();
+
         // get inputs
-        const team = getInput(interaction, 'team-name');
-        const split = getInput(interaction, 'split-name');
+        const teamName = getInput(interaction, 'team-name');
+        const splitName = getInput(interaction, 'split-name');
 
         /*
         1.Read json
@@ -55,7 +61,7 @@ module.exports = {
         }
 
         // 2.
-        deleteResultFromJSON(jsonData, team, split);
+        deleteResultFromJSON(jsonData, teamName, splitName);
 
         // 4.
         try {
@@ -67,9 +73,7 @@ module.exports = {
         }
 
         // 5.
-        const embed = constructEmbed('delete-results', team, result);
-
-        // send delayed discord reply
+        const embed = constructEmbed('delete-result', { team: teamName, split: splitName });
         await interaction.editReply({ embeds: [embed] });
     },
 };

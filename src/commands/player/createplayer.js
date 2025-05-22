@@ -1,7 +1,7 @@
 // for json file stuff
 const fs = require("fs").promises;
 
-const createPlayerInJSON = require('@json/createPlayerInJSON.js');
+const { createPlayerInJSON } = require('@json/createPlayerInJSON.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");

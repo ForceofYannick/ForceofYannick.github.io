@@ -136,7 +136,18 @@ module.exports = {
         }
         
 
-        // 0.
+        /*
+        1. Read JSON
+        2. Make new player object
+        3. Get old player object from JSON
+        4. Compare objects and make updated object
+        5. Delete old player in JSON
+        6. Add updated player to JSON
+        7. Save JSON    
+        8. Print embed
+        */
+
+         // 1.
         let jsonData;
         try {
           jsonData = await readJSON();
@@ -146,43 +157,8 @@ module.exports = {
           return;
         }
 
-
-        // Concept:
-
-        // if new name
-        // if new team
-        // if new team = no team
-        // ... 1
-        // else
-        // ... 2
-        // else
-        // ... 3
-        // else if new team
-        // if new team = no team
-        // ... 4
-        // else
-        // ... 5
-        // else
-        // ... 6
-        // 7. save
-        // 8. print
-
-        // New Concept:
-        /*
-       0. read json
-       1. make new player object from inputs -> createPlayerObject function
-       2. get old player object from json      -> getPlayerFromJSON function
-       3. compare both objects and make new modify player object with updated data -> make updatedPlayerObject function
-       4. delete old player in json -> deletePlayerFromJSON function
-       5. add modify player to json -> createPlayerInJSON function
-       6. save json    
-       7. print embed -> constructPlayerEmbed function
- 
-        */
-
        
-
-        // 1. make inputPlayer object
+        // 2. make inputPlayer object
         let inputPlayer = createPlayerObject(interaction);
         const playerName = getInput(interaction,'player-name');
         // modify object with new name if provided
@@ -190,7 +166,7 @@ module.exports = {
             inputPlayer['player-name'] = getInput(interaction, 'new-player-name');
         }
 
-        // 2. get oldPlayer data from JSON
+        // 3. get oldPlayer data from JSON
 
         let oldPlayer = await getPlayerFromJSON(playerName);
         if(oldPlayer == null){
@@ -199,19 +175,19 @@ module.exports = {
             return;
         }
 
-        // 3. make newPlayer by comparing oldPlayer with inputPlayer
+        // 4. make newPlayer by comparing oldPlayer with inputPlayer
         let newPlayer = comparePlayersAndMakeNew(oldPlayer, inputPlayer);
 
-        // 4. delete oldPlayer from JSON
+        // 5. delete oldPlayer from JSON
         deletePlayerFromJSON(jsonData,oldPlayer);
         
-        // 5. save newPlayer to JSON
+        // 6. save newPlayer to JSON
         createPlayerInJSON(jsonData,newPlayer);
 
-        // 6. save JSON
+        // 7. save JSON
         await saveJSON(jsonData);
 
-        // 7. create embed
+        // 8. create embed
         const embed = constructEmbed('edit-player',newPlayer);
         await interaction.editReply({ embeds: [embed] });
     },

@@ -3,6 +3,9 @@ const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
+const { createTeamObject } = require("@utils/createTeamObject.js");
+const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
@@ -48,15 +51,11 @@ module.exports = {
 
     // Read data json file
     let jsonData;
-    let rawData;
-
     try {
-      rawData = await fs.readFile("data.json", "utf8");
-      jsonData = JSON.parse(rawData);
-
-    } catch (err) {
-      console.error("❌ Fehler beim Lesen:", err);
-      await interaction.editReply("❌ Fehler beim lesen der JSON-Datei!");
+      jsonData = await readJSON();
+    }
+    catch (err) {
+      await interaction.editReply(err.message);
       return;
     }
 
@@ -162,16 +161,16 @@ module.exports = {
 
 
     // Write the new data to the team file
-    fs.writeFile("data.json", JSON.stringify(jsonData, null, 2), (err) => {
-      if (err) {
-        console.error("❌ Fehler beim Speichern:", err);
-      } else {
-        console.log("✅ Datei erfolgreich gespeichert!");
-      }
-    });
+    try {
+      saveJSON(jsonData);
+    }
+    catch (err) {
+      await interaction.editReply(err.message);
+      return;
+    }
 
 
-    const embed = constructEmbed("create-team", team);
+    const embed = constructEmbed("create-team", {name:teamName, data:jsonData.Teams[teamName]});
     await interaction.editReply({ embeds: [embed] });
   },
 };

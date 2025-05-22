@@ -2,6 +2,9 @@
 const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput');
+const { constructEmbed } = require("@utils/constructEmbed.js");
+const { readJSON } = require("@json/readJSON.js");
+
 
 //for option type
 const {
@@ -32,20 +35,22 @@ module.exports = {
         // get input
         const teamName = getInput(interaction, 'team-name');
 
-        // Read data json file
+        /*
+        1. Read JSON
+        2. Print embed
+        */
+
+        // 1.
         let jsonData;
-        let rawData;
-
         try {
-            rawData = await fs.readFile("data.json", "utf8");
-            jsonData = JSON.parse(rawData);
-
-        } catch (err) {
-            console.error("❌ Fehler beim Lesen:", err);
-            await interaction.editReply("❌ Fehler beim lesen der JSON-Datei!");
+            jsonData = await readJSON();
+        }
+        catch (err) {
+            await interaction.editReply(err.message);
             return;
         }
 
+        // 1.5 existence check
         // if team not found, return
         if (!jsonData.Teams[teamName]) {
             console.error(`❌ Team ${teamName} nicht gefunden`);
@@ -53,25 +58,17 @@ module.exports = {
             return;
         }
 
+        // 2.
+
         // save path to team section
         const teamPath = jsonData.Teams[teamName];
 
         // save team data in lists
-        const playerList = Object.keys(teamPath.Players).join(', ') || '-';
-        const resultList = Object.keys(teamPath.Results).join('\n') || '-';
+        const playerList = Object.keys(teamPath.Players);
+        const resultList = Object.keys(teamPath.Results);
 
 
-
-        // construct embed
-        const embed = new EmbedBuilder()
-        .setColor(0x2090FF)
-        .setTitle(`${teamName}`)
-        .addFields(
-            { name: 'Spieler', value: playerList },
-            //{ name: '\u200B', value: '\u200B' }, // visual spacing
-            { name: 'Ergebnisse', value: resultList }
-        );
-
+        const embed = constructEmbed('get-team', { name: teamName, players: playerList, results: resultList });
         // send relpy
         await interaction.editReply({ embeds: [embed] });
     },

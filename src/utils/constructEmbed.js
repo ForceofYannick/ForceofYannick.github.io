@@ -4,8 +4,8 @@ function constructEmbed(actionType, target, result) {
     console.log('~ constructEmbed');
     let color = 0x000000;
     let embed = new EmbedBuilder();
-    const playerList = null;
-    const resultList = null;
+    let playerList = null;
+    let resultList = null;
 
     // embed color based on actionType
     switch (actionType) {
@@ -171,12 +171,12 @@ function constructEmbed(actionType, target, result) {
 
         case 'create-team':
             color = 0x00FF00; // green for creation
-            embed.setTitle(`${target['team-name']} wurde erstellt`);
+            embed.setTitle(`${target.name} wurde erstellt`);
             embed.setColor(color);
-            
 
-            playerList = Object.keys(target['team-name'].Players).join(', ') || '-';
-            resultList = Object.keys(target['team-name'].Results).join('\n') || '-';
+
+            playerList = Object.keys(target.data.Players).join(', ') || '-';
+            resultList = Object.keys(target.data.Results).join('\n') || '-';
             embed.addFields(
                 { name: 'Spieler', value: playerList },
                 //{ name: '\u200B', value: '\u200B' }, // visual spacing
@@ -186,151 +186,68 @@ function constructEmbed(actionType, target, result) {
 
         case 'edit-team':
             color = 0xFFA500; // orange for editing
-            embed.setTitle(`🔄${target['team-name']} wurde aktualisiert`);
+            embed.setTitle(`🔄${target.old} wurde zu ${target.new} umbenannt`);
             embed.setColor(color);
             return embed;
 
         case 'get-team':
             color = 0x2090FF; // blue for displaying
-            embed.setTitle(target['team-name']);
+            embed.setTitle(target.name);
             embed.setColor(color);
 
-            playerList = Object.keys(target['team-name'].Players).join(', ') || '-';
-            resultList = Object.keys(target['team-name'].Results).join('\n') || '-';
             embed.addFields(
-                { name: 'Spieler', value: playerList },
-                //{ name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: 'Ergebnisse', value: resultList }
+                { name: 'Spieler', value: target.players.join(', ') || '-' },
+                { name: 'Ergebnisse', value: target.results.join(', ') || '-' }
             );
-            break;
+            return embed;
 
         case 'delete-team':
             color = 0xFF2020; // red for deletion
-            if (!target.team || target.team === '-') {
-                embed.setTitle(`${target['team-name']} wurde gelöscht`);
-            } else {
-                embed.setTitle(`${target['team-name']} wurde aus ${target.team} gelöscht`);
-            }
+
+            embed.setTitle(`${target.name} wurde gelöscht`);
+            embed.addFields({ name: 'Folgende Spieler wurden nach Unsorted verschoben', value: target.affectedPlayers.join(', ') || '-' });
             embed.setColor(color);
             return embed;
 
         case 'create-result':
             color = 0x00FF00; // green for creation
-            embed.setTitle(`${target['result-name']} wurde erstellt`);
+            embed.setTitle(`${target.split} wurde erstellt`);
             embed.setColor(color);
 
             embed.addFields(
                 {
-                    name: 'Discord Name',
-                    value: target['discord-id'] === '-' ? '-' : `<@${target['discord-id']}>`
+                    name: 'Kaliphase',
+                    value: `Gruppe ${target.data.kaliphase.group} | Ergebnis ${target.data.kaliphase.result}`
                 },
                 {
-                    name: 'Team',
-                    value: target.team
+                    name: 'Gruppenphase',
+                    value: `Gruppe ${target.data.groupphase.group} | Ergebnis ${target.data.groupphase.result}`
                 },
                 {
-                    name: 'Hauptrolle',
-                    value: target['main-role']
+                    name: 'Playoffs',
+                    value: `Gruppe ${target.data.playoffs.group} | Ergebnis ${target.data.playoffs.result}`
                 },
-                {
-                    name: 'Organisatorische Rollen',
-                    value: formatOrgaRoles(target['orga-role-1'], target['orga-role-2'])
-                },
-                {
-                    name: 'Instagram',
-                    value: formatSocialLink(target.instagram, 'Instagram'),
-                    inline: true
-                },
-                {
-                    name: 'TikTok',
-                    value: formatSocialLink(target.tiktok, 'TikTok'),
-                    inline: true
-                },
-                {
-                    name: 'Twitter',
-                    value: formatSocialLink(target.twitter, 'Twitter'),
-                    inline: true
-                },
-                {
-                    name: 'Twitch',
-                    value: formatSocialLink(target.twitch, 'Twitch'),
-                    inline: true
-                },
-                {
-                    name: 'YouTube',
-                    value: formatSocialLink(target.youtube, 'YouTube'),
-                    inline: true
-                }
+
             );
-            break;
+            return embed;
         case 'edit-result':
-            color = 0xFFA500; // orange for editing
-            embed.setTitle(`🔄${target['result-name']} wurde aktualisiert`);
-            embed.setColor(color);
-            break;
-
-        case 'get-result':
             color = 0x2090FF; // blue for displaying
-            embed.setTitle(target['result-name']);
-            embed.setColor(color);
-
-            embed.addFields(
-                {
-                    name: 'Discord Name',
-                    value: target['discord-id'] === '-' ? '-' : `<@${target['discord-id']}>`
-                },
-                {
-                    name: 'Team',
-                    value: target.team
-                },
-                {
-                    name: 'Hauptrolle',
-                    value: target['main-role']
-                },
-                {
-                    name: 'Organisatorische Rollen',
-                    value: formatOrgaRoles(target['orga-role-1'], target['orga-role-2'])
-                },
-                {
-                    name: 'Instagram',
-                    value: formatSocialLink(target.instagram, 'Instagram'),
-                    inline: true
-                },
-                {
-                    name: 'TikTok',
-                    value: formatSocialLink(target.tiktok, 'TikTok'),
-                    inline: true
-                },
-                {
-                    name: 'Twitter',
-                    value: formatSocialLink(target.twitter, 'Twitter'),
-                    inline: true
-                },
-                {
-                    name: 'Twitch',
-                    value: formatSocialLink(target.twitch, 'Twitch'),
-                    inline: true
-                },
-                {
-                    name: 'YouTube',
-                    value: formatSocialLink(target.youtube, 'YouTube'),
-                    inline: true
-                }
-            );
-            break;
-
-        case 'delete-result':
-            color = 0xFF2020; // red for deletion
-            if (!target.team || target.team === '-') {
-                embed.setTitle(`${target['result-name']} wurde gelöscht`);
-            } else {
-                embed.setTitle(`${target['result-name']} wurde aus ${target.team} gelöscht`);
-            }
+            embed.setTitle("not set");
             embed.setColor(color);
             return embed;
 
-        default:
-            throw new Error('Ungültiger Embed-Typ');
+        case 'get-result':
+            color = 0x2090FF; // blue for displaying
+            embed.setTitle("not set");
+            embed.setColor(color);
+            return embed;
+
+        case 'delete-result':
+            color = 0xFF2020; // red for deletion
+
+            embed.setTitle(`${target.split} aus ${target.team} gelöscht`);
+            embed.setColor(color);
+            return embed;
     }
 
     console.log(embed);
