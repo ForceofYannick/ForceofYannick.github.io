@@ -2,6 +2,7 @@
 const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput');
+const { constructEmbed } = require("@utils/constructEmbed.js");
 
 //for option type
 const {

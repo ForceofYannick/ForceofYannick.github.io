@@ -2,7 +2,7 @@
 const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput.js');
-const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { constructEmbed } = require("@utils/constructEmbed.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
@@ -26,66 +26,12 @@ module.exports = {
       type: ApplicationCommandOptionType.String,
       required: true,
     },
-    {
-      name: "player1",
+    ...Array.from({ length: 10 }, (_, i) => ({
+      name: `player${i + 1}`,
       description: "A team player",
       type: ApplicationCommandOptionType.String,
       required: false,
-    },
-    {
-      name: "player2",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player3",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player4",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player5",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player6",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player7",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player8",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player9",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
-    {
-      name: "player10",
-      description: "A team player",
-      type: ApplicationCommandOptionType.String,
-      required: false,
-    },
+    })),
   ],
   // deleted: Boolean,
 
@@ -97,6 +43,7 @@ module.exports = {
 
     // get input
     const teamName = getInput(interaction, 'team-name');
+    const team = createTeamObject(interaction);
 
 
     // Read data json file
@@ -224,20 +171,7 @@ module.exports = {
     });
 
 
-    const embed = new EmbedBuilder()
-      .setColor(0x20FF20)
-      .setTitle(`${teamName} wurde erstellt`);
-
-    if (missingPlayers.length > 0) {
-      embed.setDescription(`⚠️ Folgende Spieler wurden nicht gefunden und bei der Teamerstellung ignoriert: ${missingPlayers.join(" ,")}`);
-    }
-
-    embed.addFields(
-      { name: 'team-players', value: `${updatedPlayers.join(" ,")}` },
-      { name: 'team-results', value: `[]` }
-    );
-
-
+    const embed = constructEmbed("create-team", team);
     await interaction.editReply({ embeds: [embed] });
   },
 };

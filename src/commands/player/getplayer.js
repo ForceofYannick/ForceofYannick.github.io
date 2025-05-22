@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 const { getInput } = require('@utils/getInput.js');
 const { getPlayerFromJSON } = require('@json/getPlayerFromJSON.js');
-const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { constructEmbed } = require("@utils/constructEmbed.js");
 
 const { ApplicationCommandOptionType } = require('discord.js');
 
@@ -36,7 +36,7 @@ module.exports = {
             return await interaction.editReply(`❌ Spieler ${playerName} nicht gefunden`);
         }
 
-        const embed = constructPlayerEmbed('get', player);
+        const embed = constructEmbed('get-player', player);
         await interaction.editReply({ embeds: [embed] });
     },
 };

@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput');
+const { constructEmbed } = require("@utils/constructEmbed.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');

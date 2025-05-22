@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
 
 const { getInput } = require('@utils/getInput');
+const { constructEmbed } = require("@utils/constructEmbed.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
@@ -31,93 +32,44 @@ module.exports = {
 
     callback: async (client, interaction) => {
 
-        // delay discord reply to prevent timeout error
-        await interaction.deferReply();
-
-        return;
-
-
-        
         // get inputs
-        const teamName = getInput(interaction, 'team-name');
-        const splitName = getInput(interaction, 'split-name');
+        const team = getInput(interaction, 'team-name');
+        const split = getInput(interaction, 'split-name');
 
-        // Read data json file
+        /*
+        1.Read json
+        2. Remove result
+        3. Save json
+        4. Print embed
+        */
+
+
+        // 1.
         let jsonData;
-        let rawData;
-
         try {
-            rawData = await fs.readFile("data.json", "utf8");
-            jsonData = JSON.parse(rawData);
-
-        } catch (err) {
-            console.error("❌ Fehler beim Lesen:", err);
-            await interaction.editReply("❌ Fehler beim lesen der JSON-Datei!");
+            jsonData = await readJSON();
+        }
+        catch (err) {
+            await interaction.editReply(err.message);
             return;
         }
 
+        // 2.
+        deleteResultFromJSON(jsonData, team, split);
 
-        // if new split name doesnt exists, return
-        if(!jsonData.Teams[teamName][splitName]){
-            console.error(`❌ Split ${splitName} existiert nicht`);
-            await interaction.editReply(`❌ Split ${splitName} existiert nicht`);
-            return;
-        }
-
-        // create updated player array for reply msg
-        let updatedPlayers = [];
-
-        // if team exists in team section
-        if (jsonData.Teams[currentTeamName]) {
-
-            // get team data
-            let teamData = jsonData.Teams[currentTeamName];
-
-            // create new team section with new name and old team data
-            jsonData.Teams[newTeamName] = teamData;
-
-            // delete old team section
-            delete jsonData.Teams[currentTeamName];
-
-
-
-            // update all players in team
-            for (const player in jsonData.Teams[newTeamName].Players) {
-                jsonData.Teams[newTeamName].Players[player].team = newTeamName;
-                updatedPlayers.push(player);
-            }
-        }
-        // team not found error
-        else {
-            console.error(`❌ ${currentTeamName} nicht gefunden`);
-            await interaction.editReply(`❌ ${currentTeamName} nicht gefunden`);
-            return;
-        }
-
-
+        // 4.
         try {
-            // Write the new data to the file
-            await fs.writeFile("data.json", JSON.stringify(jsonData, null, 2));
-
-            console.log("✅ Datei erfolgreich gespeichert!");
-
-            // Create embed message
-            const embed = new EmbedBuilder()
-                .setColor(0xFFFF20)
-                .setTitle(`🔄🏆 ${currentTeamName} -> ${newTeamName}`)
-                .addFields(
-                { name: 'Aktualisierte Spieler', value: `${updatedPlayers.join(", ")}` },
-            );
-
-            // send delayed discord reply
-            await interaction.editReply({ embeds: [embed] });
-
-
-        } catch (err) {
-            console.error("❌ Fehler beim Speichern:", err);
-
-            await interaction.editReply("❌ Fehler beim Speichern");
+            saveJSON(jsonData);
+        }
+        catch (err) {
+            await interaction.editReply(err.message);
+            return;
         }
 
+        // 5.
+        const embed = constructEmbed('delete-results', team, result);
+
+        // send delayed discord reply
+        await interaction.editReply({ embeds: [embed] });
     },
 };

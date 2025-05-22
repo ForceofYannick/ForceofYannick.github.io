@@ -2,7 +2,7 @@
 const fs = require("fs").promises;
 
 const createPlayerInJSON = require('@json/createPlayerInJSON.js');
-const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
 const { createPlayerObject } = require('@utils/createPlayerObject.js');
@@ -156,7 +156,7 @@ module.exports = {
     }
 
     // 5.
-    const embed = constructPlayerEmbed('create', player);
+    const embed = constructEmbed('create-player', player);
 
     // send delayed discord reply
     await interaction.editReply({ embeds: [embed] });

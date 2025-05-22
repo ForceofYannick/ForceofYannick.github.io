@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 
 const { getPlayerFromJSON } = require('@json/getPlayerFromJSON.js');
 const { deletePlayerFromJSON } = require("@json/deletePlayerFromJSON.js");
-const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
 const { getInput } = require("@utils/getInput");
@@ -77,7 +77,7 @@ module.exports = {
   }
 
     // 4.
-    const embed = constructPlayerEmbed('delete', player);
+    const embed = constructEmbed('delete-player', player);
 
     // send delayed discord reply
     await interaction.editReply({ embeds: [embed] });

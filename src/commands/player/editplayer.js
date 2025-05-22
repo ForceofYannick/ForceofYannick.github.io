@@ -3,7 +3,7 @@ const fs = require("fs").promises;
 const { Client, ApplicationCommandOptionType } = require('discord.js');
 
 const { getInput } = require('@utils/getInput.js');
-const { constructPlayerEmbed } = require("@utils/constructPlayerEmbed.js");
+const { constructEmbed } = require("@utils/constructEmbed.js");
 const { createPlayerObject } = require("@utils/createPlayerObject.js");
 const { getPlayerFromJSON } = require("@json/getPlayerFromJSON.js");
 const { comparePlayersAndMakeNew } = require("@utils/comparePlayersAndMakeNew.js");
@@ -212,7 +212,7 @@ module.exports = {
         await saveJSON(jsonData);
 
         // 7. create embed
-        const embed = constructPlayerEmbed('edit',newPlayer);
+        const embed = constructEmbed('edit-player',newPlayer);
         await interaction.editReply({ embeds: [embed] });
     },
 };
