@@ -6,10 +6,11 @@ const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
 const { createPlayerObject } = require('@utils/createPlayerObject.js');
+const { getInput } = require("@utils/getInput.js");
 
 
 
-const { Client } = require('discord.js');
+const { Client, GUild } = require('discord.js');
 
 // for option type
 const {
@@ -119,6 +120,7 @@ module.exports = {
     /*
     1.Read json
     2. Make player object from inputs
+    2.5 asign role
     3. Save player to json
     4. Save json
     5. Print embed
@@ -136,6 +138,15 @@ module.exports = {
 
     // 2.
     let player = createPlayerObject(interaction);
+
+    // 2.5
+    const team = getInput(interaction, "team");
+    const memberID = getInput(interaction, 'discordID');
+    
+    const member = client.users.fetch(memberID);
+    const role = member.guild.roles.cache.find(role => role.name == team.toUpperCase());
+    member.roles.add(role);
+
 
     // 3.
     try {

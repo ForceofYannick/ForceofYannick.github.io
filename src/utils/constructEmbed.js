@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 
-function constructEmbed(actionType, target, result) {
+function constructEmbed(actionType, target) {
     console.log('~ constructEmbed');
     let color = 0x000000;
     let embed = new EmbedBuilder();
@@ -57,7 +57,7 @@ function constructEmbed(actionType, target, result) {
                     inline: true
                 }
             );
-            break;
+            return embed;
 
         case 'edit-player':
             color = 0xFFA500; // orange for editing
@@ -107,7 +107,7 @@ function constructEmbed(actionType, target, result) {
                     inline: true
                 }
             );
-            break;
+            return embed;
 
         case 'get-player':
             color = 0x2090FF; // blue for displaying
@@ -157,7 +157,7 @@ function constructEmbed(actionType, target, result) {
                     inline: true
                 }
             );
-            break;
+            return embed;
 
         case 'delete-player':
             color = 0xFF2020; // red for deletion
@@ -180,9 +180,12 @@ function constructEmbed(actionType, target, result) {
             embed.addFields(
                 { name: 'Spieler', value: playerList },
                 //{ name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: 'Ergebnisse', value: resultList }
+                { name: 'Ergebnisse', value: resultList },
+                { name: '\u200B', value: '\u200B' }, // visual spacing
+                { name: 'Aktuallisierte Spieler', value: target.updatedPlayers.join('\n') || '-' },
+                { name: 'Nicht gefundene Spieler', value: target.ignoredPlayers.join('\n') || '-' },
             );
-            break;
+            return embed;
 
         case 'edit-team':
             color = 0xFFA500; // orange for editing

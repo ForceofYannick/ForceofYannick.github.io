@@ -99,8 +99,18 @@ module.exports = {
             // create player in new team
             jsonData.Teams[teamName].Players[playerName] = playerData;
 
+            // add new team role
+            const memberID = jsonData.Teams[team].Players[playerName]['discordID'];
+            const member = client.users.fetch(memberID);
+            const newRole = member.guild.roles.cache.find(role => role.name == teamName.toUpperCase());
+            member.roles.add(newRole);
+
             // delete player in old team
             delete jsonData.Teams[team].Players[playerName];
+
+            // remove old team role
+            const oldRole = member.guild.roles.cache.find(role => role.name == team.toUpperCase());
+            member.roles.remove(oldRole);
 
             // update player data
             playerData = jsonData.Teams[teamName].Players[playerName];
@@ -129,6 +139,12 @@ module.exports = {
 
             // create player in new team
             jsonData.Teams[teamName].Players[playerName] = playerData;
+
+            // add new team role
+            const memberID = jsonData.Unsorted[playerName]['discordID'];
+            const member = client.users.fetch(memberID);
+            const newRole = member.guild.roles.cache.find(role => role.name == teamName.toUpperCase());
+            member.roles.add(newRole);
 
             // delete player in unsorted
             delete jsonData.Unsorted[playerName];
@@ -170,7 +186,7 @@ module.exports = {
     }
 
 
-    const embed = constructEmbed("create-team", {name:teamName, data:jsonData.Teams[teamName]});
+    const embed = constructEmbed("create-team", {name:teamName, data:jsonData.Teams[teamName], updatedPlayers: updatedPlayers, ignoredPlayers: missingPLayers});
     await interaction.editReply({ embeds: [embed] });
   },
 };

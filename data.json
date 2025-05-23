@@ -1,8 +1,8 @@
 {
   "Teams": {
-    "ibts": {
-      "Players": {
-        "tami": {
+  },
+  "Unsorted": {
+    "tami": {
           "discord-id": "-",
           "main-role": "-",
           "orga-role-1": "-",
@@ -14,9 +14,5 @@
           "youtube": "-",
           "team": "ibts"
         }
-      },
-      "Results": {}
-    }
-  },
-  "Unsorted": {}
+  }
 }
