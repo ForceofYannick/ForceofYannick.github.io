@@ -7,7 +7,7 @@ const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
 const { createPlayerObject } = require('@utils/createPlayerObject.js');
 const { getInput } = require("@utils/getInput.js");
-
+const { inputExists } = require("../../utils/inputExists");
 
 
 const { Client, GUild } = require('discord.js');
@@ -17,6 +17,7 @@ const {
   ApplicationCommandOptionType,
   PermissionFlagsBits,
 } = require('discord.js');
+
 
 
 module.exports = {
@@ -107,12 +108,12 @@ module.exports = {
       description: "The players team",
       type: ApplicationCommandOptionType.String,
       required: false,
-    },
+    }, 
   ],
   // deleted: Boolean,
 
   callback: async (client, interaction) => {
-    console.log('~ createplayer');
+    console.log("=> createplayer");
 
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
@@ -141,12 +142,37 @@ module.exports = {
 
     // 2.5
     const team = getInput(interaction, "team");
-    const memberID = getInput(interaction, 'discordID');
-    
-    const member = client.users.fetch(memberID);
-    const role = member.guild.roles.cache.find(role => role.name == team.toUpperCase());
-    member.roles.add(role);
+    const memberID = getInput(interaction, 'discord-id');
 
+    const guild = interaction.guild;
+    if (!guild) {
+      await interaction.editReply("Fehler: Die Guild konnte nicht gefunden werden.");
+      return;
+    }
+    let member;
+    try {
+      member = await guild.members.fetch(memberID);
+    }
+    catch (err) {
+      await interaction.editReply("Mitglied nicht gefunden.");
+      return;
+    }
+
+    if(inputExists(interaction,'team')){
+    const role = guild.roles.cache.find(role => role.name == team.toUpperCase());
+    if (!role) {
+      await interaction.editReply(`Rolle "${team.toUpperCase()}" nicht gefunden.`);
+      return;
+    }
+
+    try {
+      await member.roles.add(role);
+      console.log(`Rolle ${role.name} erfolgreich zugewiesen an ${member.user.tag}`);
+    } catch (err) {
+      await interaction.editReply("Fehler beim Hinzufügen der Rolle: " + err.message);
+      return;
+    }
+}
 
     // 3.
     try {

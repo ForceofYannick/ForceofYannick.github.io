@@ -6,9 +6,7 @@ const { getInput } = require("@utils/getInput.js");
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { createPlayerObject } = require("@utils/createPlayerObject.js");
 const { getPlayerFromJSON } = require("@json/getPlayerFromJSON.js");
-const {
-  comparePlayersAndMakeNew,
-} = require("@utils/comparePlayersAndMakeNew.js");
+const { comparePlayersAndMakeNew } = require("@utils/comparePlayersAndMakeNew.js");
 const { deletePlayerFromJSON } = require("@json/deletePlayerFromJSON.js");
 const { createPlayerInJSON } = require("@json/createPlayerInJSON.js");
 const { saveJSON } = require("@json/saveJSON.js");
@@ -122,7 +120,7 @@ module.exports = {
   ],
 
   callback: async (client, interaction) => {
-    console.log("~ editplayer");
+    console.log("=> editplayer");
 
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
@@ -154,6 +152,7 @@ module.exports = {
       return;
     }
 
+
     // 2. make inputPlayer object
     let inputPlayer = createPlayerObject(interaction);
     const playerName = getInput(interaction, "player-name");
@@ -161,6 +160,7 @@ module.exports = {
     if (getInput(interaction, "new-player-name") !== "-") {
       inputPlayer["player-name"] = getInput(interaction, "new-player-name");
     }
+
 
     // 3. get oldPlayer data from JSON
 
@@ -171,36 +171,79 @@ module.exports = {
       return;
     }
 
+
     // 4. make newPlayer by comparing oldPlayer with inputPlayer
     let newPlayer = comparePlayersAndMakeNew(oldPlayer, inputPlayer);
 
-    // 4.5 asign new team role if needed
-    if (oldPlayer.team != getInput(interaction, "team")) {
-      const team = getInput(interaction, "team");
-      const memberID = getInput(interaction, "discordID");
 
-      const member = client.users.fetch(memberID);
-      const oldRole = member.guild.roles.cache.find(
-        (role) => role.name == oldPlayer.team.toUpperCase()
+    // 4.5 assign new team role if needed
+    if (oldPlayer.team != getInput(interaction, "team")) {
+      let newTeam = null;
+      if (getInput(interaction, "team").toLowerCase() == "delete") {
+        newTeam = "-";
+      }
+      else {
+        newTeam = newPlayer.team;
+      }
+
+      const memberID = newPlayer['discord-id'];
+
+      const guild = interaction.guild;
+      if (!guild) {
+        await interaction.editReply("Fehler: Guild nicht gefunden.");
+        return;
+      }
+
+      let member;
+      try {
+        member = await guild.members.fetch(memberID);
+      } catch (err) {
+        await interaction.editReply("Fehler: Mitglied nicht gefunden.");
+        return;
+      }
+
+      const oldRole = guild.roles.cache.find(
+        (role) => role.name === oldPlayer.team.toUpperCase()
       );
-      const newRole = member.guild.roles.cache.find(
-        (role) => role.name == getInput(interaction, "team").toUpperCase()
-      );
-      member.roles.remove(oldRole);
-      member.roles.add(newRole);
+      let newRole = null;
+
+      if (newTeam !== "-") {
+        newRole = guild.roles.cache.find(
+          (role) => role.name === newTeam.toUpperCase()
+        );
+      }
+
+      try {
+        if (oldRole) await member.roles.remove(oldRole);
+
+        if (newTeam !== "-" && newRole) {
+          await member.roles.add(newRole);
+        }
+
+        console.log(`Rollenwechsel: ${oldRole?.name || 'keine'} → ${newRole?.name || 'keine'} für ${member.user.tag}`);
+      } catch (err) {
+        await interaction.editReply("Fehler beim Rollentausch: " + err.message);
+        return;
+      }
     }
+
+
 
     // 5. delete oldPlayer from JSON
     deletePlayerFromJSON(jsonData, oldPlayer);
 
+
     // 6. save newPlayer to JSON
     createPlayerInJSON(jsonData, newPlayer);
+
 
     // 7. save JSON
     await saveJSON(jsonData);
 
+
     // 8. create embed
     const embed = constructEmbed("edit-player", newPlayer);
     await interaction.editReply({ embeds: [embed] });
+
   },
 };

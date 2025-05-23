@@ -9,7 +9,8 @@ function getInput(interaction, inputName) {
         }
 
         // Input is number
-        if (interaction.options.get(inputName).type == 10) {
+        if (interaction.options.get(inputName).type == 10 ||
+            interaction.options.get(inputName).type == 4) {
             console.log(`${interaction.options.get(inputName).value}`);
             return interaction.options.get(inputName).value;
         }

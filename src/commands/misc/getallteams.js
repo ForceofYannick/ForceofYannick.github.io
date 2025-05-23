@@ -15,6 +15,7 @@ module.exports = {
     testOnly: true,
 
     callback: async (client, interaction) => {
+        console.log("=> getallteams");
 
         // delay discord reply to prevent timeout error
         await interaction.deferReply();

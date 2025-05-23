@@ -28,6 +28,8 @@ module.exports = {
     ],
 
     callback: async (client, interaction) => {
+        
+        console.log("=> getteam");
 
         // delay discord reply to prevent timeout error
         await interaction.deferReply();

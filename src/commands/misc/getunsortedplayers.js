@@ -16,6 +16,8 @@ module.exports = {
 
     callback: async (client, interaction) => {
 
+        console.log("=> getunsortedplayers");
+
         // delay discord reply to prevent timeout error
         await interaction.deferReply();
 

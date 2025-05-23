@@ -11,6 +11,8 @@ module.exports = {
 
     callback: (client, interaction) => {
 
+        console.log("=> help");
+
         // first embed
         const embed1 = new EmbedBuilder()
             .setColor(0xFFFF80)
@@ -49,8 +51,8 @@ module.exports = {
                         'Beachte für die Optionen `New player name` und `Team`:\n' +
                         '- Wird nur ein neuer Name angegeben, wird der Name des Spielers aktualisiert.\n' +
                         '- Wird nur ein neues Team angegeben, wird der Spieler in das neue Team verschoben.\n' +
-                        '- Wird "no team" als Team angegeben, wird der Spieler aus dem aktuellen Team entfernt und in die Kategorie "Unsorted" verschoben.\n' +
-                        '- Werden sowohl ein neuer Name als auch ein neues Team angegeben, wird der Spieler mit dem neuen Namen in das neue Team verschoben. Wenn "no team" als Team angegeben wird, wird der Spieler mit dem neuen Namen in die "Unsorted"-Kategorie verschoben.',
+                        '- Wird "delete" als Team angegeben, wird der Spieler aus dem aktuellen Team entfernt und in die Kategorie "Unsorted" verschoben.\n' +
+                        '- Werden sowohl ein neuer Name als auch ein neues Team angegeben, wird der Spieler mit dem neuen Namen in das neue Team verschoben. Wenn "delete" als Team angegeben wird, wird der Spieler mit dem neuen Namen in die "Unsorted"-Kategorie verschoben.',
                     inline: false
                 },
                 { name: '\u200B', value: '\u200B' }, // visual spacing

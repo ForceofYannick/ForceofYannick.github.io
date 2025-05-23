@@ -182,7 +182,7 @@ function constructEmbed(actionType, target) {
                 //{ name: '\u200B', value: '\u200B' }, // visual spacing
                 { name: 'Ergebnisse', value: resultList },
                 { name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: 'Aktuallisierte Spieler', value: target.updatedPlayers.join('\n') || '-' },
+                { name: 'Aktualisierte Spieler', value: target.updatedPlayers.join('\n') || '-' },
                 { name: 'Nicht gefundene Spieler', value: target.ignoredPlayers.join('\n') || '-' },
             );
             return embed;
@@ -249,6 +249,16 @@ function constructEmbed(actionType, target) {
             color = 0xFF2020; // red for deletion
 
             embed.setTitle(`${target.split} aus ${target.team} gelöscht`);
+            embed.setColor(color);
+            return embed;
+
+        case 'get-all-players':
+            color = 0x2090FF; // red for deletion
+
+            embed.setTitle(`Alle existierenden Spieler`);
+            embed.addFields(
+                {name: "", value: target.join(', ') || '-'}
+            )
             embed.setColor(color);
             return embed;
     }

@@ -27,7 +27,7 @@ module.exports = {
   // deleted: Boolean,
 
   callback: async (client, interaction) => {
-    console.log('~ deleteplayer');
+    console.log('=> deleteplayer');
 
     // delay discord reply to prevent timeout error
     await interaction.deferReply();

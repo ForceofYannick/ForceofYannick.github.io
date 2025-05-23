@@ -31,6 +31,9 @@ module.exports = {
   // deleted: Boolean,
 
   callback: async (client, interaction) => {
+
+    console.log("=> deleteteam");
+
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
@@ -67,31 +70,47 @@ module.exports = {
     let transferedPlayers = [];
 
     // transfer all players in team to 'Unsorted' section
-    for (player in jsonData.Teams[teamName].Players) {
-      console.log(`${player} player in ${teamName}`);
-      // get the player data in team section
-      let playerData = jsonData.Teams[teamName].Players[player];
+const guild = interaction.guild;
+if (!guild) {
+  await interaction.editReply("Fehler: Guild nicht gefunden.");
+  return;
+}
 
-      // remove the team name in the player data
-      playerData.team = "-";
+for (const player in jsonData.Teams[teamName].Players) {
+  console.log(`${player} player in ${teamName}`);
 
-      // remove the team role
-      const memberID = playerData["discordID"];
-      const member = client.users.fetch(memberID);
-      const role = member.guild.roles.cache.find(
-        (role) => role.name == teamName.toUpperCase()
-      );
-      member.roles.rmove(role);
+  // Spieler-Daten holen
+  const playerData = jsonData.Teams[teamName].Players[player];
 
-      // delete player data in team section
-      delete jsonData.Teams[teamName].Players[player];
+  // Team-Name entfernen
+  playerData.team = "-";
 
-      // paste player date into unsorted section
-      jsonData.Unsorted[player] = playerData;
+  // Discord-ID holen
+  const memberID = playerData["discord-id"];
 
-      // add player to transferedPlayers array for reply info
-      transferedPlayers.push(player);
+  try {
+    const member = await guild.members.fetch(memberID);
+    const role = guild.roles.cache.find(role => role.name === teamName.toUpperCase());
+
+    if (role) {
+      await member.roles.remove(role);
+    } else {
+      console.log(`⚠️ Rolle "${teamName.toUpperCase()}" nicht gefunden.`);
     }
+  } catch (err) {
+    console.log(`❌ Fehler beim Entfernen der Rolle von ${player}: ${err.message}`);
+  }
+
+  // Spieler aus Team entfernen
+  delete jsonData.Teams[teamName].Players[player];
+
+  // Spieler zu Unsorted hinzufügen
+  jsonData.Unsorted[player] = playerData;
+
+  // Spieler zu Antwortliste hinzufügen
+  transferedPlayers.push(player);
+}
+
 
     // 3.
     delete jsonData.Teams[teamName];

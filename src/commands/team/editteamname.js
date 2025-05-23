@@ -3,6 +3,7 @@ const fs = require("fs").promises;
 const { getInput } = require("@utils/getInput.js");
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
+const { readJSON } = require("@json/readJSON.js");
 
 //for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require("discord.js");
@@ -32,6 +33,9 @@ module.exports = {
   ],
 
   callback: async (client, interaction) => {
+
+    console.log("=> editteamname");
+
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
@@ -80,21 +84,46 @@ module.exports = {
       // delete old team section
       delete jsonData.Teams[currentTeamName];
 
-      // update all players in team
-      for (const player in jsonData.Teams[newTeamName].Players) {
-        jsonData.Teams[newTeamName].Players[player].team = newTeamName;
-        updatedPlayers.push(player);
-
-        // add new team role
-            const memberID = player['discordID'];
-            const member = client.users.fetch(memberID);
-            const newRole = member.guild.roles.cache.find(role => role.name == newTeamName.toUpperCase());
-            member.roles.add(newRole);
-
-            // delete old team role
-            const oldRole = member.guild.roles.cache.find(role => role.name == currentTeamName.toUpperCase());
-            member.roles.add(oldRole);
+      const guild = interaction.guild;
+      if (!guild) {
+        await interaction.editReply("Fehler: Guild nicht gefunden.");
+        return;
       }
+
+      // update all players in new team
+      for (const playerName in jsonData.Teams[newTeamName].Players) {
+        const playerData = jsonData.Teams[newTeamName].Players[playerName];
+
+        // Teamname aktualisieren
+        playerData.team = newTeamName;
+        updatedPlayers.push(playerName);
+
+        const memberID = playerData['discord-id'];
+
+        try {
+          const member = await guild.members.fetch(memberID);
+
+          // neue Rolle holen
+          const newRole = guild.roles.cache.find(role => role.name === newTeamName.toUpperCase());
+          if (newRole) {
+            await member.roles.add(newRole);
+          } else {
+            console.log(`⚠️ Neue Rolle ${newTeamName.toUpperCase()} nicht gefunden.`);
+          }
+
+          // alte Rolle entfernen
+          const oldRole = guild.roles.cache.find(role => role.name === currentTeamName.toUpperCase());
+          if (oldRole) {
+            await member.roles.remove(oldRole);
+          } else {
+            console.log(`⚠️ Alte Rolle ${currentTeamName.toUpperCase()} nicht gefunden.`);
+          }
+
+        } catch (err) {
+          console.log(`❌ Fehler beim Aktualisieren der Rollen für ${playerName}: ${err.message}`);
+        }
+      }
+
     }
     // team not found error
     else {

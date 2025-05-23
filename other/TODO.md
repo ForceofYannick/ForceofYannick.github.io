@@ -33,8 +33,6 @@
 ---
 
 ## 🤖 Discord Bot
-- getAllPlayers command
-- spielern DC rolle geben, wenn in team verschoben bzw. rolle entfernen wenn aus team entfernt
 - (autocomplete bei spieler auswahl für team erstellung)
 - (autocomplete bei team auswahl für spieler editierung/erstellung)
 

@@ -40,6 +40,8 @@ module.exports = {
 
   callback: async (client, interaction) => {
 
+    console.log("=> createteam");
+
     // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
@@ -75,106 +77,85 @@ module.exports = {
 
     let missingPlayers = [];
     let updatedPlayers = [];
-    let playerData;
-
 
     // for all provided players
-    for (const option of interaction.options.data) {
-      // ignore team-name since its always provided
-      if (option.name !== 'team-name') {
+for (const option of interaction.options.data) {
+  if (option.name !== 'team-name') {
+    const playerName = option.value.toLowerCase();
+    const teamName = getInput(interaction, 'team-name');
+    let playerFound = false;
 
-        const playerName = option.value.toLowerCase();
-        const teamName = getInput(interaction, 'team-name');
-        let playerFound = false;
+    const guild = interaction.guild;
+    if (!guild) {
+      await interaction.editReply("Fehler: Guild nicht gefunden.");
+      return;
+    }
 
-        // go through all teams
-        for (const team in jsonData.Teams) {
+    // Suche in Teams
+    for (const team in jsonData.Teams) {
+      if (jsonData.Teams[team].Players[playerName]) {
+        playerFound = true;
 
-          // if player is in team
-          if (jsonData.Teams[team].Players[playerName]) {
+        const playerData = jsonData.Teams[team].Players[playerName];
+        const memberID = playerData['discord-id'];
 
-            playerFound = true;
+        // Spieler verschieben
+        jsonData.Teams[teamName].Players[playerName] = playerData;
+        delete jsonData.Teams[team].Players[playerName];
 
-            playerData = jsonData.Teams[team].Players[playerName];
-            // create player in new team
-            jsonData.Teams[teamName].Players[playerName] = playerData;
+        // Rollenzuweisung
+        try {
+          const member = await guild.members.fetch(memberID);
+          console.log(`🔍 Suche Rolle für Team "${teamName}": ${newRole ? "Gefunden" : "Nicht gefunden"}`);
+          const newRole = guild.roles.cache.find(role => role.name.toLowerCase() === teamName.toLowerCase());
+          const oldRole = guild.roles.cache.find(role => role.name.toLowerCase() === team.toLowerCase());
 
-            // add new team role
-            const memberID = jsonData.Teams[team].Players[playerName]['discordID'];
-            const member = client.users.fetch(memberID);
-            const newRole = member.guild.roles.cache.find(role => role.name == teamName.toUpperCase());
-            member.roles.add(newRole);
-
-            // delete player in old team
-            delete jsonData.Teams[team].Players[playerName];
-
-            // remove old team role
-            const oldRole = member.guild.roles.cache.find(role => role.name == team.toUpperCase());
-            member.roles.remove(oldRole);
-
-            // update player data
-            playerData = jsonData.Teams[teamName].Players[playerName];
-
-            // update team data in player
-            // Überprüfe, ob der Spieler existiert, bevor du versuchst, die Eigenschaft zu setzen
-            if (jsonData.Teams[teamName].Players[playerName]) {
-              jsonData.Teams[teamName].Players[playerName].team = teamName;
-            } else {
-              console.log(`❌ Spieler ${playerName} existiert nicht und wird ignoriert.`);
-            }
-
-            // add player to array for reply embed
-            updatedPlayers.push(playerName);
-            break;
-          }
+          if (oldRole) await member.roles.remove(oldRole);
+          if (newRole) await member.roles.add(newRole);
+        } catch (err) {
+          console.log(`❌ Fehler beim Zuweisen der Rollen für ${playerName}: ${err.message}`);
         }
 
-        // if player not found in teams search unsorted
-        if (!playerFound) {
+        // Teamdaten aktualisieren
+        jsonData.Teams[teamName].Players[playerName].team = teamName;
 
-          // if player in unsorted
-          if (jsonData.Unsorted[playerName]) {
-
-            playerData = jsonData.Unsorted[playerName];
-
-            // create player in new team
-            jsonData.Teams[teamName].Players[playerName] = playerData;
-
-            // add new team role
-            const memberID = jsonData.Unsorted[playerName]['discordID'];
-            const member = client.users.fetch(memberID);
-            const newRole = member.guild.roles.cache.find(role => role.name == teamName.toUpperCase());
-            member.roles.add(newRole);
-
-            // delete player in unsorted
-            delete jsonData.Unsorted[playerName];
-
-            // update player data
-            playerData = jsonData.Teams[teamName].Players[playerName];
-
-            // update team data in player
-            // Überprüfe, ob der Spieler existiert, bevor du versuchst, die Eigenschaft zu setzen
-            if (jsonData.Teams[teamName].Players[playerName]) {
-              jsonData.Teams[teamName].Players[playerName].team = teamName;
-            } else {
-              console.log(`❌ Spieler ${playerName} existiert nicht und wird ignoriert.`);
-            }
-
-            // add player to array for reply embed
-            updatedPlayers.push(playerName);
-
-          }
-          // player not found, ignore player input, flag player for warning
-          else {
-            // add player to array for reply embed
-            missingPlayers.push(playerName);
-          }
-        }
+        updatedPlayers.push(playerName);
+        break;
       }
     }
 
+    // Falls nicht in Teams, dann in Unsorted suchen
+    if (!playerFound && jsonData.Unsorted[playerName]) {
+      const playerData = jsonData.Unsorted[playerName];
+      const memberID = playerData['discord-id'];
 
+      // Spieler verschieben
+      jsonData.Teams[teamName].Players[playerName] = playerData;
+      delete jsonData.Unsorted[playerName];
 
+      // Rollenzuweisung
+      try {
+        const member = await guild.members.fetch(memberID);
+        const newRole = guild.roles.cache.find(role => role.name.toLowerCase() === teamName.toLowerCase());
+        if (newRole) await member.roles.add(newRole);
+      } catch (err) {
+        console.log(`❌ Fehler beim Zuweisen der Rolle aus Unsorted für ${playerName}: ${err.message}`);
+      }
+
+      // Teamdaten aktualisieren
+      jsonData.Teams[teamName].Players[playerName].team = teamName;
+
+      updatedPlayers.push(playerName);
+
+      playerFound = true;
+    }
+
+    // Spieler nicht gefunden
+    if (!playerFound && !jsonData.Unsorted[playerName]) {
+      missingPlayers.push(playerName);
+    }
+  }
+}
 
     // Write the new data to the team file
     try {
@@ -186,7 +167,7 @@ module.exports = {
     }
 
 
-    const embed = constructEmbed("create-team", {name:teamName, data:jsonData.Teams[teamName], updatedPlayers: updatedPlayers, ignoredPlayers: missingPLayers});
+    const embed = constructEmbed("create-team", {name:teamName, data:jsonData.Teams[teamName], updatedPlayers: updatedPlayers, ignoredPlayers: missingPlayers});
     await interaction.editReply({ embeds: [embed] });
   },
 };

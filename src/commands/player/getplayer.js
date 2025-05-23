@@ -19,7 +19,7 @@ module.exports = {
     ],
 
     callback: async (client, interaction) => {
-        console.log('~ getplayer');
+        console.log('=> getplayer');
 
         await interaction.deferReply();
 

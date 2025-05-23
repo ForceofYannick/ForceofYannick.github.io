@@ -26,15 +26,26 @@ module.exports = {
             required: true,
         },
         {
-            name: "split-name",
-            description: "The split name",
+            name: "split-season",
+            description: "The split season",
             type: ApplicationCommandOptionType.String,
+            choices: [
+                { name: "spring", value: "spring" },
+                { name: "summer", value: "summer" },
+                { name: "winter", value: "winter" },
+            ],
+            required: true,
+        },
+        {
+            name: "split-year",
+            description: "The split year",
+            type: ApplicationCommandOptionType.Integer,
             required: true,
         },
         {
             name: "kaliphase-group",
             description: "The group for the calibration phase",
-            type: ApplicationCommandOptionType.Number,
+            type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
@@ -46,7 +57,7 @@ module.exports = {
         {
             name: "groupphase-group",
             description: "The group for the group phase",
-            type: ApplicationCommandOptionType.Number,
+            type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
@@ -57,7 +68,7 @@ module.exports = {
         }, {
             name: "playoff-group",
             description: "The group for the playoff phase",
-            type: ApplicationCommandOptionType.Number,
+            type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
@@ -72,22 +83,24 @@ module.exports = {
 
     callback: async (client, interaction) => {
 
+        console.log("=> createteamresults");
+
         // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
         // get inputs
         const teamName = getInput(interaction, 'team-name');
-        const splitName = getInput(interaction, 'split-name');
+        const splitName = getInput(interaction, 'split-season')+"'"+getInput(interaction,'split-year');
 
+        
         const caliphasegroup = getInput(interaction, 'kaliphase-group');
         const groupphasegroup = getInput(interaction, 'groupphase-group');
         const playoffgroup = getInput(interaction, 'playoff-group');
 
-        const caliphaseresult = getInput(interaction, 'kaliphase-result');
-        const groupphaseresult = getInput(interaction, 'groupphase-result');
-        const playoffresult = getInput(interaction, 'playoff-result');
-
-
+        // getInput durch was anderes ersetzen um groß/kleinschreibung im embed zu behalten
+        const caliphaseresult = interaction.options.get('caliphase-result')?.value || '-';
+        const groupphaseresult = interaction.options.get('groupphase-result')?.value || '-';
+        const playoffresult = interaction.options.get('playoff-result')?.value || '-';
 
 
         // Read data json file
@@ -143,7 +156,7 @@ module.exports = {
         }
 
 
-        const embed = constructEmbed("create-result", {team:teamName, split: splitName, data: teamPath.Results[splitName]});
+        const embed = constructEmbed("create-result", { team: teamName, split: splitName, data: teamPath.Results[splitName] });
         await interaction.editReply({ embeds: [embed] });
     },
 };

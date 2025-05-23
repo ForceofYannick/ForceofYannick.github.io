@@ -17,4 +17,4 @@ function createPlayerObject(interaction) {
     };
 }
 
-module.exports = { createPlayerObject };
+module.exports = { createPlayerObject }; 
