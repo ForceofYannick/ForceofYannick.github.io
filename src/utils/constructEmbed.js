@@ -262,10 +262,6 @@ function constructEmbed(actionType, target) {
             embed.setColor(color);
             return embed;
     }
-
-    console.log(embed);
-
-    return embed;
 }
 
 function formatOrgaRoles(role1, role2) {

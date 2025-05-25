@@ -1,23 +1,13 @@
-//for json file stuff
 const fs = require("fs").promises;
-
 const { getInput } = require('@utils/getInput');
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { readJSON } = require("@json/readJSON.js");
-
-
-//for option type
-const {
-    ApplicationCommandOptionType,
-} = require('discord.js');
-
-//for embed stuff
+const { ApplicationCommandOptionType } = require('discord.js');
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'getteam',
     description: '📜 Display a team!',
-    testOnly: true,
     options: [
         {
             name: "team-name",
@@ -28,13 +18,10 @@ module.exports = {
     ],
 
     callback: async (client, interaction) => {
-        
         console.log("=> getteam");
-
-        // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
-        // get input
+        // Get input
         const teamName = getInput(interaction, 'team-name');
 
         /*
@@ -42,7 +29,7 @@ module.exports = {
         2. Print embed
         */
 
-        // 1.
+        // 1. Read JSON
         let jsonData;
         try {
             jsonData = await readJSON();
@@ -60,7 +47,7 @@ module.exports = {
             return;
         }
 
-        // 2.
+        // 2. Print embed
 
         // save path to team section
         const teamPath = jsonData.Teams[teamName];
@@ -71,7 +58,6 @@ module.exports = {
 
 
         const embed = constructEmbed('get-team', { name: teamName, players: playerList, results: resultList });
-        // send relpy
         await interaction.editReply({ embeds: [embed] });
     },
 };

@@ -4,13 +4,13 @@ function createPlayerInJSON(jsonData, player) {
     // player existence check in teams
     for (const team in jsonData.Teams) {
         if (jsonData.Teams[team].Players[player['player-name']]) {
-            console.log('❌ Spieler existiert bereits!');
+            console.log('❌ Team Spieler existiert bereits in JSON!');
             throw new Error('❌ Spieler existiert bereits!');
         }
     }
     // player existence check in unsorted
     if (jsonData.Unsorted[player['player-name']]) {
-        console.log('❌ Spieler existiert bereits!');
+        console.log('❌ Unsorted Spieler existiert bereits in JSON!');
         throw new Error('❌ Spieler existiert bereits!');
     }
 
@@ -50,7 +50,7 @@ function createPlayerInJSON(jsonData, player) {
     }
     }
     catch(err){
-        console.error("❌ Fehler beim Hinzufügen des Spielers:", err);
+        console.error("❌ Fehler beim Hinzufügen des Spielers zur JSON:", err);
         throw new Error("❌ Fehler beim Hinzufügen des Spielers");
     }
 }

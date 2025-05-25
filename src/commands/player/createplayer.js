@@ -1,6 +1,4 @@
-// for json file stuff
 const fs = require("fs").promises;
-
 const { createPlayerInJSON } = require('@json/createPlayerInJSON.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
@@ -8,23 +6,12 @@ const { readJSON } = require("@json/readJSON.js");
 const { createPlayerObject } = require('@utils/createPlayerObject.js');
 const { getInput } = require("@utils/getInput.js");
 const { inputExists } = require("../../utils/inputExists");
-
-
 const { Client, GUild } = require('discord.js');
-
-// for option type
-const {
-  ApplicationCommandOptionType,
-  PermissionFlagsBits,
-} = require('discord.js');
-
-
+const { ApplicationCommandOptionType, PermissionFlagsBits } = require('discord.js');
 
 module.exports = {
   name: 'createplayer',
   description: '➕ Create a new player!',
-  // devOnly: Boolean,
-  testOnly: true,
   options: [
     {
       name: "player-name",
@@ -108,26 +95,23 @@ module.exports = {
       description: "The players team",
       type: ApplicationCommandOptionType.String,
       required: false,
-    }, 
+    },
   ],
-  // deleted: Boolean,
 
   callback: async (client, interaction) => {
     console.log("=> createplayer");
-
-    // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
     /*
-    1.Read json
-    2. Make player object from inputs
-    2.5 asign role
-    3. Save player to json
-    4. Save json
-    5. Print embed
+    1.  Read JSON
+    2.  Make player object from inputs
+    2.5 Asign role
+    3.  Save player to JSON
+    4.  Save JSON
+    5.  Print embed
     */
 
-    // 1.
+    // 1. Read JSON
     let jsonData;
     try {
       jsonData = await readJSON();
@@ -137,44 +121,65 @@ module.exports = {
       return;
     }
 
-    // 2.
+    // 2. Make player object from inputs
     let player = createPlayerObject(interaction);
+    console.log(player);
 
-    // 2.5
+    // 2.5 Asign role
     const team = getInput(interaction, "team");
-    const memberID = getInput(interaction, 'discord-id');
 
-    const guild = interaction.guild;
-    if (!guild) {
-      await interaction.editReply("Fehler: Die Guild konnte nicht gefunden werden.");
-      return;
-    }
-    let member;
-    try {
-      member = await guild.members.fetch(memberID);
-    }
-    catch (err) {
-      await interaction.editReply("Mitglied nicht gefunden.");
-      return;
+    const IDinput = getInput(interaction, "discord-id");
+    let memberID = null;
+
+    const match = IDinput.match(/^<@!?(\d+)>$/);
+    if (match) {
+      memberID = match[1];
     }
 
-    if(inputExists(interaction,'team')){
-    const role = guild.roles.cache.find(role => role.name == team.toUpperCase());
-    if (!role) {
-      await interaction.editReply(`Rolle "${team.toUpperCase()}" nicht gefunden.`);
-      return;
+    if (/^\{17,20}$/.test(IDinput)) {
+      memberID = IDinput;
     }
 
-    try {
-      await member.roles.add(role);
-      console.log(`Rolle ${role.name} erfolgreich zugewiesen an ${member.user.tag}`);
-    } catch (err) {
-      await interaction.editReply("Fehler beim Hinzufügen der Rolle: " + err.message);
-      return;
-    }
-}
+    if (memberID != '-') {
+      const guild = interaction.guild;
+      if (!guild) {
+        await interaction.editReply("Fehler: Die Guild konnte nicht gefunden werden.");
+        return;
+      }
+      let member;
+      try {
+        member = await guild.members.fetch(memberID);
+      }
+      catch (err) {
+        await interaction.editReply("Mitglied nicht gefunden.");
+        return;
+      }
 
-    // 3.
+      if (inputExists(interaction, 'team')) {
+        const role = guild.roles.cache.find(role => role.name == team.toUpperCase());
+        if (!role) {
+          await interaction.editReply(`Rolle "${team.toUpperCase()}" nicht gefunden.`);
+          return;
+        }
+
+        if (jsonData.Teams[getInput(interaction, 'team')]) {
+          try {
+            await member.roles.add(role);
+            console.log(`Rolle ${role.name} erfolgreich zugewiesen an ${member.user.tag}`);
+          } catch (err) {
+            await interaction.editReply("Fehler beim Hinzufügen der Rolle: " + err.message);
+            return;
+          }
+        }
+        else {
+          return interaction.editReply(`Team "${getInput(interaction, 'team')}" existiert nicht.`);
+        }
+
+
+      }
+    }
+
+    // 3. Save player to JSON
     try {
       await createPlayerInJSON(jsonData, player);
     }
@@ -183,7 +188,7 @@ module.exports = {
       return;
     }
 
-    // 4.
+    // 4. Save JSON
     try {
       saveJSON(jsonData);
     }
@@ -192,10 +197,8 @@ module.exports = {
       return;
     }
 
-    // 5.
+    // 5. Print embed
     const embed = constructEmbed('create-player', player);
-
-    // send delayed discord reply
     await interaction.editReply({ embeds: [embed] });
   },
 };

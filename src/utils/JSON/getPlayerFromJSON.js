@@ -17,7 +17,7 @@ async function getPlayerFromJSON(playerName) {
             return { 'player-name': playerName, ...jsonData.Unsorted[playerName] };
         }
     
-        console.log("Spieler nicht gefunden");
+        console.log(`Spieler ${playerName} nicht in JSON gefunden`);
     return null; // Spieler nicht gefunden
 }
 

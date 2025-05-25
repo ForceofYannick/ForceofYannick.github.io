@@ -1,7 +1,5 @@
 const fs = require("fs").promises;
-
 const { Client, ApplicationCommandOptionType } = require("discord.js");
-
 const { getInput } = require("@utils/getInput.js");
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { createPlayerObject } = require("@utils/createPlayerObject.js");
@@ -26,7 +24,6 @@ function checkAnyInputExists(interaction) {
 module.exports = {
   name: "editplayer",
   description: "🔄 Edit a player!",
-  testOnly: true,
   options: [
     {
       name: "player-name",
@@ -121,11 +118,9 @@ module.exports = {
 
   callback: async (client, interaction) => {
     console.log("=> editplayer");
-
-    // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
-    // if no options are provided
+    // No options provided
     if (!checkAnyInputExists(interaction)) {
       console.error(`❌ Keine Option angegeben!`);
       await interaction.editReply(`❌ Keine Option angegeben!`);
@@ -134,7 +129,7 @@ module.exports = {
 
     /*
         1. Read JSON
-        2. Make new player object
+        2. Make input player object
         3. Get old player object from JSON
         4. Compare objects and make updated object
         5. Delete old player in JSON
@@ -143,7 +138,7 @@ module.exports = {
         8. Print embed
         */
 
-    // 1.
+    // 1. Read JSON
     let jsonData;
     try {
       jsonData = await readJSON();
@@ -153,7 +148,7 @@ module.exports = {
     }
 
 
-    // 2. make inputPlayer object
+    // 2. Make input player object
     let inputPlayer = createPlayerObject(interaction);
     const playerName = getInput(interaction, "player-name");
     // modify object with new name if provided
@@ -162,7 +157,7 @@ module.exports = {
     }
 
 
-    // 3. get oldPlayer data from JSON
+    // 3. Get old player object from JSON
 
     let oldPlayer = await getPlayerFromJSON(playerName);
     if (oldPlayer == null) {
@@ -172,11 +167,11 @@ module.exports = {
     }
 
 
-    // 4. make newPlayer by comparing oldPlayer with inputPlayer
+    // 4. Compare objects and make updated object
     let newPlayer = comparePlayersAndMakeNew(oldPlayer, inputPlayer);
 
 
-    // 4.5 assign new team role if needed
+    // 4.5 Assign new team role if needed
     if (oldPlayer.team != getInput(interaction, "team")) {
       let newTeam = null;
       if (getInput(interaction, "team").toLowerCase() == "delete") {
@@ -186,7 +181,27 @@ module.exports = {
         newTeam = newPlayer.team;
       }
 
-      const memberID = newPlayer['discord-id'];
+      const IDinput = newPlayer['discord-id'] || oldPlayer['discord-id'];
+      console.log("DC ID: "+IDinput);
+
+      // Check: keine Discord-ID vorhanden
+      if (!IDinput || IDinput === "-") {
+        await interaction.editReply("❌ Dieser Spieler hat keine Discord-ID angegeben. Der Rollentausch kann nicht durchgeführt werden.");
+        return;
+      }
+
+      let memberID = null;
+
+      const match = IDinput.match(/^<@!?(\d+)>$/);
+      if (match) {
+        memberID = match[1];
+      }
+
+      if (/^\d{17,20}$/.test(IDinput)) {
+        memberID = IDinput;
+      }
+
+      console.log("memberID: "+memberID);
 
       const guild = interaction.guild;
       if (!guild) {
@@ -229,19 +244,19 @@ module.exports = {
 
 
 
-    // 5. delete oldPlayer from JSON
+    // 5. Delete old player in JSON
     deletePlayerFromJSON(jsonData, oldPlayer);
 
 
-    // 6. save newPlayer to JSON
+    // 6. Add updated player to JSON
     createPlayerInJSON(jsonData, newPlayer);
 
 
-    // 7. save JSON
+    // 7. Save JSON    
     await saveJSON(jsonData);
 
 
-    // 8. create embed
+    // 8. Print embed
     const embed = constructEmbed("edit-player", newPlayer);
     await interaction.editReply({ embeds: [embed] });
 

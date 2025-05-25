@@ -2,13 +2,11 @@ const fs = require("fs").promises;
 const { getInput } = require('@utils/getInput.js');
 const { getPlayerFromJSON } = require('@json/getPlayerFromJSON.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
-
 const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
     name: 'getplayer',
     description: '📜 Display a player!',
-    testOnly: true,
     options: [
         {
             name: "player-name",
@@ -20,12 +18,12 @@ module.exports = {
 
     callback: async (client, interaction) => {
         console.log('=> getplayer');
-
         await interaction.deferReply();
 
         const playerName = getInput(interaction, 'player-name');
         let player;
 
+        // 1. Read JSON
         try {
             player = await getPlayerFromJSON(playerName);
         } catch (error) {
@@ -36,6 +34,7 @@ module.exports = {
             return await interaction.editReply(`❌ Spieler ${playerName} nicht gefunden`);
         }
 
+        // 2. Print embed
         const embed = constructEmbed('get-player', player);
         await interaction.editReply({ embeds: [embed] });
     },

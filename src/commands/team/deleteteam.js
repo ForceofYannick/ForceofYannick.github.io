@@ -1,25 +1,14 @@
-//for json file stuff
 const fs = require("fs").promises;
-
 const { getInput } = require("@utils/getInput");
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
-
-//for embed stuff
 const { EmbedBuilder } = require("discord.js");
-
-//for option type
-const {
-  ApplicationCommandOptionType,
-  PermissionFlagsBits,
-} = require("discord.js");
+const { ApplicationCommandOptionType, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   name: "deleteteam",
   description: "➖ Delete a team!",
-  // devOnly: Boolean,
-  testOnly: true,
   options: [
     {
       name: "team-name",
@@ -28,16 +17,12 @@ module.exports = {
       required: true,
     },
   ],
-  // deleted: Boolean,
 
   callback: async (client, interaction) => {
-
     console.log("=> deleteteam");
-
-    // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
-    // get input
+    // Get input
     const teamName = getInput(interaction, "team-name");
 
     /*
@@ -48,7 +33,7 @@ module.exports = {
     5. Print embed
     */
 
-    // 1.
+    // 1. Read JSON
     let jsonData;
     try {
       jsonData = await readJSON();
@@ -65,57 +50,57 @@ module.exports = {
       return;
     }
 
-    // 2.
+    // 2. Copy Team players to unsorted
     // used for embed
     let transferedPlayers = [];
 
     // transfer all players in team to 'Unsorted' section
-const guild = interaction.guild;
-if (!guild) {
-  await interaction.editReply("Fehler: Guild nicht gefunden.");
-  return;
-}
-
-for (const player in jsonData.Teams[teamName].Players) {
-  console.log(`${player} player in ${teamName}`);
-
-  // Spieler-Daten holen
-  const playerData = jsonData.Teams[teamName].Players[player];
-
-  // Team-Name entfernen
-  playerData.team = "-";
-
-  // Discord-ID holen
-  const memberID = playerData["discord-id"];
-
-  try {
-    const member = await guild.members.fetch(memberID);
-    const role = guild.roles.cache.find(role => role.name === teamName.toUpperCase());
-
-    if (role) {
-      await member.roles.remove(role);
-    } else {
-      console.log(`⚠️ Rolle "${teamName.toUpperCase()}" nicht gefunden.`);
+    const guild = interaction.guild;
+    if (!guild) {
+      await interaction.editReply("Fehler: Guild nicht gefunden.");
+      return;
     }
-  } catch (err) {
-    console.log(`❌ Fehler beim Entfernen der Rolle von ${player}: ${err.message}`);
-  }
 
-  // Spieler aus Team entfernen
-  delete jsonData.Teams[teamName].Players[player];
+    for (const player in jsonData.Teams[teamName].Players) {
+      console.log(`${player} player in ${teamName}`);
 
-  // Spieler zu Unsorted hinzufügen
-  jsonData.Unsorted[player] = playerData;
+      // Get playerdata
+      const playerData = jsonData.Teams[teamName].Players[player];
 
-  // Spieler zu Antwortliste hinzufügen
-  transferedPlayers.push(player);
-}
+      // Remove team name
+      playerData.team = "-";
+
+      // Get discord ID
+      const memberID = playerData["discord-id"];
+
+      try {
+        const member = await guild.members.fetch(memberID);
+        const role = guild.roles.cache.find(role => role.name === teamName.toUpperCase());
+
+        if (role) {
+          await member.roles.remove(role);
+        } else {
+          console.log(`⚠️ Rolle "${teamName.toUpperCase()}" nicht gefunden.`);
+        }
+      } catch (err) {
+        console.log(`❌ Fehler beim Entfernen der Rolle von ${player}: ${err.message}`);
+      }
+
+      // Remove player from team
+      delete jsonData.Teams[teamName].Players[player];
+
+      // Add player to Unsorted
+      jsonData.Unsorted[player] = playerData;
+
+      // Add player to reply list
+      transferedPlayers.push(player);
+    }
 
 
-    // 3.
+    // 3. Delete team
     delete jsonData.Teams[teamName];
 
-    // 4.
+    // 4. Save JSON
     try {
       saveJSON(jsonData);
     } catch (err) {
@@ -123,11 +108,8 @@ for (const player in jsonData.Teams[teamName].Players) {
       return;
     }
 
-    // 5.
-    const embed = constructEmbed("delete-team", {
-      name: teamName,
-      affectedPlayers: transferedPlayers,
-    });
+    // 5. Print embed
+    const embed = constructEmbed("delete-team", { name: teamName, affectedPlayers: transferedPlayers });
     await interaction.editReply({ embeds: [embed] });
   },
 };

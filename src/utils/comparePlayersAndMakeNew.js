@@ -8,7 +8,7 @@ function comparePlayersAndMakeNew(oldPlayer, inputPlayer) {
             newPlayer[property] = "-";
         }
         // normaler Fall: Eingabe ist gültig (nicht "-")
-        else if (inputPlayer[property] !== "-") {
+        else if (inputPlayer[property] !== "-" && inputPlayer[property] !== null && inputPlayer[property] !== undefined) {
             newPlayer[property] = inputPlayer[property];
         }
         // falls "-" → alten Wert übernehmen

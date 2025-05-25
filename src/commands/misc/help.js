@@ -1,16 +1,10 @@
-//for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'help',
     description: '📜 Provides a tutorial on how to use the bot',
-    // devOnly: Boolean,
-    testOnly: true,
-
-    //deleted: false,
 
     callback: (client, interaction) => {
-
         console.log("=> help");
 
         // first embed
@@ -18,7 +12,7 @@ module.exports = {
             .setColor(0xFFFF80)
             .setTitle('📜 Befehlsübersicht')
             .setDescription(
-                'Unten aufgeführt ist die Liste aller Befehle und ihren anzugebenden Parametern.\n\n' +
+                'Unten aufgeführt ist die Liste aller Befehle und der dazugehörigen Parametern.\n\n' +
                 '**Benötigte Parameter sind gekennzeichnet durch** `[ ... ]`\n' +
                 '**Optionale Parameter sind gekennzeichnet durch** `{ ... }`'
             )
@@ -27,7 +21,7 @@ module.exports = {
                 { name: '\u200B', value: '\u200B' }, // visual spacing
                 { name: '⚠️ WARNUNG ⚠️', value: 'Bisher gibt es keine zusätzlichen Bestätigungsfragen. Passt auf, bei den Sachen die ihr angebt.', inline: false },
                 { name: '\u200B', value: '\u200B' }, // visual spacing
-                { name: '⚙️ Fehlermeldungen und Feedback ⚙️', value: 'Falls Fehler vorkommen oder Bedarf für Feedback vorhanden ist, gerne an <@332847436471074827> senden oder <@279986518309732352> darüber informieren.', inline: false },
+                { name: '⚙️ Fehlermeldungen und Feedback ⚙️', value: 'Falls Fehler vorkommen oder Bedarf für Feedback vorhanden ist, gerne an <@332847436471074827> senden oder <@279986518309732352> darüber informieren (Bitte sende auch die eingegebenen Befehle mit.).', inline: false },
             )
 
             .addFields(
@@ -38,7 +32,7 @@ module.exports = {
                     value: '```/createplayer [Player name] {Discord ID} {Team}\n' +
                         '{LoL Role} {Orga Role 1} {Orga Role 2}\n' +
                         '{Instagram URL} {Tiktok URL} {Twitter URL} {Twitch URL} {Youtube URL}```\n' +
-                        'Erstellt einen Spieler mit dem angegebenen Namen und anderen optionalen Informationen im angegebenen Team, sofern das Team existiert. Wenn kein Team angegeben wird oder das angegebene Team nicht existiert, wird der Spieler in der Kategorie "Unsorted" gespeichert.',
+                        'Erstellt einen Spieler mit dem angegebenen Namen sowie optionalen Informationen im angegebenen Team, sofern das Team existiert. Wenn kein gültiges Team angegeben wird, wird der Spieler in der Kategorie "Unsorted" gespeichert. \n Bei "Discord ID" kann auch ein Discord-Mitglied erwähnt (gepingt) werden.',
                     inline: false
                 },
                 { name: '\u200B', value: '\u200B' }, // visual spacing
@@ -59,6 +53,7 @@ module.exports = {
                 { name: '</deleteplayer:1350450447571222530> [Player name]', value: 'Löscht einen Spieler.', inline: false },
                 { name: '</getplayer:1350491394828927017> [Player name]', value: 'Zeigt eine ausführliche Spielerübersicht an.', inline: false },
                 { name: '</getunsortedplayers:1350836412106145794>', value: 'Zeigt alle Spieler an, die sich in keinem Team befinden.', inline: false },
+                { name: '</getallplayers:1375514953762607297>', value: 'Zeigt alle existierenden Spieler an.', inline: false },
             )
 
            .addFields(
@@ -73,8 +68,10 @@ module.exports = {
     { name: '</editteamname:1373762597635100804> [Current team name] [New team name]', value: 'Ändert den Teamnamen und aktualisiert alle darin enthaltenen Spieler, da diese ihren Teamnamen erneut speichern.', inline: false },
     { name: '</deleteteam:1373762596720738388> [Team name]', value: 'Löscht ein Team und verschiebt alle darin enthaltenen Spieler in die Kategorie "Unsorted".', inline: false },
     { name: '</getteam:1375130865234870293> [Team name]', value: 'Zeigt eine ausführliche Teamübersicht an.', inline: false },
-    { name: '</createteamresults:1373762595747659910> [Team name] [Split name]', value: 'Erstellt einen Split.', inline: false },
-    { name: '</deleteteamresults:1373766066777362483> [Team name] [Split name]', value: 'Löscht einen Split.', inline: false },
+    { name: '</getallteams:1351877914840535061>', value: 'Zeigt alle existierenden Teams an.', inline: false },
+    { name: '</createteamresults:1373762595747659910>' , value: ' ```/createteamresult [Team name] [Split season] [Split year] {kali-group} {kali-result} {group-group} {group-result} {playoff-group} {playoff-result} ```\n'+
+       'Erstellt einen Split.', inline: false },
+    { name: '</deleteteamresults:1373766066777362483> [Team name] [Split season] [Split year]', value: 'Löscht einen Split.', inline: false },
 );
 
 
@@ -123,7 +120,7 @@ module.exports = {
             );
 
 
-
+            // Send embeds
         interaction.reply({ embeds: [embed1, embed2] });
     },
 };

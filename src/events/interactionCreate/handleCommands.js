@@ -1,4 +1,4 @@
-const { devs, testServer } = require('../../../config.json');
+const { devs, testServer, allowedRoles } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
 
 module.exports = async (client, interaction) => {
@@ -27,6 +27,19 @@ module.exports = async (client, interaction) => {
       if (!(interaction.guild.id === testServer)) {
         interaction.reply({
           content: '❌ This command cannot be ran here.',
+          ephemeral: true,
+        });
+        return;
+      }
+    }
+
+    // GLOBALER Rollen-Check: Nur User mit einer Rolle aus allowedRoles dürfen Commands nutzen
+    if (allowedRoles?.length) {
+      const memberRoles = interaction.member.roles.cache;
+      const hasAllowedRole = memberRoles.some(role => allowedRoles.includes(role.id));
+      if (!hasAllowedRole) {
+        interaction.reply({
+          content: '❌ Du hast nicht die nötige Rolle, um Befehle auszuführen.',
           ephemeral: true,
         });
         return;

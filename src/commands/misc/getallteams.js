@@ -1,26 +1,16 @@
-//for json file stuff
 const fs = require("fs").promises;
-
-//for option type
-const {
-    ApplicationCommandOptionType,
-} = require('discord.js');
-
-//for embed stuff
+const { ApplicationCommandOptionType } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'getallteams',
     description: '📜 Displays all teams!',
-    testOnly: true,
-
+    
     callback: async (client, interaction) => {
         console.log("=> getallteams");
-
-        // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
-        // Read data json file
+        // Read JSON
         let jsonData;
         let rawData;
 
@@ -34,21 +24,18 @@ module.exports = {
             return;
         }
 
-        // save all teams in lists
-        const TeamList = Object.keys(jsonData.Teams).join(', ') || '-';
+        // Save all teams in list
+        const teamList = Object.keys(jsonData.Teams).join(', ') || '-';
         
-
-
-
-        // construct embed
+        // Construct embed
         const embed = new EmbedBuilder()
         .setColor(0xFFFF80)
         .setTitle(`Alle existierenden Teams`)
         .addFields(
-            { name: 'Teams', value: TeamList },
+            { name: 'Teams', value: teamList },
         );
 
-        // send relpy
+        // Print embed
         await interaction.editReply({ embeds: [embed] });
     },
 };

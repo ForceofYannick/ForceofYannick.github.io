@@ -28,16 +28,12 @@
 
 ## 💻 Desktop
 ### Teams:
-- Splitergebnisstabelleneinklappelementrahmen anzeigen
 - Splitergebnistabellen schöner machen
 ---
 
 ## 🤖 Discord Bot
 - (autocomplete bei spieler auswahl für team erstellung)
 - (autocomplete bei team auswahl für spieler editierung/erstellung)
-
-
-
 
 ---
 

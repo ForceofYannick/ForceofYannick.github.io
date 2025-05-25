@@ -1,22 +1,14 @@
 const fs = require("fs").promises;
-
 const { getInput } = require("@utils/getInput.js");
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
-
-//for embed stuff
 const { Client, IntentsBitField, EmbedBuilder } = require("discord.js");
-
-const {
-  ApplicationCommandOptionType,
-  PermissionFlagsBits,
-} = require("discord.js");
+const { ApplicationCommandOptionType, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   name: "editteamname",
   description: "🔄 Rename a team!",
-  testOnly: true,
   options: [
     {
       name: "current-team-name",
@@ -33,13 +25,10 @@ module.exports = {
   ],
 
   callback: async (client, interaction) => {
-
     console.log("=> editteamname");
-
-    // delay discord reply to prevent timeout error
     await interaction.deferReply();
 
-    // get inputs
+    // Get inputs
     const currentTeamName = getInput(interaction, "current-team-name");
     const newTeamName = getInput(interaction, "new-team-name");
 
@@ -50,7 +39,7 @@ module.exports = {
         4. Print embed
         */
 
-    // 1.
+    // 1. Read JSON
     let jsonData;
     try {
       jsonData = await readJSON();
@@ -69,7 +58,7 @@ module.exports = {
       return;
     }
 
-    // 2.
+    // 2. Make new team, copy all data and delete old team
     // create updated player array for reply msg
     let updatedPlayers = [];
 
@@ -94,7 +83,7 @@ module.exports = {
       for (const playerName in jsonData.Teams[newTeamName].Players) {
         const playerData = jsonData.Teams[newTeamName].Players[playerName];
 
-        // Teamname aktualisieren
+        // Update team name
         playerData.team = newTeamName;
         updatedPlayers.push(playerName);
 
@@ -103,7 +92,7 @@ module.exports = {
         try {
           const member = await guild.members.fetch(memberID);
 
-          // neue Rolle holen
+          // Add new role
           const newRole = guild.roles.cache.find(role => role.name === newTeamName.toUpperCase());
           if (newRole) {
             await member.roles.add(newRole);
@@ -111,7 +100,7 @@ module.exports = {
             console.log(`⚠️ Neue Rolle ${newTeamName.toUpperCase()} nicht gefunden.`);
           }
 
-          // alte Rolle entfernen
+          // Remove old role
           const oldRole = guild.roles.cache.find(role => role.name === currentTeamName.toUpperCase());
           if (oldRole) {
             await member.roles.remove(oldRole);
@@ -132,10 +121,10 @@ module.exports = {
       return;
     }
 
-    // 3.
+    // 3. Save JSON
     await saveJSON(jsonData);
 
-    //4.
+    //4. Print embed
     const embed = constructEmbed("edit-team", {
       old: currentTeamName,
       new: newTeamName,

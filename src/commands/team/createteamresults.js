@@ -1,23 +1,14 @@
-//for json file stuff
 const fs = require("fs").promises;
-
 const { getInput } = require('@utils/getInput.js');
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { saveJSON } = require("@json/saveJSON.js");
 const { readJSON } = require("@json/readJSON.js");
-
-//for option type
-const {
-    ApplicationCommandOptionType,
-} = require('discord.js');
-
-//for embed stuff
+const { ApplicationCommandOptionType } = require('discord.js');
 const { Client, IntentsBitField, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'createteamresults',
     description: '➕ Create results for a team',
-    testOnly: true,
     options: [
         {
             name: "team-name",
@@ -82,28 +73,24 @@ module.exports = {
     ],
 
     callback: async (client, interaction) => {
-
         console.log("=> createteamresults");
-
-        // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
-        // get inputs
+        // Get inputs
         const teamName = getInput(interaction, 'team-name');
-        const splitName = getInput(interaction, 'split-season')+"'"+getInput(interaction,'split-year');
+        const splitName = getInput(interaction, 'split-season') + "'" + getInput(interaction, 'split-year');
 
-        
+
         const caliphasegroup = getInput(interaction, 'kaliphase-group');
         const groupphasegroup = getInput(interaction, 'groupphase-group');
         const playoffgroup = getInput(interaction, 'playoff-group');
 
-        // getInput durch was anderes ersetzen um groß/kleinschreibung im embed zu behalten
         const caliphaseresult = interaction.options.get('caliphase-result')?.value || '-';
         const groupphaseresult = interaction.options.get('groupphase-result')?.value || '-';
         const playoffresult = interaction.options.get('playoff-result')?.value || '-';
 
 
-        // Read data json file
+        // Read JSON
         let jsonData;
         try {
             jsonData = await readJSON();
@@ -113,7 +100,7 @@ module.exports = {
             return;
         }
 
-        // if team not existing
+        // If team not existing
         if (!jsonData.Teams[teamName]) {
             console.error(`❌ Team ${teamName} nicht gefunden`);
             await interaction.editReply(`❌ Team ${teamName} nicht gefunden`);
@@ -122,7 +109,7 @@ module.exports = {
 
         const teamPath = jsonData.Teams[teamName];
 
-        // if split name already existing
+        // If split name already existing
         if (teamPath.Results[splitName]) {
             console.error(`❌ Split ${splitName} existiert bereits in ${teamName}`);
             await interaction.editReply(`❌ Split ${splitName} existiert bereits in ${teamName}`);
@@ -130,7 +117,7 @@ module.exports = {
         }
 
 
-        // else create new split with provided inputs
+        // Else create new split with provided inputs
         teamPath.Results[splitName] = {
             "kaliphase": {
                 "group": caliphasegroup,
@@ -146,7 +133,7 @@ module.exports = {
             }
         }
 
-        // Write the new data to the team file
+        // Save JSON
         try {
             saveJSON(jsonData);
         }
@@ -155,7 +142,7 @@ module.exports = {
             return;
         }
 
-
+        // Print embed
         const embed = constructEmbed("create-result", { team: teamName, split: splitName, data: teamPath.Results[splitName] });
         await interaction.editReply({ embeds: [embed] });
     },

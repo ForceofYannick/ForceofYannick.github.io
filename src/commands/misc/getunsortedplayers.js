@@ -1,27 +1,16 @@
-//for json file stuff
 const fs = require("fs").promises;
-
-//for option type
-const {
-    ApplicationCommandOptionType,
-} = require('discord.js');
-
-//for embed stuff
+const { ApplicationCommandOptionType } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'getunsortedplayers',
     description: '📜 Displays all unsorted players!',
-    testOnly: true,
 
     callback: async (client, interaction) => {
-
         console.log("=> getunsortedplayers");
-
-        // delay discord reply to prevent timeout error
         await interaction.deferReply();
 
-        // Read data json file
+        // Read JSON
         let jsonData;
         let rawData;
 
@@ -35,13 +24,10 @@ module.exports = {
             return;
         }
 
-        // save unsorted players in lists
+        // Save unsorted players in list
         const playerList = Object.keys(jsonData.Unsorted).join(', ') || '-';
         
-
-
-
-        // construct embed
+        // Construct embed
         const embed = new EmbedBuilder()
         .setColor(0xFFFF80)
         .setTitle(`Spieler ohne Team`)
@@ -49,7 +35,7 @@ module.exports = {
             { name: 'Spieler', value: playerList },
         );
 
-        // send relpy
+        // Print embed
         await interaction.editReply({ embeds: [embed] });
     },
 };

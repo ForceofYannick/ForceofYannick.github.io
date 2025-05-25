@@ -1,6 +1,6 @@
 const fs = require("fs").promises;
 async function getTeamFromJSON(teamName) {
-    console.log(`~ getPlayerFromJSON ${teamName}`);
+    console.log(`~ getTeamFromJSON ${teamName}`);
 
         const rawData = await fs.readFile("data.json", "utf8");
         const jsonData = JSON.parse(rawData);
@@ -10,7 +10,7 @@ async function getTeamFromJSON(teamName) {
             return jsonData.Teams[teamName];
         }
         // sonst  null
-        console.log("Team nicht gefunden");
+        console.log(`Team ${teamName} nicht in JSON gefunden`);
     return null; // Team nicht gefunden
 }
 

@@ -1,20 +1,15 @@
 const fs = require("fs").promises;
 const { constructEmbed } = require("@utils/constructEmbed.js");
 const { readJSON } = require("@json/readJSON.js");
-
 const { ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
     name: 'getallplayers',
     description: '📜 Display all existing players!',
-    testOnly: true,
-
+    
     callback: async (client, interaction) => {
         console.log('=> getallplayers');
-
         await interaction.deferReply();
-
-
 
         // Read JSON
         let jsonData;
@@ -44,7 +39,5 @@ module.exports = {
         // Print embed
         const embed = constructEmbed('get-all-players', playerList);
         await interaction.editReply({ embeds: [embed] });
-
-
     },
 };

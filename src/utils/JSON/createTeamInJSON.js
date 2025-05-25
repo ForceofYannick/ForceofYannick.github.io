@@ -1,8 +1,9 @@
 async function createTeamInJSON(jsonData, team) {
+  console.log('~ createTeamInJSON');
   const name = team.name;
 
   if (jsonData.Teams?.[name]) {
-    throw new Error(`❌ Team '${name}' already exists!`);
+    throw new Error(`❌ Team '${name}' existiert bereits!`);
   }
 
   // Falls es kein "Teams" Objekt gibt, anlegen
