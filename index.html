@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoomFinder</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+			{
+				"imports": {
+					"three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                    "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+        }
+			}
+		</script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <script type="module" src="index.js"></script>
+
+    <div id="overlay">
+      <!-- Input -->
+      <div>
+        <input id="roomInput" type="text" placeholder="Raumname eingeben"/>
+        <button onclick="findRoom()">Suchen</button>
+      </div>
+
+      <!-- Switch -->
+       <!-- 
+      <label class="switch">
+        <input id="undergroundToggle" type="checkbox">
+        <span class="slider round"></span>
+        <p>Tunnelkarte (WIP)</p>
+      </label>
+      -->
+      <!-- Result Text -->
+      <p id="outputElement"></p>
+    </div>
+    
+  </body>
+</html>
