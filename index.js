@@ -89,7 +89,7 @@ scene.add(sun);
 // For JQuery Operators
 $(document).ready(() => {
 
-  // Enter-key triggerer in room input
+  // Enter-key triggerer in room input field
   $("#roomInput").on("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();
